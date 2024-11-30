@@ -42,8 +42,11 @@ Realizamos la petición mediante `cURL`:
 ![image](https://github.com/user-attachments/assets/7d7cb48f-a367-4e11-99be-2af01de098ae)
 
 Realizamos fuzzing con `ffuf`:
-![image](https://github.com/user-attachments/assets/5d04dea3-24ac-454f-ad4f-fba32820b6f2)
-No encontramos nada, intentamos volver a hacer fuzzing pero filtrando con una regex que coincida exactamente con ese string, realizamos un script en bash:
+![image](https://github.com/user-attachments/assets/92663fd5-71d1-47f1-b19e-ef859092eec7)
+
+Vemos que el usuario es **vagrant**.  
+
+Como alternativa intentamos volver a hacer fuzzing pero filtrando con una regex que coincida exactamente con ese string, realizamos un script en bash:
 ```bash
 #!/bin/bash
 
@@ -66,8 +69,15 @@ done < "$WORDLIST"
 ```
 
 
-Ejecutamos el script:
+Ejecutamos el script:  
 ![image](https://github.com/user-attachments/assets/361d0727-cd11-4583-8880-b7db34e9c7c4)
+
+También podríamos haber utilizado el intruder de BurpSuite:
+Primero debemos añadir el payload, agregar la wordlist, y en **settings** debemos configurar la sección `GREP-EXTRACT`:
+![image](https://github.com/user-attachments/assets/a188d900-d951-4db7-9b24-40a3d29677ed)
+![image](https://github.com/user-attachments/assets/da809777-e29d-41cb-be7c-6565cf0ae109)
+
+
 
 Ahora que tenemos el usuario **vagrant** realizamos una petición por `cURL` con password de prueba para observar el comportamiento:
 ![image](https://github.com/user-attachments/assets/0b0e5995-aa3e-468c-b4ac-eb0c075adaa0)
