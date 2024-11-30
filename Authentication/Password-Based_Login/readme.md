@@ -46,7 +46,7 @@ We performed fuzzing with `ffuf`:
 
 We see that the user is **vagrant**.  
 
-As an alternative, we try fuzzing again but filtering with a regex that exactly matches that string. We created a bash script:"
+As an alternative, we try fuzzing again but filtering with a regex that exactly matches that string. We created a bash script:  
 ```bash
 #!/bin/bash
 
@@ -72,7 +72,8 @@ done < "$WORDLIST"
 We run the script:  
 ![image](https://github.com/user-attachments/assets/361d0727-cd11-4583-8880-b7db34e9c7c4)
 
-We could also have used BurpSuite's Intruder:
+We could also have used BurpSuite's Intruder:  
+
 First, we need to add the payload, include the wordlist, and in **settings** we need to configure the `GREP-EXTRACT` section:
 ![image](https://github.com/user-attachments/assets/a188d900-d951-4db7-9b24-40a3d29677ed)
 ![image](https://github.com/user-attachments/assets/da809777-e29d-41cb-be7c-6565cf0ae109)
