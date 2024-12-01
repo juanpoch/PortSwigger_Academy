@@ -109,7 +109,7 @@ We spoof the IP with the "X-Forwarded-For" header and fuzz the username. At the 
 ![image](https://github.com/user-attachments/assets/4bceb7ad-ce4c-4885-95b0-1f4b191697f6)
 **Note:** The X-Forwarded-For (XFF) header is an HTTP header used to identify the original IP address of a client that is behind a proxy server, load balancer, or another intermediate device. It is particularly useful in architectures where the client does not connect directly to the final server.  
 **Limitations:**  
-- Unreliable if proxies are not secure:
+Unreliable if proxies are not secure:
  - If any intermediate device can modify the header, the information can be spoofed.
  - It is recommended to use it only in networks where proxies and load balancers are trusted.
 We see that despite applying the filter, this time there is no visible difference:
