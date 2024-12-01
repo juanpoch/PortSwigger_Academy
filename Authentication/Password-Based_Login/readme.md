@@ -107,6 +107,11 @@ We send the request from Burp to the Intruder and configure a Pitchfork Attack, 
 ![image](https://github.com/user-attachments/assets/10a8ff49-fdae-48cc-ad68-3c91e49fa874)
 We spoof the IP with the "X-Forwarded-For" header and fuzz the username. At the same time, in `Settings`, `Grep - Match`, we configure the negative filter for the response "Invalid username or password.":
 ![image](https://github.com/user-attachments/assets/4bceb7ad-ce4c-4885-95b0-1f4b191697f6)
+**Note:** The X-Forwarded-For (XFF) header is an HTTP header used to identify the original IP address of a client that is behind a proxy server, load balancer, or another intermediate device. It is particularly useful in architectures where the client does not connect directly to the final server.  
+**Limitations:**  
+- Unreliable if proxies are not secure:
+- If any intermediate device can modify the header, the information can be spoofed.
+- It is recommended to use it only in networks where proxies and load balancers are trusted.
 We see that despite applying the filter, this time there is no visible difference:
 ![image](https://github.com/user-attachments/assets/25e1784d-c858-4ed1-9034-a8424f8a4c59)
 
