@@ -217,11 +217,12 @@ for i in range(150):
     else:
         print("wiener")
 
-with open('passwords.txt', 'r') as f:
-    lines =  f.readlines()
 
 print("------------------------------------------")
 print("----- Lista passwords -----")
+
+with open('passwords.txt', 'r') as f:
+    lines =  f.readlines()
 
 i = 0 
 
