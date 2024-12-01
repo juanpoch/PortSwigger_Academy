@@ -342,22 +342,9 @@ with open("passwords.json", "w") as file:
 We send the request using the array of passwords, which allows us to test multiple passwords in a single request while avoiding server blocks:
 ![image](https://github.com/user-attachments/assets/d1e2e012-5900-4c81-84d5-a5cfac1ed4b2)
 
-Clicl on `Follow redirection` twice, then write click on the response and click on `Show response in browser`, then copy and paste the link on your browser.
+Right-click on the response and click on `Show response in browser`, then copy and paste the link into your browser.
 
 We have completed de lab:
+![image](https://github.com/user-attachments/assets/25c91788-b0cf-4d64-a243-748ad41c87c5)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Note that you can also copy the session cookie, paste it into your browser, then click on `My account` to complete the lab.
