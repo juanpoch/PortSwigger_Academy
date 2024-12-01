@@ -293,7 +293,9 @@ We first perform a `cURL` inspection with test credentials:
 
 Next, we perform fuzzing with `ffuf` to enumerate valid usernames. We run `ffuf` 3 or 4 times until we get a different response:
 ![image](https://github.com/user-attachments/assets/1e5b8d71-5fd9-49a4-bfe7-42bc104cbb83)
-This happens because the server blocks the account after the third failed login attempt, allowing enumeration of the blocked user.
+This happens because the server blocks the account after the third failed login attempt, allowing enumeration of the blocked user:
+![image](https://github.com/user-attachments/assets/ecc6a897-a05d-4e18-9938-6471787bd25d)
+
 We then perform a password brute-force attack using this user:
 ![image](https://github.com/user-attachments/assets/bd3496b1-4949-4f46-8219-1738c3abc796)
 
