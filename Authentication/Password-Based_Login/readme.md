@@ -207,7 +207,7 @@ We executed the script and obtained the password:
 ![image](https://github.com/user-attachments/assets/298304e6-0291-42b9-949b-3c8a14c7d835)
 
 We could also to create the following python scrypt:
-```
+```python
 #!/usr/bin/env python3
 import requests
 
