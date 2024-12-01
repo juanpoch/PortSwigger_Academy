@@ -310,6 +310,23 @@ Finally, we log in and complete the lab:
 We could also use Burp Suite Intruder:  
 ![image](https://github.com/user-attachments/assets/177fe106-2767-4247-bd42-d1dd381a5079)
 
+---
+
+## Lab: Broken brute-force protection, multiple credentials per request
+
+This lab is vulnerable due to a logic flaw in its brute-force protection. To solve the lab, brute-force Carlos's password, then access his account page.
+
+- Victim's username: carlos
+- Wordlist: Candidate passwords
+
+We begin the lab by sending a test `POST` request to understand the server's internal mechanism:
+![image](https://github.com/user-attachments/assets/e9f36794-70f9-433c-be2c-c5778decf756)
+
+We observe that the server receives `JSON` data in the request. Additionally, we know that the server implements brute-force protection and will block us if we send too many requests in a short period of time. To test the server's handling of `JSON` arrays, we attempt to send an array of passwords in the `JSON` password parameter:
+![image](https://github.com/user-attachments/assets/36bd5b38-4fb9-4453-969b-acda1d60a611)
+
+Since the server allows us to send arrays, we can send a wordlist of passwords in the same way. We create a Python script to convert a simple passwords list into a `JSON` format:
+
 
 
 
