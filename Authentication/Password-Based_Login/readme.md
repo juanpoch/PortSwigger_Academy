@@ -302,8 +302,13 @@ We then perform a password brute-force attack using this user:
 We create a small password file with these passwords and attempt the attack again after waiting for one minute:
 ![image](https://github.com/user-attachments/assets/c14920ba-76e1-4ee6-a3d4-b7c7a1c57cae)
 
+
 Finally, we log in and complete the lab:
 ![image](https://github.com/user-attachments/assets/8da90fcb-de49-4413-b4a1-604898b3e1e0)
+
+**Note:**  
+We could also use Burp Suite Intruder:  
+![image](https://github.com/user-attachments/assets/48dd7018-e617-4817-b150-7b6f0089c6de)
 
 
 
