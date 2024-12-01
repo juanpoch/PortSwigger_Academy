@@ -140,6 +140,7 @@ This lab is vulnerable due to a logic flaw in its password brute-force protectio
 - Your credentials: `wiener:peter`
 - Victim's username: carlos
 - Candidate passwords
+  
 Hint: Advanced users may want to solve this lab by using a macro or the Turbo Intruder extension. However, it is possible to solve the lab without using these advanced features.
 
 We made a test request:
