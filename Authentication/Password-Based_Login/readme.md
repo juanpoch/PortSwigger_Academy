@@ -116,7 +116,7 @@ Unreliable if proxies are not secure:
 We see that despite applying the filter, this time there is no visible difference:
 ![image](https://github.com/user-attachments/assets/25e1784d-c858-4ed1-9034-a8424f8a4c59)
 
-We can see that if we manually test in the Repeater with our valid username, when the password is very large, the request takes much longer compared to when the login is successful.
+When we test manually using Repeater with an incorrect username, the response is noticeably faster compared to when using a valid username and a significantly long password. This suggests that the server validates the username first and only proceeds to validate the password if the username is valid.
 We proceed to check the difference in the response timing by performing the same attack, sending a large password (100 characters) using intruder:
 ![image](https://github.com/user-attachments/assets/6ebf0359-6729-4049-ab8d-2422d4bb6a8b)
 We can see that the response with the username `amarillo` takes significantly longer than the other requests:
