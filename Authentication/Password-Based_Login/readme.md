@@ -112,6 +112,7 @@ We spoof the IP with the "X-Forwarded-For" header and fuzz the username. At the 
 Unreliable if proxies are not secure:
  - If any intermediate device can modify the header, the information can be spoofed.
  - It is recommended to use it only in networks where proxies and load balancers are trusted.
+ - 
 We see that despite applying the filter, this time there is no visible difference:
 ![image](https://github.com/user-attachments/assets/25e1784d-c858-4ed1-9034-a8424f8a4c59)
 
