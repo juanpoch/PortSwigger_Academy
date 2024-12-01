@@ -28,6 +28,7 @@ We make the request again with `ffuf`, now filtering "Incorrect password" using 
 We log in and complete the lab:
 ![image](https://github.com/user-attachments/assets/5bdb1043-84b8-4998-943b-4ca10775c9c7)
 
+---
 
 ## Lab: Username enumeration via subtly different responses
 
@@ -87,6 +88,8 @@ We see that a '.' is missing at the end of the sentence. Now, we perform passwor
 Now we log in with the credentials and solve the lab:
 ![image](https://github.com/user-attachments/assets/f22cc318-f15b-4e2d-80fc-98d05df8cca2)
 
+---
+
 ## Lab: Username enumeration via response timing
 
 This lab is vulnerable to username enumeration using its response times. To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.
@@ -130,7 +133,7 @@ We proceed to log in and complete the lab:
 
 ---
 
-Lab: Broken brute-force protection, IP block
+## Lab: Broken brute-force protection, IP block
 
 This lab is vulnerable due to a logic flaw in its password brute-force protection. To solve the lab, brute-force the victim's password, then log in and access their account page.
 
