@@ -308,7 +308,8 @@ Finally, we log in and complete the lab:
 
 **Note:**  
 We could also use Burp Suite Intruder:  
-![image](https://github.com/user-attachments/assets/48dd7018-e617-4817-b150-7b6f0089c6de)
+![image](https://github.com/user-attachments/assets/177fe106-2767-4247-bd42-d1dd381a5079)
+
 
 
 
