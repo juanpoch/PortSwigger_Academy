@@ -146,9 +146,9 @@ Hint: Advanced users may want to solve this lab by using a macro or the Turbo In
 We made a test request:
 ![image](https://github.com/user-attachments/assets/1ed07196-7f9b-4aa3-8ce7-69f8e11af98c)
 
-On the fourth attempt, we see that the server blocks us:
+The server blocks us after three invalid login attempts:  
 ![image](https://github.com/user-attachments/assets/3c6cb504-9e7a-4381-b2de-80e7d1af445f)
-**Note:** We know that the IP is blocking us because when we try with our user, we are still blocked:  
+**Note:** We know that the server is blocking our IP instead of the user because when we try with our user, we are still blocked:  
 ![image](https://github.com/user-attachments/assets/8cb0294a-c78d-4632-8b23-ae7fa5870943)
 
 We realize manually that we can reset the counter to 0 by logging in with our credentials before the server blocks us:
