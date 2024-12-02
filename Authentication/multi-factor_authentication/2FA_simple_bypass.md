@@ -5,7 +5,7 @@ This lab's two-factor authentication can be bypassed. You have already obtained 
 - Your credentials: wiener:peter
 - Victim's credentials carlos:montoya
 
-We log in with our credentials to observe the behavior of the site. It asks for a 2FA, we click on `Send mail`, receive the `OTP`, access the `wiener` dashboard, and from there, we obtain the general path to the dashboards.
+We log in with our credentials to observe the behavior of the site. It asks for a 2FA, we click on `Email client`, receive the `OTP`, access the `wiener` dashboard, and from there, we obtain the general path to the dashboards.
 
 We log in with Carlos' credentials and see that it asks for a 2FA:
 ![image](https://github.com/user-attachments/assets/0e1ee201-4512-4f60-8c8b-26616ace93bb)
