@@ -27,13 +27,18 @@ Ingresamos el 2FA y recibimos una nueva cookie:
 Tramita el siguiente endoint, en el cual ingresamos la nueva cookie e iniciamos sesión:
 ![image](https://github.com/user-attachments/assets/5533b462-fa84-416e-87bc-f4b6eb7bd634)
 
-- Ahora intentamos replicar el mismo flujo, utilizando las credenciales iniciales de wiener:
-![image](https://github.com/user-attachments/assets/a798b350-4477-4009-a118-0a2fd311ce28)
+- Ahora nos deslogueamos e intentamos replicar el mismo flujo para el usuario carlos, utilizando las credenciales iniciales de wiener:
+![image](https://github.com/user-attachments/assets/69e60da7-8796-48af-96d6-1639defb6950)
 
-![image](https://github.com/user-attachments/assets/aeeac96b-4da4-4144-803c-665d3b68e414)
+![image](https://github.com/user-attachments/assets/ef67c05b-d028-4325-b353-2851b5dc1e85)
 
 - El email sigue siendo el de wiener:
 ![image](https://github.com/user-attachments/assets/4e3f48c5-4129-439f-9aae-4ad9886f4666)
+
+En el Burp Intruder, configuramos el payload para hacer un Sniper Attack al parámetro `mfa-code`. Podríamos filtrar por `301 Found` o por `Incorrect security code` sen `settings`, `Grep - Extract`:
+
+
+Una vez se realiza el ataque, observamos que logramos iniciar sesión correctamente:
 
 
 
