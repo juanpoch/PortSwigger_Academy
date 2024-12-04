@@ -48,6 +48,14 @@ Hint: Carlos will not attempt to log in to the website himself.
 
 
 
+Also we can perform a `ffuf` attack instead of using `BurpSuite Intruder`:
+![image](https://github.com/user-attachments/assets/74b85fca-d654-4cfd-a594-e4d8af6cccb8)
+
+Then we can send de request using the code and receive de cookie:
+![image](https://github.com/user-attachments/assets/49294e81-c1fe-4657-9505-ae6dd7dfa238)
+![image](https://github.com/user-attachments/assets/a8bbbcd6-c230-417b-9c45-38ac185fa48b)
+
+
 
 
 
