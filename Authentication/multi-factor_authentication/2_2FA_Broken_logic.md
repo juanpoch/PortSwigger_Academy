@@ -9,6 +9,22 @@ You also have access to the email server to receive your 2FA verification code.
 Hint: Carlos will not attempt to log in to the website himself.
 
 
+Describimos el flujo normal de la aplicación utilizando las credenciales:
+
+- Iniciamos sesión con credenciales válidas:
+![image](https://github.com/user-attachments/assets/64f381fa-5fc7-48ff-8b00-4ba03740cfda)
+ Este endpoint nos brinda una cookie para realizar las siguientes peticiones.
+
+- Con esa cookie solicitamos el recurso que te pide el 2FA:
+![image](https://github.com/user-attachments/assets/2c5f499b-9ea8-411d-9864-aeae13b42afa)
+
 Click on `Email client`:
-![image](https://github.com/user-attachments/assets/ddfb9878-0656-4e4f-9cca-d04ba895efdb)
-![image](https://github.com/user-attachments/assets/6a25480a-f3c5-4d86-8c02-249bb17a8f3b)
+![image](https://github.com/user-attachments/assets/85d1ea4c-91ae-4ae1-995a-8ad474f77157)
+
+Ingresamos el 2FA y recibimos una nueva cookie:
+![image](https://github.com/user-attachments/assets/8ea23f39-d282-4c5a-b3a3-62f613921456)
+
+Tramita el siguiente endoint, en el cual ingresamos la nueva cookie e iniciamos sesión:
+![image](https://github.com/user-attachments/assets/5533b462-fa84-416e-87bc-f4b6eb7bd634)
+
+
