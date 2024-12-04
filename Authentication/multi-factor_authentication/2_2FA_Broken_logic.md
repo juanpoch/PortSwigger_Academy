@@ -35,7 +35,7 @@ Tramita el siguiente endoint, en el cual ingresamos la nueva cookie e iniciamos 
 - El email sigue siendo el de wiener:
 ![image](https://github.com/user-attachments/assets/4e3f48c5-4129-439f-9aae-4ad9886f4666)
 
-En el Burp Intruder, configuramos el payload para hacer un Sniper Attack al parámetro `mfa-code`. Podríamos filtrar por `301 Found` o por `Incorrect security code` sen `settings`, `Grep - Extract`:
+En el Burp Intruder, configuramos el payload para hacer un Sniper Attack al parámetro `mfa-code`. Podríamos filtrar por `302 Found` o por `Incorrect security code` sen `settings`, `Grep - Extract`:
 
 
 Una vez se realiza el ataque, observamos que logramos iniciar sesión correctamente:
