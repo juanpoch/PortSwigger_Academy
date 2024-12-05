@@ -11,7 +11,7 @@ To solve the lab, brute-force Carlos's cookie to gain access to his `My account`
 
 # Session Cookie Analysis and Attack Execution
 
-## 1. Keep Me Logged In Option
+## 1. Stay logged in Option
 - When logging in and selecting the "Keep me logged in" option, the processing appears as follows:  
   ![image](https://github.com/user-attachments/assets/26704adc-199f-4482-86e1-a621abeb964f)
 
