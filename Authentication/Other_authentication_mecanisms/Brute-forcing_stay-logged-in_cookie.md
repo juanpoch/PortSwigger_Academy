@@ -39,7 +39,8 @@ To solve the lab, brute-force Carlos's cookie to gain access to his `My account`
 ## 4. Executing the Attack
 - Finally, we execute the attack to identify valid payloads:  
   ![image](https://github.com/user-attachments/assets/4b9e1439-eab0-4804-9174-5920037396d3)  
-  ![image](https://github.com/user-attachments/assets/417e5ff9-b40f-4f22-956c-a227a9c08275)
+  ![image](https://github.com/user-attachments/assets/6b55bcb2-2815-45ad-abeb-c000d5831169)
+
 
 
 We can perform the same attack using a `bash` script:
