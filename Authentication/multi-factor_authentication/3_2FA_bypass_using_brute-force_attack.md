@@ -13,6 +13,10 @@ We attempted to log in with Carlos' credentials twice, but we noticed that the s
 ![image](https://github.com/user-attachments/assets/6b89c208-1f17-413f-af91-84f5cc89e9c4)
 ![image](https://github.com/user-attachments/assets/43245b88-a92b-4dfc-b722-c3b903555825)
 
+Then send the `POST` request to send the token:
+![image](https://github.com/user-attachments/assets/274a4ad9-4038-4861-9ebe-88699e2d07d0)
+
+
 # Login Flow
 
 - Click on `My Account`:
@@ -38,17 +42,16 @@ Test the Macro:
 On `Scope` click on `Include all URLs`:
 ![image](https://github.com/user-attachments/assets/6e257995-515b-4797-a4fe-faf39740d321)
 
+Send the `POST /login2` endpoint to the Intruder and make a bruteforce attack using the macros:
+
+- Payload configuration:
+![image](https://github.com/user-attachments/assets/d42c3a84-b8c3-4ac8-aea4-360bb208d987)
+
+- Don't forget to set the `Maximum concurrent requests` to 1:
+![image](https://github.com/user-attachments/assets/2f98052c-6a85-4f4a-96dc-f3bdb3a002a3)
 
 
-
-
-
-
-
-
-
-
-Conseguimos la cookie de sesión:
+- Then attack and we will get the cookie session:
 ![image](https://github.com/user-attachments/assets/03ce31cb-b6d0-4cbc-a98d-5371e0dc7702)
 ![image](https://github.com/user-attachments/assets/48c5bcc5-f91a-4c2c-9be9-27a036feb92b)
 
