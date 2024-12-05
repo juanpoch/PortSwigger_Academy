@@ -29,6 +29,16 @@ We attempted to log in with Carlos' credentials twice, but we noticed that the s
 
 
 
+## Using macros to brute-force token:
+
+We select the main requests needed to perform the attack following the flow:
+![image](https://github.com/user-attachments/assets/ca13170c-127a-4063-ae0e-00b01b936c24)
+Test the Macro:
+![image](https://github.com/user-attachments/assets/22647ca9-a677-4aa9-833c-39089f76d0f0)
+On `Scope` click on `Include all URLs`:
+![image](https://github.com/user-attachments/assets/6e257995-515b-4797-a4fe-faf39740d321)
+
+
 
 
 
