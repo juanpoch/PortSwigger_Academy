@@ -52,7 +52,7 @@
 
 ---
 
-### The server responds with `Current password is incorrect`. This shows that the `username` parameter is under our control, and the error handling allows us to perform a brute-force attack using **Burp Suite Intruder**.
+### The server responds with `Current password is incorrect`. This shows that the error handling allows us to perform a brute-force attack using **Burp Suite Intruder**.
 
 ---
 
