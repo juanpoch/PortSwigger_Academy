@@ -24,7 +24,6 @@ We navigate to the main dashboard of the user `carlos` and complete the lab:
 # Exploit
 
 ```python
-import re
 import requests
 import urllib3
 
