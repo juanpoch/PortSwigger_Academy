@@ -3,9 +3,10 @@
 This lab is vulnerable to username enumeration using its response times. To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.
 
 - Your credentials: `wiener:peter`  
-Wordlists:
-- Candidate usernames
-- Candidate passwords
+- Wordlists:
+  - Candidate usernames
+  - Candidate passwords
+ 
 
 Hint: To add to the challenge, the lab also implements a form of IP-based brute-force protection. However, this can be easily bypassed by manipulating HTTP request headers.
 
