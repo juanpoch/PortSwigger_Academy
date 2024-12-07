@@ -42,4 +42,5 @@ url_carlos_account = url + "/my-account?id=carlos"
 r_carlos_account = session.get(url_carlos_account, verify=False, proxies=proxies)
 
 if r_carlos_account.status_code == 200:
-    print("Congratulations, you solved the lab!")```
+    print("Congratulations, you solved the lab!")
+```
