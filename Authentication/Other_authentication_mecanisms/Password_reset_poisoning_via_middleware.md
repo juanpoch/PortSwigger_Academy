@@ -24,7 +24,6 @@ This lab is vulnerable to password reset poisoning. The user carlos will careles
 ### Click on the link provided in the email:
 ![image](https://github.com/user-attachments/assets/d2ebabb0-b7cc-4e3d-b7b4-5345f4a8f46b)
 
-We can see that the server constructs the "reset link" using the `Host` header value, for example, "https://0a2f00ae043060bb82564d82004c006e.web-security-academy.net/". We can attempt to trick the server by injecting the `X-Forwarded-Host` header. If the server prioritizes the `X-Forwarded-Host` header over the `Host` header, it would use the malicious value provided in the `X-Forwarded-Host` header to construct the reset link.
 
 ---
 
@@ -33,9 +32,11 @@ We can see that the server constructs the "reset link" using the `Host` header v
 
 ---
 
-### Attempt to replicate the process for the user `carlos`. Send the main requests of the process to the repeater.
+## Attempt to replicate the process for the user `carlos`. Send the main requests of the process to the repeater.
 
-## By injecting the X-Forwarded-Host header, we can manipulate the value the server uses to construct the reset link. For instance, if we send the following request:
+We can see that the server constructs the "reset link" using the `Host` header value, for example, "https://0a2f00ae043060bb82564d82004c006e.web-security-academy.net/". We can attempt to trick the server by injecting the `X-Forwarded-Host` header. If the server prioritizes the `X-Forwarded-Host` header over the `Host` header, it would use the malicious value provided in the `X-Forwarded-Host` header to construct the reset link.
+
+By injecting the X-Forwarded-Host header, we can manipulate the value the server uses to construct the reset link. For instance, if we send the following request:
 ![image](https://github.com/user-attachments/assets/72260c58-93a4-42de-bf45-b49dee829e60)
 
 ---
