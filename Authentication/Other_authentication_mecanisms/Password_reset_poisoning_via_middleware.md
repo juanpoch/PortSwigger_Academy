@@ -74,10 +74,10 @@ By injecting the X-Forwarded-Host header, we can manipulate the value the server
 ![image](https://github.com/user-attachments/assets/9b99c0f8-92f9-4a80-8e23-bb5325f0cc20)
 
 
+---
 
+- Exploit:
 
-
-
-
+```python
 
 
