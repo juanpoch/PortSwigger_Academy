@@ -8,16 +8,49 @@ To solve the lab, log in using the credentials `wiener:peter` and exploit the fl
 ---
 
 
-We inspect the normal behavior of the application by using `administrator:admin` credentials:
-![image](https://github.com/user-attachments/assets/cbe7e749-0872-46e8-adfe-198b8b5de011)
+# Report: Application Behavior Analysis and Exploitation
 
-Then we can `upgrade` or `downgrade` any user:
-![image](https://github.com/user-attachments/assets/e02be972-e135-4e49-9825-e36f67422bc0)
+## Inspecting Normal Behavior
 
-We test this feature by upgrading carlos's account:
-![image](https://github.com/user-attachments/assets/7be1e87f-9a49-4325-a49a-79f75a4422c5)
+We began by inspecting the normal behavior of the application using the credentials `administrator:admin`:
 
-Then we logged out and sign in as wiener:
-![image](https://github.com/user-attachments/assets/fc945ec2-02b5-41fd-ba6d-7caf3f2deff5)
+![Normal behavior using admin credentials](https://github.com/user-attachments/assets/cbe7e749-0872-46e8-adfe-198b8b5de011)
 
-We tried to acces admin panel without success:
+## User Role Management
+
+The application allows us to `upgrade` or `downgrade` any user:
+
+![User management interface](https://github.com/user-attachments/assets/e02be972-e135-4e49-9825-e36f67422bc0)
+
+We tested this functionality by upgrading Carlos's account:
+
+![Upgrading Carlos's account](https://github.com/user-attachments/assets/7be1e87f-9a49-4325-a49a-79f75a4422c5)
+
+## Logging Out and Testing Limitations
+
+Next, we logged out of the admin account and signed in as the user `wiener`:
+
+![Logging in as Wiener](https://github.com/user-attachments/assets/fc945ec2-02b5-41fd-ba6d-7caf3f2deff5)
+
+We attempted to access the admin panel but were denied access:
+
+![Access denied to admin panel](https://github.com/user-attachments/assets/01657973-c6b7-4767-a80b-20847de28ecb)
+
+We also tried upgrading our account from the user interface but were unsuccessful:
+
+![Upgrade attempt failed](https://github.com/user-attachments/assets/baa2ea71-9c8d-4d69-9d9b-ca20c2a416e0)
+
+## Exploiting HTTP Verb Tampering
+
+By leveraging an `HTTP verb tampering` attack, we successfully upgraded our account by changing the `POST` method to `GET`:
+
+![Successful HTTP verb tampering attack](https://github.com/user-attachments/assets/89641d32-5786-4531-b8b5-7c073df50f45)
+
+## Accessing the Admin Panel
+
+Following the successful privilege escalation, we gained access to the `/admin` panel:
+
+![Admin panel access](https://github.com/user-attachments/assets/a96d8916-c7e7-4a33-9a48-f9dea19e9140)
+
+
+
