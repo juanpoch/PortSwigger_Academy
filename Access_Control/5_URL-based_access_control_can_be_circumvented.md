@@ -25,6 +25,8 @@ The `X-Original-URL` header is a custom header that some servers use to indicate
 
 In this case, we are attempting to inject the `X-Original-URL` header to manipulate how the application interprets requests. By modifying this value, we aim to force access to restricted routes (such as `/admin`) or bypass access controls, leveraging the possibility that the server processes this header to make routing or authorization decisions.
 
+Other interesting header is `X-Rewrite-URL`.
+
 ---
 
 ### Header Injection to `/admin`
