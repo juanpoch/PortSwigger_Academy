@@ -30,12 +30,13 @@ To solve the lab, log in using the credentials `wiener:peter` and exploit the fl
 
 ### Attempting to Change Role Without Referer Header
 2. Tried to change the user role directly, omitting the `Referer` header:
+   - Without the `Referer` header:
    ![Role Change Attempt Without Referer](https://github.com/user-attachments/assets/8f1708e3-5b38-465b-93b9-07ab59c801ee)
 
-3. Observed that the server enforces access control by validating the `Referer` header:
-   - Without the `Referer` header:
-     ![Referer Validation - Blocked](https://github.com/user-attachments/assets/d72da4c8-a6c9-4e54-843d-15cbbe72e035)
+4. Observed that the server enforces access control by validating the `Referer` header:
    - After adding the `Referer` header:
+     ![Referer Validation - Blocked](https://github.com/user-attachments/assets/d72da4c8-a6c9-4e54-843d-15cbbe72e035)
+   
      ![Referer Validation - Allowed](https://github.com/user-attachments/assets/a8942569-0c54-47b5-b723-70970ca1ab67)
 
 ---
