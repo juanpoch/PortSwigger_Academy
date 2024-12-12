@@ -44,8 +44,7 @@ To solve the lab, log in using the credentials `wiener:peter` and exploit the fl
 ### Observations
 The server's access control mechanism relies on the presence of the `Referer` header, which is a weak and bypassable security measure. Manipulating this header allows unauthorized users to circumvent restrictions and perform privileged actions, such as role upgrades.
 
----
-Let me know if this summary needs any adjustments or further details.
+
 
 
 
