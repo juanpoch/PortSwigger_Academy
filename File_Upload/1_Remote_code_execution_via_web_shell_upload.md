@@ -42,6 +42,7 @@ You can log in to your own account using the following credentials: `wiener:pete
 ---
 
 ## **Lab Resolution** 
+We submitted the secret using the button provided in the lab banner:
    ![Lab Resolution](https://github.com/user-attachments/assets/c1901f90-ebf0-49e4-85fd-b9dfcede187f)
 
    
