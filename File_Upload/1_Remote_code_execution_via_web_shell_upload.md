@@ -36,14 +36,14 @@ You can log in to your own account using the following credentials: `wiener:pete
 
 
    ## **Accessing the Malicious File**
-3. **Navigating to the Uploaded File:**  
+ **Navigating to the Uploaded File:**  
    After successfully uploading the PHP file containing the malicious one-liner, we accessed it directly via the browser using the file path provided by the server:  
    ![Accessing the Malicious File](https://github.com/user-attachments/assets/d8a0d66a-ada2-46c7-bcca-e5d32e2390b5)
 
 ---
 
 ## **Lab Resolution**
-4. **Executing the Command:**  
+**Executing the Command:**  
    By appending the `cmd` parameter to the uploaded file's URL, we executed the required command to resolve the lab successfully:  
    ![Lab Resolution](https://github.com/user-attachments/assets/c1901f90-ebf0-49e4-85fd-b9dfcede187f)
 
