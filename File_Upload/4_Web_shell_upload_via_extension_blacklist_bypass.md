@@ -29,7 +29,7 @@ Although the file upload was successful, we noticed that we were unable to execu
     AddType application/x-httpd-php .php
   ```
  This file modifies the server's configuration to treat files with the `.any` extension as PHP scripts.
-- For IIS servers, we could replace the `web.config` configuration file:
+- For IIS servers, we could upload the `web.config` configuration file:
   ```text
   <staticContent>
     <mimeMap fileExtension=".json" mimeType="application/json" />
