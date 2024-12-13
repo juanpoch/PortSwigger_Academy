@@ -16,6 +16,8 @@ We attempted to upload a web shell:
 Although we successfully uploaded the malicious file, the server did not execute the script when we accessed it:  
 ![image](https://github.com/user-attachments/assets/a10ad05c-11ab-4429-9d20-8f4a87358734)
 
+This behavior suggests that the server is likely configured to prevent the execution of uploaded files, possibly by enforcing strict permissions or file handling rules.
+
 We then tried a path traversal attack on the `filename`:  
 ![image](https://github.com/user-attachments/assets/5f1566cf-df9e-4b91-b0f3-109e705545cc)  
 The response indicated that the server was stripping the directory traversal sequence from the filename.
