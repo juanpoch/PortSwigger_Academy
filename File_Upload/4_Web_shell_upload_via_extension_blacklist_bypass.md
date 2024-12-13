@@ -1,7 +1,7 @@
 # Lab: Web shell upload via extension blacklist bypass
 
 This lab contains a vulnerable image upload function.
-Certain file extensions are blacklisted, but this defense can be bypassed due to a fundamental flaw in the configuration of this blacklist.
+Certain file extensions are blacklisted, but this defense can be bypassed due to a fundamental flaw in the configuration of his blacklist.
 
 To solve the lab, upload a basic PHP web shell, then use it to exfiltrate the contents of the file `/home/carlos/secret`.
 
