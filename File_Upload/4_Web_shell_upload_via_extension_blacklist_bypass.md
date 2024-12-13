@@ -13,8 +13,9 @@ You can log in to your own account using the following credentials: `wiener:pete
 
 ---
 
-We tried to upload a simple php web-shelll but we noticed that extensions php are not allowed:
-![image](https://github.com/user-attachments/assets/541d2f39-a7cc-4d1c-a6f4-b694779fc93a)
+We tried to upload a simple php web-shelll but we noticed that extensions php are not allowed, also server leaked this version of `Apache`:
+![image](https://github.com/user-attachments/assets/24658572-1585-4896-9cc8-0edcacc88c78)
+
 
 We tried to upload the same web-shell but using other lesser known, alternative file extensions as `.php5`:
 ![image](https://github.com/user-attachments/assets/a8f709b0-529a-4cb9-8986-cda21d92b2bb)
