@@ -23,11 +23,12 @@ Although the file upload was successful, we noticed that we were unable to execu
 ![image](https://github.com/user-attachments/assets/5b5ea732-dcc5-4eb7-8c04-f988b8946594)
 
 
-- For Apache servers, we could replace the `.htaccess` configuration file:
+- For Apache servers, we could upload the `.htaccess` configuration file:
   ```text
   LoadModule php_module /usr/lib/apache2/modules/libphp.so
     AddType application/x-httpd-php .php
   ```
+ This file modifies the server's configuration to treat files with the `.any` extension as PHP scripts.
 - For IIS servers, we could replace the `web.config` configuration file:
   ```text
   <staticContent>
@@ -35,7 +36,7 @@ Although the file upload was successful, we noticed that we were unable to execu
     </staticContent>
   ```
 
-Since the server is running Apache, we attempted to replace the `.htaccess` configuration file with the following content:  
+Since the server is running Apache, we attempted to upload the `.htaccess` configuration file with the following content:  
 ![image](https://github.com/user-attachments/assets/3e57a89e-acc8-451c-adf7-42dd59fa8480)
 
 This configuration maps the arbitrary extension `.any` to the executable MIME type `application/x-httpd-php`. Because the server uses the `mod_php` module, it automatically knows how to handle this.
