@@ -26,7 +26,7 @@ Although the file upload was successful, we noticed that we were unable to execu
 - For Apache servers, we could upload the `.htaccess` configuration file:
   ```text
   LoadModule php_module /usr/lib/apache2/modules/libphp.so
-    AddType application/x-httpd-php .php
+    AddType application/x-httpd-php .any
   ```
  This file modifies the server's configuration to treat files with the `.any` extension as PHP scripts.
 - For IIS servers, we could upload the `web.config` configuration file:
