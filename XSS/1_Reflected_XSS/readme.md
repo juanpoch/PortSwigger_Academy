@@ -52,18 +52,24 @@ abc123xy
 
 ### 3. 🔍 Determine el contexto de la reflexión
 
-Una vez identificado que el valor fue reflejado, es clave analizar **dónde** y **cómo** se refleja.
+Una vez identificado que el valor fue reflejado, es clave analizar **dónde** y **cómo** se refleja, ya que **el contexto define qué payload funcionará**.
 
-📚 **Tipos de contexto comunes**:
+📚 **Tipos de contexto comunes y su explotabilidad**:
 
-| Contexto | Ejemplo |
-|----------|---------|
-| HTML | `<p>abc123xy</p>` |
-| Atributo HTML | `<img src="abc123xy">` |
-| JavaScript | `<script>var a = 'abc123xy'</script>` |
-| URL | `<a href="/page?redir=abc123xy">` |
+| Contexto                        | Ejemplo                                             | ¿Explotable fácilmente? | Tip                                                         |
+|---------------------------------|-----------------------------------------------------|--------------------------|-------------------------------------------------------------|
+| HTML (entre etiquetas)          | `<p>abc123xy</p>`                                   | ✅ Sí                    | Podés inyectar directamente un `<script>`                  |
+| Atributo HTML (entre comillas)  | `<input value="abc123xy">`                          | ⚠️ Depende               | Necesitás cerrar el atributo (`"`) y seguir con un `onerror` |
+| Atributo de evento              | `<button onclick="doSomething('abc123xy')">`        | ✅ Sí                    | Podés cerrar comillas y ejecutar JS                        |
+| Dentro de `<script>`            | `<script>var a = 'abc123xy'</script>`               | ✅ Con cuidado           | Necesitás cerrar comillas/línea correctamente              |
+| URL                             | `<a href="/page?redir=abc123xy">`                  | ⚠️ Depende               | Útil si la URL se usa en JS sin sanitizar                 |
 
-Esto te ayuda a elegir una carga útil adecuada según el contexto.
+🧠 **Tips**:
+
+- Usá tu valor alfanumérico (por ejemplo `abc123xy`) como búsqueda (grep) en Burp Repeater.
+- Analizá si está dentro de comillas, etiquetas, atributos o scripts.
+- Elegí o ajustá tu carga útil según ese contexto específico.
+
 
 ---
 
