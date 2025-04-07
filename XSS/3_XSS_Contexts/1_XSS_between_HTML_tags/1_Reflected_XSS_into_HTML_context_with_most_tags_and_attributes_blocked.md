@@ -5,3 +5,11 @@ To solve the lab, perform a cross-site scripting attack that bypasses the WAF an
 
 ---
 
+Ingresamos a un portal web que nos permite realizar comentarios, realizamos un comentario de prueba:
+![image](https://github.com/user-attachments/assets/ac147410-c0de-47ff-ac45-023ef6241204)
+
+Vemos que el payload aparece reflejado en el contexto de HTML entre etiquetas:
+![image](https://github.com/user-attachments/assets/eb548011-573b-4a26-b110-5d813ccaf73d)
+
+
+
