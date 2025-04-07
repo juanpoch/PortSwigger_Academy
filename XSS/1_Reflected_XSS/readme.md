@@ -16,17 +16,24 @@ El **XSS reflejado** ocurre cuando una aplicación web **refleja datos de entrad
 
 ---
 
-### 1. 🔍 Pruebe cada punto de entrada
+## 1. 🔎 Identifique los puntos de entrada
 
-Identificá todos los **puntos de entrada** que aceptan datos del usuario y son utilizados en la respuesta de la aplicación.
+Para que ocurra un XSS reflejado, la aplicación debe **reflejar algún dato controlado por el usuario** en la respuesta HTML.
 
-- Parámetros en la **URL (query strings)**  
-- **Datos POST** en formularios  
-- **Encabezados HTTP** como `User-Agent`, `Referer` o `X-Forwarded-For`  
-- Partes de la **ruta URL**  
+📥 **Puntos de entrada comunes** que podés probar:
 
-📦 **Herramientas recomendadas**:  
-- Burp Suite → HTTP history / Target → Param guessing
+| Punto de entrada | Cómo probarlo | Ejemplo |
+|------------------|----------------|---------|
+| **Query string** | Agregá un parámetro en la URL | `http://site.com/page?q=abc123xy` |
+| **Fragmento (#hash)** | Modificá el hash de la URL (no se envía al servidor, pero puede usarse en JS) | `http://site.com/page#abc123xy` |
+| **Ruta (path)** | Inyectá directo en la URL | `http://site.com/abc123xy/otro` |
+| **Cuerpo del POST** | Usá Burp o DevTools para enviar un valor en el cuerpo | En un `form`, poné `username=abc123xy` |
+| **Encabezados HTTP** | Modificá headers como `User-Agent`, `Referer`, `X-Forwarded-For` | En Burp: `User-Agent: abc123xy` |
+| **Cookies** | Cambiá el valor de una cookie | En DevTools > Application > Cookies: `session=abc123xy` |
+
+🧪 Para cada uno de estos, poné un valor identificable como `abc123xy` y **buscá en la respuesta HTML** si aparece reflejado.
+
+
 
 ---
 
