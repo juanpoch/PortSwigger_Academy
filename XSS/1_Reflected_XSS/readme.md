@@ -33,6 +33,20 @@ Para que ocurra un XSS reflejado, la aplicación debe **reflejar algún dato con
 
 🧪 Para cada uno de estos, poné un valor identificable como `abc123xy` y **buscá en la respuesta HTML** si aparece reflejado.
 
+### 🛠️ Herramientas recomendadas
+
+A continuación se listan herramientas que te ayudarán a identificar, manipular y explotar XSS reflejados de forma más eficiente:
+
+| Herramienta | Descripción | Enlace |
+|-------------|-------------|--------|
+| **Burp Suite** | Proxy de interceptación para manipular solicitudes y respuestas HTTP. | [https://portswigger.net/burp](https://portswigger.net/burp) |
+| **HackBar** | Extensión de navegador para probar rápidamente inyecciones. | [https://addons.mozilla.org/en-US/firefox/addon/hackbar/](https://addons.mozilla.org/en-US/firefox/addon/hackbar/) |
+| **XSStrike** | Framework para detección y explotación de XSS avanzado. | [https://github.com/s0md3v/XSStrike](https://github.com/s0md3v/XSStrike) |
+| **DalFox** | Escáner XSS moderno basado en fuzzing. | [https://github.com/hahwul/dalfox](https://github.com/hahwul/dalfox) |
+| **XSS Hunter** | Servicio para detectar XSS ciegos (blind XSS). | [https://xsshunter.com](https://xsshunter.com) |
+| **DevTools del navegador** | Para inspeccionar el HTML y comportamiento del DOM. | Incluido en Chrome/Firefox (F12) |
+
+🧠 **Tip**: La combinación de Burp Suite + DevTools es ideal para la mayoría de los análisis manuales.
 
 
 ---
