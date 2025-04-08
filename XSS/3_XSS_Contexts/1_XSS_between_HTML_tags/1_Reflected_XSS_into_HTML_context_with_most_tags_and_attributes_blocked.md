@@ -120,15 +120,6 @@ Sirve para:
 
 ---
 
-## ✅ Paso final
-
-1. Ir al Exploit Server.
-2. Pegar el HTML del iframe.
-3. Hacer clic en **Store and Deliver exploit to victim**.
-4. Si todo está bien, se ejecutará `print()` y el lab se marcará como resuelto.
-
----
-
 ## 🏁 Conclusión
 
 Usamos `onresize` porque es uno de los pocos eventos que:
