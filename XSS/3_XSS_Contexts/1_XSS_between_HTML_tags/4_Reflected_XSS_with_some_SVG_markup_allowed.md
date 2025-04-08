@@ -54,6 +54,8 @@ Entonces probamos el siguiente payload:
 ```html
 <svg><animateTransform onbegin='alert(1)'>
 ```
+![image](https://github.com/user-attachments/assets/0020529e-e873-4cac-ba00-3ecfb19bae6f)
+![image](https://github.com/user-attachments/assets/313438fd-30d4-4de4-9f9b-cac2b76d6dbe)
 
 
 
