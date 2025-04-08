@@ -38,7 +38,9 @@ Usamos un evento que no requiere interacción peligrosa. Por ejemplo, `onmouseov
 <custom-tag onmouseover="alert('XSS')">Pasa el cursor aquí</custom-tag>
 ```
 
-Esto genera una alerta al pasar el cursor sobre el texto.
+Esto genera una alerta al pasar el cursor sobre el texto:
+![image](https://github.com/user-attachments/assets/5d875582-ef36-45b3-9304-3d9350f337d7)
+
 
 ### 3. Codificar el payload para la URL
 
