@@ -43,7 +43,7 @@ Se usa dentro de elementos SVG como `<rect>`, `<circle>`, `<g>`, etc., para crea
   </rect>
 </svg>
 ```
-
-
+Hacemos un `Sniper Attack` para ver qué atributos podemos utilizar con `animateTransform`:
+![image](https://github.com/user-attachments/assets/f8708389-255b-4f2d-b041-3a36f7f796fb)
 
 
