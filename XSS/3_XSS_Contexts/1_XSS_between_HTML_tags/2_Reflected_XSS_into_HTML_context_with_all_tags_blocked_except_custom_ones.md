@@ -70,7 +70,9 @@ Aunque el WAF bloquea etiquetas conocidas, es posible ejecutar XSS explotando el
 
 ---
 
-## 🚀 Automatización
+## 🚀 Exploit server
+
+Si bien en este caso podría enviarse el link malicioso directamente sin la necesidad de un sever intermedio, aquí simulamos el uso de una web controlada por el atacante que redirige a la aplicación web vulnerable.
 
 ### 1. Construir el Payload
 Utilizamos una etiqueta personalizada `<xss>` con los siguientes atributos:
