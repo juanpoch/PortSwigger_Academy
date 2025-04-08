@@ -29,6 +29,19 @@ Sin embargo si queremos inyectar la siguiente etiqueta:
 Vemos que el atributo `href` está bloqueado:
 ![image](https://github.com/user-attachments/assets/9887dbca-5f68-4839-9f95-cfb9a2fc68f9)
 
+Procedemos a realizar un Sniper Attack con Burpsuite Intruder para averiguar las tags permitidas:
+![image](https://github.com/user-attachments/assets/851d9069-0f80-4489-8130-653c29d5a86a)
+
+Hay que tener especial atención al `<svg>`, ya que:
+
+- Es comúnmente usado en ataques XSS modernos.
+
+- Se puede usar junto con eventos como onload, por ejemplo:
+  ```html
+  <svg onload="alert(1)">
+  ```
+
+
 
 
 
