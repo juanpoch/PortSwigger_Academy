@@ -35,7 +35,7 @@ El objetivo es ejecutar `alert('XSS')` utilizando un vector de XSS reflejado, a 
 Usamos un evento que no requiere interacción peligrosa. Por ejemplo, `onmouseover`:
 
 ```html
-<custom-tag onmouseover="alert('XSS')">Pasa el cursor aquí</custom-tag>
+<custom-tag onmouseover="alert('XSS')">Pasa el cursor aqui</custom-tag>
 ```
 
 Esto genera una alerta al pasar el cursor sobre el texto:
