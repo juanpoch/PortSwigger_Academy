@@ -1,4 +1,4 @@
-Lab: Reflected XSS with event handlers and href attributes blocked
+# Lab: Reflected XSS with event handlers and href attributes blocked
 
 
 This lab contains a reflected XSS vulnerability with some whitelisted tags, but all events and anchor `href` attributes are blocked.
