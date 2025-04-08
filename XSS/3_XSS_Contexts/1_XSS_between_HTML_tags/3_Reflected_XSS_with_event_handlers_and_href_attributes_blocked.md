@@ -282,6 +282,18 @@ En otras palabras, `<animate>` nos permite insertar un atributo de forma indirec
 - [XSS fun with animated SVG - ISEC](https://blog.isec.pl/xss-fun-with-animated-svg/)
 - [SVG animate XSS vector - PortSwigger Research](https://portswigger.net/research/svg-animate-xss-vector)
 
+Inyectamos el payload y resolvemos el lab:
+![image](https://github.com/user-attachments/assets/1f46abab-64e0-42b4-8b9b-c3c9d4f13cc8)
+
+## 🛠️ ¿Qué pasa cuando el navegador procesa eso?
+
+1. El navegador interpreta el SVG.
+2. El elemento `<animate>` le **inyecta dinámicamente** el atributo `href="javascript:alert(1)"` al `<a>`.
+3. Ese `href` no fue visible para el WAF, pero ya existe en el **DOM**, lo más probable es que el WAF esté validando el HTML, pero no valide las modificaciones del **DOM** en tiempo de ejecución, entonces `href` permanece oculto para el WAF.
+4. Cuando la víctima hace clic → se **ejecuta el JavaScript** (`alert(1)`).
+
+
+
 
 
 
