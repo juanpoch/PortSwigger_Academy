@@ -81,3 +81,6 @@ Utilizamos una etiqueta personalizada `<xss>` con los siguientes atributos:
 ```html
 <xss id="x" onfocus="alert(document.cookie)" tabindex="1"></xss>
 ```
+Enviamos este payload y luego agregamos el `#x` al final:
+![image](https://github.com/user-attachments/assets/41549c6d-8045-40c4-a03c-0c1ad29f5126)
+
