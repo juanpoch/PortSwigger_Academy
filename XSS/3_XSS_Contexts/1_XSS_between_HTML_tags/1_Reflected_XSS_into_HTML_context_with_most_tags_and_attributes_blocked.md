@@ -129,6 +129,12 @@ Usamos `onresize` porque es uno de los pocos eventos que:
 
 El `iframe` nos permite simular un redimensionamiento automático, disparar el evento, y ejecutar el payload de forma invisible para la víctima.
 
+Enviamos el exploit a la víctima y resolvemos el lab:
+![image](https://github.com/user-attachments/assets/806a5271-b54d-46b4-8386-2ce80ed55bc7)
+![image](https://github.com/user-attachments/assets/a0522a9d-f733-43ef-bb43-a3a7b1df2f95)
+
+
+
 
 
 
