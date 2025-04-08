@@ -165,7 +165,16 @@ Además, **dentro de un `<svg>` podés insertar eventos de JavaScript**, como `o
 
 
 
-## 📦 Payload SVG
+## 📦 Payload SVG final
+
+Nosotros sabemos que con `<svg>` podemos insertar etiquetas como la `<a>`. El ejercicio debe contener un texto que diga `Click me` pero no podemos poner lo siguiente:
+```html
+<svg><a>Click me</a></svg>
+```
+Como sabemos, para insertar texto dentro de un `<svg>`, necesitamos utilizar la etiqueta `<text>`:
+```html
+<svg><a><text x=20 y=20>Click me</text></a></svg>
+```
 
 ```html
 <svg>
