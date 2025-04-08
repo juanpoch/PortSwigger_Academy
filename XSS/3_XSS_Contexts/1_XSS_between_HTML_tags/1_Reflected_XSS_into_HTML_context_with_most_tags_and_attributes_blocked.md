@@ -24,4 +24,27 @@ Probamos el siguiente payload el cual también está bloqueado:
 <img src=1 onerror=alert(1)>
 ```
 
+Procedemos a realizar un `Sniper` Attack con `Burpsuite`, probando una lista de etiquetas para ver cuáles son permitidas:
+![image](https://github.com/user-attachments/assets/9357528c-1987-4d5e-aec5-fda2b8ef44bf)
+
+Vemos que la etiqueta body está permitida:
+![image](https://github.com/user-attachments/assets/cd27ac53-2103-4ad0-a3cc-4e1daea2189d)
+
+Ahora intentamos inyectar este payload:
+```javascript
+<body onload=print()>
+```
+Pero el atributo está siendo bloqueado por el `waf`:
+![image](https://github.com/user-attachments/assets/6e4fbda8-c484-45b2-8b53-5c90868d0ba5)
+
+Procedemos a realizar fuerza bruta nuevamente con `Burpsuite Intruder` para averiguar qué atributos no están siendo bloqueados, utilizamos una lista de atributos:
+![image](https://github.com/user-attachments/assets/cbdca5c1-a396-4800-8383-e9625410a7d5)
+Encontramos los siguientes posibles atributos:
+
+
+
+
+
+
+
 
