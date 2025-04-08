@@ -164,3 +164,70 @@ Además, **dentro de un `<svg>` podés insertar eventos de JavaScript**, como `o
 
 
 
+
+## 📦 Payload SVG
+
+```html
+<svg>
+  <a>
+    <animate attributeName=href values=javascript:alert(1) />
+    <text x=20 y=20>Click me</text>
+  </a>
+</svg>
+```
+
+---
+
+## 🔍 Explicación Paso a Paso
+
+### 1. `<svg>`
+
+- Contenedor SVG (Scalable Vector Graphics) donde se puede incluir código gráfico, pero también etiquetas como `<a>`, `<text>`, y `<animate>`.
+
+### 2. `<a>`
+
+- Representa un enlace.
+- Su atributo `href` se puede modificar dinámicamente.
+
+### 3. `<animate>`
+
+- Permite modificar atributos con animaciones.
+- Aquí, se usa para modificar el `href` del enlace a `javascript:alert(1)`.
+
+```html
+<animate attributeName=href values=javascript:alert(1) />
+```
+
+- **`attributeName=href`**: especifica que se animará el atributo `href`.
+- **`values=javascript:alert(1)`**: el valor que tomará el atributo.
+
+### 4. `<text>`
+
+- Muestra el texto `"Click me"` en la pantalla.
+- Coordenadas `x=20` y `y=20` posicionan el texto dentro del SVG.
+
+```html
+<text x=20 y=20>Click me</text>
+```
+
+### Resultado:
+
+- Cuando el usuario hace clic en el texto "Click me", se ejecuta `javascript:alert(1)`.
+
+---
+
+## ⚠️ Consideraciones de Seguridad
+
+- Aunque atributos peligrosos como `onload` o `href` se filtren, se pueden establecer indirectamente con `<animate>`.
+- Este método puede eludir muchos filtros WAFs y validadores mal implementados.
+
+---
+
+## 📚 Recursos Adicionales
+
+- [XSS fun with animated SVG - ISEC](https://blog.isec.pl/xss-fun-with-animated-svg/)
+- [SVG animate XSS vector - PortSwigger Research](https://portswigger.net/research/svg-animate-xss-vector)
+
+
+
+
