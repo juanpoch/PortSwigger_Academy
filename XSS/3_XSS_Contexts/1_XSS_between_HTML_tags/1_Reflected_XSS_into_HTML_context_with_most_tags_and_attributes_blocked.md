@@ -6,7 +6,7 @@ To solve the lab, perform a cross-site scripting attack that bypasses the WAF an
 ---
 
 ## 🎯 Objetivo del lab
-Explotar una vulnerabilidad de **XSS reflejado** a pesar de la presencia de un **WAF)**, de modo que se ejecute automáticamente el código `print()` sin interacción del usuario.
+Explotar una vulnerabilidad de **XSS reflejado** a pesar de la presencia de un **WAF**, de modo que se ejecute automáticamente el código `print()` sin interacción del usuario.
 
 Ingresamos a un portal web que nos permite realizar comentarios, realizamos un comentario de prueba:
 ![image](https://github.com/user-attachments/assets/ac147410-c0de-47ff-ac45-023ef6241204)
