@@ -63,3 +63,21 @@ https://<LAB-ID>.web-security-academy.net/?search=%3Ccustom-tag%20onmouseover%3D
 ## ✅ Conclusión
 
 Aunque el WAF bloquea etiquetas conocidas, es posible ejecutar XSS explotando el hecho de que los navegadores aún procesan atributos en etiquetas desconocidas. Esto permite ejecutar JavaScript de forma efectiva.
+
+---
+
+- Podemos aprovechar **eventos como `onfocus`** que se disparan cuando un elemento recibe el foco.
+
+---
+
+## 🚀 Procedimiento Paso a Paso
+
+### 1. Construir el Payload
+Utilizamos una etiqueta personalizada `<xss>` con los siguientes atributos:
+- `id="x"` → Para poder referenciarla con un ancla.
+- `onfocus="alert(document.cookie)"` → El código JavaScript a ejecutar.
+- `tabindex="1"` → Permite que el elemento sea enfocado automáticamente.
+
+```html
+<xss id="x" onfocus="alert(document.cookie)" tabindex="1"></xss>
+```
