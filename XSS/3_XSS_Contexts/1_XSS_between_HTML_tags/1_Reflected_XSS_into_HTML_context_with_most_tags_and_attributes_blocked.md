@@ -41,6 +41,19 @@ Procedemos a realizar fuerza bruta nuevamente con `Burpsuite Intruder` para aver
 ![image](https://github.com/user-attachments/assets/cbdca5c1-a396-4800-8383-e9625410a7d5)
 Encontramos los siguientes posibles atributos:
 ![image](https://github.com/user-attachments/assets/3f9e4fbd-7c11-48a8-98a8-c2e672ac1d66)
+Análisis:
+### ✅ 💥 Eventos prometedores para XSS automático
+
+| Evento            | ¿Cuándo se dispara?                              | ¿Potencial para XSS automático? | Notas |
+|------------------|--------------------------------------------------|------------------------------|-------|
+| `onresize`       | Cuando el tamaño del elemento cambia             | ✅ Alta                      | Muy útil con `<body>` o `iframe`, como en el lab. |
+| `onscrollend`    | Cuando termina un scroll                         | ⚠️ Media                    | Necesita scroll → no es 100% automático. |
+| `onsuspend`      | Cuando un recurso multimedia se suspende         | ⚠️ Media-baja               | Requiere video/audio. Poco confiable. |
+| `onformdata`     | Cuando se recolectan datos de un formulario      | ❌ Baja                     | Necesita interacción. |
+| `onpointercancel`| Al cancelarse una interacción del puntero        | ❌ Baja                     | Requiere acción del usuario. |
+| `onratechange`   | Cuando cambia la velocidad de un video/audio     | ❌ Baja                     | Difícil de forzar sin interacción. |
+| `onwebkit...`    | Son eventos específicos de navegadores WebKit    | ⚠️ Baja a media             | Muy dependientes del navegador, no garantizados. |
+
 
 
 
