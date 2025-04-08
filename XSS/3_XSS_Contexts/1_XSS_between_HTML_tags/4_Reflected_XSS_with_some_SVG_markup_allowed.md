@@ -46,4 +46,14 @@ Se usa dentro de elementos SVG como `<rect>`, `<circle>`, `<g>`, etc., para crea
 Hacemos un `Sniper Attack` para ver qué atributos podemos utilizar con `animateTransform`:
 ![image](https://github.com/user-attachments/assets/f8708389-255b-4f2d-b041-3a36f7f796fb)
 
+![image](https://github.com/user-attachments/assets/2d586a17-9504-45c4-a5c1-e10a6964b462)
+
+`onbegin` es un **evento SVG** que se dispara cuando una animación **comienza**. Es útil para ataques XSS porque permite ejecutar código JavaScript **automáticamente**, sin interacción del usuario.
+
+Entonces probamos el siguiente payload:
+```html
+<svg><animateTransform onbegin='alert(1)'>
+```
+
+
 
