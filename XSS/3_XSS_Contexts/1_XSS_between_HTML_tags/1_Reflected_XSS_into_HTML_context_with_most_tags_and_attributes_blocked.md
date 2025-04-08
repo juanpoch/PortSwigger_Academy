@@ -41,7 +41,7 @@ Procedemos a realizar fuerza bruta nuevamente con `Burpsuite Intruder` para aver
 ![image](https://github.com/user-attachments/assets/cbdca5c1-a396-4800-8383-e9625410a7d5)
 Encontramos los siguientes posibles atributos:
 ![image](https://github.com/user-attachments/assets/3f9e4fbd-7c11-48a8-98a8-c2e672ac1d66)
-Análisis:
+
 ### ✅ 💥 Eventos prometedores para XSS automático
 
 | Evento            | ¿Cuándo se dispara?                              | ¿Potencial para XSS automático? | Notas |
