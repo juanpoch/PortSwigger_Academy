@@ -54,6 +54,14 @@ Encontramos los siguientes posibles atributos:
 | `onratechange`   | Cuando cambia la velocidad de un video/audio     | ❌ Baja                     | Difícil de forzar sin interacción. |
 | `onwebkit...`    | Son eventos específicos de navegadores WebKit    | ⚠️ Baja a media             | Muy dependientes del navegador, no garantizados. |
 
+Ya que `<body>` está permitido y acepta `onresize`, armamos un payload así:
+```javascript
+<body onresize=alert(1)>
+```
+Cuando enviamos el payload y luego redimensionamos, vemos que el código se ejecuta y se lanza el popup:
+![image](https://github.com/user-attachments/assets/1220d807-2f5d-4088-95db-0085cb1356b1)
+
+Pero nosotros necesitamos que esto ocurra sin intervención del usuario, por lo tanto devemos utilizar un iframe.
 
 
 
