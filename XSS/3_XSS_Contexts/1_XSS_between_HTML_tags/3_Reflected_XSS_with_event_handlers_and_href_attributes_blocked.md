@@ -36,7 +36,7 @@ Hay que tener especial atención al `<svg>`, ya que:
 
 - Es comúnmente usado en ataques XSS modernos.
 
-- Se puede usar junto con eventos como onload, por ejemplo:
+- Se puede usar junto con eventos como `onload`, por ejemplo:
   ```html
   <svg onload="alert(1)">
   ```
