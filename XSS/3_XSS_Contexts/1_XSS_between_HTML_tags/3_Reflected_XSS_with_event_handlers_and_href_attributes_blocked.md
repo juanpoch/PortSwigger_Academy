@@ -175,6 +175,8 @@ Como sabemos, para insertar texto dentro de un `<svg>`, necesitamos utilizar la 
 ```html
 <svg><a><text x=20 y=20>Click me</text></a></svg>
 ```
+![image](https://github.com/user-attachments/assets/c5c3ba04-4afb-4b6b-9854-3907f0f20fcc)
+
 
 ```html
 <svg>
