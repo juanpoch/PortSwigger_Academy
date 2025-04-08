@@ -40,6 +40,8 @@ Pero el atributo está siendo bloqueado por el `waf`:
 Procedemos a realizar fuerza bruta nuevamente con `Burpsuite Intruder` para averiguar qué atributos no están siendo bloqueados, utilizamos una lista de atributos:
 ![image](https://github.com/user-attachments/assets/cbdca5c1-a396-4800-8383-e9625410a7d5)
 Encontramos los siguientes posibles atributos:
+![image](https://github.com/user-attachments/assets/3f9e4fbd-7c11-48a8-98a8-c2e672ac1d66)
+
 
 
 
