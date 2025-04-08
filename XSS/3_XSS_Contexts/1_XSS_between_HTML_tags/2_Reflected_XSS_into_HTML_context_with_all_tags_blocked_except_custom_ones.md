@@ -70,7 +70,7 @@ Aunque el WAF bloquea etiquetas conocidas, es posible ejecutar XSS explotando el
 
 ---
 
-## 🚀 Procedimiento Paso a Paso
+## 🚀 Automatización
 
 ### 1. Construir el Payload
 Utilizamos una etiqueta personalizada `<xss>` con los siguientes atributos:
