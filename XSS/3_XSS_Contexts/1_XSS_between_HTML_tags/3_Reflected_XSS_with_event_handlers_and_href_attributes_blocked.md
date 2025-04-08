@@ -177,6 +177,48 @@ Como sabemos, para insertar texto dentro de un `<svg>`, necesitamos utilizar la 
 ```
 ![image](https://github.com/user-attachments/assets/c5c3ba04-4afb-4b6b-9854-3907f0f20fcc)
 
+Como sabemos que necesitamos brindar un link con la URL vulnerable para que el usuario haga clic, lo más natural sería usar una etiqueta `<a>` con el atributo `href`. Sin embargo, en este caso, el atributo `href` está restringido o filtrado, por lo que necesitamos otra forma de insertar un enlace.
+
+Para lograrlo, utilizamos la etiqueta `<animate>`, que forma parte de `<SVG>`. Esta etiqueta permite animar atributos de un elemento `SVG` a lo largo del tiempo.
+
+En otras palabras, `<animate>` nos permite insertar un atributo de forma indirecta, como si lo estuviéramos "configurando dinámicamente", lo cual es útil para bypass de filtros.
+
+# 🎨 Uso de `<animate>` para modificar atributos dinámicamente en SVG
+
+## 🧪 Ejemplo simple con `animate` que modifica un atributo (`fill`)
+
+```html
+<svg width="200" height="100">
+  <rect x="10" y="10" width="180" height="80" fill="blue">
+    <animate attributeName="fill" from="blue" to="red" dur="2s" begin="0s" fill="freeze" />
+  </rect>
+</svg>
+```
+
+## 🔍 ¿Qué hace este código?
+
+- Se dibuja un rectángulo azul (`fill="blue"`).
+- Dentro del `<rect>`, agregamos una etiqueta `<animate>`.
+- `attributeName="fill"` indica qué atributo se quiere animar.
+- `from="blue"` a `to="red"` indica que va a pasar de azul a rojo.
+- `dur="2s"` significa que la transición dura 2 segundos.
+- `begin="0s"` empieza automáticamente.
+- `fill="freeze"` mantiene el color final (rojo).
+
+---
+
+## 💡 ¿Cuál es el flujo?
+
+1. El SVG se renderiza con un `<rect>` azul.
+2. El navegador lee la etiqueta `<animate>` dentro del `<rect>`.
+3. Detecta que debe modificar el atributo `fill` de `blue` a `red`.
+4. Comienza la transición automáticamente (`begin="0s"`).
+5. En 2 segundos, el rectángulo termina siendo rojo.
+6. **El atributo `fill` fue modificado dinámicamente en el DOM**, ¡gracias a `<animate>`!
+
+
+
+
 
 ```html
 <svg>
@@ -188,6 +230,7 @@ Como sabemos, para insertar texto dentro de un `<svg>`, necesitamos utilizar la 
 ```
 
 ---
+# Conclusión
 
 ## 🔍 Explicación Paso a Paso
 
@@ -198,7 +241,7 @@ Como sabemos, para insertar texto dentro de un `<svg>`, necesitamos utilizar la 
 ### 2. `<a>`
 
 - Representa un enlace.
-- Su atributo `href` se puede modificar dinámicamente.
+- Su atributo `href` se puede modificar dinámicamente (aunque en este ejercicio no se upede utilizar).
 
 ### 3. `<animate>`
 
