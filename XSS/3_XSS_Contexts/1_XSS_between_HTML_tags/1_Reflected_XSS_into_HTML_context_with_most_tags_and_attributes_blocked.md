@@ -5,6 +5,9 @@ To solve the lab, perform a cross-site scripting attack that bypasses the WAF an
 
 ---
 
+## 🎯 Objetivo del lab
+Explotar una vulnerabilidad de **XSS reflejado** a pesar de la presencia de un **WAF (Web Application Firewall)**, de modo que se ejecute automáticamente el código `print()` sin interacción del usuario.
+
 Ingresamos a un portal web que nos permite realizar comentarios, realizamos un comentario de prueba:
 ![image](https://github.com/user-attachments/assets/ac147410-c0de-47ff-ac45-023ef6241204)
 
@@ -61,7 +64,80 @@ Ya que `<body>` está permitido y acepta `onresize`, armamos un payload así:
 Cuando enviamos el payload y luego redimensionamos, vemos que el código se ejecuta y se lanza el popup:
 ![image](https://github.com/user-attachments/assets/1220d807-2f5d-4088-95db-0085cb1356b1)
 
-Pero nosotros necesitamos que esto ocurra sin intervención del usuario, por lo tanto devemos utilizar un iframe.
+Pero nosotros necesitamos que esto ocurra sin intervención del usuario, hasta ahora sabemos que `onresize` se dispara **cuando se redimensiona la ventana o el elemento**. Si usamos este evento en el `<body>` de una página y logramos que el contenido se redimensione automáticamente, podemos ejecutar `print()` sin que el usuario interactúe.
+
+---
+
+## ✅ Paso 1: Usar un `<iframe>` para automatizar el evento
+
+Como no podemos pedirle al usuario que redimensione su navegador, necesitamos que esto ocurra **automáticamente**.
+
+💡 Para eso usamos un `<iframe>`:
+
+### 🧱 ¿Qué es un `<iframe>`?
+
+Un `iframe` (inline frame) es un elemento HTML que permite **incrustar una página web dentro de otra**. Es como abrir una página dentro de un recuadro de otra.
+
+En nuestro caso, usamos un iframe para:
+
+- **Cargar la página vulnerable** con el XSS en su parámetro `search`.
+- Forzar que el iframe **cambie de tamaño automáticamente**, lo que dispara el evento `onresize` del body de esa página.
+- Ejecutar `print()` **sin interacción del usuario**.
+
+---
+
+## ✅ Paso 2: ¿Qué es el Exploit Server y por qué lo usamos?
+
+El **Exploit Server** simula un servidor controlado por el atacante, como si fueras dueño de `http://evil.com`.
+
+Sirve para:
+
+- Alojar tu **código malicioso** (HTML con el iframe).
+- Entregarlo a una **víctima simulada** (un bot del lab).
+- Demostrar que el ataque XSS se ejecuta automáticamente.
+
+### Ejemplo realista:
+
+| En el lab                        | En la vida real                     |
+|----------------------------------|--------------------------------------|
+| Exploit Server                   | Tu web maliciosa (`evil.com`)       |
+| Bot víctima                      | Usuario real (admin, cliente)       |
+| iframe con XSS                   | Payload explotando vulnerabilidad   |
+| "Deliver exploit to victim"      | Usuario accede a tu página maliciosa|
+
+---
+
+## 🧩 Código final del exploit
+
+```html
+<iframe 
+  src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E" 
+  onload="this.style.width='100px'">
+</iframe>
+```
+
+📌 Reemplazá `YOUR-LAB-ID` con el ID de tu lab.
+
+---
+
+## ✅ Paso final
+
+1. Ir al Exploit Server.
+2. Pegar el HTML del iframe.
+3. Hacer clic en **Store and Deliver exploit to victim**.
+4. Si todo está bien, se ejecutará `print()` y el lab se marcará como resuelto.
+
+---
+
+## 🏁 Conclusión
+
+Usamos `onresize` porque es uno de los pocos eventos que:
+
+- **No fue bloqueado por el WAF**.
+- **Puede ejecutarse sin interacción** si lo combinamos con un iframe.
+
+El `iframe` nos permite simular un redimensionamiento automático, disparar el evento, y ejecutar el payload de forma invisible para la víctima.
+
 
 
 
