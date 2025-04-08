@@ -40,6 +40,9 @@ Hay que tener especial atención al `<svg>`, ya que:
   ```html
   <svg onload="alert(1)">
   ```
+Probamos el payload pero vemos que el atributo onload es bloqueado:
+![image](https://github.com/user-attachments/assets/776bb23a-6f73-4202-9568-c9593f3dd206)
+
 
 
 
