@@ -27,6 +27,9 @@ El objetivo es ejecutar `alert('XSS')` utilizando un vector de XSS reflejado, a 
 ### 1. Identificar el punto vulnerable
 - El parámetro `search` es vulnerable a XSS reflejado.
 - El contenido del parámetro se inserta directamente en el HTML sin ser escapado adecuadamente.
+![image](https://github.com/user-attachments/assets/50837f57-5fe2-4730-bc2e-6e265821aa74)
+
+
 
 ### 2. Crear un payload con etiqueta personalizada
 Usamos un evento que no requiere interacción peligrosa. Por ejemplo, `onmouseover`:
