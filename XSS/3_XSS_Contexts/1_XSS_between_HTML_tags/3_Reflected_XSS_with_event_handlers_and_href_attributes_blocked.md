@@ -288,7 +288,7 @@ Inyectamos el payload y resolvemos el lab:
 ## 🛠️ ¿Qué pasa cuando el navegador procesa eso?
 
 1. El navegador interpreta el SVG.
-2. El elemento `<animate>` le **inyecta dinámicamente** el atributo `href="javascript:alert(1)"` al `<a>`.
+2. El elemento `<animate>` le **inyecta dinámicamente** el atributo `href="javascript:alert(1)"` al `<a>` en el **DOM**.  
 3. Ese `href` no fue visible para el WAF, pero ya existe en el **DOM**, lo más probable es que el WAF esté validando el HTML, pero no valide las modificaciones del **DOM** en tiempo de ejecución, entonces `href` permanece oculto para el WAF.
 4. Cuando la víctima hace clic → se **ejecuta el JavaScript** (`alert(1)`).
 
