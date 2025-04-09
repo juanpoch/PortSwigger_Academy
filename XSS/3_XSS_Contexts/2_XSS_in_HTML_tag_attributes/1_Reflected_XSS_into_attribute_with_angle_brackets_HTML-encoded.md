@@ -5,3 +5,6 @@ This lab contains a reflected cross-site scripting vulnerability in the search b
 
 ---
 
+Ingresamos un payload de prueba y vemos que es reflejado en 2 oportunidades, una de ellas es en contexto de atributo:
+![image](https://github.com/user-attachments/assets/04515733-0eeb-45f0-9c3e-e9f7e0744fd0)
+
