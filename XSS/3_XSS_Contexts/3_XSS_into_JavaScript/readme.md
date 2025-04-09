@@ -54,6 +54,21 @@ Ejemplos de payloads:
 ';alert(document.domain)//
 ```
 
+Supongamos que hay un código como el siguiente:
+```html
+<script>
+  var input = 'aquí va tu entrada';
+</script>
+```
+Y el servidor incluye tu input dentro de las comillas de esa variable. Si vos inyectás algo como:
+```javascript
+';alert(document.domain)//
+```
+Entonces el código se verá así:
+```javascript
+var input = '';alert(document.domain)//';
+```
+Esto cierra la cadena original, inyecta el código malicioso y comenta el resto del código para que no genere errores de sintaxis.
 ### Escapando barras invertidas
 
 Algunas aplicaciones intentan prevenir esto escapando comillas con barras invertidas. Si no escapan la barra invertida correctamente, el atacante puede aprovecharlo:
