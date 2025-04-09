@@ -46,10 +46,40 @@ Vemos que la url se inserta dinámicamente en el código fuente (y no únicament
 ![image](https://github.com/user-attachments/assets/1d0d2620-1d74-445a-8e85-fb7a19b36c25)
 
 
-Otros vectores son posibles si podemos romper la cadena de texto actual usando `'` e ingresar un atributo después.
+Otros vectores son posibles si podemos romper la cadena de texto actual (en este caso romper el atributo `href`) usando `'` e ingresar un atributo después.
 Ingresamos lo siguiente:
 ```html
 'onclick=alert(1)
 ```
 ![image](https://github.com/user-attachments/assets/b6805079-079d-432f-9cb8-a1f4acba51e1)
+
+Como vemos nos queda una comilla simple `'` al final de la cadena, que podemos arreglar insertando otra `'` justo después del `=`:
+```html
+'onclick='alert(1)
+```
+![image](https://github.com/user-attachments/assets/b3d8566f-6a48-4165-b7fd-06e0658b5e82)
+
+
+El problema es que no hay un "lugar físico" para estos elementos, ya que se encuentran dentro del `head`, por lo tanto un usuario no puede disparar el popup.
+Procedemos a utilizar un accesskey:
+```html
+'accesskey='x'onclick='alert(1)
+```
+## 🔑 `accesskey`
+
+El atributo `accesskey` en HTML se utiliza para definir **unshortcut** que permite a los usuarios activar o enfocar un elemento usando el teclado.
+
+---
+
+Por lo tanto el link final sería el siguiente:
+```html
+<link rel="canonical" href='https://sitio/?' accesskey='x' onclick='alert(1)'>
+```
+En este caso, cuando el usuario presiona el shortcut, se activa el event handler `onclick`.
+
+![image](https://github.com/user-attachments/assets/4a6b61e7-3923-4d12-b416-787cba7a24df)
+
+
+
+
 
