@@ -28,4 +28,5 @@ Puntualmente observamos lo siguiente:
 ...
 </head>
 ```
+Observamos que el parámetro `test` es reflejado sin una correcta sanitización dentro del atributo `href` de una etiqueta `<link rel="canonical">`. Aunque los caracteres como `<` y `>` están escapados (angle brackets HTML-encoded), otros vectores son posibles si podemos romper la cadena de texto actual e ingresar un atributo después:
 
