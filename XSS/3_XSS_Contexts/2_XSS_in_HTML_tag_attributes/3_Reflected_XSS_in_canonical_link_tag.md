@@ -43,8 +43,9 @@ En nuestro caso, estaríamos viendo que el **canonical link** no está siendo bi
 
 
 Vemos que la url se inserta dinámicamente en el código fuente (y no únicamente en el `DOM`) y vemos que se inserta entre comillas simples:
+![image](https://github.com/user-attachments/assets/1d0d2620-1d74-445a-8e85-fb7a19b36c25)
+
+
+Otros vectores son posibles si podemos romper la cadena de texto actual usando `'` e ingresar un atributo después:
+
 ![image](https://github.com/user-attachments/assets/edcf2209-8051-4f83-9724-b965a643c5eb)
-
-Otros vectores son posibles si podemos romper la cadena de texto actual usando `'` e ingresar un atributo después.
-
-
