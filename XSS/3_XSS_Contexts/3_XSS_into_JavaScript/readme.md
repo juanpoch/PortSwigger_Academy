@@ -71,19 +71,21 @@ var input = '';alert(document.domain)//';
 Esto cierra la cadena original, inyecta el código malicioso y comenta el resto del código para que no genere errores de sintaxis.
 ### Escapando barras invertidas
 
-Algunas aplicaciones intentan prevenir esto escapando comillas con barras invertidas. Si no escapan la barra invertida correctamente, el atacante puede aprovecharlo:
+Algunas aplicaciones, para evitar `XSS`, intentan proteger las comillas que delimitan la cadena de JavaScript agregando una barra invertida `\` delante. 
 
 Entrada:
 ```javascript
 ';alert(document.domain)//
 ```
-
 Escapada por la app:
 ```javascript
 \';alert(document.domain)//
 ```
+Esto sucede ya que el conjunto de caracteres `\'` se interpreta como una comilla literal, no como el fin de una cadena.
 
-Escapar la barra `\` con otra barra `\` permite romper la cadena e inyectar código. Ejemplo de payload:
+Si los desarrolladores cometieron el error de escapar la comilla pero no la barra invertida `\`, permite al atacante anular la barra invertida agregando otra barra invertida propia.
+
+Ejemplo de payload:
 ```html
 \';alert(document.domain)//
 ```
