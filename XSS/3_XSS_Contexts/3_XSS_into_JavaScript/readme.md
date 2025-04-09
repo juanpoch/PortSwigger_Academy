@@ -113,14 +113,14 @@ throw 1;
 ```
 ### 👉 Línea por línea
 
-#### `onerror = alert;`
-Asigna la función `alert` al manejador global `onerror`. Cuando ocurra un error, se ejecutará `alert`.
+#### `onerror = alert;`  ---> Asigna la función `alert` al manejador global `onerror`. Cuando ocurra un error, se ejecutará `alert`.
 
-#### `throw 1;`
-Lanza una excepción con el valor `1`, lo que dispara el evento `onerror`.
+#### `throw 1;`   ---> Lanza una excepción con el valor `1`, lo que dispara el evento `onerror`.
 
 ### 🧠 ¿Qué pasa al final?
 Como `onerror` apunta a `alert`, el navegador termina ejecutando `alert(1)`. El valor lanzado se usa como argumento, aunque no hayas escrito `alert(1)` directamente.
+
+---
 
 
 ## Haciendo uso de la codificación HTML
