@@ -120,6 +120,9 @@ throw 1;
 ### 🧠 ¿Qué pasa al final?
 Como `onerror` apunta a `alert`, el navegador termina ejecutando `alert(1)`. El valor lanzado se usa como argumento, aunque no hayas escrito `alert(1)` directamente.
 
+`Nota`: [Investigación de PortSwigger sobre XSS sin paréntesis ni punto y coma](https://portswigger.net/research/xss-without-parentheses-and-semi-colons)
+
+
 ---
 
 
