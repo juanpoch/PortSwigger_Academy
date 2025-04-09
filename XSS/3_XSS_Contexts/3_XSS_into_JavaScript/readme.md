@@ -83,7 +83,15 @@ Escapada por la app:
 \';alert(document.domain)//
 ```
 
-Esto permite romper la cadena e inyectar código.
+Escapar la barra `\` con otra barra `\` permite romper la cadena e inyectar código. Ejemplo de payload:
+```html
+\';alert(document.domain)//
+```
+Esto quedaría así:
+```html
+\\';alert(document.domain)//
+```
+Aquí la primera barra invertida significa que la segunda se interpreta literalmente, y no como un caracter especial. Esto significa que la comilla se interpreta ahora como un terminador de cadena, por lo que el ataque tiene éxito.
 
 ## Uso de `throw` para evitar paréntesis
 
