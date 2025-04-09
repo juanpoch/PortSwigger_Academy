@@ -46,6 +46,10 @@ Vemos que la url se inserta dinámicamente en el código fuente (y no únicament
 ![image](https://github.com/user-attachments/assets/1d0d2620-1d74-445a-8e85-fb7a19b36c25)
 
 
-Otros vectores son posibles si podemos romper la cadena de texto actual usando `'` e ingresar un atributo después:
+Otros vectores son posibles si podemos romper la cadena de texto actual usando `'` e ingresar un atributo después.
+Ingresamos lo siguiente:
+```html
+'onclick=alert(1)
+```
+![image](https://github.com/user-attachments/assets/b6805079-079d-432f-9cb8-a1f4acba51e1)
 
-![image](https://github.com/user-attachments/assets/edcf2209-8051-4f83-9724-b965a643c5eb)
