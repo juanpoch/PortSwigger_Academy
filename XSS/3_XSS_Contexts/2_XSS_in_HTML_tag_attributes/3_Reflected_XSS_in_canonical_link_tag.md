@@ -79,6 +79,8 @@ En este caso, cuando el usuario presiona el shortcut, se activa el event handler
 
 ![image](https://github.com/user-attachments/assets/4a6b61e7-3923-4d12-b416-787cba7a24df)
 
+Que se active el event handler dependerá del navegador y el sistema operativo que esté usando el usuario.
+
 
 
 
