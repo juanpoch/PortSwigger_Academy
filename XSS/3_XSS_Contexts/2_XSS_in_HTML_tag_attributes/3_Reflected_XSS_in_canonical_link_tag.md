@@ -14,3 +14,18 @@ Please note that the intended solution to this lab is only possible in Chrome.
 ---
 
 - `Nota`: [XSS in hidden input fields - PortSwigger](https://portswigger.net/research/xss-in-hidden-input-fields)
+
+Ingresamos una cadena arbitraria en la cadena de consulta y observamos el `DOM`:
+![image](https://github.com/user-attachments/assets/c9574f8a-f911-48e8-b06f-2e9cf6475658)
+
+Podemos observar que entre las etiquetas `<head>` se inserta nuestra url dinámicamente.
+
+Puntualmente observamos lo siguiente:
+```html
+<head>
+...
+<link rel="canonical" href="https://0a4500960436e24dc42788af00700029.web-security-academy.net/?test">
+...
+</head>
+```
+
