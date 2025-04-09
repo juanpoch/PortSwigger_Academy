@@ -39,7 +39,7 @@ Se ve así:
 ```html
 <link rel="canonical" href="https://example.com/articulo-principal">
  ```
-En nuestro caso, estaríamos viendo que el **canonical link** no está siendo bien implementado, ya que la url se construye dinámicamente, y aquí recae la vulnerabilidad.
+En nuestro caso, estaríamos viendo que el **canonical link** no está siendo bien implementado, ya que la url se construye dinámicamente, y es allí donde reside la vulnerabilidad..
 
 
 Vemos que la url se inserta dinámicamente en el código fuente (y no únicamente en el `DOM`) y vemos que se inserta entre comillas simples:
