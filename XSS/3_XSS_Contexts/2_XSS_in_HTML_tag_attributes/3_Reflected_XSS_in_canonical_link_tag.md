@@ -28,5 +28,23 @@ Puntualmente observamos lo siguiente:
 ...
 </head>
 ```
-Observamos que el parámetro `test` es reflejado sin una correcta sanitización dentro del atributo `href` de una etiqueta `<link rel="canonical">`. Aunque los caracteres como `<` y `>` están escapados (angle brackets HTML-encoded), otros vectores son posibles si podemos romper la cadena de texto actual e ingresar un atributo después:
+Observamos que el parámetro `test` es reflejado sin una correcta sanitización dentro del atributo `href` de una etiqueta `<link rel="canonical">`.
+
+## 🔗 Canonical Links
+
+Un **Canonical Link** es una etiqueta HTML usada para decirle a los motores de búsqueda **cuál es la versión principal o "canónica" de una página web** cuando existen varias versiones con contenido similar o duplicado.
+
+Se ve así:
+
+```html
+<link rel="canonical" href="https://example.com/articulo-principal">
+ ```
+En nuestro caso, estaríamos viendo que el **canonical link** no está siendo bien implementado, ya que la url se construye dinámicamente, y aquí recae la vulnerabilidad.
+
+
+Vemos que la url se inserta dinámicamente en el código fuente (y no únicamente en el `DOM`) y vemos que se inserta entre comillas simples:
+![image](https://github.com/user-attachments/assets/edcf2209-8051-4f83-9724-b965a643c5eb)
+
+Otros vectores son posibles si podemos romper la cadena de texto actual usando `'` e ingresar un atributo después.
+
 
