@@ -18,7 +18,30 @@ Payload de ejemplo:
 </script><img src=1 onerror=alert(document.domain)>
 ```
 
-Esto funciona porque el navegador primero analiza el HTML (identifica etiquetas como `<script>`, `<img>`, etc.) y luego analiza el contenido JavaScript. Aunque el script queda dañado, esto no impide que el navegador ejecute lo que sigue.
+## 🪓 Paso a paso: qué hace este payload
+
+### `</script>`:
+- Cierra de forma anticipada la etiqueta `<script>` actual.
+- Esto rompe el bloque de JavaScript donde estaba la variable `input`.
+
+### `<img src=1 onerror=alert(document.domain)>`:
+- Inyecta un elemento HTML (una imagen).
+- Le agrega el atributo `onerror`, que es un *event handler*.
+- Cuando el navegador no puede cargar la imagen (porque `src=1` no es válido), se dispara el evento `onerror`, que ejecuta `alert(document.domain)`.
+
+---
+
+## ⚙️ ¿Por qué funciona si "rompe" el script anterior?
+
+Porque los navegadores:
+
+1. Primero parsean el **HTML**, y cuando encuentran etiquetas `<script>`, almacenan el código JavaScript.
+2. Cuando vos "rompés" la etiqueta `</script>`, el navegador **cierra el script actual** y sigue procesando HTML.
+3. Entonces el navegador simplemente interpreta tu `<img>` como parte del HTML, y ejecuta su evento `onerror`.
+
+> Aunque la línea JS `var input = '` queda rota, eso **no bloquea** que se siga procesando lo demás.  
+> No todo el archivo HTML se invalida.
+
 
 ## Salir de una cadena de JavaScript
 
