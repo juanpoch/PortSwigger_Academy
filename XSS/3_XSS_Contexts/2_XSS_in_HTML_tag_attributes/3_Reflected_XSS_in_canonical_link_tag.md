@@ -12,3 +12,5 @@ To assist with your exploit, you can assume that the simulated user will press t
 Please note that the intended solution to this lab is only possible in Chrome.
 
 ---
+
+- `Nota`: [XSS in hidden input fields - PortSwigger](https://portswigger.net/research/xss-in-hidden-input-fields)
