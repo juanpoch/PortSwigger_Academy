@@ -14,7 +14,11 @@ Cuando accedemos a un post, podemos visualizar los comentarios de los usuarios y
 Realizamos un comentario de prueba:
 ![image](https://github.com/user-attachments/assets/d3c6122a-133d-43da-bf4f-c81869d0dd57)
 
-Vemos que se almacena el payload "test" en el comentario, probamos con un payload malicioso:
+Vemos que nuestra inyección en el campo comentario se almacena entre etiquetas <p></p>:
+![image](https://github.com/user-attachments/assets/7df45320-dd18-4f24-bf62-1899fd1ba4df)
+
+
+Probamos con un payload malicioso:
 
 ![image](https://github.com/user-attachments/assets/f5abf470-36f3-492d-b426-a07c1fe7765d)
 
