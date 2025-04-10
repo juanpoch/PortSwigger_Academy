@@ -20,6 +20,8 @@ Vemos que se almacena el payload "test" en el comentario, probamos con un payloa
 
 Posteamos y accedemos a visualizar el comentario a ver si se ejecuta (click en "back to blog"):
 ![image](https://github.com/user-attachments/assets/2a03f9c5-d48a-4f10-accd-d86da0fea847)
+![image](https://github.com/user-attachments/assets/5d8b5366-e565-4033-8c50-6f6b0c951f13)
+
 
 
 
