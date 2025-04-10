@@ -8,10 +8,9 @@ To solve the lab, perform a cross-site scripting attack that calls the `alert` f
 
 ---
 
-Nos encontramos con una sección de comentarios e insertamos un comentario de prueva.
-Vemos que refleja lo que ingresamos en el campo `Website` dentro del atributo `href`:
+Nos encontramos con una sección de comentarios, observamos el parametro `postId` en el `DOM`:
+![image](https://github.com/user-attachments/assets/8702a9dd-f1d1-415f-b1c6-ec03faabfd15)
 
-![image](https://github.com/user-attachments/assets/7eed3d70-53e4-46e9-b82c-c004da3c09ee)
 
 
 
