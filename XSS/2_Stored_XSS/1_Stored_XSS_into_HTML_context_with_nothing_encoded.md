@@ -14,7 +14,7 @@ Cuando accedemos a un post, podemos visualizar los comentarios de los usuarios y
 Realizamos un comentario de prueba:
 ![image](https://github.com/user-attachments/assets/d3c6122a-133d-43da-bf4f-c81869d0dd57)
 
-Vemos que nuestra inyección en el campo comentario se almacena entre etiquetas <p></p>:
+Vemos que nuestra inyección en el campo comentario se almacena entre etiquetas `<p>`:
 ![image](https://github.com/user-attachments/assets/7df45320-dd18-4f24-bf62-1899fd1ba4df)
 
 
