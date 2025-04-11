@@ -27,6 +27,14 @@ Este es un enlace `<a>` que ejecuta JavaScript cuando el usuario hace clic. Espe
 - `href="javascript:..."`:
   Este tipo de enlace no navega a otra URL tradicional, sino que ejecuta código JavaScript directamente cuando lo clickeás, en este caso está ejecutando la función `fetch`.
 
+La función `fetch()` es parte del API moderna de JavaScript para hacer peticiones HTTP desde el navegador — sin necesidad de recargar la página.
+
+Permite que tu JavaScript se comunique con servidores para:
+- Obtener datos (como JSON, HTML, texto, imágenes...)
+- Enviar información (como formularios, eventos, analíticas...)
+- Hacer APIs dinámicas o apps de una sola página (SPA)
+
+
 - `fetch('/analytics', {method:'post', body: '/post%3fpostId%3d4'})`:
   Aquí es donde ocurre el envío de una petición `POST`. La función `fetch` tiene 2 parámetros:
   - `fetch('/analytics', ...)`:
