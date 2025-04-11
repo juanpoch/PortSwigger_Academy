@@ -37,17 +37,34 @@ Este es un enlace `<a>` que ejecuta JavaScript cuando el usuario hace clic. Espe
 
 
 - `fetch('/analytics', {method:'post', body: '/post%3fpostId%3d4'})`:
-- 
+  
   Aquí es donde ocurre el envío de una petición `POST`. La función `fetch` tiene 2 parámetros:
   - `fetch('/analytics', ...)`:
     Esto hace una solicitud HTTP a la URL `/analytics`.
-  - El segundo parámetro: opciones de fetch:
+  - El segundo parámetro, opciones de fetch:
     ```html
     {
     method: 'post',
     body: '/post%3fpostId%3d4'
     }
     ```
+  Se envía un POST a `/analytics` con el cuerpo `/post?postId=4`
+  Esto probablemente es una especie de "tracking" de navegación. O sea, le dice al servidor que el usuario está 
+  regresando desde el post con ID 4.
+  Y luego redirige al usuario a la página principal del blog (/) al hacer click en "back to blog":
+  ```html
+  finally(_ => window.location = '/')">Back to Blog</a>
+  ```
+
+🛠️ `.then()`, `.catch()`, `.finally()` 
+Son formas de manejar el resultado de `fetch()`:
+`.then()` → si la petición funciona
+`.catch()` → si hubo un error
+`.finally()` → se ejecuta siempre, haya salido bien o mal.
+
+
+
+
     
 
 
