@@ -37,6 +37,7 @@ Este es un enlace `<a>` que ejecuta JavaScript cuando el usuario hace clic. Espe
 
 
 - `fetch('/analytics', {method:'post', body: '/post%3fpostId%3d4'})`:
+- 
   Aquí es donde ocurre el envío de una petición `POST`. La función `fetch` tiene 2 parámetros:
   - `fetch('/analytics', ...)`:
     Esto hace una solicitud HTTP a la URL `/analytics`.
