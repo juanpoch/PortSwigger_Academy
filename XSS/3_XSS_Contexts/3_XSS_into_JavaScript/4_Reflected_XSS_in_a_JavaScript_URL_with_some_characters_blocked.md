@@ -221,7 +221,9 @@ Hasta ahora, la llamada a `fetch` se vería más o menos así:
 fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., window+'''})
 ```
 
-Vemos que en la sentencia, nos queda una cadena de caracteres que causarían un error: `'}`.
+Vemos que al final de esta expresión queda una cadena inválida: `'}'`, que cerraría abruptamente la sintaxis y causaría un error de parseo.
+
+Para solucionar eso, inyectamos un argumento más:
 
 Por eso agregamos un argumento más, el argumento `{x:''}` (agregando `,{x:'` y aprovechando las últimas `'}` suelta:
 ```js
