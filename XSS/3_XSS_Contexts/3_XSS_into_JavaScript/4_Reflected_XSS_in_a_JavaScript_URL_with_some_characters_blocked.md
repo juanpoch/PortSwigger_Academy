@@ -194,7 +194,7 @@ Por definición, esta es una función flecha llamada `x`, que tiene un parámetr
 
 Porque en el contexto global del navegador, las variables globales (como `toString`) se asignan automáticamente como propiedades del objeto global `window`. Es decir, `toString = x` es equivalente a `window.toString = x`.
 
-Esto es importante porque luego vamos a forzar la conversión del objeto `window` a cadena con window `+ ''`, lo que activará nuestro `toString()` personalizado y ejecutará el código malicioso.
+Esto es importante porque luego vamos a forzar la conversión del objeto `window` a cadena, con `window + ''`, lo que activará nuestro `toString()` personalizado y ejecutará el código malicioso.
 
 ---
 
