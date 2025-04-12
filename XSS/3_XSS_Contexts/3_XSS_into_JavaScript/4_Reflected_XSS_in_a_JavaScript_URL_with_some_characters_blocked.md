@@ -177,7 +177,7 @@ Luego, forzamos un error usando `throw`, lo cual activa el `onerror` y, por lo t
 `Nota`: Cuando no se sobrescribe (`onerror = ...`), el comportamiento por defecto de `window.onerror` es simplemente mostrar el error en la consola del navegador.
 
 Por lo tanto nosotros estamos usando la siguiente función flecha, que es equivalente a las funciones anteriores:
-```html
+```js
 x=x=>{throw/**/onerror=alert,1337}
 ```
 Por definición, esta es una función flecha llamada `x`, que tiene un parámetro `x` (que no usaremos), que ejecuta el código `throw/**/onerror=alert,1337`. Que ya se explicó a detalle qué función cumple. En el caso de este lab, se necesita "spoofear" el caracter espacio ` `, por lo que se utiliza el comentario vacío `/**/` con tal finalidad.
