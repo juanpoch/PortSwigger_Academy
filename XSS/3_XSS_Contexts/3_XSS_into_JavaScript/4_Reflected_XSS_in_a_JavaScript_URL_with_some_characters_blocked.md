@@ -88,12 +88,13 @@ Probemos con una función simple para entenderlo:
     }
   console.log(myFunc(1,2));
 </script>
+```
 Resultado:
-```javascript
+```html
 3
 ```
 Ahora intentamos pasarle más parámetros de los que espera:
-```javascript
+```html
 <script>
   function myFunc(a, b){
     return a + b;
@@ -102,13 +103,13 @@ Ahora intentamos pasarle más parámetros de los que espera:
 </script>
 ```
 Resultado:
-```javascript
+```html
 3
 ```
 No se lanza ningún error, incluso si agregamos argumentos adicionales. Simplemente son ignorados por la función.
 
 Ahora veamos qué pasa si aprovechamos esos argumentos adicionales para ejecutar código:
-```javascript
+```html
 <script>
   let myVar = 1;
   function myFunc(a, b){
@@ -119,7 +120,7 @@ Ahora veamos qué pasa si aprovechamos esos argumentos adicionales para ejecutar
 </script>
 ```
 Resultado:
-```javascript
+```html
 3
 10
 ```
@@ -138,13 +139,13 @@ Sí, podemos agregar parámetros dentro de una inyección aunque la función fet
 En este caso estamos definiendo una función flecha con un parámetro `x`, el cual no estamos utilizando en esta función, el motivo simplemente es la necesidad de declarar una función sin el uso de determinados caracteres que están siendo filtrados por el WAF, como los paréntesis `()`.
 
 La función `x()` se definiría así de forma tradicional:
-```javascript
+```html
 function x(x) {
   throw onerror=alert, 1337;
 }
 ```
 o 
-```javascript
+```html
 let x = function(x) {
   throw onerror=alert, 1337;
 };
@@ -154,14 +155,14 @@ Nosotros sabemos que `throw 1337` lanza una excepción con el número `1337`. Al
 
 - Si nosotros ejecutamos `throw 1337, 1338`, el navegador lanzará una excepción y retornará el último valor de la lista de valores separados por coma.
 Qué pasa con los valores anteriores:
-```javascript
+```html
 <script>
   let myVar = 1;
   throw myVar= 1337, myVar;
 </script>
 ```
 En este caso se lanzará un error con un valor 1337. Esto quiere decir que podemos ejecutar código en todos los valores de la lista separada por comas que brindamos, ya que pudimos sobreescribir el valor de `myVar`. Cabe destacar que podemos agregar tantos valores como querramos dentro de esta lista, por lo que podríamos también hacer lo siguiente:
-```javascript
+```html
 <script>
   throw onerror=alert, 1338;
 </script>
@@ -204,7 +205,7 @@ Siguiente parámetro de la `API fetch`:
 Aquí es donde se ejecuta nuestra función `x()` y logramos ejecutar código.
 `Nota`: En JavaScript, `window` es el objeto global que representa la ventana del navegador. Contiene todos los objetos, funciones y variables globales disponibles en una página web. Por ejemplo, funciones como `alert()`, `setTimeout()` o el objeto `document` están accesibles a través de `window`.
 Ejemplo:
-```javascript
+```html
 window.alert("Hola"); // Es lo mismo que alert("Hola")
 ```
 También es donde ocurren eventos globales como `onerror`, y se pueden sobrescribir propiedades para modificar el comportamiento de la página.
