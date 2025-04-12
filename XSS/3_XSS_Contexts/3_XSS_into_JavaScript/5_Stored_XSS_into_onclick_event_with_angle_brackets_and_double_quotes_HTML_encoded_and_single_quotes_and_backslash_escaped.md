@@ -34,6 +34,30 @@ Realizamos un comentario de prueba para ver si hay reflexión de nuestros inputs
 
 Vemos que nustra url `https://test.com` se refleja en el atributo `href` y además dentro del método `track` de la variable `tracker`: `tracker.track('https://test.com')`
 
+Por lo tanto el escenario es el siguiente, podríamos intentar inyectar en estos dos sitios de reflexión:
+- Podríamos intentar hacer un break out en `href` insertando `"` y especificar nuestro propio atributo.
+- Inyectar `<script>` tags, abrir un `javascript:` y ejecutar la función `alert`.
+- Intentar hacer un break out de la cadena javascript que le estamos pasando a la función `tracker` utilizando comilla simple `'`.
+
+El problema es que como dice el laboratorio, muchos caracteres como `<>`, `"` están siendo html encodeados y `'` o `\` están siendo escapados.
+
+`Ejemplo`:
+Intentaremos realizar un `break out` de las cadenas que le pasamos como argumento a la función `tracker`:
+![image](https://github.com/user-attachments/assets/644fdf23-2076-4305-bb72-de96c25742ab)
+
+Aquí estaríamos inyectando lo siguiente:
+```js
+tracker.track('https://test.com' + alert() + '')
+```
+
+Aquí estamos realizando una concatenación (no estamos pasando distintos argumentos, por eso no se separa con `,`).
+En este caso, al realizar la concatenación, primero se ejecuta `alert()` que retorna undefined y luego se ejecuta la concatenación.
+
+En este caso vemos que escapa la `'`:
+![image](https://github.com/user-attachments/assets/f8bbc98f-3b18-45da-97be-8363b8674526)
+
+
+
 
   
 
