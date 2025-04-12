@@ -218,7 +218,7 @@ También es donde ocurren eventos globales como `onerror`, y se pueden sobrescri
  
   Nosotros hasta ahora tenemos la siguiente estructura:
   ```html
-  post?postId=4&'}
+  post?postId=4&'}, ..arg1..,..arg2..,
   ```
 
 
