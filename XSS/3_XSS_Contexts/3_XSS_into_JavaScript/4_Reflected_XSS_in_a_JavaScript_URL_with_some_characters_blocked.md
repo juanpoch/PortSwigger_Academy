@@ -215,11 +215,11 @@ También es donde ocurren eventos globales como `onerror`, y se pueden sobrescri
 
 - Ultimo parámetro inyectado en la `API fetch`:
   - `,{x:'`:
- 
-  Hasta ahora la función fetch quedaría así:
-  ```js
-  fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., window+'''})
-  ```
+
+Hasta ahora, la llamada a fetch se vería más o menos así:
+```js
+fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., window+'''})
+```
 
 Vemos que en la sentencia, nos queda una cadena de caracteres que causarían un error: `'}`.
 
