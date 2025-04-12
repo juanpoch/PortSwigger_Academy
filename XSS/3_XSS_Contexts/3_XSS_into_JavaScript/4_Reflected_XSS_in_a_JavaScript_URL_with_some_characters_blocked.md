@@ -113,6 +113,7 @@ Lo que estamos haciendo es sobrescribir su comportamiento por defecto asignándo
 De esta manera, cuando ocurra un error no capturado, en lugar de realizar el manejo estándar, se ejecutará `alert`.
 
 Luego, forzamos un error usando `throw`, lo cual activa el `onerror` y, por lo tanto, se ejecuta `alert` automáticamente.
+`Nota`: Cuando no se sobrescribe (`onerror = ...`), el comportamiento por defecto de `window.onerror` es simplemente mostrar el error en la consola del navegador.
 
 
 
