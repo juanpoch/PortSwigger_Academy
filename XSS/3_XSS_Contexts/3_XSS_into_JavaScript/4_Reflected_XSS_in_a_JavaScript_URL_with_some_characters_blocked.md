@@ -73,7 +73,7 @@ Son formas de manejar el resultado de `fetch()`:
 La lógica detrás de esta inyección consiste en cerrar el parámetro actual e insertar nuevos parámetros dentro de la función `fetch` para ejecutar código, aquí es donde entra la cadena `&'}`.
 
 Luego ingresamos nuevos parámetros separados por `,`, `x=x=>{throw/**/onerror=alert,1337}`, `toString=x`, `window+''` y `{x:`:
-```html
+```js
 x=x=>{throw/**/onerror=alert,1337},toString=x,window+'' ,{x:'
 ```
 
