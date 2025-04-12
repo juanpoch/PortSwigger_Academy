@@ -231,11 +231,15 @@ Esto se hace aprovechando la apertura del objeto con `,{x:'` y dejando que las c
 ```js
 ..., {x:''}
 ```
-La sentencia final quedaría así:
+De esta forma, la línea final se cierra correctamente y la sintaxis queda balanceada.
+
+Cuando definimos `{x: ''}` en JavaScript, estmos creando un objeto literal con una única propiedad llamada `x` que tiene como valor una cadena vacía (`''`).
+
+### Resultado final:
 ```js
 fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., window+'',{x:''})
 ```
-`Nota`: El elemento `{x:''}` es ...
+`Nota`: El objeto `{x: ''}` no se usa en la función `fetch`, pero su evaluación es válida y lo más importante: permite cerrar correctamente la inyección sin lanzar errores de sintaxis. Es una forma de "rellenar" la llamada para que el resto del código funcione.
 
 
 
