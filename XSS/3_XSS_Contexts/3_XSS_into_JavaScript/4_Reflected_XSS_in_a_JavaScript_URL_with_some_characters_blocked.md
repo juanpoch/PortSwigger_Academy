@@ -65,12 +65,57 @@ Son formas de manejar el resultado de `fetch()`:
 `.catch()` → si hubo un error
 `.finally()` → se ejecuta siempre, haya salido bien o mal.  
 
+---
+
 La lógica detrás de esta inyección consiste en cerrar el parámetro actual e insertar nuevos parámetros dentro de la función `fetch` para ejecutar código,.aquí es donde entra la cadena `&'}`.
 
 Luego ingresamos nuevos parámetros separados por `,`:
 ```html
 x=x=>{throw/**/onerror=alert,1337},toString=x,window+'' ,{x:'
 ```
+
+- `x=x=>{throw/**/onerror=alert,1337}`:
+
+En este caso estamos definiendo una función flecha con un parámetro `x`, el cual no estamos utilizando en esta función, el motivo simplemente es la necesidad de declarar una función sin el uso de determinados caracteres que están siendo filtrados por el WAF, como los paréntesis `()`.
+
+La función `x()` se definiría así de forma tradicional:
+```javascript
+function x(x) {
+  throw onerror=alert, 1337;
+}
+```
+o 
+```javascript
+let x = function(x) {
+  throw onerror=alert, 1337;
+};
+```
+`Explicación throw`:
+Nosotros sabemos que `throw 1337` lanza una excepción con el número `1337`. Al no haber un `try...catch` que capture la excepción, se fuerza un error sin capturar.
+
+- Si nosotros ejecutamos `throw 1337, 1338`, el navegador lanzará una excepción y retornará el último valor de la lista de valores separados por coma.
+Qué pasa con los valores anteriores:
+```javascript
+<script>
+  let myVar = 1;
+  throw myVar= 1337, myVar;
+</script>
+```
+En este caso se lanzará un error con un valor 1337. Esto quiere decir que podemos ejecutar código en todos los valores de la lista separada por comas que brindamos, ya que pudimos sobreescribir el valor de `myVar`. Cabe destacar que podemos agregar tantos valores como querramos dentro de esta lista, por lo que podríamos también hacer lo siguiente:
+```javascript
+<script>
+  throw onerror=alert, 1338;
+</script>
+```
+En este caso, tenemos el event handler `onerror`, que por defecto maneja los errores no capturados en el navegador.
+Lo que estamos haciendo es sobrescribir su comportamiento por defecto asignándole la función `alert`.
+
+De esta manera, cuando ocurra un error no capturado, en lugar de realizar el manejo estándar, se ejecutará `alert`.
+
+Luego, forzamos un error usando `throw`, lo cual activa el `onerror` y, por lo tanto, se ejecuta `alert` automáticamente.
+
+
+
 
 
 
