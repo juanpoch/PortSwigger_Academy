@@ -206,7 +206,7 @@ Aquí es donde se ejecuta nuestra función `x()` y logramos ejecutar código.
 
 `Nota`: En JavaScript, `window` es el objeto global que representa la ventana del navegador. Contiene todos los objetos, funciones y variables globales disponibles en una página web. Por ejemplo, funciones como `alert()`, `setTimeout()` o el objeto `document` están accesibles a través de `window`.
 Ejemplo:
-```html
+```js
 window.alert("Hola"); // Es lo mismo que alert("Hola")
 ```
 También es donde ocurren eventos globales como `onerror`, y se pueden sobrescribir propiedades para modificar el comportamiento de la página.
