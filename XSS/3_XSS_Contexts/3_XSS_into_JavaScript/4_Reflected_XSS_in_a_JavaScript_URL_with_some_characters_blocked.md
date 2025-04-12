@@ -228,7 +228,7 @@ Por eso agregamos un argumento más, el argumento `{x:''}` (agregando `,{x:'` y 
 arg3,{x:''}
 ```
 La sentencia final quedaría así:
-```html
+```js
 fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., window+'',{x:''})
 ```
 `Nota`: El elemento `{x:''}` es ...
