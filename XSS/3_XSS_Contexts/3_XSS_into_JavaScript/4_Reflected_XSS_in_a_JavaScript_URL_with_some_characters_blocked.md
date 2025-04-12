@@ -139,7 +139,7 @@ Sí, podemos agregar parámetros dentro de una inyección aunque la función `fe
 En este caso estamos definiendo una función flecha con un parámetro `x`, el cual no estamos utilizando en esta función, el motivo simplemente es la necesidad de declarar una función sin el uso de determinados caracteres que están siendo filtrados por el WAF, como los paréntesis `()`.
 
 La función `x()` se definiría así de forma tradicional:
-```html
+```js
 function x(x) {
   throw onerror=alert, 1337;
 }
