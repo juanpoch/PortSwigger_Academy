@@ -133,7 +133,7 @@ Sí, podemos agregar parámetros dentro de una inyección aunque la función `fe
 
 ---
 
-- Siguiente parámetro:
+### Primer parámetro inyectado:
 -  `x=x=>{throw/**/onerror=alert,1337}`:
 
 En este caso estamos definiendo una función flecha con un parámetro `x`, el cual no estamos utilizando en esta función, el motivo simplemente es la necesidad de declarar una función sin el uso de determinados caracteres que están siendo filtrados por el WAF, como los paréntesis `()`.
@@ -186,7 +186,7 @@ Por definición, esta es una función flecha llamada `x`, que tiene un parámetr
 
 ----
 
-Siguiente parámetro de la `API fetch`:  
+### Sefundo parámetro inyectado en la `API fetch`:  
 
 - `toString = x`: Aquí estamos sobrescribiendo el método `toString`, que normalmente convierte objetos a cadenas de texto. En este caso, lo reemplazamos con la función `x()` definida anteriormente. Más adelante, cuando forcemos la conversión de un objeto a string, se ejecutará esta función en lugar del comportamiento por defecto.
 
@@ -198,7 +198,7 @@ Esto es importante porque luego vamos a forzar la conversión del objeto `window
 
 ---
 
-Siguiente parámetro de la `API fetch`:  
+Tercer parámetro inyectado en la `API fetch`:  
 
 - `window+''`:  Este es el intento de realizar una concatenación entre el objeto `window` y una cadena vacía `''`.
  Cuando se utiliza el operador `+` junto con una cadena vacía (`''`), JavaScript realiza una coerción de tipo e intenta convertir el otro valor a una cadena. Para objetos como `window`, esto implica llamar al método `toString()` definido en ese objeto. Si `toString` ha sido sobrescrito, se ejecutará la nueva versión definida.
@@ -212,7 +212,7 @@ También es donde ocurren eventos globales como `onerror`, y se pueden sobrescri
 
 ---
 
-- Ultimo parámetro de la `API fetch`:
+- Ultimo parámetro inyectado en la `API fetch`:
   - `{x:'`:
 
 
