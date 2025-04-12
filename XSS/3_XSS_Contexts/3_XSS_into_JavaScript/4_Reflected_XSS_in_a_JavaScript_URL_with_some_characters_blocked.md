@@ -243,6 +243,11 @@ fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., 
 ```
 `Nota`: El objeto `{x: ''}` no se usa en la función `fetch`, pero su evaluación es válida y lo más importante: permite cerrar correctamente la inyección sin lanzar errores de sintaxis. Es una forma de "rellenar" la llamada para que el resto del código funcione.
 
+---
+
+Ingresamos el payload y resolvemos el lab:
+![image](https://github.com/user-attachments/assets/d13d47c7-dac5-438c-9d83-b0fbf29cc79d)
+
 
 
 
