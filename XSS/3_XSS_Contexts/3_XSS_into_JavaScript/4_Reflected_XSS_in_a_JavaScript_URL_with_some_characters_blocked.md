@@ -216,7 +216,7 @@ También es donde ocurren eventos globales como `onerror`, y se pueden sobrescri
 - Ultimo parámetro inyectado en la `API fetch`:
   - `,{x:'`:
 
-Hasta ahora, la llamada a fetch se vería más o menos así:
+Hasta ahora, la llamada a `fetch` se vería más o menos así:
 ```js
 fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., window+'''})
 ```
