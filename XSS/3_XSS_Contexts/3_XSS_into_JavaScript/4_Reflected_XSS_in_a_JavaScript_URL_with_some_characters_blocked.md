@@ -70,7 +70,7 @@ Son formas de manejar el resultado de `fetch()`:
 
 ---
 
-La lógica detrás de esta inyección consiste en cerrar el parámetro actual e insertar nuevos parámetros dentro de la función `fetch` para ejecutar código,.aquí es donde entra la cadena `&'}`.
+La lógica detrás de esta inyección consiste en cerrar el parámetro actual e insertar nuevos parámetros dentro de la función `fetch` para ejecutar código, aquí es donde entra la cadena `&'}`.
 
 Luego ingresamos nuevos parámetros separados por `,`:
 ```html
