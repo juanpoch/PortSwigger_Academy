@@ -215,6 +215,11 @@ También es donde ocurren eventos globales como `onerror`, y se pueden sobrescri
 
 - Ultimo parámetro inyectado en la `API fetch`:
   - `{x:'`:
+ 
+  Nosotros hasta ahora tenemos la siguiente estructura:
+  ```html
+  post?postId=4&'}
+  ```
 
 
 
