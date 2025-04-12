@@ -216,9 +216,9 @@ También es donde ocurren eventos globales como `onerror`, y se pueden sobrescri
 - Ultimo parámetro inyectado en la `API fetch`:
   - `{x:'`:
  
-  Nosotros hasta ahora tenemos la siguiente estructura:
+  Hasta ahora la función fetc quedaría así:
   ```html
-  post?postId=4&'}, ..arg1..,..arg2..,
+  post?postId=4&'}, ..arg1..,..arg2..,window+''
   ```
 
 
