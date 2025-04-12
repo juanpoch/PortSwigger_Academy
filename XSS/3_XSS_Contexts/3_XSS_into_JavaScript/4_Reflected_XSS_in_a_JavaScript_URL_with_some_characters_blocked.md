@@ -203,6 +203,7 @@ Tercer parámetro inyectado en la `API fetch`:
 - `window+''`:  Este es el intento de realizar una concatenación entre el objeto `window` y una cadena vacía `''`.
  Cuando se utiliza el operador `+` junto con una cadena vacía (`''`), JavaScript realiza una coerción de tipo e intenta convertir el otro valor a una cadena. Para objetos como `window`, esto implica llamar al método `toString()` definido en ese objeto. Si `toString` ha sido sobrescrito, se ejecutará la nueva versión definida.
 Aquí es donde se ejecuta nuestra función `x()` y logramos ejecutar código.
+
 `Nota`: En JavaScript, `window` es el objeto global que representa la ventana del navegador. Contiene todos los objetos, funciones y variables globales disponibles en una página web. Por ejemplo, funciones como `alert()`, `setTimeout()` o el objeto `document` están accesibles a través de `window`.
 Ejemplo:
 ```html
