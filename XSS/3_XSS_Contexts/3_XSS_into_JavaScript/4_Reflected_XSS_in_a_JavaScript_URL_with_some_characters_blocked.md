@@ -70,9 +70,11 @@ Son formas de manejar el resultado de `fetch()`:
 
 ---
 
-La lógica detrás de esta inyección consiste en cerrar el parámetro actual e insertar nuevos parámetros dentro de la función `fetch` para ejecutar código, aquí es donde entra la cadena `&'}`.
+La lógica detrás de esta inyección consiste en cerrar el parámetro actual e insertar nuevos argumentos dentro de la función `fetch` para ejecutar código. Aquí es donde entra en juego la cadena `&'}`.
 
-Luego ingresamos nuevos parámetros separados por `,`, `x=x=>{throw/**/onerror=alert,1337}`, `toString=x`, `window+''` y `{x:`:
+La inyección comienza con `&'}`. El `&` actúa como un separador de parámetros en una URL, permitiendo que el navegador siga interpretando la cadena como válida. Técnicamente, se agrega un parámetro vacío adicional que no interfiere. Luego, el `'}` cierra correctamente tanto la cadena como el objeto usado como segundo parámetro de `fetch`, dejando el camino libre para inyectar nuevos argumentos maliciosos.
+
+Luego ingresamos nuevos argumentos separados por `,`, `x=x=>{throw/**/onerror=alert,1337}`, `toString=x`, `window+''` y `{x:`:
 ```js
 x=x=>{throw/**/onerror=alert,1337},toString=x,window+'' ,{x:'
 ```
