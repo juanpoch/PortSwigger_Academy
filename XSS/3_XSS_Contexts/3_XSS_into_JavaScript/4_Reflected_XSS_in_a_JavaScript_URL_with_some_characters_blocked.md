@@ -224,10 +224,12 @@ fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., 
 Vemos que al final de esta expresión queda una cadena inválida: `'}'`, que cerraría abruptamente la sintaxis y causaría un error de parseo.
 
 Para solucionar eso, inyectamos un argumento más:
+`{x:''}`
 
-Por eso agregamos un argumento más, el argumento `{x:''}` (agregando `,{x:'` y aprovechando las últimas `'}` suelta:
+Esto se hace aprovechando la apertura del objeto con `,{x:'` y dejando que las comillas y llave de cierre que ya estaban sueltas (`'}`) completen automáticamente la sintaxis del nuevo objeto:
+
 ```js
-arg3,{x:''}
+..., {x:''}
 ```
 La sentencia final quedaría así:
 ```js
