@@ -81,7 +81,7 @@ x=x=>{throw/**/onerror=alert,1337},toString=x,window+'' ,{x:'
 Correcto: `fetch(input, init)` solo acepta dos argumentos. Entonces, ¿cómo puede funcionar esta inyección si agregamos más?
 
 Probemos con una función simple para entenderlo:
-```javascript
+```html
 <script>
   function myFunc(a, b){
     return a + b;
