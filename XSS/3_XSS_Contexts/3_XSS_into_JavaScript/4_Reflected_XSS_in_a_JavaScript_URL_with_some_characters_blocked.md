@@ -145,7 +145,7 @@ function x(x) {
 }
 ```
 o 
-```html
+```js
 let x = function(x) {
   throw onerror=alert, 1337;
 };
