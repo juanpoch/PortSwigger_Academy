@@ -186,7 +186,7 @@ Por definición, esta es una función flecha llamada `x`, que tiene un parámetr
 
 ----
 
-### Sefundo parámetro inyectado en la `API fetch`:  
+### Segundo parámetro inyectado en la `API fetch`:  
 
 - `toString = x`: Aquí estamos sobrescribiendo el método `toString`, que normalmente convierte objetos a cadenas de texto. En este caso, lo reemplazamos con la función `x()` definida anteriormente. Más adelante, cuando forcemos la conversión de un objeto a string, se ejecutará esta función en lugar del comportamiento por defecto.
 
