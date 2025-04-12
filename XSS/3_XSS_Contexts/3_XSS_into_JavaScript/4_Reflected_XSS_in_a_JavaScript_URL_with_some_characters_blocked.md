@@ -62,9 +62,11 @@ Este es un enlace `<a>` que ejecuta JavaScript cuando el usuario hace clic. Espe
 
 Son formas de manejar el resultado de `fetch()`:  
 
-`.then()` → si la petición funciona
-`.catch()` → si hubo un error
-`.finally()` → se ejecuta siempre, haya salido bien o mal.  
+`.then()` → si la petición funciona  
+
+`.catch()` → si hubo un error  
+
+`.finally()` → se ejecuta siempre, haya salido bien o mal.    
 
 ---
 
