@@ -54,7 +54,7 @@ Este es un enlace `<a>` que ejecuta JavaScript cuando el usuario hace clic. Espe
   regresando desde el post con ID 4.
   
   Y luego redirige al usuario a la página principal del blog (/) al hacer click en "back to blog":
-  ```html
+  ```js
   finally(_ => window.location = '/')">Back to Blog</a>
   ```
 
