@@ -129,7 +129,13 @@ Por definición, esta es una función flecha llamada `x`, que tiene un parámetr
 
 Siguiente parámetro de la `API fetch`:  
 
-- `toString=x`: Este es otro caso en el que sobreescribimos el comportamiento por default de la función `toString` (lo usaremos más adelante). Ahora cada vez que se quiera ejecutar `toString` se estará ejecutando la función `x()`.
+- `toString = x`: Aquí estamos sobrescribiendo el método `toString`, que normalmente convierte objetos a cadenas de texto. En este caso, lo reemplazamos con la función `x()` definida anteriormente. Más adelante, cuando forcemos la conversión de un objeto a string, se ejecutará esta función en lugar del comportamiento por defecto.
+
+### ¿Por qué `toString = x` modificará `window.toString`?  
+
+Porque en el contexto global del navegador, las variables globales (como `toString`) se asignan automáticamente como propiedades del objeto global `window`. Es decir, `toString = x` es equivalente a `window.toString = x`.
+
+Esto es importante porque luego vamos a forzar la conversión del objeto `window` a cadena con window `+ ''`, lo que activará nuestro `toString()` personalizado y ejecutará el código malicioso.
 
 ---
 
