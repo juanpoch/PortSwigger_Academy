@@ -124,11 +124,11 @@ Resultado:
 3
 10
 ```
-✅ Aunque myFunc no usa esos parámetros extra, su simple evaluación modifica el valor de una variable global.  
+✅ Aunque `myFunc` no usa esos parámetros extra, su simple evaluación modifica el valor de una variable global.  
 
 ✅ Conclusión:  
 
-Sí, podemos agregar parámetros dentro de una inyección aunque la función fetch no los use. JavaScript los evalúa igualmente, y podemos aprovechar esto para ejecutar código malicioso.
+Sí, podemos agregar parámetros dentro de una inyección aunque la función `fetch` no los use. JavaScript los evalúa igualmente, y podemos aprovechar esto para ejecutar código malicioso.
 
 
 ---
