@@ -42,7 +42,7 @@ Este es un enlace `<a>` que ejecuta JavaScript cuando el usuario hace clic. Espe
   - `fetch('/analytics', ...)`:
     Esto hace una solicitud HTTP a la URL `/analytics`.
   - El segundo parámetro, opciones de fetch:
-    ```html
+    ```js
     {
     method: 'post',
     body: '/post%3fpostId%3d4'
