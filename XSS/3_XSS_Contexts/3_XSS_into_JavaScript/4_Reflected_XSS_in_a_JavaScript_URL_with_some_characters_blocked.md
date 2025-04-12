@@ -115,8 +115,42 @@ Lo que estamos haciendo es sobrescribir su comportamiento por defecto asignándo
 
 De esta manera, cuando ocurra un error no capturado, en lugar de realizar el manejo estándar, se ejecutará `alert`.
 
-Luego, forzamos un error usando `throw`, lo cual activa el `onerror` y, por lo tanto, se ejecuta `alert` automáticamente.
+Luego, forzamos un error usando `throw`, lo cual activa el `onerror` y, por lo tanto, se ejecuta `alert` automáticamente.  
+
 `Nota`: Cuando no se sobrescribe (`onerror = ...`), el comportamiento por defecto de `window.onerror` es simplemente mostrar el error en la consola del navegador.
+
+Por lo tanto nosotros estamos usando la siguiente función flecha, que es equivalente a las funciones anteriores:
+```html
+x=x=>{throw/**/onerror=alert,1337}
+```
+Por definición, esta es una función flecha llamada `x`, que tiene un parámetro `x` (que no usaremos), que ejecuta el código `throw/**/onerror=alert,1337`. Que ya se explicó a detalle qué función cumple. En el caso de este lab, se necesita "spoofear" el caracter espacio ` `, por lo que se utiliza el comentario vacío `/**/` con tal finalidad.
+
+----
+
+Siguiente parámetro de la `API fetch`:  
+
+- `toString=x`: Este es otro caso en el que sobreescribimos el comportamiento por default de la función `toString` (lo usaremos más adelante). Ahora cada vez que se quiera ejecutar `toString` se estará ejecutando la función `x()`.
+
+---
+
+Siguiente parámetro de la `API fetch`:  
+
+- `window+''`:  Este es el intento de realizar una concatenación entre el objeto `window` y una cadena vacía `''`.
+ Cuando se utiliza el operador `+` junto con una cadena vacía (`''`), JavaScript realiza una coerción de tipo e intenta convertir el otro valor a una cadena. Para objetos como `window`, esto implica llamar al método `toString()` definido en ese objeto. Si `toString` ha sido sobrescrito, se ejecutará la nueva versión definida.
+`Nota`: En JavaScript, `window` es el objeto global que representa la ventana del navegador. Contiene todos los objetos, funciones y variables globales disponibles en una página web. Por ejemplo, funciones como `alert()`, `setTimeout()` o el objeto `document` están accesibles a través de `window`.
+Ejemplo:
+```javascript
+window.alert("Hola"); // Es lo mismo que alert("Hola")
+```
+También es donde ocurren eventos globales como `onerror`, y se pueden sobrescribir propiedades para modificar el comportamiento de la página.
+
+---
+
+- Ultimo parámetro de la `API fetch`:
+  - `{x:'`:
+
+
+
 
 
 
