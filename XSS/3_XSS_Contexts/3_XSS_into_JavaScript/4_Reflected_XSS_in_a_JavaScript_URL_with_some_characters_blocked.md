@@ -77,7 +77,55 @@ Luego ingresamos nuevos parámetros separados por `,`:
 x=x=>{throw/**/onerror=alert,1337},toString=x,window+'' ,{x:'
 ```
 
-- `x=x=>{throw/**/onerror=alert,1337}`:
+La pregunta es, si la función fecth tiene sólo 2 argumentos, ¿es posible realmente agregarle nuevos?
+Probemos creando una función:
+```javascript
+<script>
+  function myFunc(a, b){
+    return a + b;
+    }
+  console.log(myFunc(1,2));
+</script>
+Resultado:
+```javascript
+3
+```
+Ahora intentamos imprimir más parámetros de los que tiene la función
+```javascript
+<script>
+  function myFunc(a, b){
+    return a + b;
+    }
+  console.log(myFunc(1, 2, 3));
+</script>
+```
+Resultado:
+```javascript
+3
+```
+Esto quiere decir que no se está lanzando ningún tipo de error, por maś que solicite parámetros que no existen.
+Ahora veamos que pasa si teniendo una variable predefinida, intentamos cambiar su valor dentro de los parámetros agregados a la función:
+```javascript
+<script>
+  let myVar = 1;
+  function myFunc(a, b){
+    return a + b;
+    }
+  console.log(myFunc(1, 2, myVar=10, 4));
+  console.log(myVar);
+</script>
+```
+Resultado:
+```javascript
+3
+10
+```
+En conclusión, podemos agregar parámetros dentro de una inyección, para poder ejecutar código y eso es lo que haremos.
+
+---
+
+- Siguiente parámetro:
+-  `x=x=>{throw/**/onerror=alert,1337}`:
 
 En este caso estamos definiendo una función flecha con un parámetro `x`, el cual no estamos utilizando en esta función, el motivo simplemente es la necesidad de declarar una función sin el uso de determinados caracteres que están siendo filtrados por el WAF, como los paréntesis `()`.
 
@@ -125,6 +173,8 @@ x=x=>{throw/**/onerror=alert,1337}
 ```
 Por definición, esta es una función flecha llamada `x`, que tiene un parámetro `x` (que no usaremos), que ejecuta el código `throw/**/onerror=alert,1337`. Que ya se explicó a detalle qué función cumple. En el caso de este lab, se necesita "spoofear" el caracter espacio ` `, por lo que se utiliza el comentario vacío `/**/` con tal finalidad.
 
+`Nota`: Este parámetro se encargará simplemente de declarar la función `x()`. Para poder ejecutar una función, hay que llamarla. Para eso utilizaremos el método de sobreescribir la función `toString` con la función `x()` e intentar que JavaScript la ejecute a través de forzar la concatenación del objeto `window` con una cadena vacía `''` (de esto se encargan los siguientes parámetros).
+
 ----
 
 Siguiente parámetro de la `API fetch`:  
@@ -143,6 +193,7 @@ Siguiente parámetro de la `API fetch`:
 
 - `window+''`:  Este es el intento de realizar una concatenación entre el objeto `window` y una cadena vacía `''`.
  Cuando se utiliza el operador `+` junto con una cadena vacía (`''`), JavaScript realiza una coerción de tipo e intenta convertir el otro valor a una cadena. Para objetos como `window`, esto implica llamar al método `toString()` definido en ese objeto. Si `toString` ha sido sobrescrito, se ejecutará la nueva versión definida.
+Aquí es donde se ejecuta nuestra función `x()` y logramos ejecutar código.
 `Nota`: En JavaScript, `window` es el objeto global que representa la ventana del navegador. Contiene todos los objetos, funciones y variables globales disponibles en una página web. Por ejemplo, funciones como `alert()`, `setTimeout()` o el objeto `document` están accesibles a través de `window`.
 Ejemplo:
 ```javascript
