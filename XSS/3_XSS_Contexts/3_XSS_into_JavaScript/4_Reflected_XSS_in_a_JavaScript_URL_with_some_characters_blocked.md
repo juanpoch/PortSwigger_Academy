@@ -221,6 +221,18 @@ También es donde ocurren eventos globales como `onerror`, y se pueden sobrescri
   fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., window+'''})
   ```
 
+Vemos que en la sentencia, nos queda una cadena de caracteres que causarían un error: `'})`.
+
+Por eso agregamos un argumento más, el argumento `{x:''}` (agregando `,{x:'` y aprovechando las últimas `'}` suelta:
+```html
+arg3,{x:''}
+```
+La sentencia final quedaría así:
+```html
+fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1.., ..arg2.., window+'',{x:''})
+```
+`Nota`: El elemento `{x:''}` es ...
+
 
 
 
