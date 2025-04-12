@@ -214,11 +214,11 @@ También es donde ocurren eventos globales como `onerror`, y se pueden sobrescri
 ---
 
 - Ultimo parámetro inyectado en la `API fetch`:
-  - `{x:'`:
+  - `,{x:'`:
  
   Hasta ahora la función fetc quedaría así:
   ```html
-  post?postId=4&'}, ..arg1..,..arg2..,window+''
+  fetch('/analytics', {method:'post',body:'/post?postId=4&'}, ..arg1..,..arg2..,window+''
   ```
 
 
