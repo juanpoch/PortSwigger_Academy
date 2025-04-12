@@ -52,12 +52,14 @@ Este es un enlace `<a>` que ejecuta JavaScript cuando el usuario hace clic. Espe
   
   Esto probablemente es una especie de "tracking" de navegación. O sea, le dice al servidor que el usuario está 
   regresando desde el post con ID 4.
+  
   Y luego redirige al usuario a la página principal del blog (/) al hacer click en "back to blog":
   ```html
   finally(_ => window.location = '/')">Back to Blog</a>
   ```
 
-🛠️ `.then()`, `.catch()`, `.finally()` 
+🛠️ `.then()`, `.catch()`, `.finally()`   
+
 Son formas de manejar el resultado de `fetch()`:
 `.then()` → si la petición funciona
 `.catch()` → si hubo un error
