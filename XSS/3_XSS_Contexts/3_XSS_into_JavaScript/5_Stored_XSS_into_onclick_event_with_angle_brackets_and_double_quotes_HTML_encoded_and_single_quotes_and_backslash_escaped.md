@@ -71,7 +71,20 @@ Y nuestro resultado es que resolvemos el lab:
 ![image](https://github.com/user-attachments/assets/e6ba51bc-660b-4487-8541-c73139ac438e)
 ![image](https://github.com/user-attachments/assets/3c0f2584-056d-442c-9fed-0181ab669f5d)
 
-`Nota`: Si bien pareciera que estamos dentro de un contexto javascript, al estar dentro del event habdler `onclick`, seguimos en contexto html, por lo que nos permite realizar esta inyección.
+### 🔐 Usando entidades HTML
+
+En este escenario de inyección, aprovechamos que estamos dentro de un **atributo HTML**, como `onclick`.
+
+Esto es importante porque en este contexto:
+
+1. El **parser HTML** es el primero en actuar.
+2. Este parser **convierte entidades como `&apos;` en comillas simples (`'`)**, antes de que el navegador ejecute el contenido del atributo como JavaScript.
+3. Gracias a eso, podemos **inyectar comillas y otras estructuras peligrosas de forma segura**, sin romper el HTML.
+
+➡️ Si estuviéramos en un contexto puramente JavaScript, como dentro de un archivo `.js` o una etiqueta `<script>`, el uso de `&apos;` no tendría ningún efecto: se interpretaría simplemente como texto literal.
+
+---
+
 
 
 
