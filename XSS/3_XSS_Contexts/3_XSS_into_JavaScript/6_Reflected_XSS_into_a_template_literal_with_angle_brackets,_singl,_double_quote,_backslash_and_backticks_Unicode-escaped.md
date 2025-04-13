@@ -14,6 +14,32 @@ La segunda es interesante porque la reflexión se encuentra entre `template lite
 
 🧠 Template literals
 
-Son una forma de escribir strings multilinea o interpolados en JavaScript, usando backticks (```) en lugar de comillas `'` o `"`. Permiten insertar variables o expresiones directamente dentro del string, con la sintaxis `${...}`.
+Son una forma de escribir strings multilínea o interpolados en JavaScript, usando backticks (\`) en lugar de comillas `'` o `"`. Permiten insertar variables o expresiones directamente dentro del string, con la sintaxis `${...}`.
+
+Ejemplo báscio:
+```js
+let nombre = "Carlos";
+console.log(`Hola, ${nombre}!`);  // Output: Hola, Carlos!
+```
+Acá, `${nombre}` se reemplaza dinámicamente por su valor (interpolación).
+También se puede usar para múltiples líneas:
+```js
+let mensaje = `
+Hola!
+Este es un mensaje
+multilínea.
+`;
+```
+Cuando el código del servidor o frontend inserta datos del usuario dentro de una template literal sin sanitizar, puede abrir la puerta a ejecución de código malicioso.
+
+---
+
+En el laboratorio, la reflexión se da en el siguiene contexto:
+```js
+<script>
+var message = `0 search results for 'abc123xy'`;
+...
+```
+En este caso, podemos insertar el siguiente payload: `${alert(1)}`
 
 
