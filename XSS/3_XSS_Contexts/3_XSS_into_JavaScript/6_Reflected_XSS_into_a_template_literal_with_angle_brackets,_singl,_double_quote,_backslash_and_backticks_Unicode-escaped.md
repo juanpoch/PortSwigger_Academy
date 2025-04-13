@@ -2,6 +2,8 @@
 
 This lab contains a reflected cross-site scripting vulnerability in the search blog functionality. The reflection occurs inside a template string with angle brackets, single, and double quotes HTML encoded, and backticks escaped. To solve this lab, perform a cross-site scripting attack that calls the `alert` function inside the template string.
 
+![Practitioner](https://img.shields.io/badge/level-Practitioner-blue)
+
 ---
 
 El sitio web es un blog que permite realizar búsquedas, procedemos a realizar una búsqueda de prueba para analizar el contexto de la reflexión:
@@ -42,5 +44,12 @@ var message = `0 search results for 'abc123xy'`;
 </script>
 ```
 En este caso, podemos insertar el siguiente payload: `${alert(1)}`
+
+Inyectamos el payload y resolvemos el lab:
+![image](https://github.com/user-attachments/assets/4692e526-0415-4da7-a316-37948c6df604)
+
+![image](https://github.com/user-attachments/assets/5af5faa7-7b5e-4191-a71b-2b5b7fb89434)
+
+
 
 
