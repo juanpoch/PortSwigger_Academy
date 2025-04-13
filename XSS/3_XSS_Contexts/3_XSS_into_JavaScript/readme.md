@@ -242,7 +242,7 @@ ${alert(document.domain)}
 
 Esto ejecuta código sin necesidad de romper la plantilla.
 
-## XSS mediante inyección de plantilla del lado del cliente
+## XSS mediante client-side template injection
 
 Frameworks como AngularJS permiten plantillas dinámicas en el cliente. Si la app inyecta datos del usuario sin sanearlos, se pueden inyectar expresiones de plantilla maliciosas para ejecutar JavaScript.
 
