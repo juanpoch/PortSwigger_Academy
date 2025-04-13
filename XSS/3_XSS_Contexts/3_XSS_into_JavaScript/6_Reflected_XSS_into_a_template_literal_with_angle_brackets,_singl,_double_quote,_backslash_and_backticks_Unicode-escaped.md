@@ -39,6 +39,7 @@ En el laboratorio, la reflexión se da en el siguiene contexto:
 <script>
 var message = `0 search results for 'abc123xy'`;
 ...
+</script>
 ```
 En este caso, podemos insertar el siguiente payload: `${alert(1)}`
 
