@@ -71,6 +71,8 @@ Y nuestro resultado es que resolvemos el lab:
 ![image](https://github.com/user-attachments/assets/e6ba51bc-660b-4487-8541-c73139ac438e)
 ![image](https://github.com/user-attachments/assets/3c0f2584-056d-442c-9fed-0181ab669f5d)
 
+`Nota`: Si bien pareciera que estamos dentro de un contexto javascript, al estar dentro del event habdler `onclick`, seguimos en contexto html, por lo que nos permite realizar esta inyección.
+
 
 
 
