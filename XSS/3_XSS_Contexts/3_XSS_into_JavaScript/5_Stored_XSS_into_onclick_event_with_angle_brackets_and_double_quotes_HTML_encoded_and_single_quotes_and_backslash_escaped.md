@@ -57,6 +57,24 @@ En este caso vemos que escapa la `'`:
 ![image](https://github.com/user-attachments/assets/f8bbc98f-3b18-45da-97be-8363b8674526)
 
 
+Es altamente probable que los desarrolladores hayan realizado una sanitización "manual" de estos caracteres, y es posible que pueda usarse como input valores `html encoded`.
+
+Vamos a pasar la siguiente cadena en el campo Website:
+```html
+https://test.com?&apos;-alert(1)-&apos;
+```
+`Nota`: El caracter `?` no es estrictamente necesario en este caso.
+
+![image](https://github.com/user-attachments/assets/37326e4a-19e1-4d19-9947-7841aad816ef)
+
+Y nuestro resultado es que resolvemos el lab:
+![image](https://github.com/user-attachments/assets/e6ba51bc-660b-4487-8541-c73139ac438e)
+![image](https://github.com/user-attachments/assets/3c0f2584-056d-442c-9fed-0181ab669f5d)
+
+
+
+
+
 
 
   
