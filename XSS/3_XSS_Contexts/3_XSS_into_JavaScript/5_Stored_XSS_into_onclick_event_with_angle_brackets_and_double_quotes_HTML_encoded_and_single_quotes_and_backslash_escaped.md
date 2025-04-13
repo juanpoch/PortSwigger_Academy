@@ -85,6 +85,33 @@ Esto es importante porque en este contexto:
 
 ---
 
+### 🧩 ¿Cómo actúa el parser HTML?
+
+Cuando el navegador recibe una página HTML, no la interpreta de golpe como un bloque de JavaScript. En su lugar:
+
+1. **El parser HTML comienza a recorrer el código fuente** y construye una estructura interna conocida como el **DOM (Document Object Model)**.
+2. Durante esta construcción:
+   - Se identifican etiquetas (`<a>`, `<div>`, etc.)
+   - Se procesan atributos (`href`, `onclick`, `src`, etc.)
+   - **Y se decodifican las entidades HTML**, como:
+     - `&lt;` → `<`
+     - `&gt;` → `>`
+     - `&quot;` → `"`
+     - `&apos;` → `'`
+3. Solo **después** de esta fase, se ejecutan los scripts y los atributos de eventos como `onclick`, ya con las entidades **traducidas** a sus caracteres reales.
+
+Esto nos permite hacer algo como:
+
+```html
+<a onclick="tracker.track('https://test.com?&apos;-alert(1)-&apos;')">Click</a>
+```
+Que en realidad se interpreta como:
+```js
+tracker.track('https://test.com?'-alert(1)-'')
+```
+Lo cual rompe el contexto de cadena y ejecuta `alert(1)`.
+
+
 
 
 
