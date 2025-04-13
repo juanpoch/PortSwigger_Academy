@@ -45,8 +45,23 @@ var message = `0 search results for 'abc123xy'`;
 ```
 En este caso, podemos insertar el siguiente payload: `${alert(1)}`
 
+### 💥 Interpolación en Template Literals
+
+Cuando usamos un payload como `${alert(1)}`, estamos aprovechando la capacidad de las *template literals* para ejecutar **expresiones dinámicas** dentro de `${...}`.
+
+Aunque a simple vista parezca que solo se pueden interpolar variables, JavaScript permite evaluar cualquier **expresión válida**, como una llamada a función (`alert(1)`), una operación matemática (`1 + 2`), o incluso un condicional (`true ? 'sí' : 'no'`).
+
+Esto hace posible ejecutar código arbitrario si el contenido del input del usuario es insertado sin sanitización dentro de una *template literal*.
+
+En este caso, el navegador interpreta `${alert(1)}` como una expresión, la evalúa, y ejecuta `alert(1)`, lo que desencadena un **XSS reflejado**.
+
+
 Inyectamos el payload y resolvemos el lab:
 ![image](https://github.com/user-attachments/assets/4692e526-0415-4da7-a316-37948c6df604)
+
+Vemos que la inyección se insertó correctamente en la `template literal`:
+![image](https://github.com/user-attachments/assets/08c8726c-9057-4266-9499-992cec51a466)
+
 
 ![image](https://github.com/user-attachments/assets/5af5faa7-7b5e-4191-a71b-2b5b7fb89434)
 
