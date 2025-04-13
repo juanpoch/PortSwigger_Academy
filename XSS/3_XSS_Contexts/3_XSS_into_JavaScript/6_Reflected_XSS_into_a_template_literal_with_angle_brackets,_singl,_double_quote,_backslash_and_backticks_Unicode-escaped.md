@@ -12,7 +12,7 @@ Vemos dos reflexiones, una entre etiquetas `<h1>` y la otra entre etiquetas `<sc
 
 La segunda es interesante porque la reflexión se encuentra entre `template literal`.
 
-🧠 Template literals
+### 🧠 Template literals
 
 Son una forma de escribir strings multilínea o interpolados en JavaScript, usando backticks (\`) en lugar de comillas `'` o `"`. Permiten insertar variables o expresiones directamente dentro del string, con la sintaxis `${...}`.
 
