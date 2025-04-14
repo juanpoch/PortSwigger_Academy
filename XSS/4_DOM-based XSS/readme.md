@@ -1,4 +1,4 @@
-# DOM-based XSS (Cross-site Scripting)
+# DOM-based XSS
 
 ## ¿Qué es el DOM-based XSS?
 
