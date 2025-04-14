@@ -25,22 +25,27 @@ document.getElementById("output").innerHTML = name;
 ```
 https://example.com/index.html?name=Juan
 ```
-En este caso devuelve `?name=Juan`.
+En este caso devuelve `?name=Juan`.  
+
 `new URLSearchParams(...)`: Esto convierte la query string en un objeto para poder acceder fácilmente a los valores de cada parámetro.
-Esto permite hacer:
+Esto permite hacer:  
+
 ```js
 .get("name")  // devuelve "Juan"
 ```
 `document.getElementById("output").innerHTML = name;`: Este paso inserta el valor directamente en el HTML de la página, en el elemento con `id="output"`.
-Si el html fuera:
+Si el html fuera:  
+
 ```js
 <div id="output"></div>
 ```
-Se convertiría en:
+Se convertiría en:  
+
 ```js
 <div id="output">Juan</div>
 ```
-`Nota`: `innerHTML` es una propiedad de los elementos del DOM que te permite leer o escribir contenido HTML dentro de un elemento.
+`Nota`: `innerHTML` es una propiedad de los elementos del DOM que te permite leer o escribir contenido HTML dentro de un elemento.  
+
 
 🔹 `Ejemplo 1`: Leer contenido con innerHTML
 HTML:
