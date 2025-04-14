@@ -20,6 +20,28 @@ var name = new URLSearchParams(window.location.search).get("name");
 document.getElementById("output").innerHTML = name;
 ```
 
+#### Explicación
+`window.location.search`: Esto accede a la parte de la URL que contiene los parámetros (la query string). Por ejemplo:
+```
+https://example.com/index.html?name=Juan
+```
+En este caso devuelve `?name=Juan`.
+`new URLSearchParams(...)`: Esto convierte la query string en un objeto para poder acceder fácilmente a los valores de cada parámetro.
+Esto permite hacer:
+```js
+.get("name")  // devuelve "Juan"
+```
+`document.getElementById("output").innerHTML = name;`: Este paso inserta el valor directamente en el HTML de la página, en el elemento con `id="output"`.
+Si el html fuera:
+```js
+<div id="output"></div>
+```
+Se convertiría en:
+```js
+<div id="output">Juan</div>
+```
+
+
 Si el usuario accede a:
 ```
 https://example.com/page.html?name=<img src=x onerror=alert(1)>
