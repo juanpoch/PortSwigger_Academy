@@ -40,9 +40,35 @@ Se convertiría en:
 ```js
 <div id="output">Juan</div>
 ```
+`Nota`: `innerHTML` es una propiedad de los elementos del DOM que te permite leer o escribir contenido HTML dentro de un elemento.
 
+🔹 `Ejemplo 1`: Leer contenido con innerHTML
+HTML:
+```js
+<div id="demo"><b>Hola</b> mundo</div>
+```
+JavaScript:
+```js
+var contenido = document.getElementById("demo").innerHTML;
+console.log(contenido);  // Muestra: <b>Hola</b> mundo
+```
+🔹 `Ejemplo 2`: Escribir contenido con innerHTML
+HTML:
+```js
+<div id="demo"></div>
+```
+JavaScript:
+```js
+document.getElementById("demo").innerHTML = "<p>Hola <b>mundo</b></p>";
+```
+Resultado:
+```js
+<div id="demo">
+  <p>Hola <b>mundo</b></p>
+</div>
+```
 
-Si el usuario accede a:
+Por lo tanto si el usuario accede a:
 ```
 https://example.com/page.html?name=<img src=x onerror=alert(1)>
 ```
