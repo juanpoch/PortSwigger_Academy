@@ -48,6 +48,9 @@ Utiliza el depurador JavaScript en Chrome (`Ctrl + Shift + F`) para buscar refer
 
 Burp Suite cuenta con una extensión llamada **DOM Invader** integrada en su navegador Burp. Esta herramienta automatiza parte del proceso de detección y explotación de DOM XSS, marcando fuentes y sinks automáticamente.
 
+[Documentación de DOM Invader - PortSwigger](https://portswigger.net/burp/documentation/desktop/tools/dom-invader)
+
+
 ---
 
 ## Ejemplos de sinks comunes
