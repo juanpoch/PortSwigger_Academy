@@ -139,8 +139,10 @@ Por lo tanto, el HTML original descargado por el navegador seguiría siendo el m
   </body>
 </html>
 ```
-🔸 El <p> está vacío porque en el archivo original no hay contenido cargado aún. JavaScript no se ha ejecutado todavía cuando ves el "código fuente".
-En cambio el DOM sería el siguiente:
+🔸El <p> está vacío porque en el archivo original no hay contenido cargado aún. JavaScript no se ha ejecutado todavía cuando ves el "código fuente".  
+
+En cambio el DOM sería el siguiente:  
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -153,7 +155,8 @@ En cambio el DOM sería el siguiente:
   </body>
 </html>
 ```
-🔸 Ahora el contenido del <p> fue modificado por JavaScript: se insertó "Juan" directamente en el DOM.
+🔸Ahora el contenido del <p> fue modificado por JavaScript: se insertó "Juan" directamente en el DOM.  
+
 
 Ejemplos de operaciones con `innerHTML`:  
 
