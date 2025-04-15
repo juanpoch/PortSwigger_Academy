@@ -160,7 +160,7 @@ En cambio el DOM sería el siguiente:
 
 Ejemplos de operaciones con `innerHTML`:  
 
-🔹 `Ejemplo 1`: Leer contenido con innerHTML  
+🔹 `Ejemplo 1`: Leer contenido con `innerHTML`  
 
 HTML:
 ```js
@@ -171,7 +171,7 @@ JavaScript:
 var contenido = document.getElementById("demo").innerHTML;
 console.log(contenido);  // Muestra: <b>Hola</b> mundo
 ```
-🔹 `Ejemplo 2`: Escribir contenido con innerHTML  
+🔹 `Ejemplo 2`: Escribir contenido con `innerHTML`  
 
 HTML:
 ```js
