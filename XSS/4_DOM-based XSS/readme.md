@@ -86,6 +86,91 @@ Cuando la víctima abra ese enlace, se ejecutará el código JavaScript malicios
 
 ---
 
+# Fuentes y Sinks en DOM-based XSS
+
+En las vulnerabilidades de tipo **DOM-based Cross-Site Scripting (XSS)**, el flujo de datos entre fuentes (`sources`) y sumideros (`sinks`) es fundamental para entender cómo un atacante puede inyectar y ejecutar código malicioso en el navegador de la víctima.
+
+## 📌 ¿Qué es una "source"?
+
+Una **source** (fuente) es cualquier parte del entorno del navegador que **un atacante puede controlar o manipular**. JavaScript puede acceder a estas fuentes para leer información como parámetros de la URL, fragmentos, cookies, etc.
+
+### 🔹 Ejemplos comunes de Sources
+
+| Source                                 | Descripción                                           | Ejemplo                              |
+|----------------------------------------|-------------------------------------------------------|--------------------------------------|
+| `window.location`                      | La URL completa                                       | `http://example.com/?x=valor`        |
+| `location.search`                      | La cadena de consulta (query string)                  | `?x=valor`                           |
+| `location.hash`                        | El fragmento después del `#`                          | `#x=valor`                           |
+| `document.referrer`                    | La URL de la página previa (si hay)                   | Referer controlado por el atacante   |
+| `document.cookie`                      | Las cookies del sitio                                 | Si son accesibles vía JavaScript     |
+| `localStorage.getItem()`               | Datos almacenados en Local Storage                    | `localStorage.getItem("x")`          |
+| `sessionStorage.getItem()`             | Datos en Session Storage                              | `sessionStorage.getItem("x")`        |
+| `window.name`                          | Valor de `window.name`, persistente entre páginas     | Puede pasar datos entre dominios     |
+| `history.pushState` / `history.replaceState` | Permiten manipular el historial y estado         | Contenido puede ser reutilizado      |
+
+---
+
+## 📌 ¿Qué es un "sink"?
+
+Un **sink** (sumidero) es una función o propiedad en la que, si se introduce contenido no validado, **puede llevar a la ejecución de código**. Un atacante busca enviar su carga útil desde una fuente hacia un sink para ejecutarla.
+
+### 🔹 Sinks peligrosos (que ejecutan código directamente)
+
+| Sink               | Descripción                                          | Ejemplo vulnerable                         |
+|--------------------|------------------------------------------------------|--------------------------------------------|
+| `eval()`           | Ejecuta cualquier string como código JavaScript      | `eval(userInput)`                          |
+| `setTimeout()`     | Si se pasa una cadena, ejecuta código como `eval()`  | `setTimeout(userInput, 1000)`              |
+| `setInterval()`    | Igual que `setTimeout()`                             | `setInterval(userInput, 1000)`             |
+| `Function()`       | Crea una nueva función desde una cadena              | `new Function(userInput)`                  |
+| `document.write()` | Escribe directamente en el documento                 | `document.write(userInput)`                |
+
+### 🔸 Sinks comunes de inyección HTML
+
+| Sink                    | Descripción                                             | Ejemplo vulnerable                         |
+|-------------------------|---------------------------------------------------------|--------------------------------------------|
+| `element.innerHTML`     | Inserta HTML directamente                               | `div.innerHTML = userInput`                |
+| `element.outerHTML`     | Reemplaza el elemento completo con HTML                 | `div.outerHTML = userInput`                |
+| `element.insertAdjacentHTML()` | Inserta HTML en una posición específica del DOM  | `el.insertAdjacentHTML("beforeend", input)`|
+| `element.setAttribute()`| Si se usa para atributos como `onclick`, puede ser peligroso | `el.setAttribute("onclick", userInput)` |
+
+### 🔹 Sinks que modifican URLs o redireccionan
+
+| Sink                      | Descripción                                       | Ejemplo vulnerable                         |
+|---------------------------|---------------------------------------------------|--------------------------------------------|
+| `location.href`           | Redirecciona la página                            | `location.href = userInput`                |
+| `location.replace()`      | Redirecciona sin guardar en historial             | `location.replace(userInput)`              |
+| `window.open()`           | Abre una nueva ventana o redirecciona             | `window.open(userInput)`                   |
+
+---
+
+## 🔁 Ejemplo de flujo vulnerable
+
+```js
+// Source: location.search
+var name = new URLSearchParams(window.location.search).get("name");
+
+// Sink: innerHTML (peligroso si no se sanitiza)
+document.getElementById("output").innerHTML = name;
+```
+
+Si visitás: 
+```php
+http://example.com/?name=<script>alert('XSS')</script>
+```
+El script se ejecutará en el navegador de la víctima.
+
+## ✅ ¿Cómo prevenir?
+
+- Usar funciones seguras como `textContent` en lugar de `innerHTML` cuando se inserta texto.
+- Validar y sanitizar los datos antes de insertarlos en el DOM.
+- Evitar funciones peligrosas como `eval()`, `setTimeout(string)`, `Function()`, etc.
+- Utilizar bibliotecas modernas que manejan el DOM de forma segura y escapan automáticamente los datos (como **React**, **Vue**, **Angular**, etc.).
+
+> ⚠️ **Importante**: el navegador no advierte automáticamente sobre estos riesgos. Si controlás un sitio web, debés implementar medidas proactivas para proteger a los usuarios.
+
+---  
+
+
 ## ¿Cómo identificar un DOM-based XSS?
 
 Para explotar este tipo de vulnerabilidad, el atacante debe ubicar datos en una fuente (*source*) que luego sean procesados por un *sink* vulnerable. La fuente más común es la URL, accedida con `window.location`, `document.URL`, `location.search`, `location.hash`, etc.
