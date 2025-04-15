@@ -71,7 +71,7 @@ Supongamos que tenemos la siguiente página HTML:
 </html>
 ```
 
-Esta página toma el parámetro `name` de la URL y lo inserta directamente en el HTML usando `innerHTML`.
+Esta página toma el parámetro `name` de la URL y lo inserta directamente en el HTML usando `innerHTML`. Este ejemplo se explicará detalladamente más adelante.
 
 `Nota`: El navegador descarga el HTML original del servidor y lo muestra tal cual en "Ver código fuente". Ese contenido no cambia, ni siquiera si JavaScript lo modifica más tarde. Quiere decir, que lo que está modificando realmente es el DOM, el cual se visualiza con las "dev tools".
 
@@ -99,6 +99,8 @@ document.getElementById("output").innerHTML = name;
 ```
 
 #### Explicación
+Procedemos a explicar paso a paso el ejemplo original:  
+
 `window.location.search`: Esto accede a la parte de la URL que contiene los parámetros (la query string). Por ejemplo:
 ```
 https://example.com/index.html?name=Juan
@@ -111,7 +113,7 @@ Esto permite hacer:
 ```js
 .get("name")  // devuelve "Juan"
 ```
-`document.getElementById("output").innerHTML = name;`: Este paso inserta el valor directamente en el HTML de la página, en el elemento con `id="output"`.
+`document.getElementById("output").innerHTML = name;`: Este paso inserta el valor directamente en el HTML (DOM) de la página, en el elemento con `id="output"`.
 Si el html fuera:  
 
 ```js
@@ -125,7 +127,8 @@ Se convertiría en:
 `Nota`: `innerHTML` es una propiedad de los elementos del DOM que te permite leer o escribir contenido HTML dentro de un elemento.  
 
 
-🔹 `Ejemplo 1`: Leer contenido con innerHTML
+🔹 `Ejemplo 1`: Leer contenido con innerHTML  
+
 HTML:
 ```js
 <div id="demo"><b>Hola</b> mundo</div>
