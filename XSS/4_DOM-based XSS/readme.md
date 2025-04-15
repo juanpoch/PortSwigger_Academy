@@ -10,9 +10,18 @@ A diferencia de los ataques XSS tradicionales, el DOM-based XSS no depende de un
 
 ---
 
-## ¿Qué es el DOM y para qué sirve?
+## ¿Qué es el DOM?
 
-El **DOM (Document Object Model)** es una representación estructurada del contenido HTML de una página web. Es como un árbol jerárquico donde cada nodo representa una parte del documento: etiquetas, atributos, texto, etc. Gracias al DOM, los lenguajes de programación como JavaScript pueden leer, modificar, agregar o eliminar elementos del contenido de una página de forma dinámica.
+El **DOM** (Document Object Model, o Modelo de Objetos del Documento) es una **representación en memoria** de la estructura de una página web. Cuando el navegador carga una página HTML, convierte ese contenido en un modelo de objetos que organiza los elementos del sitio como un **árbol jerárquico**. Cada nodo del árbol representa una parte del documento: etiquetas HTML (`<div>`, `<p>`, `<a>`, etc.), atributos (`id`, `class`, etc.), y texto.
+
+Gracias al DOM, JavaScript puede:
+
+- Leer y modificar el contenido de un elemento.
+- Agregar o eliminar elementos de la página.
+- Cambiar atributos de los elementos.
+- Reaccionar a eventos como clics del usuario, presionar teclas, etc.
+
+> Este modelo dinámico permite que una página web no sea simplemente algo estático, sino que pueda adaptarse y responder en tiempo real a lo que hace el usuario.
 
 Por ejemplo, si tenés un HTML como este:
 
