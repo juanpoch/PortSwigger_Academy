@@ -1,12 +1,77 @@
 # DOM-based XSS
 
-## ¿Qué es el DOM-based XSS?
+# ¿Qué es el DOM-based XSS?
 
-El DOM-based XSS es un tipo de vulnerabilidad que ocurre cuando el código JavaScript del lado del cliente (es decir, que se ejecuta en el navegador) toma datos controlados por el atacante —como partes de la URL— y los inserta en funciones inseguras (llamadas sinks), como eval() o innerHTML, que permiten la ejecución de código.
+El DOM-based XSS es un tipo de vulnerabilidad que ocurre cuando el código JavaScript del lado del cliente (es decir, que se ejecuta en el navegador) toma datos controlados por el atacante —como partes de la URL— y los inserta en funciones inseguras (llamadas *sinks*), como `eval()` o `innerHTML`, que permiten la ejecución de código.
 
 Esto le da al atacante la posibilidad de ejecutar JavaScript malicioso directamente en el navegador de la víctima, lo que puede llevar al robo de información sensible como cookies, tokens de sesión u otros datos personales.
 
 A diferencia de los ataques XSS tradicionales, el DOM-based XSS no depende de una respuesta vulnerable del servidor. Todo ocurre en el navegador, donde el contenido del DOM se modifica dinámicamente sin interacción con el servidor.
+
+---
+
+## ¿Qué es el DOM y para qué sirve?
+
+El **DOM (Document Object Model)** es una representación estructurada del contenido HTML de una página web. Es como un árbol jerárquico donde cada nodo representa una parte del documento: etiquetas, atributos, texto, etc. Gracias al DOM, los lenguajes de programación como JavaScript pueden leer, modificar, agregar o eliminar elementos del contenido de una página de forma dinámica.
+
+Por ejemplo, si tenés un HTML como este:
+
+```html
+<p id="mensaje">Hola, mundo</p>
+```
+
+Podés cambiar el texto con JavaScript usando el DOM:
+
+```javascript
+document.getElementById("mensaje").innerText = "¡Hola, usuario!";
+```
+
+---
+
+## ¿Qué hace JavaScript del lado del cliente?
+
+JavaScript del lado del cliente es el que se ejecuta directamente en el navegador del usuario. Sirve principalmente para interactuar con el DOM, responder a eventos (como clics o teclas), validar formularios, hacer animaciones o solicitudes a servidores mediante AJAX, entre otras cosas.
+
+Este código puede estar:
+
+- Escrito dentro de etiquetas `<script>` directamente en el HTML.
+- Referenciado desde archivos externos, por ejemplo: `<script src="script.js"></script>`.
+
+---
+
+## ¿A qué se refiere con "código JavaScript del lado del cliente"?
+
+Se refiere a cualquier código JavaScript que corre en el navegador (no en el servidor), y que tiene acceso al contenido de la página (DOM), al almacenamiento local, a cookies, a la URL, etc. Este código es visible para el usuario si inspecciona la página con herramientas de desarrollo (como F12 en Chrome) o si revisa el código fuente.
+
+---
+
+## Ejemplo de DOM-based XSS vulnerable
+
+Supongamos que tenemos la siguiente página HTML:
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="output"></p>
+    <script>
+      var name = new URLSearchParams(window.location.search).get("name");
+      document.getElementById("output").innerHTML = name;
+    </script>
+  </body>
+</html>
+```
+
+Esta página toma el parámetro `name` de la URL y lo inserta directamente en el HTML usando `innerHTML`.
+
+Un atacante podría enviar este enlace a una víctima:
+
+```
+http://vulnerable.com/page.html?name=<img src=x onerror="alert('XSS')">
+```
+
+Cuando la víctima abra ese enlace, se ejecutará el código JavaScript malicioso (`alert('XSS')`).
+
 
 ---
 
