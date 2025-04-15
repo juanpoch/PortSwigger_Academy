@@ -113,7 +113,7 @@ Un **source** es cualquier parte del entorno del navegador que **un atacante pue
 
 ## 📌 ¿Qué es un "sink"?
 
-Un **sink** es una función o propiedad en la que, si se introduce contenido no validado, **puede llevar a la ejecución de código**. Un atacante busca enviar su carga útil desde una fuente hacia un sink para ejecutarla.
+Un **sink** es una función o propiedad en la que, si se introduce contenido no validado, **puede llevar a la ejecución de código**. Un atacante busca enviar su payload desde una fuente hacia un sink para ejecutarla.
 
 ### 🔹 Sinks peligrosos
 
