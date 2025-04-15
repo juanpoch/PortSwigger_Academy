@@ -160,21 +160,15 @@ http://example.com/?name=<script>alert('XSS')</script>
 ```
 El script se ejecutará en el navegador de la víctima.
 
-## ✅ ¿Cómo prevenir?
 
-- Usar funciones seguras como `textContent` en lugar de `innerHTML` cuando se inserta texto.
-- Validar y sanitizar los datos antes de insertarlos en el DOM.
-- Evitar funciones peligrosas como `eval()`, `setTimeout(string)`, `Function()`, etc.
-- Utilizar bibliotecas modernas que manejan el DOM de forma segura y escapan automáticamente los datos (como **React**, **Vue**, **Angular**, etc.).
-
-> ⚠️ **Importante**: el navegador no advierte automáticamente sobre estos riesgos. Si controlás un sitio web, debés implementar medidas proactivas para proteger a los usuarios.
 
 ---  
 
 
 ## ¿Cómo identificar un DOM-based XSS?
 
-Para explotar este tipo de vulnerabilidad, el atacante debe ubicar datos en una fuente (*source*) que luego sean procesados por un *sink* vulnerable. La fuente más común es la URL, accedida con `window.location`, `document.URL`, `location.search`, `location.hash`, etc.
+Para explotar este tipo de vulnerabilidad, el atacante debe ubicar datos en un **source** que luego sean procesados por un **sink** vulnerable. La fuente más común es la URL, accedida con `window.location`, `document.URL`, `location.search`, `location.hash`, etc.  
+
 
 ### Ejemplo básico:
 
@@ -400,14 +394,15 @@ element.innerHTML = comment.author;
 - `jQuery.parseHTML()`, `$.parseHTML()`
 
 ---
-
-## Cómo prevenir DOM-based XSS
+## ✅ Cómo prevenir DOM-based XSS
 
 - **Evitar usar sinks peligrosos** como `innerHTML`, `eval()`, `document.write()` con datos no confiables.
 - **Sanitizar la entrada del usuario** antes de incluirla en el DOM.
 - **Utilizar APIs seguras**, como `textContent` en lugar de `innerHTML`.
 - **Utilizar frameworks modernos** que escapan automáticamente el contenido.
 - **Auditar librerías de terceros** que puedan tener sinks vulnerables.
+
+> ⚠️ **Importante**: el navegador no advierte automáticamente sobre estos riesgos. Si controlás un sitio web, debés implementar medidas proactivas para proteger a los usuarios.
 
 ---
 
