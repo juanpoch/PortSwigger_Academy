@@ -2,9 +2,11 @@
 
 ## ¿Qué es el DOM-based XSS?
 
-El **DOM-based XSS** es una vulnerabilidad de tipo cross-site scripting que ocurre cuando el código JavaScript del lado del cliente (es decir, en el navegador) toma datos controlados por el atacante —como partes de la URL— y los introduce en funciones peligrosas (conocidas como *sinks*) que permiten la ejecución de código, como `eval()` o `innerHTML`. Esto permite a los atacantes ejecutar JavaScript malicioso en el navegador de la víctima, pudiendo robar información sensible como cookies o tokens de sesión.
+El DOM-based XSS es un tipo de vulnerabilidad que ocurre cuando el código JavaScript del lado del cliente (es decir, que se ejecuta en el navegador) toma datos controlados por el atacante —como partes de la URL— y los inserta en funciones inseguras (llamadas sinks), como eval() o innerHTML, que permiten la ejecución de código.
 
-A diferencia del XSS tradicional, el DOM-based XSS no depende directamente de la respuesta del servidor. En cambio, ocurre completamente en el navegador, modificando el DOM sin intervención del servidor.
+Esto le da al atacante la posibilidad de ejecutar JavaScript malicioso directamente en el navegador de la víctima, lo que puede llevar al robo de información sensible como cookies, tokens de sesión u otros datos personales.
+
+A diferencia de los ataques XSS tradicionales, el DOM-based XSS no depende de una respuesta vulnerable del servidor. Todo ocurre en el navegador, donde el contenido del DOM se modifica dinámicamente sin interacción con el servidor.
 
 ---
 
