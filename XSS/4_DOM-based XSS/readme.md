@@ -88,12 +88,12 @@ Cuando la víctima abra ese enlace, se ejecutará el código JavaScript malicios
 
 # Fuentes y Sinks en DOM-based XSS
 
-En las vulnerabilidades de tipo **DOM-based Cross-Site Scripting**, el flujo de datos entre fuentes (`sources`) y sumideros (`sinks`) es fundamental para entender cómo un atacante puede inyectar y ejecutar código malicioso en el navegador de la víctima.  
+En las vulnerabilidades de tipo **DOM-based Cross-Site Scripting**, el flujo de datos entre `sources` y `sinks` es fundamental para entender cómo un atacante puede inyectar y ejecutar código malicioso en el navegador de la víctima.  
 
 
 ## 📌 ¿Qué es una "source"?
 
-Una **source** (fuente) es cualquier parte del entorno del navegador que **un atacante puede controlar o manipular**. JavaScript puede acceder a estas fuentes para leer información como parámetros de la URL, fragmentos, cookies, etc.
+Una **source** es cualquier parte del entorno del navegador que **un atacante puede controlar o manipular**. JavaScript puede acceder a estas fuentes para leer información como parámetros de la URL, fragmentos, cookies, etc.
 
 ### 🔹 Ejemplos comunes de Sources
 
@@ -113,9 +113,9 @@ Una **source** (fuente) es cualquier parte del entorno del navegador que **un at
 
 ## 📌 ¿Qué es un "sink"?
 
-Un **sink** (sumidero) es una función o propiedad en la que, si se introduce contenido no validado, **puede llevar a la ejecución de código**. Un atacante busca enviar su carga útil desde una fuente hacia un sink para ejecutarla.
+Un **sink** es una función o propiedad en la que, si se introduce contenido no validado, **puede llevar a la ejecución de código**. Un atacante busca enviar su carga útil desde una fuente hacia un sink para ejecutarla.
 
-### 🔹 Sinks peligrosos (que ejecutan código directamente)
+### 🔹 Sinks peligrosos
 
 | Sink               | Descripción                                          | Ejemplo vulnerable                         |
 |--------------------|------------------------------------------------------|--------------------------------------------|
