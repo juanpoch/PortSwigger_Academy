@@ -127,7 +127,7 @@ Se convertiría en:
 `Nota`: `innerHTML` es una propiedad de los elementos del DOM que te permite leer o escribir contenido HTML dentro de un elemento.  
 
 Por lo tanto, el HTML original descargado por el navegador seguiría siendo el mismo:
-```js
+```html
 <!DOCTYPE html>
 <html>
   <body>
@@ -141,7 +141,7 @@ Por lo tanto, el HTML original descargado por el navegador seguiría siendo el m
 ```
 🔸 El <p> está vacío porque en el archivo original no hay contenido cargado aún. JavaScript no se ha ejecutado todavía cuando ves el "código fuente".
 En cambio el DOM sería el siguiente:
-```js
+```html
 <!DOCTYPE html>
 <html>
   <body>
