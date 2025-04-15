@@ -171,7 +171,8 @@ JavaScript:
 var contenido = document.getElementById("demo").innerHTML;
 console.log(contenido);  // Muestra: <b>Hola</b> mundo
 ```
-🔹 `Ejemplo 2`: Escribir contenido con innerHTML
+🔹 `Ejemplo 2`: Escribir contenido con innerHTML  
+
 HTML:
 ```js
 <div id="demo"></div>
