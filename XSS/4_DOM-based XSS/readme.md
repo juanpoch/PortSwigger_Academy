@@ -88,7 +88,8 @@ Cuando la víctima abra ese enlace, se ejecutará el código JavaScript malicios
 
 # Fuentes y Sinks en DOM-based XSS
 
-En las vulnerabilidades de tipo **DOM-based Cross-Site Scripting (XSS)**, el flujo de datos entre fuentes (`sources`) y sumideros (`sinks`) es fundamental para entender cómo un atacante puede inyectar y ejecutar código malicioso en el navegador de la víctima.
+En las vulnerabilidades de tipo **DOM-based Cross-Site Scripting **, el flujo de datos entre fuentes (`sources`) y sumideros (`sinks`) es fundamental para entender cómo un atacante puede inyectar y ejecutar código malicioso en el navegador de la víctima.  
+
 
 ## 📌 ¿Qué es una "source"?
 
