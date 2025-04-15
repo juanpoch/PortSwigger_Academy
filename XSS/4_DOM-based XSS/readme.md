@@ -73,6 +73,8 @@ Supongamos que tenemos la siguiente página HTML:
 
 Esta página toma el parámetro `name` de la URL y lo inserta directamente en el HTML usando `innerHTML`.
 
+`Nota`: El navegador descarga el HTML original del servidor y lo muestra tal cual en "Ver código fuente". Ese contenido no cambia, ni siquiera si JavaScript lo modifica más tarde. Quiere decir, que lo que está modificando realmente es el DOM, el cual se visualiza con las "dev tools".
+
 Un atacante podría enviar este enlace a una víctima:
 
 ```
