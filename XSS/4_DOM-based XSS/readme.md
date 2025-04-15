@@ -91,9 +91,9 @@ Cuando la víctima abra ese enlace, se ejecutará el código JavaScript malicios
 En las vulnerabilidades de tipo **DOM-based Cross-Site Scripting**, el flujo de datos entre `sources` y `sinks` es fundamental para entender cómo un atacante puede inyectar y ejecutar código malicioso en el navegador de la víctima.  
 
 
-## 📌 ¿Qué es una "source"?
+## 📌 ¿Qué es un "source"?
 
-Una **source** es cualquier parte del entorno del navegador que **un atacante puede controlar o manipular**. JavaScript puede acceder a estas fuentes para leer información como parámetros de la URL, fragmentos, cookies, etc.
+Un **source** es cualquier parte del entorno del navegador que **un atacante puede controlar o manipular**. JavaScript puede acceder a estas fuentes para leer información como parámetros de la URL, fragmentos, cookies, etc.
 
 ### 🔹 Ejemplos comunes de Sources
 
