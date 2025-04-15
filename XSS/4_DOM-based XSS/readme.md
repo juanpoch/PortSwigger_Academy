@@ -126,6 +126,36 @@ Se convertiría en:
 ```
 `Nota`: `innerHTML` es una propiedad de los elementos del DOM que te permite leer o escribir contenido HTML dentro de un elemento.  
 
+Por lo tanto, el HTML original descargado por el navegador seguiría siendo el mismo:
+```js
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="output"></p>
+    <script>
+      var name = new URLSearchParams(window.location.search).get("name");
+      document.getElementById("output").innerHTML = name;
+    </script>
+  </body>
+</html>
+```
+🔸 El <p> está vacío porque en el archivo original no hay contenido cargado aún. JavaScript no se ha ejecutado todavía cuando ves el "código fuente".
+En cambio el DOM sería el siguiente:
+```js
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="output">Juan</p>
+    <script>
+      var name = new URLSearchParams(window.location.search).get("name");
+      document.getElementById("output").innerHTML = name;
+    </script>
+  </body>
+</html>
+```
+🔸 Ahora el contenido del <p> fue modificado por JavaScript: se insertó "Juan" directamente en el DOM.
+
+Ejemplos de operaciones con `innerHTML`:  
 
 🔹 `Ejemplo 1`: Leer contenido con innerHTML  
 
