@@ -12,7 +12,7 @@ A diferencia de los ataques XSS tradicionales, el DOM-based XSS no depende de un
 
 ## ¿Qué es el DOM?
 
-El **DOM** (Document Object Model, o Modelo de Objetos del Documento) es una **representación en memoria** de la estructura de una página web. Cuando el navegador carga una página HTML, convierte ese contenido en un modelo de objetos que organiza los elementos del sitio como un **árbol jerárquico**. Cada nodo del árbol representa una parte del documento: etiquetas HTML (`<div>`, `<p>`, `<a>`, etc.), atributos (`id`, `class`, etc.), y texto.
+El **DOM** (Document Object Model) es una **representación en memoria** de la estructura de una página web. Cuando el navegador carga una página HTML, convierte ese contenido en un modelo de objetos que organiza los elementos del sitio como un **árbol jerárquico**. Cada nodo del árbol representa una parte del documento: etiquetas HTML (`<div>`, `<p>`, `<a>`, etc.), atributos (`id`, `class`, etc.), y texto.
 
 Gracias al DOM, JavaScript puede:
 
