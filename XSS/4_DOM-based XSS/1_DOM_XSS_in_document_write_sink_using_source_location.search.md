@@ -80,6 +80,16 @@ Ingresamos el siguiente payload:
 abc123xy" onload="alert(1)
 ```
 
+Resolvemos el lab:
+![image](https://github.com/user-attachments/assets/88aa4b5c-ea21-4a1b-a75a-21d047e412d4)
+
+Inspeccionamos el DOM para ver la inyección:
+![image](https://github.com/user-attachments/assets/5631f1f6-6f47-4c32-a214-047de45bbf8e)
+
+Se puede visualizar que la inyección de un nuevo atributo fue exitosa.
+
+
+
 
 
 
