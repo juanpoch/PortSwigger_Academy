@@ -5,9 +5,8 @@ This lab contains a DOM-based cross-site scripting vulnerability in the search q
 To solve this lab, perform a cross-site scripting attack that calls the `alert` function.  
 
 
-<span style="display: inline-block; background-color: #28a745; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-weight: bold;">
-  Apprentice
-</span>
+![Apprentice](https://img.shields.io/badge/Aprentice-%2300a86b?style=for-the-badge&logo=portainer&logoColor=white)
+
 
 ---
 
