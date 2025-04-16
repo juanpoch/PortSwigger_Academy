@@ -72,7 +72,13 @@ El condicional es el encargado de llamar a la función trackSearch(query); si se
 
 ---
 
+Debido a que la reflexión se dá dentro de la etiqueta `img`, dentro del atributo `src`, procedemos a realizar un break out y salirnos del atributo, cerrándolo y añadiendo un nuevo atributo.
 
+Ingresamos el siguiente payload:
+
+```js
+abc123xy" onload="alert(1)
+```
 
 
 
