@@ -381,15 +381,16 @@ element.innerHTML = comment.author;
 ### Nativos:
 - `document.write()`
 - `document.writeln()`
+- `document.domain`
 - `element.innerHTML`
 - `element.outerHTML`
 - `element.insertAdjacentHTML`
 - `element.onevent` (como `onclick`, `onerror`, etc.)
 
 ### jQuery:
-- `html()`, `append()`, `prepend()`, `after()`, `before()`
-- `wrap()`, `wrapInner()`, `wrapAll()`
-- `replaceWith()`, `replaceAll()`
+- `html()`, `append()`, `prepend()`, `insertafter()`, `insertbefore()`, `after()`, `before()`
+- `wrap()`, `wrapInner()`, `wrapAll()`, `has()`, `constructor()`, `init()`, `index()`
+- `replaceWith()`, `replaceAll()`, `replaceWith()`
 - `$()`, `add()`, `animate()`
 - `jQuery.parseHTML()`, `$.parseHTML()`
 
