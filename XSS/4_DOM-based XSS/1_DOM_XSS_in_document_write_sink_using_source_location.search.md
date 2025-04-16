@@ -19,8 +19,14 @@ Vemos la reflexión en 2 lugares distintos:
 - Dentro de la etiqueta `<h1>`: Probablemente es parte de la respuesta que está enviando el servidor.
 - Dentro de la etiqueta `<img>`: Esto tiene más probabilidad de estar siendo reflejado en el DOM.
 
-Analizemos más detalladamente la segunda reflexión:
+![image](https://github.com/user-attachments/assets/1b4e2c5e-38b7-4fe6-8968-d4df4815302f)
 
+Nótese cómo la reflexión en el código fuente se dá sólo entre las etiquetas `h1`, debido a que aun no se ejecutó JavaScript, la segunda reflexión sucede efectivamente en el DOM.
+
+
+### Analizemos más detalladamente la segunda reflexión:
+
+Tenemos unas etiquetas `<script>` que son las creadoras de la etiqueta `img` donde el parámetro se refleja:
 ```js
 function trackSearch(query) {
     document.write('<img src="/resources/images/tracker.gif?searchTerms=' + query + '">');
