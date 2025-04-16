@@ -67,6 +67,9 @@ Este `query` se inyecta directamente en el HTML mediante `document.write()` sin 
 
 Si el valor de `query` contiene código HTML o JavaScript, **se insertará en el DOM y el navegador lo ejecutará**.
 
+
+El condicional es el encargado de llamar a la función trackSearch(query); si se pasa un parámetro para `query`.  
+
 ---
 
 
