@@ -61,6 +61,10 @@ Este `query` se inyecta directamente en el HTML mediante `document.write()` sin 
 
 Si el valor de `query` contiene código HTML o JavaScript, **se insertará en el DOM y el navegador lo ejecutará**.
 
+---
+
+
+
 
 
 
