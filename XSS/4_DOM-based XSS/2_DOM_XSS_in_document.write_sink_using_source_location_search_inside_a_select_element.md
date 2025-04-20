@@ -132,6 +132,16 @@ Como se puede ver, el payload **cierra tanto la opción como el `<select>`** man
 
 🔍 Este es un paso fundamental en un ataque de tipo **DOM-based XSS**, ya que abre la posibilidad de inyectar contenido HTML o JavaScript luego de cerrar correctamente las etiquetas existentes.
 
+---
+
+Utilizamos el siguiente payload para inyectar un xss:
+`abc123xy</option></select><img src=0 onerror=alert(1)>`
+Obtenemos el popup:
+![image](https://github.com/user-attachments/assets/b922d1e3-a621-414c-ab52-27e59cfbe57f)
+![image](https://github.com/user-attachments/assets/84df6c2f-c5bf-47bd-b552-779bccb3b845)
+
+
+
 
 
 
