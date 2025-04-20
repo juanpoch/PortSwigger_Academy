@@ -86,6 +86,17 @@ Este código tiene una vulnerabilidad de tipo **DOM-based XSS**, ya que:
 
 ---
 
+Como vimos, el valor que insertamos en el parámetro `search` se refleja en la etiqueta `<span>` dinamicamente con JavaScript:
+![image](https://github.com/user-attachments/assets/f6dfaf22-c231-438d-8b7a-dcc34edcf091)
+
+Lo que queda ahora es intentar inyectar etiquetas `<script>` pero no están siendo ejecutadas:
+![image](https://github.com/user-attachments/assets/6f961993-6d86-46bf-9df6-ddf95bf258d7)
+
+
+
+
+
+
 
 
 
