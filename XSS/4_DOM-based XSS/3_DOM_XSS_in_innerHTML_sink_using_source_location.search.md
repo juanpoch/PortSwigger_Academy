@@ -9,7 +9,7 @@ To solve this lab, perform a cross-site scripting attack that calls the `alert` 
 ---
 
 Notas de Portswigger:
-El receptor `innerHTML` no acepta elementos `script` en ningún navegador moderno, ni activa eventos `svg` `onload`. Esto significa que deberá usar elementos alternativos como `img` o `iframe`. Los controladores de eventos como `onload` y `onerror` pueden usarse junto con estos elementos. Por ejemplo:
+El receptor `innerHTML` no acepta elementos `script` en ningún navegador moderno, ni activa eventos `svg`, `onload`. Esto significa que deberá usar elementos alternativos como `img` o `iframe`. Los controladores de eventos como `onload` y `onerror` pueden usarse junto con estos elementos. Por ejemplo:
 
 `element.innerHTML='... <img src=1 onerror=alert(document.domain)> ...'`
 
