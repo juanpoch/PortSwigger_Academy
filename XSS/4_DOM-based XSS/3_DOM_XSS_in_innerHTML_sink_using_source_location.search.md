@@ -4,6 +4,8 @@ This lab contains a DOM-based cross-site scripting vulnerability in the search b
 
 To solve this lab, perform a cross-site scripting attack that calls the `alert` function.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
+
 ---
 
 Notas de Portswigger:
