@@ -410,3 +410,7 @@ element.innerHTML = comment.author;
 ## Conclusión
 
 El DOM-based XSS es una vulnerabilidad peligrosa y muchas veces difícil de detectar, ya que ocurre completamente en el navegador del cliente. Su explotación requiere entender cómo fluye la información desde las fuentes hasta los sinks, y cómo el código JavaScript del sitio manipula dicha información. Las buenas prácticas de desarrollo y el uso de herramientas de auditoría pueden prevenir su aparición.
+
+
+[DOM XSS Wiki de Wisec](https://github.com/wisec/domxsswiki/wiki)
+
