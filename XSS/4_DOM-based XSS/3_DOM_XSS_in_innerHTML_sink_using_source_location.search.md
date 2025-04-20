@@ -92,6 +92,14 @@ Como vimos, el valor que insertamos en el parámetro `search` se refleja en la e
 Lo que queda ahora es intentar inyectar etiquetas `<script>` pero no están siendo ejecutadas:
 ![image](https://github.com/user-attachments/assets/6f961993-6d86-46bf-9df6-ddf95bf258d7)
 
+Como anunciamos al inicio del lab, las etiquetas `<script>` no serán ejecutadas en estos casos, por lo que podemos utilizar el siguiente payload:
+- `<img src=0 onerror=alert(1)>`
+
+![image](https://github.com/user-attachments/assets/9d0d0aa9-f468-4b6f-85b3-ac3b83c97b62)
+![image](https://github.com/user-attachments/assets/a704227f-a5dd-4710-b4a4-48f9be049687)
+
+
+
 
 
 
