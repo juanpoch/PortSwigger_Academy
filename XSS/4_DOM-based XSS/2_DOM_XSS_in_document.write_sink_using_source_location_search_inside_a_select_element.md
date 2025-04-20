@@ -98,7 +98,31 @@ Si no, lo agrega como una opción al `<select>`.
 document.write('</select>');
 ```
 
-Cierra la etiqueta `<select>`.%      
+Cierra la etiqueta `<select>`.%  
+
+---
+
+
+Comprobamos el flujo ingresando un valor arbitrario al parámetro `storeId`:
+
+![image](https://github.com/user-attachments/assets/32f3bfac-a83a-4e56-9cb2-ab6c90cdd18e)
+
+Tal como se observa, el valor del parámetro `storeId` es obtenido desde la cadena de consulta mediante:
+```js
+var store = (new URLSearchParams(window.location.search)).get('storeId');
+```
+Luego, ese valor es insertado directamente en el DOM como una opción del elemento `<select>`, utilizando el sink vulnerable `document.write`:
+```js
+document.write('<option selected>' + store + '</option>');
+```
+
+Aquí la idea entonces es inyectar el parámetro cerrando primero la etiqueta `<option>` utilizando el payyload `abc123xy</option></select>`:
+![image](https://github.com/user-attachments/assets/1de3c398-4609-4cfd-8c0f-d2bd41a8be0c)
+
+Vemos que se rompe la estructura del dom, y podemos cerrar satisfactoriamente el elemento `<select>`.
+
+
+
 
 
 
