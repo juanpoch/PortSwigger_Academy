@@ -61,18 +61,7 @@ function doSearchQuery(query) {
 var query = (new URLSearchParams(window.location.search)).get('search');
 ```
 
-🔹 Extrae el valor del parámetro `search` de la URL.
-
-Ejemplo:  
-Si accedés a la página así:  
-```
-https://site.com/?search=hola
-```
-
-Entonces:  
-```js
-query === "hola"
-```
+🔹 Extrae el valor del parámetro `search` de la URL (todo lo que esté después de `?`).
 
 ---
 
@@ -86,19 +75,6 @@ if(query) {
 
 ---
 
-## ⚠️ Riesgo de DOM XSS
-
-Como se usa `innerHTML` para insertar el input del usuario, **no hay ninguna sanitización**.
-
-Un atacante podría inyectar algo como:
-
-```
-https://site.com/?search=<img src=1 onerror=alert(1)>
-```
-
-Y se ejecutaría el `alert(1)` porque el navegador interpreta el contenido como HTML + JavaScript malicioso.
-
----
 
 ## 🔥 Resumen
 
@@ -107,6 +83,9 @@ Este código tiene una vulnerabilidad de tipo **DOM-based XSS**, ya que:
 - Usa `.innerHTML` (interpreta HTML).
 - Toma un valor **directamente de la URL**.
 - Lo inyecta sin validación ni escape.
+
+---
+
 
 
 
