@@ -134,7 +134,11 @@ Como se puede ver, el payload **cierra tanto la opción como el `<select>`** man
 
 ---
 
-Utilizamos el siguiente payload para inyectar un xss:
+## 🚨 Explotación del DOM XSS
+
+Con la estructura HTML comprometida, podemos continuar la inyección con código JavaScript malicioso.
+
+Utilizamos el siguiente payload para inyectar un XSS:
 `abc123xy</option></select><img src=0 onerror=alert(1)>`
 Obtenemos el popup:
 ![image](https://github.com/user-attachments/assets/b922d1e3-a621-414c-ab52-27e59cfbe57f)
