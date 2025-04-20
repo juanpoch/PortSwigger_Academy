@@ -22,7 +22,7 @@ Intentamos encontrar etiquetas `<script>` nuevamente:
 ![image](https://github.com/user-attachments/assets/e6b1f4b8-6169-435a-9049-d45d1376e32a)
 
 Tenemos el siguiente fragmento de código:
-```js
+```html
 <script>
     var stores = ["London","Paris","Milan"];
     var store = (new URLSearchParams(window.location.search)).get('storeId');
