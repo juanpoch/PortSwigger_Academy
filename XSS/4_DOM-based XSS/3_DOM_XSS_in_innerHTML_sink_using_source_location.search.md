@@ -30,4 +30,84 @@ En este fragmento de código tenemos un encabezado `<h1>` que contiene 3 etiquet
 - La segunda inserta un valor dinámicamente con JavaScript (aquí se produce nuestra reflexión).
 - La última cierra la estructura con la comilla simple `'`.
 
+Luego tenemos el siguiente fragmento de código, el cual es utilizado para insertar dinámicamente el valor que se refleja en la segunda etiqueta `<span>`:
+```html
+<script>
+    function doSearchQuery(query) {
+        document.getElementById('searchMessage').innerHTML = query;
+    }
+    var query = (new URLSearchParams(window.location.search)).get('search');
+    if(query) {
+        doSearchQuery(query);
+    }
+</script>
+```
+
+## 🧠 Análisis del script
+
+```js
+function doSearchQuery(query) {
+    document.getElementById('searchMessage').innerHTML = query;
+}
+```
+
+🔹 Se define una función llamada `doSearchQuery` que **toma un parámetro `query`** y lo **inserta en el DOM** dentro del elemento con `id="searchMessage"`.
+
+❗️ **Peligro**: Usa `.innerHTML`, lo cual **interpreta el contenido como HTML**, no como texto plano. Esto habilita **inyección de código HTML o JavaScript** si no se filtra el input del usuario.
+
+---
+
+```js
+var query = (new URLSearchParams(window.location.search)).get('search');
+```
+
+🔹 Extrae el valor del parámetro `search` de la URL.
+
+Ejemplo:  
+Si accedés a la página así:  
+```
+https://site.com/?search=hola
+```
+
+Entonces:  
+```js
+query === "hola"
+```
+
+---
+
+```js
+if(query) {
+    doSearchQuery(query);
+}
+```
+
+🔹 Si existe el parámetro `search`, llama a la función `doSearchQuery()` y le pasa el valor del usuario.
+
+---
+
+## ⚠️ Riesgo de DOM XSS
+
+Como se usa `innerHTML` para insertar el input del usuario, **no hay ninguna sanitización**.
+
+Un atacante podría inyectar algo como:
+
+```
+https://site.com/?search=<img src=1 onerror=alert(1)>
+```
+
+Y se ejecutaría el `alert(1)` porque el navegador interpreta el contenido como HTML + JavaScript malicioso.
+
+---
+
+## 🔥 Resumen
+
+Este código tiene una vulnerabilidad de tipo **DOM-based XSS**, ya que:
+
+- Usa `.innerHTML` (interpreta HTML).
+- Toma un valor **directamente de la URL**.
+- Lo inyecta sin validación ni escape.
+
+
+
 
