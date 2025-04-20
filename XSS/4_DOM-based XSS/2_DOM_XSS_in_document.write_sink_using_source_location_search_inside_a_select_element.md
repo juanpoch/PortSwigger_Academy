@@ -116,10 +116,22 @@ Luego, ese valor es insertado directamente en el DOM como una opción del elemen
 document.write('<option selected>' + store + '</option>');
 ```
 
-Aquí la idea entonces es inyectar el parámetro cerrando primero la etiqueta `<option>` utilizando el payyload `abc123xy</option></select>`:
+## 💥 Manipulación del DOM mediante inyección en `storeId`
+
+Aquí la idea es inyectar un valor en el parámetro `storeId` que permita cerrar anticipadamente la etiqueta `<option>`, rompiendo así la estructura HTML del menú desplegable.
+
+Para lograrlo, utilizamos el siguiente payload como valor de `storeId`:
+
+`abc123xy</option></select>`
+
+Esto se refleja directamente en el DOM:
+
 ![image](https://github.com/user-attachments/assets/1de3c398-4609-4cfd-8c0f-d2bd41a8be0c)
 
-Vemos que se rompe la estructura del dom, y podemos cerrar satisfactoriamente el elemento `<select>`.
+Como se puede ver, el payload **cierra tanto la opción como el `<select>`** manualmente, lo cual rompe la estructura original de la página.
+
+🔍 Este es un paso fundamental en un ataque de tipo **DOM-based XSS**, ya que abre la posibilidad de inyectar contenido HTML o JavaScript luego de cerrar correctamente las etiquetas existentes.
+
 
 
 
