@@ -40,6 +40,66 @@ Tenemos el siguiente fragmento de código:
 </script>
 ```
 
+### 🔍 Línea por línea
+
+```javascript
+var stores = ["London","Paris","Milan"];
+```
+
+Define un arreglo con tres valores válidos: `"London"`, `"Paris"` y `"Milan"`.  
+Estos son los valores legítimos que el menú desplegable debe mostrar.
+
+---
+
+```javascript
+var store = (new URLSearchParams(window.location.search)).get('storeId');
+```
+
+Obtiene el valor del parámetro `storeId` de la URL.  
+Ejemplo: si la URL es `...?storeId=Berlin`, entonces `store = "Berlin"`.
+
+---
+
+```javascript
+document.write('<select name="storeId">');
+```
+
+Empieza a escribir en el documento un `<select>` HTML (menú desplegable).
+
+---
+
+```javascript
+if(store) {
+    document.write('<option selected>'+store+'</option>');
+}
+```
+
+Si `store` existe (o sea, fue pasado por la URL), lo agrega como opción seleccionada.  
+❗️ **Aquí hay un riesgo de XSS**, porque el valor viene directamente de la URL sin sanitizar y se inserta en el DOM con `document.write`.
+
+---
+
+```javascript
+for(var i = 0; i < stores.length; i++) {
+    if(stores[i] === store) {
+        continue;
+    }
+    document.write('<option>' + stores[i] + '</option>');
+}
+```
+
+Recorre el arreglo `stores`.  
+Si el valor actual es igual al parámetro `store`, lo salta (porque ya se insertó como `selected`).  
+Si no, lo agrega como una opción al `<select>`.
+
+---
+
+```javascript
+document.write('</select>');
+```
+
+Cierra la etiqueta `<select>`.%      
+
 
 
 
