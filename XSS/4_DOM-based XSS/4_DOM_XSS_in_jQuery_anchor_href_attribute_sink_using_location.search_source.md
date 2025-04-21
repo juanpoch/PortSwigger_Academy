@@ -22,7 +22,7 @@ Inspeccionamos la funcionalidad de `< Back`:
 Vemos la reflexión en el siguiente fragmento de código:
 ```html
 <div class="is-linkback">
-    <a id="backLink">Back</a>
+    <a id="backLink" href="/">Back</a>
 </div>
 ```
 Esto simplemente genera un enlace `<a>` con el texto "Back" y el atributo `id="backLink"`, dentro de un `div`.
