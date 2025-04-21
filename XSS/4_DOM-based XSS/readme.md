@@ -319,16 +319,35 @@ element.innerHTML = '<img src=1 onerror=alert(document.domain)>';
 
 ## DOM XSS en librerías como jQuery
 
+jQuery es una biblioteca muy usada que facilita manipular el DOM. Pero no protege automáticamente contra XSS: depende de cómo se use.
+
+Hay funciones como `.attr()`, `.html()`, `.append()` o `.val()` que, si se les pasa contenido controlado por el usuario, pueden inyectar código malicioso en la página.
+
 ### jQuery.attr()
+```js
+$(function() {
+	$('#backLink').attr("href", (new URLSearchParams(window.location.search)).get('returnUrl'));
+});
+```
+- `$(function() { ... })` → Este bloque de código se ejecuta cuando la página ha terminado de cargar.
 
-```javascript
-$('#backLink').attr("href", (new URLSearchParams(window.location.search)).get('returnUrl'));
+- `window.location.search` → Esto obtiene la parte de la URL que está después del signo `?`.
+
+- `new URLSearchParams(...)` → Analiza los parámetros de la URL.
+
+- `.get('returnUrl')` → Extrae el valor del parámetro `returnUrl`.
+
+- `$('#backLink').attr("href", ...)` → Establece ese valor como el `href` de un enlace con `id="backLink"`.
+
+
+El código toma el parámetro insertado en la URL y lo refleja directamente en un atributo `href`, sin ningún filtro.
+
+Ejemplo de URL maliciosa: `https://victima.com/pagina.html?returnUrl=javascript:alert(document.domain)`
+Cuando la víctima abre esta URL, el código hace lo siguiente:
+```js
+$('#backLink').attr("href", "javascript:alert(document.domain)");
 ```
 
-Payload malicioso:
-```
-?returnUrl=javascript:alert(document.domain)
-```
 
 ### jQuery + `location.hash`:
 
