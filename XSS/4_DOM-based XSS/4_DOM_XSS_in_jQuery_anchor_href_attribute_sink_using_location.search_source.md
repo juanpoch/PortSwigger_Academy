@@ -19,4 +19,23 @@ Inspeccionamos la funcionalidad de `< Back`:
 ![image](https://github.com/user-attachments/assets/5e0b44b4-75ba-484a-9fe8-6079610571d1)
 
 
+Vemos la reflexión en el siguiente fragmento de código:
+```html
+<div class="is-linkback">
+    <a id="backLink">Back</a>
+</div>
+```
+Esto simplemente genera un enlace `<a>` con el texto "Back" y el atributo `id="backLink"`, dentro de un `div`.
+
+Luego tenemos el `<script>` de abajo, que genera un `href` para el enlace:
+```html
+<script>
+    $(function() {
+        $('#backLink').attr("href", (new URLSearchParams(window.location.search)).get('returnPath'));
+    });
+</script>
+```
+
+
+
 
