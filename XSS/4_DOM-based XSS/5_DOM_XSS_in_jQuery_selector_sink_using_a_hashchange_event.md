@@ -117,6 +117,83 @@ Antes de explotar cualquier vulnerabilidad, considero esencial entender el compo
 
 Primero quiero entender qué pasa si uso jQuery de forma tradicional, seleccionando un ID existente.
 
+Usamos jQuery para buscar en el DOM todos los elementos `h2` que:
+
+- Estén dentro de un section con clase `blog-list`
+
+- Y que su contenido de texto contenga exactamente la cadena "The Peopleless Circus"
+![image](https://github.com/user-attachments/assets/3deb4309-99b0-4c3f-82a8-f5327b6a66fc)
+
+La consola devuelve un objeto jQuery.
+
+Ese objeto tiene:
+
+- 0: h2 ➔ El primer (y único) elemento que cumple con ese criterio: un `<h2>`.
+
+- selector ➔ `"section.blog-list h2:contains(The Peopleless Circus)"`, el mismo que escribimos.
+
+- length: 1 ➔ Hay exactamente un solo match encontrado.
+
+- context ➔ Muestra que el contexto de búsqueda es el `HTMLDocument` actual.
+
+- prevObject ➔ Hace referencia al estado anterior de la búsqueda en jQuery (algo interno de jQuery, no importante para la explotación).
+
+### Conclusión:
+✅ Encontramos un `<h2>` dentro de `section.blog-list` cuyo texto contiene `"The Peopleless Circus"`.
+
+✅ jQuery devuelve una **colección** con ese único elemento (`length: 1`).
+
+✅ No creamos nuevos elementos, simplemente estamos **seleccionando un nodo existente en el DOM**.
+
+
+## Declaración de variable y asignación del selector
+
+En este paso, declaramos una variable `post` y guardamos en ella el resultado de una búsqueda jQuery:
+
+```javascript
+var post = $('section.blog-list h2:contains(The Peopleless Circus)');
+```
+
+**Captura de la operación:**
+
+![Captura de asignación var post](../49fa323b-bcaf-4fdf-9c71-424f84bed480.png)
+
+---
+
+✅ Declaramos una variable `post` y guardamos en ella el resultado de un selector jQuery.
+
+✅ El selector busca un `<h2>` que contenga el texto `"The Peopleless Circus"`.
+
+✅ La consola muestra `undefined` porque una asignación no tiene valor de retorno.
+
+✅ La variable `post` ahora contiene una **colección jQuery** con el elemento encontrado.
+
+---
+
+### ¿Por qué la consola muestra `undefined`?
+
+Cuando en la consola ejecutamos una asignación como:
+
+```javascript
+var post = $('section.blog-list h2:contains(The Peopleless Circus)');
+```
+
+el resultado de la operación `var` es `undefined`.  
+Esto es el comportamiento normal de JavaScript: **declarar una variable no devuelve nada visible** en la consola.
+
+---
+
+⚡️ **Importante**:
+
+- No significa que `post` esté vacío o mal asignado.
+- Simplemente la consola muestra `undefined` porque la operación de asignar algo a una variable no tiene un valor de retorno.
+
+---
+
+
+---
+
+
 ```javascript
 $('#post')
 ```
