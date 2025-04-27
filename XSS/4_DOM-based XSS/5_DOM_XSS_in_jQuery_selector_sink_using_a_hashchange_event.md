@@ -156,9 +156,9 @@ var post = $('section.blog-list h2:contains(The Peopleless Circus)');
 
 **Captura de la operación:**
 
-![Captura de asignación var post](../49fa323b-bcaf-4fdf-9c71-424f84bed480.png)
+![image](https://github.com/user-attachments/assets/0a7fd444-6711-404e-92cf-aa07c5771fbe)
 
----
+
 
 ✅ Declaramos una variable `post` y guardamos en ella el resultado de un selector jQuery.
 
