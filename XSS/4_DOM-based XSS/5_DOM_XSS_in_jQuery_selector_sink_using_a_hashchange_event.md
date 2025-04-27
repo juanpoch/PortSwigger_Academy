@@ -215,8 +215,10 @@ Si observamos la variable `post`:
 - Su propiedad `.length` es igual a 0.
 
 
-Comprobamos la existencia de `post`:
+Comprobamos la existencia de `post`:  
+
 ![image](https://github.com/user-attachments/assets/2fd60e54-0509-4938-80aa-b3231ceeadd4)
+
 - Estamos verificando si post existe o no.
 
 - En JavaScript, una colección jQuery siempre es un objeto, incluso si está vacía.
