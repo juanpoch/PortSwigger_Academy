@@ -96,7 +96,10 @@ Este script ofrece una funcionalidad práctica de navegación automática, pero 
 
 ---
 
-Si buscamos una etiqueta `h2` dentro de la sección `blog-list`, por ejemplo `Perserverance` y lo añadimos como hashtag, vemos que el script actúa y se realiza un scroll down hacia ese elemento:
+Si buscamos una cadena dentro de una etiqueta `h2` en la sección `blog-list`, por ejemplo, la cadena `Perserverance`:
+![image](https://github.com/user-attachments/assets/edf07813-a276-4c53-9e04-c3b323a1a240)
+
+Si la añadimos como hashtag, vemos que el script actúa y se realiza un scroll down hacia ese elemento:
 ![image](https://github.com/user-attachments/assets/c255249a-520e-467b-90df-6d42724c0adf)
 
 
