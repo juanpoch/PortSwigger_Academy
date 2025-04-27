@@ -101,7 +101,8 @@ Si buscamos una cadena dentro de una etiqueta `h2` en la sección `blog-list`, p
 
 
 Si la añadimos como hashtag, vemos que el script actúa y se realiza un scroll down hacia ese elemento:
-![image](https://github.com/user-attachments/assets/c255249a-520e-467b-90df-6d42724c0adf)
+![image](https://github.com/user-attachments/assets/27bd6be4-c4af-44f5-84e1-d760a54ce6e5)
+
 
 
 ---
