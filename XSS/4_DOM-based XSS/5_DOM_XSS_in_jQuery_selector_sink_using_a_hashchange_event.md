@@ -182,25 +182,19 @@ el resultado de la operación `var` es `undefined`.
 Esto es el comportamiento normal de JavaScript: **declarar una variable no devuelve nada visible** en la consola.
 
 
+---
 
+
+
+
+- Si el selector `$('post')` encuentra un elemento con ID `post` en el DOM, jQuery me devuelve una **colección** que contiene ese elemento.
+
+Ahora, si intento acceder directamente al primer elemento de esa colección utilizando `[0]` o `.get(0)`:
 
 ![image](https://github.com/user-attachments/assets/b155d125-3492-42cf-ba2d-190fef59d746)
 
+- Obtengo el **nodo DOM real** (sin envoltorio de jQuery).
 
-
-- Si el elemento con ID `post` existe en el DOM, jQuery me devuelve una **colección** con ese elemento.
-- No hay problemas: todo funciona como debería, ya que está devolviendo la colección.
-
-Ahora, si intento acceder al primer elemento directamente:
-
-```javascript
-$('#post')[0]
-```
-
-- Me devuelve el **elemento DOM real** (por ejemplo, `<div id="post"></div>` si existiera).
-
-📌 **Observación**:
-- `$()` devuelve una **colección jQuery**, pero `[0]` me da el **elemento DOM puro**.
 
 ---
 
