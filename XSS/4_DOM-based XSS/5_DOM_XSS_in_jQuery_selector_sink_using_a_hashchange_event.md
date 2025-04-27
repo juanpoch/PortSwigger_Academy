@@ -186,8 +186,8 @@ Esto es el comportamiento normal de JavaScript: **declarar una variable no devue
 
 
 
-
-- Si el selector `$('post')` encuentra un elemento con ID `post` en el DOM, jQuery me devuelve una **colección** que contiene ese elemento.
+# 1. Qué pasa cuando el selector busca un ID existente
+- Si el selector encuentra un elemento con ID `post` en el DOM, jQuery me devuelve una **colección** que contiene ese elemento.
 
 Ahora, si intento acceder directamente al primer elemento de esa colección utilizando `[0]` o `.get(0)`:
 
