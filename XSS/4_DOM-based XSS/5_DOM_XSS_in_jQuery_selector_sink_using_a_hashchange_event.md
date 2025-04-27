@@ -186,8 +186,9 @@ Esto es el comportamiento normal de JavaScript: **declarar una variable no devue
 
 
 
-# 1. Qué pasa cuando el selector busca un ID existente
-- Si el selector encuentra un elemento con ID `post` en el DOM, jQuery me devuelve una **colección** que contiene ese elemento.
+# 1. Accedemos al primer y único elemento de la colección
+
+- Si el selector encuentra un elemento `<h2>` dentro de `section.blog-list` cuyo contenido de texto contiene `"The Peopleless Circus"`, jQuery me devuelve una **colección** que contiene ese elemento.
 
 Ahora, si intento acceder directamente al primer elemento de esa colección utilizando `[0]` o `.get(0)`:
 
@@ -195,33 +196,45 @@ Ahora, si intento acceder directamente al primer elemento de esa colección util
 
 - Obtengo el **nodo DOM real** (sin envoltorio de jQuery).
 
-
 ---
 
-# 2. Qué pasa cuando el ID no existe
+# 2. Qué pasa cuando intento acceder a un elemento no existente
 
-Ahora pruebo qué ocurre si el ID **no existe**:
+Ahora pruebo qué ocurre si el selector **no encuentra** ningún elemento:
+![image](https://github.com/user-attachments/assets/dd2f7bcb-02e8-4e3e-8d9a-a969b384877e)
+La consola muestra undefined, ya que la operación de asignar una variable no tiene valor de retorno visible.
 
-```javascript
-$('#nonexistent')
-```
+Si observamos la variable `post`:
+![image](https://github.com/user-attachments/assets/e164939d-6ea7-4308-ac63-6657d5836d00)
+- `post` contiene una colección jQuery vacía.
 
-- jQuery me devuelve una **colección vacía**.
+- No hay ningún elemento en su interior.
+
+- Su propiedad `.length` es igual a 0.
+
+
+Comprobamos la existencia de `post`:
+![image](https://github.com/user-attachments/assets/2fd60e54-0509-4938-80aa-b3231ceeadd4)
+- Estamos verificando si post existe o no.
+
+- En JavaScript, una colección jQuery siempre es un objeto, incluso si está vacía.
+
+- Por eso, if (post) siempre evalúa a true, aunque no haya elementos en su interior.
+
 
 Y si intento acceder al primer elemento:
 
-```javascript
-$('#nonexistent')[0]
-```
+![image](https://github.com/user-attachments/assets/9c38e303-6423-40b5-b413-6020cf224708)
+
 
 - Obtengo **undefined**.
 
 🛡️ **Nota importante**:
-- Si paso un ID que no existe, **no hay errores**, simplemente jQuery devuelve vacío.
-- No se crean elementos. **No hay manipulación del DOM**.
+- Si el selector no encuentra ningún elemento que cumpla el criterio de búsqueda (por ejemplo, `<h2>` que contenga el texto esperado), **no hay errores**, simplemente jQuery devuelve una colección vacía.
+- No se crean nuevos elementos. **No hay manipulación del DOM**.
 
 ⚡ **Advertencia**:
-- Es normal que `[0]` sea `undefined` si no se encontró el ID.
+- Es normal que `[0]` sea `undefined` si la colección jQuery está vacía, ya que no hay ningún elemento que devolver.
 
 ---
 
