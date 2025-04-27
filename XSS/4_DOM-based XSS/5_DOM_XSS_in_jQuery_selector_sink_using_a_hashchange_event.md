@@ -181,25 +181,15 @@ var post = $('section.blog-list h2:contains(The Peopleless Circus)');
 el resultado de la operación `var` es `undefined`.  
 Esto es el comportamiento normal de JavaScript: **declarar una variable no devuelve nada visible** en la consola.
 
----
-
-⚡️ **Importante**:
-
-- No significa que `post` esté vacío o mal asignado.
-- Simplemente la consola muestra `undefined` porque la operación de asignar algo a una variable no tiene un valor de retorno.
-
----
 
 
----
+
+![image](https://github.com/user-attachments/assets/b155d125-3492-42cf-ba2d-190fef59d746)
 
 
-```javascript
-$('#post')
-```
 
 - Si el elemento con ID `post` existe en el DOM, jQuery me devuelve una **colección** con ese elemento.
-- No hay problemas: todo funciona como debería.
+- No hay problemas: todo funciona como debería, ya que está devolviendo la colección.
 
 Ahora, si intento acceder al primer elemento directamente:
 
