@@ -238,20 +238,50 @@ Y si intento acceder al primer elemento:
 
 ---
 
-# 3. Analizando entrada controlada: HTML en lugar de ID
+# 3. Analizando entrada controlada: HTML 
 
-Ahora me pregunto: ¿qué sucede si, en lugar de pasar un simple ID como `#post`, paso algo que parece HTML?
+Ahora me pregunto: qué sucede si, insertamos etiquetas html al selector `contains`:
 
 Por ejemplo:
 
-```javascript
-$('<img src=x onerror=alert(1)>')
-```
+![image](https://github.com/user-attachments/assets/f0768491-711e-45dd-bacd-f66b34f905f2)
+
 
 ¿Qué hace jQuery?
 
+![image](https://github.com/user-attachments/assets/24eb61a4-6f1f-4974-9108-c8ffd08337c2)
+
+Por qué está indicando que hay un march, si no existe ninguna etiqueta `h1` en el código. Como el elemento tiene un lenght de 1, podemos exponer el objeto con:
+![image](https://github.com/user-attachments/assets/cf67cd1b-9356-4d44-9378-3986c93960b9)
+Este elemento contiene nuestro texto arbitrario:
+![image](https://github.com/user-attachments/assets/c2e1a780-6a4b-4c1a-b1b5-5ad587511103)
+
+# 📚 ¿Qué significa esto realmente?
+
+- jQuery interpreta mal el contenido malformado y **crea un nodo DOM real** (`<h1>` en este caso).
+- Sin embargo, **este nodo no está adjuntado al documento**: existe en memoria, pero no forma parte del DOM visible.
+- No se inserta automáticamente en `document.body` ni en ningún otro contenedor.
+
+---
+
+# 🛡️ Nota de seguridad:
+
+- Aunque se crea un elemento DOM, mientras no se inserte en la página, **no hay impacto visual ni ejecución de eventos**.
+- Sin embargo, manejar entradas malformadas puede llevar a errores de lógica o a inyecciones si después se inserta ese contenido dinámicamente.
+
+---
+
+# ✅ Resumen
+
+- `:contains()` trata su contenido como texto, pero cuando el contenido es malformado puede provocar **creación de nodos en memoria**.
+- Estos nodos **no se insertan** automáticamente en el DOM de la página.
+
+
+
+
+
 - En versiones antiguas (pre 3.0), **detecta que empieza con `<`** y lo **interpreta como HTML**, no como un selector.
-- **Crea un elemento** real en memoria: un `<img>` con un evento `onerror`.
+- **Crea un elemento** real en memoria: una etiqueta.
 
 📌 **Observación**:
 - jQuery **parsea la entrada** y **genera nodos reales** si ve un fragmento HTML.
