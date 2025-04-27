@@ -294,28 +294,47 @@ Este elemento contiene nuestro texto arbitrario:
 
 ---
 
-# 4. Explorando un selector con contains()
 
-También puedo utilizar selectores avanzados. Por ejemplo:
+Ahora sobrescribimos `post` para que ya no sea una colección jQuery, sino el nodo DOM puro (el <h1>):
+![image](https://github.com/user-attachments/assets/95bf3047-b21b-4269-ab1f-149c89d75779)
 
-```javascript
-$('section.blog-list h2:contains(Wellness)')
-```
+Si prestamos atención al código fuente, podemos ver un elemento arbitrario que tenga un id, por ejemplo:
 
-Este selector busca todos los elementos `h2` dentro de `section.blog-list` que **contengan el texto** "Wellness".
+![image](https://github.com/user-attachments/assets/3d7c9963-7c7f-47ac-8418-01cd4a587d1e)
 
-**Captura del resultado en la consola:**
+Ahora guardamos la referencia a ese nodo en la variable `mynode`:
+![image](https://github.com/user-attachments/assets/6f55ed6d-253f-4682-b1b4-f9ba1e688a4a)
 
-![Captura de consola mostrando un match](../7bf4abf0-6188-4d0c-a90d-1d54f17ec146.png)
+Finalmente, insertamos el <h1> en el DOM real con:
+![image](https://github.com/user-attachments/assets/4731e071-e565-485a-949c-8cfd1d24e0d3)
 
-- Se observa que surge un **match**, es decir, se encuentra un elemento `h2` que contiene "Wellness".
-- jQuery devuelve una colección que contiene dicho `h2`.
+---
 
-📌 **Observación**:
-- El selector `:contains(text)` es poderoso, pero también sensible a manipulaciones si no se controla adecuadamente.
+Ahora creamos dinámicamente un nuevo elemento HTML mediante JavaScript:
+![image](https://github.com/user-attachments/assets/3124ea4d-f5b3-4791-8970-90a5e286851a)
 
-🛡️ **Nota importante**:
-- Aunque aquí estamos usando selectores legítimos, el mecanismo de `$()` sigue permitiendo interpretar HTML si no se maneja correctamente la entrada.
+Luego de crear el elemento `<img>`, asignamos un valor a su atributo `src`:
+![image](https://github.com/user-attachments/assets/a6e1d22b-cbab-474a-a0db-a711e8a229e8)
+
+- Asignamos el valor 0 al atributo src del elemento myimg.
+
+- El navegador interpreta automáticamente este valor como una URL relativa:
+`https://[dominio_del_lab]/0`
+
+- Se dispara una solicitud HTTP GET hacia esa URL.
+
+- El servidor responde con un error 404 Not Found.
+
+- Esto indica que el recurso `/0` no existe en el servidor.
+
+
+
+
+
+
+
+
+
 
 ---
 
