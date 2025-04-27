@@ -348,8 +348,17 @@ Cuando la víctima abre esta URL, el código hace lo siguiente:
 $('#backLink').attr("href", "javascript:alert(document.domain)");
 ```
 
+---
+
 
 ### jQuery + `location.hash`:
+
+
+## ⚙️ Descripción del problema
+
+En versiones antiguas de jQuery, si se usaba el selector `$()` con una fuente controlada por el usuario como `location.hash`, existía el riesgo de inyectar HTML malicioso en el DOM.
+
+### Código vulnerable típico
 
 ```javascript
 $(window).on('hashchange', function() {
@@ -358,12 +367,95 @@ $(window).on('hashchange', function() {
 });
 ```
 
-Exploit:
-```html
-<iframe src="https://vulnerable-site.com#" onload="this.src+='<img src=1 onerror=alert(1)>'"></iframe>
+### Explicación detallada del código
+
+- `$(window)`: Utiliza jQuery para seleccionar el objeto `window`, que representa la ventana del navegador.
+
+- `.on('hashchange', function() {...})`: Se le agrega un listener que escucha el evento `hashchange`. Este evento se dispara cada vez que cambia el fragmento `#` en la URL (es decir, `location.hash`).
+
+- `function() {...}`: Es una función anónima que se ejecuta automáticamente cuando el `hash` cambia.
+
+- `var element = $(location.hash);`: Se toma el valor actual de `location.hash` (por ejemplo, `#section1`) y se pasa directamente a `$()`, el selector de jQuery. Este selector intenta buscar en el DOM un elemento cuyo `id` coincida con el valor del `hash`. Si se pasa un contenido malicioso, jQuery puede interpretarlo como HTML.
+
+- `element[0].scrollIntoView();`: Una vez encontrado el elemento, se usa `scrollIntoView()` para hacer que el navegador se desplace automáticamente hasta ese elemento en la página.
+
+**Problema**: Si `location.hash` contiene HTML malicioso y se pasa directamente a `$()`, jQuery puede interpretar ese contenido como un nodo HTML válido y crear un elemento malicioso en el DOM, permitiendo así un ataque de tipo XSS.
+
+## 🧨 Ejemplo de explotación
+
+Un atacante puede manipular la URL así:
+
+```
+https://vulnerable-website.com#<img src=x onerror=alert(1)>
 ```
 
+- `location.hash` será `#<img src=x onerror=alert(1)>`
+- jQuery lo pasará a `$()`, interpretándolo como HTML.
+- Se creará un `img` que ejecutará `alert(1)` al fallar la carga.
+
+**En este caso, se requiere que el usuario haga clic en un enlace, acceda manualmente a la URL o sea inducido a visitar el sitio vulnerable con un hash malicioso. Es decir, existe cierta interacción inicial del usuario.**
+
+## 🚀 Automatización del ataque con `iframe`
+
+Un atacante puede usar un `iframe` para explotar la vulnerabilidad **sin interacción directa del usuario**:
+
+```html
+<iframe src="https://vulnerable-website.com#" onload="this.src += '<img src=1 onerror=alert(1)>'"></iframe>
+```
+
+**Qué sucede:**
+
+- Se carga el `iframe` apuntando a la página vulnerable con un `hash` vacío.
+- Cuando el `iframe` termina de cargar (`onload`), automáticamente modifica su propio `src` para agregar un vector XSS al `hash`.
+- Esta modificación activa el evento `hashchange` en la página vulnerable.
+- Se ejecuta el código malicioso (por ejemplo, `alert(1)`) de manera automática.
+
+**Diferencia clave**: En este caso, **no se necesita que el usuario interactúe manualmente** (por ejemplo, no hace falta que haga clic ni escriba nada). El navegador procesa automáticamente la carga y modificación del `iframe`, ejecutando el ataque en segundo plano.
+
+## 🛡️ Medidas de protección
+
+### Mejoras en versiones nuevas de jQuery
+
+- Las versiones recientes de jQuery **evitan** interpretar HTML si la entrada comienza con `#`.
+- Si el `#` es eliminado antes de pasar la entrada a `$()`, **el riesgo persiste**.
+
+### Cómo corregir de forma segura
+
+**Validar y sanitizar** la entrada antes de pasarla a `$()`:
+
+```javascript
+$(window).on('hashchange', function() {
+    var id = location.hash.replace(/^#/, '');
+    if (/^[a-zA-Z0-9_-]+$/.test(id)) {  // Validación estricta
+        var element = $('#' + id);
+        if (element.length) {
+            element[0].scrollIntoView();
+        }
+    }
+});
+```
+
+- Se eliminan caracteres no deseados.
+- Solo se permiten letras, números, guiones y guiones bajos.
+
+## 🔥 Puntos clave para recordar
+
+| Concepto                | Explicación                                                               |
+| ----------------------- | ------------------------------------------------------------------------- |
+| `location.hash`         | Entrada totalmente controlada por el usuario.                             |
+| `$()` en jQuery         | Puede interpretar HTML y crear nodos si no se usa correctamente.          |
+| iframe exploit          | Permite cambiar el hash y activar el evento `hashchange` automáticamente, sin interacción del usuario. |
+| Actualización de jQuery | Mejora parcial, pero el riesgo sigue si la entrada es manipulada.         |
+| Mejor práctica          | Validar y sanitizar **todo dato** antes de pasarlo a `$()`.               |
+
 ---
+
+## 📌 Conclusión
+
+Incluso con jQuery actualizado, confiar ciegamente en entradas controladas por el usuario como `location.hash` es **muy peligroso**. La **validación estricta** y la **desconfianza sistemática** hacia cualquier input son claves para proteger aplicaciones web modernas de ataques de XSS.
+
+---
+
 
 ## DOM XSS en AngularJS
 
