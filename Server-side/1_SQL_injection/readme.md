@@ -90,7 +90,7 @@ SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 
 | Parte | Explicación |
 |:------|:------------|
-| `SELECT *` | Selecciona todas las columnas de la tabla indicada. El asterisco (`*`) significa "todos los campos". |
+| `SELECT *` | Selecciona todas las filas de la tabla indicada. |
 | `FROM products` | Indica la tabla de donde se van a extraer los datos. En este caso, de la tabla llamada `products`. |
 | `WHERE` | Agrega una condición: solo se devolverán los registros que cumplan los criterios especificados. |
 | `category = 'Gifts'` | Primera condición: el valor de la columna `category` debe ser igual a `'Gifts'`. Solo selecciona productos de la categoría "Gifts" (regalos). |
