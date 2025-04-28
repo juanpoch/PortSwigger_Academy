@@ -4,7 +4,7 @@
 
 # 🔐 Introducción
 
-La **autenticación multifactor (MFA)** es una capa adicional de seguridad que exige a los usuarios verificar su identidad utilizando **más de un factor**.
+La **autenticación multifactor** es una capa adicional de seguridad que exige a los usuarios verificar su identidad utilizando **más de un factor**.
 
 Aunque MFA es más segura que la autenticación de un solo factor, **su efectividad depende totalmente de su correcta implementación**. De lo contrario, puede ser vulnerable a ataques que permiten:
 
