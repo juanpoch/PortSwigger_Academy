@@ -317,7 +317,7 @@ Ahora guardamos la referencia a ese nodo en la variable `mynode`:
 
 ![image](https://github.com/user-attachments/assets/6f55ed6d-253f-4682-b1b4-f9ba1e688a4a)
 
-Finalmente, insertamos el <h1> en el DOM real con:  
+Finalmente, insertamos el `<h1>` en el DOM real con:  
 
 ![image](https://github.com/user-attachments/assets/4731e071-e565-485a-949c-8cfd1d24e0d3)
 
