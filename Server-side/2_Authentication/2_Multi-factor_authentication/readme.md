@@ -154,3 +154,7 @@ Ataques comunes:
 
 > ✨ **Un MFA efectivo no es sólo agregar pasos: es asegurarse que verifique diferentes factores de manera segura e inequívoca.**
 
+
+[Lab 2FA simple bypass](1_2FA_simple_bypass.md)
+
+
