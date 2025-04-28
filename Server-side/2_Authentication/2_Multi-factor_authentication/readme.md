@@ -32,7 +32,7 @@ En la práctica, la forma más frecuente de MFA es la **autenticación de dos fa
 - **Algo que tienes:** Código de verificación generado por un dispositivo externo.
 
 
-> 🔒 **Importante:** Verificar dos veces "algo que sabes" (por ejemplo, contraseña + código enviado a un correo electrónico) **no** es verdadera autenticación multifactor.
+> 🔒 **Importante:** Verificar dos veces "algo que sabes" (por ejemplo, contraseña + código enviado a un correo electrónico) **no** es verdadera autenticación multifactor, ya que para ingresar al correo electrónico debes utilizar tu contraseña, es decir, "algo que sabes" nuevamente.
 
 
 ---
