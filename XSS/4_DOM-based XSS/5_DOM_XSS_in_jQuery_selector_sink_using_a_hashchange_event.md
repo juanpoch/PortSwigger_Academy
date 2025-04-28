@@ -108,7 +108,7 @@ Antes de explotar cualquier vulnerabilidad, considero esencial entender el compo
 
 # 1. Verificando comportamiento de selectores válidos
 
-Primero quiero entender qué pasa si uso jQuery de forma tradicional, seleccionando un ID existente.
+Primero quiero entender qué pasa si uso jQuery de forma tradicional, seleccionando elementos existentes en el DOM.
 
 Usamos jQuery para buscar en el DOM todos los elementos `h2` que:
 
