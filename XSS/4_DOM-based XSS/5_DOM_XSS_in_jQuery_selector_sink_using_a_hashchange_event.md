@@ -247,7 +247,8 @@ Por ejemplo:
 
 ¿Qué hace jQuery?
 
-![image](https://github.com/user-attachments/assets/24eb61a4-6f1f-4974-9108-c8ffd08337c2)
+![image](https://github.com/user-attachments/assets/41959142-5b40-4a63-8628-6e058692f247)
+
 
 Por qué está indicando que hay un mach, si no existe ninguna etiqueta `h1` en el código. Como el elemento tiene un lenght de 1, podemos exponer el objeto con:  
 
