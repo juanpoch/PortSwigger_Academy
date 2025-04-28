@@ -351,6 +351,39 @@ En el siguiente ejemplo intentamos ir más allá con la inyección de etiquetas:
 Ejecutamos la inyección en la url:
 ![image](https://github.com/user-attachments/assets/1167d675-08f6-4a01-9c84-6f7b6112421e)
 
+# Automatización con `iframe`
+
+Como escribimos en la teoría, un atacante puede usar `iframe` para explotar la vulnerabilidad sin interacción directa del usuario:
+
+```html
+<iframe src="https://vulnerable-website.com#" onload="this.src += '<img src=1 onerror=alert(1)>'"></iframe>
+```
+
+Qué sucede:
+
+- Se carga el iframe apuntando a la página vulnerable con un `hash` vacío.
+- Cuando el `iframe` termina de cargar (`onload`), automáticamente modifica su propio `src` para agregar un vector XSS al `hash`.
+- Esta modificación activa el evento `hashchange` en la página vulnerable.
+- Se ejecuta el código malicioso (por ejemplo, `alert(1)`) de manera automática.
+
+Diferencia clave: En este caso, no se necesita que el usuario interactúe manualmente (por ejemplo, no hace falta que haga clic ni escriba nada). El navegador procesa automáticamente la carga y modificación del iframe, ejecutando el ataque en segundo plano.
+
+
+Utilizamos el siguiente payload:
+```html
+<iframe src="https://0a75007c03f5cbc1e3b8176b00650086.web-security-academy.net/#" onload="this.src += '<img src=0 onerror=print()>'"></iframe>
+```
+
+Utilizamos el exploit server para cargar nuestro html:
+![image](https://github.com/user-attachments/assets/09e817f2-9394-498a-a594-879154efcd63)
+
+
+
+Luego click en `Deliver exploit to victim` y resolvemos el lab:
+![image](https://github.com/user-attachments/assets/f4cd5610-8b2c-45bb-b885-79375fd1ba34)
+
+
+
 
 
 
