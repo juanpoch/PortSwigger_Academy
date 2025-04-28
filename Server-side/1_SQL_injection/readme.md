@@ -170,7 +170,9 @@ Lo cual la consulta quedaría así:
 ```sql
 SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 ```
-Esta consulta devuelve el usuario cuyo `username` es `administrator` y registra exitosamente al atacante como ese usuario.
+Esta consulta devuelve el usuario cuyo `username` es `administrator` y registra exitosamente al atacante como ese usuario.  
+
+[Lab: SQL injection vulnerability allowing login bypass](2_SQL_injection_vulnerability_allowing_login_bypass.md)
 
 #### 3. Ataques UNION
 
