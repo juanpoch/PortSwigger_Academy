@@ -161,18 +161,6 @@ var post = $('section.blog-list h2:contains(The Peopleless Circus)');
 
 ✅ La variable `post` ahora contiene una **colección jQuery** con el elemento encontrado.
 
----
-
-### ¿Por qué la consola muestra `undefined`?
-
-Cuando en la consola ejecutamos una asignación como:
-
-```javascript
-var post = $('section.blog-list h2:contains(The Peopleless Circus)');
-```
-
-el resultado de la operación `var` es `undefined`.  
-Esto es el comportamiento normal de JavaScript: **declarar una variable no devuelve nada visible** en la consola.
 
 
 ---
