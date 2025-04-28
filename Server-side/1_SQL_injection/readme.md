@@ -96,7 +96,7 @@ SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 | `category = 'Gifts'` | Primera condición: el valor de la columna `category` debe ser igual a `'Gifts'`. Solo selecciona productos de la categoría "Gifts" (regalos). |
 | `AND released = 1` | Segunda condición: además, el valor de la columna `released` debe ser `1`. Esto indica que el producto debe estar liberado o publicado. |
 
-En otras palabras, eso significa "mostrame todas las filas de la tabla `products` donde la columna `category=Gifts` y la columna `released=1`".
+En otras palabras, esto significa "mostrame todas las filas de la tabla `products` donde la columna `category=Gifts` y la columna `released=1`".
 
 **Ataque:**
 
