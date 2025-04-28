@@ -349,7 +349,7 @@ En el siguiente ejemplo intentamos ir más allá con la inyección de etiquetas:
 ---
 
 Ejecutamos la inyección en la url:
-![image](https://github.com/user-attachments/assets/9b867145-bdcb-427d-8830-e3ee19af6db1)
+![image](https://github.com/user-attachments/assets/1167d675-08f6-4a01-9c84-6f7b6112421e)
 
 
 
@@ -358,123 +358,6 @@ Ejecutamos la inyección en la url:
 
 
 
-
-
-
-
----
-
-# 5. El problema de confiar en `location.hash`
-
-Ahora considero el caso en que la página usa:
-
-```javascript
-$(location.hash)
-```
-
-¿Y si el atacante manipula el `hash` para poner:
-
-```
-#<img src=x onerror=alert(1)>
-```
-
-¿Qué pasaría?
-
-- Cuando `$()` recibe `location.hash`, ve que comienza con `<`.
-- Interpreta el contenido como HTML.
-- **Crea un nodo DOM** malicioso.
-- Se ejecuta el `onerror`, disparando **JavaScript arbitrario**.
-
-🔥 **Punto crítico de seguridad**:
-- `location.hash` **es controlado completamente por el usuario**.
-- Si no se valida antes de pasarlo a `$()`, se abre la puerta a un **DOM-Based XSS**.
-
----
-
-# 6. Simulando la explotación paso a paso
-
-### 6.1 Verificando el valor de `location.hash`
-
-```javascript
-location.hash
-```
-
-- Devuelve:
-
-```
-#<img src=x onerror=alert(1)>
-```
-
-### 6.2 Pasándolo directamente a jQuery
-
-```javascript
-$(location.hash)
-```
-
-- jQuery interpreta y **crea**:
-
-```html
-<img src="x" onerror="alert(1)">
-```
-
-### 6.3 Accediendo al nodo DOM real
-
-```javascript
-$(location.hash)[0]
-```
-
-- Devuelve el **elemento `<img>` real**.
-
-📌 **Observación**:
-- No estamos seleccionando un elemento existente.
-- Estamos **fabricando** un nuevo elemento DOM malicioso.
-
----
-
-# 7. Por qué ocurre este comportamiento
-
-La razón técnica es que jQuery, en versiones antiguas:
-
-- **Verifica el primer carácter** de la cadena que recibe en `$()`.
-- Si empieza con `<`, asume que debe parsear HTML y crear nodos.
-- No diferencia si la entrada viene de un `hash` controlado, un formulario, o una fuente insegura.
-
-🛡️ **Nota importante**:
-- La librería confía en la estructura de la cadena.
-- No valida el origen de los datos antes de parsear.
-
----
-
-# 8. Conclusión técnica
-
-Todo este análisis muestra que:
-
-- jQuery antiguamente **confundía input controlado** por el usuario con contenido HTML legítimo.
-- Esto permite crear **elementos DOM maliciosos** usando simplemente el `location.hash`.
-- Si estos elementos tienen manejadores de eventos como `onerror`, `onload`, etc., permiten la **ejecución de JavaScript arbitrario**.
-- El resultado final es una **vulnerabilidad DOM-Based XSS**.
-
-🚀 **Mejoras en versiones recientes**:
-- jQuery >= 3.0 introdujo protecciones para evitar este tipo de parsing inseguro.
-
-⚡ **Advertencia**:
-- Muchas aplicaciones viejas siguen usando jQuery 1.x o 2.x.
-- Este tipo de vulnerabilidad sigue estando presente en aplicaciones desactualizadas.
-
----
-
-# 🔥 Reflexión final
-
-Este ejercicio demuestra la importancia de:
-
-- No confiar en entradas controladas por el usuario (como `location.hash`).
-- Validar y/o sanitizar todo dato antes de pasarlo a funciones que manipulan el DOM.
-- Mantener actualizadas las librerías de frontend.
-- Entender internamente cómo funcionan las herramientas que usamos (como jQuery).
-
----
-
-# FIN
 
 
 
