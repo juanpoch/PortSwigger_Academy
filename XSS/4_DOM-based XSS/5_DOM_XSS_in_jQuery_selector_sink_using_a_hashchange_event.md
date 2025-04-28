@@ -303,7 +303,7 @@ Este elemento contiene nuestro texto arbitrario:
 
 
 
-Ahora sobrescribimos `post` para que ya no sea una colección jQuery, sino el nodo DOM puro (el <h1>):  
+Ahora sobrescribimos `post` para que ya no sea una colección jQuery, sino el nodo DOM puro:  
 
 ![image](https://github.com/user-attachments/assets/95bf3047-b21b-4269-ab1f-149c89d75779)  
 
