@@ -164,6 +164,126 @@ Al diseñar sistemas de autenticación seguros, es fundamental seguir algunos pr
 
 
 ---
+---
 
-> ✨ **Un sistema seguro empieza por una autenticación a prueba de fallos.**
+## 🔒 Guía: Cómo asegurar tus mecanismos de autenticación
+
+---
+
+# 🔐 Introducción
+
+La autenticación es un tema complejo y propenso a errores. Aunque no es posible cubrir absolutamente todas las medidas de protección posibles, existen principios generales que **siempre** deberías seguir para robustecer tus sistemas de autenticación.
+
+En esta guía aprenderás cómo prevenir las vulnerabilidades comunes y fortalecer tu autenticación.
+
+---
+
+# 👉 Cuida las credenciales de los usuarios
+
+Incluso los mejores sistemas de autenticación son inútiles si un atacante obtiene las credenciales:
+
+- **Nunca envíes datos de inicio de sesión por conexiones no cifradas**.
+- **Implementa HTTPS** en todas las páginas, no solo en el login.
+- **Redirige automáticamente HTTP a HTTPS**.
+- **Audita el sitio** para asegurarte de que:
+  - No se filtren nombres de usuario o correos electrónicos en perfiles o respuestas HTTP.
+
+---
+
+# 👉 No dependas de los usuarios para la seguridad
+
+La naturaleza humana tiende a buscar atajos. Por eso debes **forzar comportamientos seguros**.
+
+### Implementa una buena política de contraseñas
+
+- **Evita políticas tradicionales** (longitud mínima con complejidad obligatoria) que los usuarios terminan sorteando con contraseñas predecibles.
+- **Usa un verificador de fortaleza de contraseñas en tiempo real**, como:
+  - [zxcvbn](https://github.com/dropbox/zxcvbn) de Dropbox.
+- **Obliga a aceptar solo contraseñas calificadas como "fuertes"**.
+
+---
+
+# 👉 Prevé la enumeración de nombres de usuario
+
+Facilitar la detección de usuarios existentes ayuda a los atacantes.
+
+Recomendaciones:
+
+- **Usa mensajes de error genéricos e idénticos** sin importar si el usuario existe o no.
+- **Devuelve siempre el mismo código de estado HTTP**.
+- **Normaliza el tiempo de respuesta** para hacer los intentos indistinguibles.
+
+---
+
+# 👉 Implementa protección robusta contra fuerza bruta
+
+Dado lo simple que es lanzar ataques de fuerza bruta, debes complicar al máximo los intentos:
+
+- **Limita el número de intentos por IP**.
+- **Evita manipulaciones del IP aparente**.
+- **Usa CAPTCHA** tras superar un umbral de intentos fallidos.
+
+Nota: aunque no elimina el riesgo por completo, **aumenta el esfuerzo y desalienta** a atacantes oportunistas.
+
+---
+
+# 👉 Verifica tu lógica de validación una y otra vez
+
+- **Audita a fondo** toda la lógica de verificación.
+- **Evita errores de programación o de lógica** que puedan ser explotados.
+- **Una verificación que puede ser evadida equivale a no tener verificación**.
+
+---
+
+# 👉 No olvides las funcionalidades complementarias
+
+No te centres solo en el login principal.
+
+Debes proteger también:
+
+- **Mecanismos de registro de usuarios**.
+- **Restablecimiento y cambio de contraseña**.
+- **Recuperación de cuentas**.
+
+Cada uno representa una posible superficie de ataque.
+
+Especialmente crítico si el atacante puede registrar su propia cuenta para explorar.
+
+---
+
+# 👉 Implementa correctamente la autenticación multifactor (MFA)
+
+Cuando se aplica adecuadamente, MFA mejora sustancialmente la seguridad.
+
+- **No verifiques múltiples instancias del mismo factor** (por ejemplo, contraseña + código enviado por email ≠ verdadero MFA).
+- **SMS como segundo factor**:
+  - Aunque técnicamente es un segundo factor, puede ser vulnerable (por ejemplo, ataque de SIM swapping).
+
+### Mejor práctica recomendada:
+
+- Usar **aplicaciones dedicadas** de generación de códigos, como:
+  - Google Authenticator.
+  - Authy.
+  - Dispositivos de autenticación físicos (YubiKey, etc).
+
+- **Auditar también la lógica del MFA** para asegurar que no pueda ser evadida.
+
+---
+
+# 💬 Resumen
+
+| Principio | Acción recomendada |
+|:----------|:-------------------|
+| Proteger credenciales | HTTPS obligatorio, no filtrar usuarios. |
+| Forzar comportamientos seguros | Uso de password checkers en tiempo real. |
+| Evitar enumeración | Mensajes y tiempos de respuesta uniformes. |
+| Dificultar fuerza bruta | Rate limiting + CAPTCHA. |
+| Verificar la lógica | Auditorías profundas de toda validación. |
+| Asegurar todo el ecosistema | Incluir registro, recuperación de contraseña, MFA. |
+
+---
+
+> ✨ **La autenticación robusta no es solo un login seguro; es proteger toda la superficie que permite controlar identidades.**
+
+
 
