@@ -343,6 +343,26 @@ Luego de crear el elemento `<img>`, asignamos un valor a su atributo `src`:
 - Esto indica que el recurso `/0` no existe en el servidor.
 
 
+---
+
+En el siguiente ejemplo intentamos ir más allá con la inyección de etiquetas:
+
+![image](https://github.com/user-attachments/assets/e1f3f2df-6011-4ca2-8d00-06ba9f0bf41b)
+
+- Insertamos un elemento `<img>` dentro del selector.
+
+- Definimos `src="0"` para forzar que el navegador intente cargar una imagen que no existe.
+
+- Agregamos `onerror="alert(1)"` para que se ejecute un alert(1) si la carga falla.
+
+---
+
+Ejecutamos la inyección en la url:
+![image](https://github.com/user-attachments/assets/9b867145-bdcb-427d-8830-e3ee19af6db1)
+
+
+
+
 
 
 
