@@ -68,15 +68,6 @@ Cada vez que cambia el hash en la URL:
 
 ---
 
-## ⚠️ Posibles riesgos de seguridad
-
-Aunque `:contains(...)` en jQuery no interpreta directamente HTML, **este enfoque presenta riesgos**:
-
-- **Control del usuario**: `location.hash` es 100% controlado por el usuario.
-- **Selectores dinámicos inseguros**: Construir selectores directamente desde entradas de usuario puede abrir la puerta a vulnerabilidades.
-- **Dependencia de otros factores**: Si otras partes del código interactúan con los elementos encontrados de manera insegura (por ejemplo, insertando HTML sin sanitización), podría derivar en un XSS.
-
----
 
 ## 📋 Resumen
 
