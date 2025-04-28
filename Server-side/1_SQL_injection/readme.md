@@ -141,7 +141,7 @@ Entrada original:
 ```sql
 SELECT * FROM users WHERE username = '[USERNAME]' AND password = '[PASSWORD]'
 ```
-
+Si la consulta devuelve los datos de un usuario, el inicio de sesión se ha realizado correctamente. De lo contrario, se rechaza.
 Inyección:
 
 ```
@@ -155,6 +155,13 @@ SELECT * FROM users WHERE username = '' OR 1=1 --' AND password = ''
 ```
 
 - El atacante logra iniciar sesión sin credenciales.
+
+O podríamos inyectar: `administrator'--`
+Lo cual la consulta quedaría así:
+```sql
+SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
+```
+Esta consulta devuelve el usuario cuyo `username` es `administrator` y registra exitosamente al atacante como ese usuario.
 
 #### 3. Ataques UNION
 
