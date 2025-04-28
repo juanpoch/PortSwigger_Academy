@@ -132,6 +132,9 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 
 Usar `OR 1=1` puede ser peligroso si el dato inyectado se reutiliza en otras consultas, como **UPDATE** o **DELETE**, lo cual podría eliminar o modificar datos críticos.
 
+[Texto visible del enlace](nombre-del-archivo.md)
+
+
 #### 2. Subversión de la lógica de aplicación
 
 Un atacante puede alterar consultas para, por ejemplo, **saltarse** validaciones de usuario:
