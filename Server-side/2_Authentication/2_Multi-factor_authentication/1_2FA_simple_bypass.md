@@ -57,7 +57,7 @@ Logramos ingresar a la cuenta de `wiener`:
 Repetimos el proceso de login con las credenciales del usuario víctima `carlos:montoya`:
 ![image](https://github.com/user-attachments/assets/172d4948-65f5-40b7-a70e-1fe13f2fd05c)
 
-Vemos que nos arroja una nueva cookie de sesión una vez pasado este primer factor de autenticación exitosamente. Ahora vendría el momento de ingresar el segundo factor de autenticación utilizando esta nueva cookie. Podríamos intentar hacer fuerza bruta de 2FA ya que conocemos que el código contiene 4 caracteres, pero lo que vamos a intentar acceder a áreas de usuarios registrados, con el fin de comprobar que tenemos acceso directo a recursos debido a una mala implementación del 2FA.
+Vemos que nos arroja una nueva cookie de sesión una vez pasado este primer factor de autenticación exitosamente. Ahora vendría el momento de ingresar el segundo factor de autenticación utilizando esta nueva cookie. Podríamos intentar hacer fuerza bruta de 2FA ya que conocemos que el código contiene 4 caracteres, pero lo que vamos a intentar es acceder a áreas de usuarios registrados, con el fin de comprobar que tenemos acceso directo a recursos debido a una mala implementación del 2FA.
 
 Intentamos acceder al recurso `/my-account?id=carlos` utilizando la nueva cookie brindada por el servidor y resolvemos el laboratorio:
 
