@@ -137,7 +137,9 @@ La **enumeración de usernames** ocurre cuando el atacante puede deducir si un n
 
 
 
-[Lab Username enumeration via different responses](1_Username_enumeration_via_different_responses.md)
+[Lab: Username enumeration via different responses](1_Username_enumeration_via_different_responses.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
 ---
 
