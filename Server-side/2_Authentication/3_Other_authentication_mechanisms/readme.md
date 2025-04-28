@@ -168,35 +168,10 @@ http://vulnerable-website.com/reset-password?user=victim-user
 5. Envía el formulario.
 6. Si el servidor **no revalida el token**, se cambia la contraseña de otra cuenta.
 
+[Texto visible del enlace](nombre-del-archivo.extensión)
 
 
 ---
-
-# 💬 Resumen crítico
-
-| Tema | Riesgo |
-|:-----|:------|
-| Enviar contraseña por email | Compromiso de confidencialidad, brecha de cuenta. |
-| URL insegura con `user` | Hijacking de cuentas mediante manipulación de parámetro. |
-| Tokens predecibles o mal manejados | Fuerza bruta o reutilización de enlaces de reset. |
-| No revalidar tokens | Permite restablecer contraseñas sin autorización. |
-
-
-
----
-
-# 💎 Mejores Prácticas Recomendadas
-
-- Utilizar **tokens largos, aleatorios e irrepetibles**.
-- Hacer que los **tokens expiren rápidamente**.
-- **Destruir** el token tras el primer uso.
-- **Nunca enviar contraseñas por email**.
-- Validar el **token en cada paso**, tanto al cargar la página de cambio como al enviar la nueva contraseña.
-- Registrar y alertar sobre restablecimientos sospechosos.
-
-
-> ✨ **Recordatorio:**
-> El mecanismo de "recuperar contraseña" debería ser tan seguro como el propio sistema de login — es una de las mayores puertas de entrada para ataques si no se implementa correctamente.
 
 
 
