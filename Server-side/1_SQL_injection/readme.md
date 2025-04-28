@@ -132,7 +132,9 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 
 Usar `OR 1=1` puede ser peligroso si el dato inyectado se reutiliza en otras consultas, como **UPDATE** o **DELETE**, lo cual podría eliminar o modificar datos críticos.
 
-[Lab: SQL Injection vulnerability in WHERE clause allowing retrieval of hidden data](1_SQL_injection_vulnerability_in_WHERE_clause_allowing_retrieval_of_hidden_data.md)
+[Lab: SQL Injection vulnerability in WHERE clause allowing retrieval of hidden data](1_SQL_injection_vulnerability_in_WHERE_clause_allowing_retrieval_of_hidden_data.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
 
 #### 2. Subversión de la lógica de aplicación
@@ -172,7 +174,9 @@ SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 ```
 Esta consulta devuelve el usuario cuyo `username` es `administrator` y registra exitosamente al atacante como ese usuario.  
 
-[Lab: SQL injection vulnerability allowing login bypass](2_SQL_injection_vulnerability_allowing_login_bypass.md)
+[Lab: SQL injection vulnerability allowing login bypass](2_SQL_injection_vulnerability_allowing_login_bypass.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
 #### 3. Ataques UNION
 
