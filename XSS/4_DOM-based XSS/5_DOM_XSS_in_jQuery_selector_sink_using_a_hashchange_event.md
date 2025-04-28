@@ -255,10 +255,14 @@ Por ejemplo:
 
 ![image](https://github.com/user-attachments/assets/24eb61a4-6f1f-4974-9108-c8ffd08337c2)
 
-Por qué está indicando que hay un march, si no existe ninguna etiqueta `h1` en el código. Como el elemento tiene un lenght de 1, podemos exponer el objeto con:
-![image](https://github.com/user-attachments/assets/cf67cd1b-9356-4d44-9378-3986c93960b9)
-Este elemento contiene nuestro texto arbitrario:
-![image](https://github.com/user-attachments/assets/c2e1a780-6a4b-4c1a-b1b5-5ad587511103)
+Por qué está indicando que hay un march, si no existe ninguna etiqueta `h1` en el código. Como el elemento tiene un lenght de 1, podemos exponer el objeto con:  
+
+![image](https://github.com/user-attachments/assets/cf67cd1b-9356-4d44-9378-3986c93960b9)  
+
+Este elemento contiene nuestro texto arbitrario:  
+
+![image](https://github.com/user-attachments/assets/c2e1a780-6a4b-4c1a-b1b5-5ad587511103)  
+
 
 # 📚 ¿Qué significa esto realmente?
 
