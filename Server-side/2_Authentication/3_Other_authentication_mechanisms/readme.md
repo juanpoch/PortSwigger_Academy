@@ -168,7 +168,7 @@ http://vulnerable-website.com/reset-password?user=victim-user
 5. Envía el formulario.
 6. Si el servidor **no revalida el token**, se cambia la contraseña de otra cuenta.
 
-[Lab Password reset broken logic](3_Password_reset_broken_logic.md)  
+[Lab: Password reset broken logic](3_Password_reset_broken_logic.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)         
 
