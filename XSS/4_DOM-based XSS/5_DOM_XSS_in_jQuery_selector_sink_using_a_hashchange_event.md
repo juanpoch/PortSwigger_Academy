@@ -297,8 +297,10 @@ Este elemento contiene nuestro texto arbitrario:
 🛡️ **Nota importante**:
 - Este comportamiento es completamente automático si se usan versiones antiguas de jQuery.
 - En versiones recientes (>=3.0), este comportamiento fue cambiado para evitar problemas de seguridad.
+  
 
----
+---  
+
 
 
 Ahora sobrescribimos `post` para que ya no sea una colección jQuery, sino el nodo DOM puro (el <h1>):  
