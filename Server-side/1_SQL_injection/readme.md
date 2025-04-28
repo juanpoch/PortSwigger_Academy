@@ -155,6 +155,12 @@ SELECT * FROM users WHERE username = '' OR 1=1 --' AND password = ''
 ```
 
 - El atacante logra iniciar sesión sin credenciales.
+La base de datos va a devolver el primer registro que coincida con la condición.
+
+- Como 1=1 siempre es cierto, la consulta puede devolver:
+
+ - El primer usuario que esté en la tabla users.
+
 
 O podríamos inyectar: `administrator'--`
 Lo cual la consulta quedaría así:
