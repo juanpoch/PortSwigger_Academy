@@ -4,8 +4,8 @@ This lab is vulnerable to username enumeration and password brute-force attacks.
 
 To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.
 
-- [Candidate usernames]([https://url-destino.com](https://portswigger.net/web-security/authentication/auth-lab-usernames))
-- [Candidate passwords]([https://url-destino.com](https://portswigger.net/web-security/authentication/auth-lab-passwords))
+- [Candidate usernames](https://url-destino.com](https://portswigger.net/web-security/authentication/auth-lab-usernames))
+- [Candidate passwords](https://url-destino.com](https://portswigger.net/web-security/authentication/auth-lab-passwords))
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
