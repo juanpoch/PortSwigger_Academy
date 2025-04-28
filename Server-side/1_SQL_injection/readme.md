@@ -88,12 +88,14 @@ SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 
 - `released = 1` limita la muestra a productos "liberados".
 
-Parte | Explicación
-SELECT * | Selecciona todas las columnas de la tabla indicada. El asterisco (*) significa "todos los campos".
-FROM products | Indica la tabla de donde se van a extraer los datos. En este caso, de la tabla llamada products.
-WHERE | Agrega una condición: solo se devolverán los registros que cumplan los criterios especificados.
-category = 'Gifts' | Primera condición: el valor de la columna category debe ser igual a 'Gifts'. Solo selecciona productos de la categoría "Gifts" (regalos).
-AND released = 1 | Segunda condición: además, el valor de la columna released debe ser 1. Esto indica que el producto debe estar liberado o publicado.
+| Parte | Explicación |
+|:------|:------------|
+| `SELECT *` | Selecciona todas las columnas de la tabla indicada. El asterisco (`*`) significa "todos los campos". |
+| `FROM products` | Indica la tabla de donde se van a extraer los datos. En este caso, de la tabla llamada `products`. |
+| `WHERE` | Agrega una condición: solo se devolverán los registros que cumplan los criterios especificados. |
+| `category = 'Gifts'` | Primera condición: el valor de la columna `category` debe ser igual a `'Gifts'`. Solo selecciona productos de la categoría "Gifts" (regalos). |
+| `AND released = 1` | Segunda condición: además, el valor de la columna `released` debe ser `1`. Esto indica que el producto debe estar liberado o publicado. |
+
 
 **Ataque:**
 
