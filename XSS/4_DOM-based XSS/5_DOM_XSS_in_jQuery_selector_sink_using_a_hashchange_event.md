@@ -194,11 +194,13 @@ Ahora, si intento acceder directamente al primer elemento de esa colección util
 # 2. Qué pasa cuando intento acceder a un elemento no existente
 
 Ahora pruebo qué ocurre si el selector **no encuentra** ningún elemento:
-![image](https://github.com/user-attachments/assets/dd2f7bcb-02e8-4e3e-8d9a-a969b384877e)
+![image](https://github.com/user-attachments/assets/dd2f7bcb-02e8-4e3e-8d9a-a969b384877e)  
+
 La consola muestra undefined, ya que la operación de asignar una variable no tiene valor de retorno visible.
 
 Si observamos la variable `post`:
-![image](https://github.com/user-attachments/assets/e164939d-6ea7-4308-ac63-6657d5836d00)
+![image](https://github.com/user-attachments/assets/e164939d-6ea7-4308-ac63-6657d5836d00)  
+
 - `post` contiene una colección jQuery vacía.
 
 - No hay ningún elemento en su interior.
@@ -208,7 +210,8 @@ Si observamos la variable `post`:
 
 Comprobamos la existencia de `post`:  
 
-![image](https://github.com/user-attachments/assets/2fd60e54-0509-4938-80aa-b3231ceeadd4)
+![image](https://github.com/user-attachments/assets/2fd60e54-0509-4938-80aa-b3231ceeadd4)  
+
 
 - Estamos verificando si post existe o no.
 
