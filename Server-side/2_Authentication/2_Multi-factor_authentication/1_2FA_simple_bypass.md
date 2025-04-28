@@ -62,7 +62,8 @@ Vemos que nos arroja una nueva cookie de sesión una vez pasado este primer fact
 
 Intentamos acceder al recurso `/my-account?id=carlos` utilizando la nueva cookie brindada por el servidor y resolvemos el laboratorio:
 
-![image](https://github.com/user-attachments/assets/83dfb799-0229-471e-b9b5-35205663ba4f)
+![image](https://github.com/user-attachments/assets/b58a1196-0907-4d40-942a-04e10cd8e997)
+
 
 
 
