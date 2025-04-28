@@ -5,4 +5,6 @@ This lab's two-factor authentication can be bypassed. You have already obtained 
 Your credentials: `wiener:peter`
 Victim's credentials `carlos:montoya`
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
+
 ---
