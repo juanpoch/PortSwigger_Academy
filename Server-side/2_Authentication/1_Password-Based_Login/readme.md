@@ -135,3 +135,10 @@ La **enumeración de usernames** ocurre cuando el atacante puede deducir si un n
 
 > ✨ **Entender cómo piensan los usuarios y cómo responden las aplicaciones es clave para asegurar mecanismos de autenticación basados en contraseñas.**
 
+
+
+[Lab Username enumeration via different responses](1_Username_enumeration_via_different_responses.md)
+
+---
+
+
