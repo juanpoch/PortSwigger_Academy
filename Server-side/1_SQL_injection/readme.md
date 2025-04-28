@@ -124,8 +124,8 @@ Resultado:
 ```sql
 SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 ```
-
-- Como `1=1` siempre es verdadero, **todos** los productos son devueltos.
+- La consulta modificada devuelve todos los elementos donde el valor `category` es `Gifts` o devuelve todos los elementos donde `1=1`.
+- Como `1=1` siempre es verdadero en todos los elementos, **todos** los productos son devueltos.
 
 **Advertencia:**
 
