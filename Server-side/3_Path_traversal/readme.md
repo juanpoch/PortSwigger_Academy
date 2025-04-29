@@ -1,4 +1,4 @@
-## 🔒 Guía Completa: Vulnerabilidad de Path Traversal (Directory Traversal)
+## 🔒 Vulnerabilidad de Path Traversal
 
 ---
 
