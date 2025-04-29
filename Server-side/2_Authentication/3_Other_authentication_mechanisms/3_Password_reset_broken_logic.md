@@ -57,6 +57,12 @@ Podríamos reintentar el cambio de contraseña modificando el valor del parámet
 
 Confirmando nuestra teoría.
 
+🔎 Notas adicionales:
+
+- Riesgo real en producción: Este tipo de fallos permitiría que atacantes reinicien contraseñas de usuarios críticos (admin, soporte, usuarios VIP).
+
+- Mitigación correcta: Asociar internamente cada token a un único usuario en la base de datos y validar esa asociación durante todo el flujo.
+
 
 
 
