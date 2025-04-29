@@ -44,6 +44,15 @@ Iniciamos sesión como `carlos` y resolvemos el laboratorio:
 ![image](https://github.com/user-attachments/assets/d6f5d7b9-df94-4d55-a3fd-aed84e590f62)
 
 
+### Conclusión
+
+- El servidor NO estaba validando correctamente que el token perteneciera al usuario cuya contraseña se quería cambiar.
+
+- Aceptaba cualquier username en el cuerpo de la solicitud, mientras el token simplemente existiera.
+
+- Resultado: Password reset broken logic → reseteo de contraseñas cruzadas.
+
+
 
 
 
