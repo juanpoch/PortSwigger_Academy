@@ -67,7 +67,7 @@ aioefwguh
 | Carácter | Funcón |
 |----------|--------|
 | `&` | Ejecuta comandos en secuencia (se ejecutan simultáneamente). |
-| `;` | Separa comandos independientes. |
+| `;` | Separa comandos independientes (se ejecutan en orden, uno después del otro, sin importar si el primero falla o no). |
 | `\|` | Pipe: conecta la salida de un comando con otro. |
 | `\|\|`, `&&` | Condicionales: ejecuta solo si el anterior falla(`\|\|`)/exitoso (`&`). |
 | `\`` o `$()` | Ejecuta comandos en subshell. |
