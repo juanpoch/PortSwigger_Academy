@@ -2,7 +2,7 @@
 
 ### 1. Confianza excesiva en controles del lado cliente
 - Asumir que la validación en JavaScript es suficiente.
-- Un atacante puede interceptar la petición con Burp Suite y modificar valores como precios, cantidad o aplicar descuentos indebidos.
+- un atacante puede simplemente usar herramientas como Burp Proxy para manipular los datos después de que el navegador los haya enviado, pero antes de que se transmitan a la lógica del servidor. Esto inutiliza los controles del lado del cliente.
 
 **Ejemplo**: Descuento aplicado solo si el total > $1000. El atacante modifica el carrito tras aplicar el descuento, dejando solo $100, pero manteniendo el descuento.
 
