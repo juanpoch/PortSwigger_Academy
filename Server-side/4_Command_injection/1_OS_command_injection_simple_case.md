@@ -59,6 +59,51 @@ Esto ejecutaría tres comandos separados:
 
 - `1` (se intenta ejecutar como comando, lo cual debería fallar).
 
+Luego tenemos la respuesta del servidor:
+```text
+sh: 1: /home/peter-F0lj21/stockreport.sh: line 5: $2: unbound variable
+1: not found
+```
+
+- El script `stockreport.sh` fue ejecutado con argumentos mal formados, lo cual causó un error en `$2` (esperaba `productId` y `storeId`, pero la estructura se rompió por la inyección).
+
+- `1`: not found indica que se intentó ejecutar 1 como comando. Esto confirma que la shell está interpretando los & como separadores y está tratando cada segmento como un comando separado.
+- También vemos en el error, el nombre del home directory del usuario: `/home/peter-F0lj21`.
+
+Si bien tenemos una vulnerabilidad de inyección, no se mostró la salida del comando `echo test`.
+
+Inyectamos el comando `whoami` en el segundo parámetro y resolvemos el lab:
+
+![image](https://github.com/user-attachments/assets/594c7869-022a-4e04-8c76-ddb45103a550)
+
+![image](https://github.com/user-attachments/assets/29bcd285-ffad-447a-98c8-b5c5979ea589)
+
+
+---
+
+### 📌 Conclusión
+
+Este laboratorio demuestra cómo una aplicación que construye comandos del sistema a partir de parámetros del usuario puede ser vulnerable a **OS command injection**, permitiendo ejecutar comandos arbitrarios en el servidor.
+
+Al inyectar comandos como `& echo test &` o `& whoami &`, comprobamos que el servidor no filtra ni valida adecuadamente la entrada, y ejecuta directamente los comandos proporcionados.
+
+Incluso cuando el primer argumento está mal formado (`productId`), logramos ejecutar código aprovechando el segundo argumento (`storeId`), mostrando cómo pequeñas modificaciones pueden alterar el flujo de ejecución.
+
+---
+
+### 🛡️ Recomendaciones de mitigación
+
+- **Evitar concatenar entrada del usuario en comandos del sistema.**
+- Usar funciones seguras del lenguaje de programación, como `subprocess.run(..., shell=False)` en Python.
+- Validar estrictamente los parámetros permitidos mediante listas blancas.
+- Ejecutar procesos con permisos mínimos para reducir el impacto de una posible explotación.
+
+
+
+
+
+
+
 
 
 
