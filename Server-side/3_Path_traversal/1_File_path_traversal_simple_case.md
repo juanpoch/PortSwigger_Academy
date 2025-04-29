@@ -4,6 +4,7 @@ This lab contains a path traversal vulnerability in the display of product image
 
 To solve the lab, retrieve the contents of the `/etc/passwd` file.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
 
 ---
