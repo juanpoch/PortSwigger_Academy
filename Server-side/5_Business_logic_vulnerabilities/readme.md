@@ -35,7 +35,7 @@ Las vulnerabilidades de lógica suelen surgir por:
 - Desarrolladores que no conocen toda la aplicación o sus dependencias.
 
 Ejemplo típico:
-- Asumir que si un usuario hace clic en "comprar", antes ya pasó por "agregar al carrito". Pero el atacante envía una solicitud forjada para comprar directamente.
+- Asumir que si un usuario hace clic en "comprar", antes ya pasó por "agregar al carrito". Pero el atacante envía una solicitud forzada para comprar directamente.
 
 ---
 
@@ -47,7 +47,7 @@ Depende directamente del área afectada. Algunos ejemplos:
 |-------------|--------------------------|
 | Autenticación | Acceso sin login, escalación de privilegios |
 | Transacciones financieras | Fraude, duplicación de saldo, descuentos indebidos |
-| Procesos administrativos | Evasiones de validación, básqueda de estados inconsistentes |
+| Procesos administrativos | Evasiones de validación, búsqueda de estados inconsistentes |
 | Límites de uso | Eludir restricciones de cuota, burlar mecanismos anti-spam |
 
 Incluso si no hay beneficio directo, pueden usarse para **dañar el negocio** (por ejemplo, pedidos gratuitos, anulación de pagos, abuso de devoluciones).
