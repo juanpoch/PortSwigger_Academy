@@ -68,7 +68,7 @@ aioefwguh
 |----------|--------|
 | `&` | Ejecuta comandos en secuencia. |
 | `;` | Separa comandos independientes. |
-| | | Pipe: conecta la salida de un comando con otro. |
+| `\|` | Pipe: conecta la salida de un comando con otro. |
 | `||`, `&&` | Condicionales: ejecuta solo si el anterior falla/exitoso. |
 | `\`` o `$()` | Ejecuta comandos en subshell. |
 
