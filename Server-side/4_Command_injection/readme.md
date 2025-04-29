@@ -1,4 +1,4 @@
-## 🚧 Guía Completa: OS Command Injection (Shell Injection)
+## 🚧 OS Command Injection
 
 ---
 
