@@ -6,6 +6,10 @@
 
 **Ejemplo**: Descuento aplicado solo si el total > $1000. El atacante modifica el carrito tras aplicar el descuento, dejando solo $100, pero manteniendo el descuento.
 
+[Lab: OS command injection, simple case](1_OS_command_injection_simple_case.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
+
 ### 2. No gestionar entrada no convencional
 - Enviar valores negativos, enormes o cadenas anómalas.
 - Ej: pasar `-1000` como cantidad en una transferencia. La condición `if (amount <= balance)` se cumple, transfiriendo fondos al atacante.
