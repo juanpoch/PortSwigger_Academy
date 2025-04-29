@@ -1,4 +1,4 @@
-## 🏦 Guía Completa: Vulnerabilidades de Lógica de Negocio (Business Logic Vulnerabilities)
+## 🏦 Vulnerabilidades de Lógica de Negocio (Business Logic Vulnerabilities)
 
 ---
 
