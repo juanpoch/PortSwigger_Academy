@@ -33,7 +33,7 @@ Ese token es el que autoriza el restablecimiento de la contraseña.
 Ingresamos la nueva contraseña dos veces y realizamos el cambio de contraseña para nuestro usuario:
 ![image](https://github.com/user-attachments/assets/695b8b3b-58ad-4fad-b8b6-9c881fa30ff6)
 
-Podemos ver que el servidor podría estar validando que el parámetro `temp-forgot-password-token` sea el mismo tanto en la url como en el cuerpo de la solicitud en vez de validar el token pertenezca al usuario cuya contraseña se quiere cambiar. Si esto es cierto, podríamos intentar utilizar esta petición para cambiar la contraseña del usuario víctima `carlos`.
+Podemos ver que el servidor podría estar validando que el parámetro `temp-forgot-password-token` sea el mismo tanto en la url como en el cuerpo de la solicitud, en vez de validar que el token pertenezca al usuario cuya contraseña se quiere cambiar. Si esto es cierto, podríamos intentar utilizar esta petición para cambiar la contraseña del usuario víctima `carlos`.
 
 Procedemos a intentar cambiar la contraseña de `carlos` utilizando el `Repeater`:
 ![image](https://github.com/user-attachments/assets/f0184fb6-2d67-4d13-bd7b-8dc06c18fbae)
