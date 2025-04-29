@@ -6,7 +6,7 @@
 
 **Ejemplo**: Descuento aplicado solo si el total > $1000. El atacante modifica el carrito tras aplicar el descuento, dejando solo $100, pero manteniendo el descuento.
 
-[Lab: OS command injection, simple case](1_OS_command_injection_simple_case.md)  
+[Lab: Excesive trust in client-side controls](1_Excessive_trust_in_client-side_controls.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
