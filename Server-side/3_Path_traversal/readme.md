@@ -92,6 +92,9 @@ Y el servidor terminará leyendo:
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
+[Dónde buscar Path Traversal](Server-side/3_Path_traversal)
+
+
 ---
 
 # 🔨 Técnicas para evadir validaciones
