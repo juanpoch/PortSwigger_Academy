@@ -177,5 +177,5 @@ Es fundamental entender cómo funciona el sistema de archivos, la codificación 
 
 ---
 
-📄 **Pro tip**: En muchos labs y entornos reales, el archivo `/etc/passwd` o `C:\Windows\win.ini` son usados para verificar si existe path traversal, ya que su existencia está garantizada.
+
 
