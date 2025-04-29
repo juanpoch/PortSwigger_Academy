@@ -54,7 +54,7 @@ Esto se debe a que el servidor responde con la cabecera `content-type: image/jpg
 
 Esto lógicamente se soluciona capturando las peticiones con `Burp Suite`:
 
-Cuando caramos la página principal, vemos que si interceptamos con `Burp Suite`, se tramitan muchas peticiones con recursos de imágenes:
+Cuando cargamos la página principal, vemos que si interceptamos con `Burp Suite`, se tramitan muchas peticiones con recursos de imágenes:
 ![image](https://github.com/user-attachments/assets/56da46a1-f94b-442a-8611-fd56ee720946)
 
 Mandamos una petición al repeater y resolvemos el laboratorio:
