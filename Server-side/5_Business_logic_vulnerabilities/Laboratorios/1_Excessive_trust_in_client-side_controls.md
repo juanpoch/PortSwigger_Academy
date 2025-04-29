@@ -4,6 +4,7 @@ This lab doesn't adequately validate user input. You can exploit a logic flaw in
 
 You can log in to your own account using the following credentials: `wiener:peter`
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
 ---
 
