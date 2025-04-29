@@ -24,7 +24,7 @@ file_path = "/var/www/images/" + filename
 
 Esto es exactamente el tipo de comportamiento vulnerable a `Path Traversal`, si no hay validación o sanitización adecuada.
 
-Si el servidor no valida el valor del parámetro filename, podrías intentar enviar algo como:
+Si el servidor no valida el valor del parámetro filename, podríamos intentar enviar algo como:
 ```bash
 /image?filename=../../../etc/passwd
 ```
