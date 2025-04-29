@@ -127,6 +127,10 @@ productID=381$(id)
    ```
    Se usa para detectar ejecución si no hay respuesta directa (blind RCE).
 
+[Lab: File path traversal, simple case](1_File_path_traversal_simple_case.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
+
 ---
 
 # 🚫 Cómo prevenir OS Command Injection
