@@ -88,7 +88,7 @@ Y el servidor terminará leyendo:
 > 📅 Nota: en Windows también funciona `..\` como secuencia de subida.
 
 
-[Lab: Username enumeration via different responses](1_Username_enumeration_via_different_responses.md)  
+[Lab: File path traversal, simple case](1_File_path_traversal_simple_case.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
