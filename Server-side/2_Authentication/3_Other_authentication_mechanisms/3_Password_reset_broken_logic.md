@@ -52,6 +52,12 @@ Iniciamos sesión como `carlos` y resolvemos el laboratorio:
 
 - Resultado: Password reset broken logic → reseteo de contraseñas cruzadas.
 
+Podríamos reintentar el cambio de contraseña modificando el valor del parámetro `temp-forgot-password-token`, pero procurando que sea el mismo tanto en la url como en el cuerpo de la solicitud:
+![image](https://github.com/user-attachments/assets/40509117-a1d7-45b2-bd8d-cf9b53469e04)
+
+Confirmando nuestra teoría.
+
+
 
 
 
