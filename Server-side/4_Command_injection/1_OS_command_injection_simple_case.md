@@ -6,4 +6,7 @@ The application executes a shell command containing user-supplied product and st
 
 To solve the lab, execute the `whoami` command to determine the name of the current user.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
+
+
 ---
