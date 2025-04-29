@@ -52,6 +52,32 @@ Esto se debe a que el servidor responde con la cabecera `content-type: image/jpg
 ![image](https://github.com/user-attachments/assets/6dd3cb94-c2ec-4a33-ada3-1977a4dbf991)
 
 
+Esto lógicamente se soluciona capturando las peticiones con `Burp Suite`:
+
+![image](https://github.com/user-attachments/assets/022a8573-b1d5-4219-9821-b0f0f33d0311)
+
+![image](https://github.com/user-attachments/assets/69618e08-a6af-4272-aba4-195feda6280b)
+
+
+### 📌 Conclusión
+
+Este laboratorio demuestra cómo una aplicación que permite acceder a archivos a través de parámetros dinámicos puede ser vulnerable a **Path Traversal** si no realiza una validación estricta del input.
+
+Aunque el navegador no mostró el contenido (por la cabecera `Content-Type: image/jpeg`), herramientas como **Burp Suite** permiten acceder directamente a la respuesta HTTP, confirmando la explotación.
+
+En este caso, logramos acceder al archivo `/etc/passwd`, típico en sistemas Linux, lo que confirma que el servidor es vulnerable a traversal.
+
+---
+
+### 🛡️ Mitigación recomendada
+
+- Usar rutas relativas seguras, nunca concatenar directamente rutas desde parámetros controlados por el usuario.
+- Validar que la ruta final esté **dentro del directorio permitido**, utilizando funciones como `realpath()` o `os.path.abspath()` para normalizar rutas.
+- Evitar usar nombres de archivos controlados por el usuario sin validarlos contra una **lista blanca** (`whitelist`) de archivos permitidos.
+
+
+
+
 
 
 
