@@ -4,7 +4,7 @@
 
 # 🔐 ¿Qué son las vulnerabilidades de lógica de negocio?
 
-Las **vulnerabilidades de lógica de negocio** (tambien conocidas como *logic flaws* o *application logic vulnerabilities*) son **fallos en el diseño o implementación de la aplicación** que permiten a un atacante manipular funciones lítimas de forma maliciosa.
+Las **vulnerabilidades de lógica de negocio** (tambien conocidas como *logic flaws* o *application logic vulnerabilities*) son **fallos en el diseño o implementación de la aplicación** que permiten a un atacante manipular funciones legítimas de forma maliciosa.
 
 Estas fallas no suelen derivarse de errores de programación técnicos como buffer overflows o inyecciones, sino que son consecuencia de **asunciones incorrectas sobre el comportamiento del usuario o del flujo de la aplicación**.
 
