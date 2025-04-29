@@ -87,6 +87,11 @@ Y el servidor terminará leyendo:
 
 > 📅 Nota: en Windows también funciona `..\` como secuencia de subida.
 
+
+[Lab: Username enumeration via different responses](1_Username_enumeration_via_different_responses.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
+
 ---
 
 # 🔨 Técnicas para evadir validaciones
