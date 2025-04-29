@@ -9,3 +9,44 @@ This lab's password reset functionality is vulnerable. To solve the lab, reset C
 
 ---
 
+Iniciamos el lab y tenemos el típico blog:
+![image](https://github.com/user-attachments/assets/04daf798-c568-47e3-8702-f748bdc19dda)
+
+Ingresamos al panel de login a través del botón `My account`:
+![image](https://github.com/user-attachments/assets/c8654c04-fe13-4f94-af3a-672b769182c6)
+
+Capturando el tráfico con `Burp Suite`, inspeccionamos la funcionalidad de `Forgot password?`:
+![image](https://github.com/user-attachments/assets/a3bfe564-6773-4847-aa76-747cc08d1d47)
+
+Ingresamos nuestro usuario `wiener` para inspeccionar la siguiente request:
+![image](https://github.com/user-attachments/assets/128465ab-393e-4dcb-86cd-b546c755214b)
+
+Como nos pide que ingresemos a nuestro email, inspeccionamos el mail utilizando el botón `Email client`:
+![image](https://github.com/user-attachments/assets/d23ddbba-b28a-4b15-a473-20fdc0c5cd5f)
+
+Vemos que nos brinda un email de reseteo de contraseña, accedemos al mismo:
+![image](https://github.com/user-attachments/assets/cac8c6af-3f41-47e4-bacc-1c2c9af17354)
+
+El link contiene un parámetro `temp-forgot-password-token`.
+Ese token es el que autoriza el restablecimiento de la contraseña.
+
+Ingresamos la nueva contraseña dos veces y realizamos el cambio de contraseña para nuestro usuario:
+![image](https://github.com/user-attachments/assets/695b8b3b-58ad-4fad-b8b6-9c881fa30ff6)
+
+Podemos ver que el servidor podría estar validando que el parámetro `temp-forgot-password-token` sea el mismo tanto en la url como en el cuerpo de la solicitud. Si esto es cierto, podríamos intentar utilizar esta petición para cambiar la contraseña del usuario víctima `carlos`.
+
+Procedemos a intentar cambiar la contraseña de `carlos` utilizando el `Repeater`:
+![image](https://github.com/user-attachments/assets/f0184fb6-2d67-4d13-bd7b-8dc06c18fbae)
+
+Vemos que pudimos cambiar la contraseña con éxito!
+
+Iniciamos sesión como `carlos` y resolvemos el laboratorio:
+![image](https://github.com/user-attachments/assets/d6f5d7b9-df94-4d55-a3fd-aed84e590f62)
+
+
+
+
+
+
+
+
