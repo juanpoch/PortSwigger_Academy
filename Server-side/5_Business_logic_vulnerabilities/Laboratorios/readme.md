@@ -78,7 +78,7 @@ Preguntas clave al observar las respuestas de la aplicación:
 
 Si un formulario no maneja correctamente entradas atípicas, es probable que **otras partes de la aplicación tampoco lo hagan**. Este es un patrón de diseño inseguro que puede aprovecharse para escalar privilegios, manipular precios, o acceder a funciones restringidas.
 
-[Lab: Excesive trust in client-side controls](1_Excessive_trust_in_client-side_controls.md)  
+[Lab: High-level logic vulnerability](2_High-level_logic_vulnerability.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
