@@ -61,7 +61,7 @@ Hacemos click en `Place order` para ver si podemos realmente comprar el producto
 Por lo que vamos a proceder a comprar el producto que necesitabamos, que se llama `Lightweight l33t leather jacket`, para el cual necesitamos saber el id, por lo que accedemos al mismo para ver el id en la url:
 ![image](https://github.com/user-attachments/assets/605d31b1-6964-43b4-86a9-212c09bf15e3)
 
-Sabemos que es el `productId=1`. Volvemos a modificar la petición de `cart` para esta vez llevar al carrito el `productId=1` a un precio accesible:
+Sabemos que es el `productId=1`. Volvemos a modificar la petición de `/cart` para esta vez llevar al carrito el `productId=1` a un precio accesible:
 ![image](https://github.com/user-attachments/assets/14fef8f1-9ed1-4c8c-b432-9c0d78f558e1)
 
 Accedemos al carrito y vemos que tenemos la orden de compra:
