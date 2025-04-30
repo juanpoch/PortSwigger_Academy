@@ -29,6 +29,12 @@ Hacemos click en `Add to cart`:
 
 ![image](https://github.com/user-attachments/assets/903c81d4-8eeb-4e18-ac66-8d49ef238fab)
 
+- `price=1093` está siendo enviado por el cliente, lo que indica que el precio del producto es controlable por el usuario.
+
+- Esto sugiere que el sistema confía en el valor del parámetro `price` recibido desde el navegador, en lugar de calcular el precio en el backend.
+
+- Este tipo de lógica puede ser explotada fácilmente para comprar productos a un precio menor o incluso negativo.
+
 Luego ingresamos al carrito:
 ![image](https://github.com/user-attachments/assets/7ecbac3c-ea65-47e1-aaf3-28fdeac2b5db)
 
