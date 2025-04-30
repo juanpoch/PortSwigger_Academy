@@ -28,11 +28,45 @@ Hacemos click en `View details`:
 Hacemos click en `Add to cart` y luego hacemos click en el carrito:
 ![image](https://github.com/user-attachments/assets/7ecbac3c-ea65-47e1-aaf3-28fdeac2b5db)
 
+Petición en Burp Suite:
+![image](https://github.com/user-attachments/assets/903c81d4-8eeb-4e18-ac66-8d49ef238fab)
+
+
 Llegamos a la siguiente página:
 ![image](https://github.com/user-attachments/assets/b77d9e82-47c7-4f9c-9b05-ca74464a8581)
 
 Hacemos click en `Place order`:
 ![image](https://github.com/user-attachments/assets/180d2af0-9696-4c3f-aabb-ea33065d4535)
+
+Petición en Burp Suite:
+![image](https://github.com/user-attachments/assets/31df5e1a-595f-4849-bcf0-eee757005322)
+
+Enviamos la petición `/cart` al Repeater e intentamos cambiar el parámetro `price` enviado en el cuerpo de la solicitud, vemos que tenemos éxito:
+![image](https://github.com/user-attachments/assets/f847472f-5903-452e-8eba-7a9c00b05a8e)
+
+Si vemos nuestro navegador y vamos al carrito, vemos que está nuestra compra activada:
+![image](https://github.com/user-attachments/assets/140ad046-d000-41df-8479-181359bfb10b)
+
+Hacemos click en `Place order` para ver si podemos realmente comprar el producto. Logramos comprarlo:
+![image](https://github.com/user-attachments/assets/dae3b5c6-129c-46fd-979a-0f1adfd129c1)
+
+Por lo que vamos a proceder a comprar el producto que necesitabamos, que se llama `Lightweight l33t leather jacket`, para el cual necesitamos saber el id, por lo que accedemos al mismo para ver el id en la url:
+![image](https://github.com/user-attachments/assets/605d31b1-6964-43b4-86a9-212c09bf15e3)
+
+Sabemos que es el `productId=1`. Volvemos a modificar la petición de `cart` para esta vez llevar al carrito el `productId=1` a un precio accesible:
+![image](https://github.com/user-attachments/assets/14fef8f1-9ed1-4c8c-b432-9c0d78f558e1)
+
+Accedemos al carrito y vemos que tenemos la orden de compra:
+![image](https://github.com/user-attachments/assets/e1ca7e15-a636-4894-8632-9c6078033a5a)
+
+Hacemos click en `Place order` y compramos el producto para resolver el laboratorio:
+![image](https://github.com/user-attachments/assets/f0991872-f9eb-428c-becf-d285ee337514)
+
+
+
+
+
+
 
 
 
