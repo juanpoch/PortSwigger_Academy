@@ -25,8 +25,8 @@ Buscamos un producto que sea barato para inspeccionar el workflow, vemos que hay
 Hacemos click en `View details`:
 ![image](https://github.com/user-attachments/assets/e14eb409-8085-447d-a89b-154859078f11)
 
-Hacemos click en `Add to cart`:
-Petición en Burp Suite:
+Hacemos click en `Add to cart`:  
+
 ![image](https://github.com/user-attachments/assets/903c81d4-8eeb-4e18-ac66-8d49ef238fab)
 
 Luego ingresamos al carrito:
