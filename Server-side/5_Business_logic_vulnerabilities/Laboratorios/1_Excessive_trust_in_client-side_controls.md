@@ -70,6 +70,25 @@ Accedemos al carrito y vemos que tenemos la orden de compra:
 Hacemos click en `Place order` y compramos el producto para resolver el laboratorio:
 ![image](https://github.com/user-attachments/assets/f0991872-f9eb-428c-becf-d285ee337514)
 
+---
+
+## ✅ Conclusión
+
+La lógica de negocio del backend **confía ciegamente en los datos enviados por el cliente**.
+
+Esto permite **manipular el precio (`price=`)** y realizar compras indebidas.
+
+Este tipo de vulnerabilidad demuestra un **exceso de confianza en controles del lado cliente**, una falla común pero crítica.
+
+---
+
+## 🛡️ Recomendaciones
+
+- Validar **todos los datos sensibles en el servidor**.
+- Obtener los **precios desde una base de datos segura**, usando únicamente el `productId`.
+- **Ignorar cualquier parámetro de precio enviado desde el cliente**.
+
+
 
 
 
