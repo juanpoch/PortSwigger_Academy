@@ -33,7 +33,7 @@ Vemos que el acceso al panel de administración sólo está permitido para usuar
 Utilizamos la cabecera `X-Forwarded-For: 127.0.0.1` para hacerle creer al servidor que venimos de una IP local:
 ![image](https://github.com/user-attachments/assets/059375c9-e84b-4cab-b10d-c153d0ad038b)
 
-Vemos que evidentemente el servidor está utilizando otro parámetros para saber si el usuario proviene del localhost.
+Vemos que evidentemente el servidor está utilizando otro parámetro para saber si el usuario proviene del localhost.
 
 Probamos acceder al endpoint mediante todos los verbos HTTP (`GET`, `POST`, `OPTIONS`, `PUT`, `PATCH`, `HEAD`, `TRACE`) sin éxito hasta que notamos que la respuesta es diferente cuando accedemos mediante `TRACE`:
 ![image](https://github.com/user-attachments/assets/e9ca5c2c-15b9-4c6b-af75-83b7c704e0c9)
