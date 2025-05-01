@@ -229,6 +229,104 @@ Ocultar recursos es una medida complementaria, **nunca un reemplazo del control 
 
 ---
 
+## Métodos de control de acceso basados en parámetros
+
+Uno de los errores más frecuentes en la implementación de mecanismos de autorización en aplicaciones web es el uso de **parámetros controlados por el usuario** para decidir el nivel de acceso o privilegio que se le otorga al mismo. Este enfoque es **intrínsecamente inseguro**, ya que permite al atacante modificar esos valores y potencialmente escalar privilegios o acceder a funcionalidades restringidas.
+
+---
+
+### 🔍 ¿En qué consiste?
+
+En este patrón inseguro, la aplicación determina el rol o los derechos del usuario al momento del login y almacena esa información en un lugar que **puede ser manipulado por el cliente**, como por ejemplo:
+
+- Un **campo oculto** (`<input type="hidden">`).
+- Una **cookie**.
+- Un **parámetro en la URL** (query string).
+
+Luego, al navegar por la aplicación, se toman decisiones de acceso **en base a ese valor enviado por el cliente**, en lugar de verificar en el backend el rol real del usuario autenticado.
+
+---
+
+### 🧪 Ejemplos comunes
+
+Imaginemos una aplicación que, luego de hacer login, redirige a la siguiente URL:
+
+```
+https://insecure-website.com/login/home.jsp?admin=false
+```
+
+En este caso, el sistema podría usar ese parámetro `admin` para mostrar u ocultar funcionalidades administrativas. Si el usuario malicioso simplemente cambia la URL a:
+
+```
+https://insecure-website.com/login/home.jsp?admin=true
+```
+
+...podría acceder al panel de administración si no hay validación en el servidor.
+
+Otro ejemplo común:
+
+```
+https://insecure-website.com/dashboard.jsp?role=1
+```
+Donde `role=0` representa un usuario común y `role=1` representa un administrador.
+
+Modificando ese parámetro en la URL, el atacante podría simular pertenecer a un rol más privilegiado y acceder a funcionalidades restringidas.
+
+---
+
+### ⚠️ ¿Por qué es una mala práctica?
+
+Este patrón viola un principio fundamental de la seguridad: **el control de acceso debe validarse exclusivamente del lado servidor**. Cualquier dato que se envíe desde el cliente debe considerarse potencialmente manipulado y no debe utilizarse como fuente de verdad.
+
+Confiar en valores enviados por el cliente permite a un atacante:
+- Realizar **elevación vertical de privilegios** (por ejemplo, de usuario a administrador).
+- Acceder a funciones administrativas o sensibles sin autorización.
+- Eludir lógicas de negocio importantes (por ejemplo, realizar acciones en nombre de otro usuario).
+
+---
+
+### 🔐 Buenas prácticas para evitar este problema
+
+- **Nunca confiar en datos del cliente** para tomar decisiones de seguridad.
+- Utilizar **mecanismos del lado servidor** para asociar la sesión del usuario a su rol o privilegios reales.
+- Almacenar el rol del usuario en el **backend** (por ejemplo, en la base de datos o en la sesión) y verificarlo en cada solicitud crítica.
+- Evitar exponer datos sensibles o determinantes en cookies sin mecanismos de protección (por ejemplo, HMAC).
+
+---
+
+### 🛠️ Ejemplo seguro
+
+En vez de depender de la URL o de un campo oculto, una buena práctica sería:
+
+1. Al autenticarse, el servidor consulta el rol del usuario desde la base de datos.
+2. El rol se almacena **del lado servidor** en la sesión.
+3. En cada acceso a rutas sensibles, el backend valida:
+
+```python
+if session["user_role"] != "admin":
+    return redirect("/unauthorized")
+```
+
+Así se garantiza que el usuario no puede modificar su rol desde el cliente.
+
+---
+
+### 🧠 Reflexión final
+
+Este tipo de errores es fácil de cometer y puede parecer funcional en etapas tempranas de desarrollo. Sin embargo, abre la puerta a accesos no autorizados, escaladas de privilegios y exposición de funcionalidades críticas. Cualquier auditoría de seguridad o prueba de penetración debe incluir la búsqueda activa de este patrón, sobre todo si se observan parámetros sospechosos como `admin=true`, `role=1`, `accessLevel=3`, etc.
+
+En resumen: **los parámetros del cliente no son confiables para aplicar control de acceso**. Siempre validar del lado servidor.
+
+[Lab: Unprotected admin functionality with unpredictable URL](2_Unprotected_admin_functionality_with_unpredictable_URL.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+[Lab: Unprotected admin functionality with unpredictable URL](2_Unprotected_admin_functionality_with_unpredictable_URL.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
+
 ### 🔒 Prevención de vulnerabilidades de acceso
 
 1. **Verificar roles y permisos en el backend, siempre**.
