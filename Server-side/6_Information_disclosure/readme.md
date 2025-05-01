@@ -20,7 +20,7 @@ Algunos ejemplos comunes de divulgación de información:
 - Claves API, credenciales o tokens embebidos en JavaScript o código cliente.
 - Diferencias sutiles en los tiempos o mensajes que permiten inferir usuarios válidos o archivos existentes.
 
-## ᵀᵗᵖ – ¿Cómo surgen estas vulnerabilidades?
+## ¿Cómo surgen estas vulnerabilidades?
 
 Las causas más comunes incluyen:
 
