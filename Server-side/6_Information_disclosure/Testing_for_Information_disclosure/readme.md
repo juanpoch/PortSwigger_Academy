@@ -130,6 +130,101 @@ También pueden sugerir vectores de ataques:
 
 ---
 
+## 🔞 Debugging Data: Una fuente crítica de información expuesta
+
+Durante la etapa de desarrollo, es común que las aplicaciones web incluyan mecanismos de **debugging** o depuración para ayudar a los desarrolladores a identificar errores de lógica, fallas en el backend o problemas de integración. Estas herramientas, aunque fundamentales durante la construcción de software, **pueden convertirse en una seria amenaza si no son desactivadas correctamente antes de pasar a producción**.
+
+### 💥 ¿Qué es el debugging data?
+
+Se refiere a cualquier tipo de información generada automáticamente por la aplicación para mostrar detalles sobre su funcionamiento interno. Esto puede manifestarse en distintas formas:
+
+- **Mensajes de error detallados (verbose errors)** que explicitan:
+  - Funciones internas ejecutadas
+  - Variables utilizadas
+  - Stack traces (pila de ejecución)
+  - Nombre de archivos o rutas del sistema
+  - Módulos o dependencias de terceros
+- **Logs de aplicación** accesibles desde la web
+- **Mensajes de consola** visibles en respuestas HTTP o código fuente
+- **Flags de entorno** activadas como `DEBUG=True` en frameworks como Flask o Django
+
+---
+
+### 🔍 Ejemplos comunes de información crítica expuesta
+
+| Información filtrada         | Riesgo asociado                                  |
+|------------------------------|--------------------------------------------------|
+| Stack traces                 | Revela rutas internas, clases, errores internos  |
+| Variables de sesión         | Manipulación de estado o suplantación de identidad|
+| Credenciales de backend      | Acceso a DBs, servicios internos o APIs          |
+| Claves criptográficas        | Compromete cifrado de datos                      |
+| Hostnames internos           | Facilita ataques SSRF o movimiento lateral       |
+
+#### 📌 Ejemplo real: Django y `DEBUG=True`
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'appdb',
+        'USER': 'admin',
+        'PASSWORD': 'supersecretpass',
+    }
+}
+```
+
+Una excepción simple puede exponer toda esta configuración.
+
+---
+
+### 🔎 Acceso a archivos de depuración
+
+Muchas veces los errores no están en la interfaz web, pero sí en **archivos `.log`** internos del servidor, como:
+
+```
+/var/log/app/error.log
+/app/logs/debug.log
+```
+
+Si estos logs son accesibles por HTTP sin autenticación, se puede obtener:
+
+- Errores recientes
+- Inputs maliciosos enviados
+- Tokens de sesión
+- Variables de entorno
+
+#### 🔮 Ejemplo de URL sensible
+
+```
+https://vulnerable-site.com/logs/debug.log
+```
+
+---
+
+### 🤕 Cómo explotar debugging data en un pentest
+
+1. **Forzar errores**: enviar tipos inesperados (null, strings enormes).
+2. **Buscar rutas comunes**: `/logs/`, `/debug/`, `/app/debug.log`, etc.
+3. **Observar códigos 500**: muchas veces traen HTML con stack trace.
+4. **Buscar en HTML**: comentarios como `<!-- DEBUG: api_key = abc123 -->`
+
+---
+
+### 🛡️ Recomendaciones para prevenir
+
+- Nunca dejar debugging activo en producción (`DEBUG=False`).
+- Bloquear acceso a carpetas de logs por HTTP.
+- Usar manejadores de errores personalizados.
+- Automatizar detección de debugging con scripts QA.
+
+---
+
+### 🎯 En resumen
+
+El debugging data puede ser una mina de oro para un atacante. Muchas veces es el **primer paso para una cadena de exploits más compleja**. Saber reconocerlo e interpretarlo es esencial para cualquier pentester, y deshabilitarlo correctamente es fundamental para cualquier desarrollador.
+
+---
+
 ## ✅ Prevención de vulnerabilidades de divulgación
 
 1. **Eliminar contenido interno antes de producción**:
