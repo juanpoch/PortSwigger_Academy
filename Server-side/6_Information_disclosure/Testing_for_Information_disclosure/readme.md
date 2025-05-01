@@ -139,7 +139,5 @@ También pueden sugerir vectores de ataques:
 
 ---
 
-Listo, con esto cerramos la sección teórica. A continuación, podemos comenzar con el primer laboratorio práctico para aplicar lo aprendido. 
 
-¿Te gustaría que lo resolvamos juntos ahora?
 
