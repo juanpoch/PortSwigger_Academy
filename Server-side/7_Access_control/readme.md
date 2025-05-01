@@ -223,7 +223,7 @@ Para proteger funciones sensibles como un panel de administración, **es necesar
 ### 🧠 Conclusión
 Ocultar recursos es una medida complementaria, **nunca un reemplazo del control de acceso**. En un entorno de seguridad serio, debemos asumir que un atacante puede encontrar cualquier URL. El objetivo no es ocultarlas, sino asegurarse de que **no pueda usarlas sin autorización**.
 
-[Lab: Unprotected admin functionality](1_Unprotected_admin_functionality.md)  
+[Lab: Unprotected admin functionality with unpredictable URL](2_Unprotected_admin_functionality_with_unpredictable_URL.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
