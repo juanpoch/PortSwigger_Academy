@@ -106,10 +106,6 @@ Sin embargo, la aplicación **nunca vuelve a validar** esa condición más adela
 > ❗ Este tipo de fallo es común en sistemas que confían en información **almacenada** o en decisiones tomadas en momentos anteriores, sin reevaluar su validez actual.
 
 
-[Lab: Inconsistent security controls](3_Inconsistent_security_controls.md)  
-
-![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
-
 ---
 
 ### ♻️ Flujos inconsistentes y validaciones parciales
@@ -135,10 +131,55 @@ Muchos sistemas aplican validaciones estrictas durante el registro o en pasos cr
 🏛️ En resumen, confiar en que los usuarios actuarán según lo previsto es una receta para el desastre. Las aplicaciones deben ser diseñadas asumiendo que los atacantes intentarán violar todas las reglas posibles, y por eso la validación y los controles deben ser constantes, coherentes y del lado del servidor.
 
 
+[Lab: Inconsistent security controls](3_Inconsistent_security_controls.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
+
+---  
 
 ### 4. Eliminar parámetros obligatorios
-- Creer que siempre se enviarán todos los campos de un formulario.
-- El atacante puede omitir campos, alterar la ruta del código y obtener respuestas inesperadas o comportamiento privilegiado.
+
+Algunas vulnerabilidades de lógica no surgen de fallos técnicos, sino de una comprensión deficiente de las reglas y procesos específicos del dominio de negocio para el que está diseñada la aplicación. Estos errores son conocidos como **fallos específicos del dominio** o "domain-specific logic flaws".
+
+Un ejemplo clásico es la funcionalidad de **aplicación de descuentos** en tiendas online. Imaginemos una tienda que ofrece un **10% de descuento en pedidos superiores a $1000**. Si la aplicación calcula el descuento cuando el carrito alcanza los $1000, pero **no vuelve a validar** el monto total antes de completar la compra, un atacante podría:
+
+1. Agregar varios productos al carrito hasta superar los $1000.
+2. Obtener el descuento aplicado.
+3. Eliminar productos del carrito, bajando el total por debajo del umbral.
+4. Finalizar la compra y obtener el descuento a pesar de que ya no cumple con la condición original.
+
+Esto ocurre cuando la lógica de negocio **no está atada a validaciones finales**, y se fía de condiciones intermedias.
+
+### 🧰 Otras situaciones comunes:
+
+- Cambios en datos sensibles (precios, puntos, roles) que se hacen del lado cliente y no se verifican en el servidor.
+- Estados inconsistentes del carrito o de formularios multi-paso.
+- Acciones que se validan una vez, pero no se vuelven a verificar cuando se ejecutan.
+
+### 📑 Ejemplo real:
+
+Una app que aplica envíos gratis para compras mayores a $200. El usuario puede agregar productos, activar el beneficio, y luego editar el carrito bajando el total a $50. Si el beneficio no se revoca automáticamente, se estaría explotando una lógica vulnerable.
+
+### 🔎 Cómo detectar estas fallas:
+
+- Pensá como un atacante: ¿qué incentivo hay para modificar el comportamiento esperado?
+- Usá herramientas como Burp Repeater para enviar peticiones con valores modificados (cantidades negativas, precios alterados, secuencias anómalas).
+- Revisá si los datos sensibles se recalculan del lado del servidor antes de ser aceptados.
+
+### 🌐 Requiere conocimiento del dominio
+
+Muchos de estos fallos son difíciles de encontrar si no entendés bien el contexto del negocio. Por ejemplo:
+
+- En una red social, forzar seguidores podría ser una vulnerabilidad.
+- En una app bancaria, calcular intereses de forma incorrecta por manipulación de fechas podría ser explotable.
+
+En contextos menos familiares, es crucial **leer documentación**, hablar con expertos funcionales o de producto, y entender cuáles son los flujos esperados para detectar desviaciones que puedan ser peligrosas.
+
+### ✅ Conclusión
+
+Los fallos específicos del dominio se encuentran cuando el pentester va más allá del comportamiento técnico, y entiende **qué no debería pasar según el modelo de negocio**. Son más difíciles de automatizar y por eso representan una gran oportunidad en bug bounty, auditorías manuales y testeo creativo.
+
+---  
 
 ### 5. Defectos específicos del dominio
 - En tiendas: aplicar descuentos sin cumplir condiciones, manipular códigos de promoción, o explotar errores en cálculo de precios.
