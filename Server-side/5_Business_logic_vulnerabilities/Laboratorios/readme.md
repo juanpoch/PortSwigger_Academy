@@ -84,16 +84,52 @@ Si un formulario no maneja correctamente entradas atípicas, es probable que **o
 
 ---
 
-## ✅ Conclusión
-
-**No validar adecuadamente los valores recibidos desde el cliente, o asumir que el cliente siempre se comportará correctamente, es una fuente frecuente de vulnerabilidades lógicas**.
-
-Incluso cuando el dato es del tipo esperado, su valor podría **romper la lógica del negocio** si no se controla con claridad lo que significa dentro del flujo funcional.
-
-
 
 ### 3. Suponer que los usuarios siempre completan pasos del flujo
-- El atacante puede omitir pasos con **navegación forzada**, por ejemplo, ir directo al paso 3 sin completar el paso 2 (como saltar la autenticación 2FA).
+
+Uno de los errores más frecuentes y peligrosos en el diseño de aplicaciones es suponer que los usuarios siempre se comportarán de forma legítima y respetarán el flujo de trabajo previsto. En el mundo real, los usuarios maliciosos (o incluso usuarios legítimos curiosos) pueden y **van a** intentar interactuar con la aplicación de formas no anticipadas.
+
+Estas suposiciones erróneas son el origen de muchas **vulnerabilidades de lógica de negocios**, ya que los desarrolladores, al no contemplar escenarios atípicos, dejan huecos en los controles y validaciones. Este tipo de fallos no siempre es técnico en esencia, sino conceptual: ocurre cuando se asume más de lo que realmente se controla.
+
+---
+
+### 🔐 Trusted users won't always remain trustworthy
+
+Una suposición **extremadamente peligrosa** en seguridad web es creer que una vez que un usuario ha superado ciertas validaciones iniciales, se puede confiar en él de forma permanente.
+
+#### 💡 Ejemplo práctico:
+
+Supongamos una plataforma de e-learning donde, al momento de registrarse, los usuarios deben ingresar una dirección de correo corporativa para acceder a cursos premium. Se valida correctamente durante el registro que el correo termine en `@empresa.com`, y si pasa, el usuario accede a más funcionalidades.
+
+Sin embargo, la aplicación **nunca vuelve a validar** esa condición más adelante. ¿Qué ocurre si el usuario edita directamente su perfil y cambia el email a `@gmail.com`? ¿O si accede a funcionalidades futuras con un rol premium sin haber sido reválido? Si no se vuelve a validar esa condición, el sistema queda abierto a abusos.
+
+> ❗ Este tipo de fallo es común en sistemas que confían en información **almacenada** o en decisiones tomadas en momentos anteriores, sin reevaluar su validez actual.
+
+---
+
+### ♻️ Flujos inconsistentes y validaciones parciales
+
+Muchos sistemas aplican validaciones estrictas durante el registro o en pasos críticos iniciales (como la compra de un producto o el alta de un usuario), pero luego **relajan** las mismas validaciones en operaciones futuras. Esto puede permitir que un atacante aproveche ese “relajamiento” para realizar acciones maliciosas, como:
+
+- Cambiar información ya validada por el sistema sin pasar nuevamente por controles (por ejemplo, cambiar una cuenta bancaria verificada).
+- Repetir procesos validados una vez, pero que deberían ser reevaluados (como transferencias de fondos, cambios de dirección de envío, acceso a recursos premium).
+- Enviar peticiones manualmente sin seguir el flujo de la interfaz, usando herramientas como Burp Repeater o scripts automatizados.
+
+---
+
+### ✅ Buenas prácticas para evitar estas suposiciones peligrosas
+
+- **Validar de forma consistente** todas las acciones importantes, no solo en el registro o punto de entrada.
+- **Revalidar la información sensible** cada vez que se usa en una operación crítica.
+- **Nunca confiar en el estado del cliente**: cualquier validación en el frontend debe repetirse (y reforzarse) del lado del servidor.
+- **Documentar claramente** los supuestos que hacen los desarrolladores y revisar periódicamente si siguen siendo válidos.
+- **Monitorear patrones anómalos** de comportamiento del usuario que puedan indicar intentos de abuso de la lógica de negocio.
+
+---
+
+🏛️ En resumen, confiar en que los usuarios actuarán según lo previsto es una receta para el desastre. Las aplicaciones deben ser diseñadas asumiendo que los atacantes intentarán violar todas las reglas posibles, y por eso la validación y los controles deben ser constantes, coherentes y del lado del servidor.
+
+
 
 ### 4. Eliminar parámetros obligatorios
 - Creer que siempre se enviarán todos los campos de un formulario.
