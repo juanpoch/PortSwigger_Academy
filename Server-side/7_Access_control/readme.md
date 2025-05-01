@@ -159,7 +159,7 @@ Si el backend no verifica que el usuario autenticado es el dueño de `user_id`, 
 
 
 
-[Lab: Information disclosure in error messages](1_Information_disclosure_in_error_messages.md)  
+[Lab: Unprotected admin functionality](1_Unprotected_admin_functionality.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
