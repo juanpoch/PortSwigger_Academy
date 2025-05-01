@@ -12,7 +12,7 @@ El control de acceso es el conjunto de mecanismos que definen qué usuarios pued
 - **Gestión de sesiones**: mantiene esa identidad durante las peticiones HTTP subsecuentes.
 - **Control de acceso**: impone las restricciones sobre lo que el usuario autenticado puede hacer.
 
-Una mala implementación de controles de acceso ("broken access control") es una de las vulnerabilidades más comunes y críticas en el desarrollo de software.
+Una mala implementación de controles de acceso es una de las vulnerabilidades más comunes y críticas en el desarrollo de software.
 
 ---
 
@@ -22,7 +22,7 @@ Los modelos de seguridad de control de acceso definen formalmente las reglas med
 
 ---
 
-## ✅ Programmatic Access Control (Control de Acceso Programático)
+## ✅ Programmatic Access Control
 Este modelo no depende de una estructura fija como los roles o grupos, sino que define una **matriz de privilegios** almacenada normalmente en una base de datos. El sistema consulta esta matriz en tiempo real para validar si un usuario puede ejecutar determinada acción sobre un recurso.
 
 ### ✨ Ventajas:
