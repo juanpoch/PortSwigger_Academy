@@ -22,7 +22,7 @@ Un buen pentester debe estar siempre atento a:
 
 ### 🔮 Fuzzing
 
-El fuzzing consiste en enviar datos inesperados a los parámetros para provocar errores o respuestas inusuales que revelen información sensible. Algunos ejemplos:
+El fuzzing en este caso consiste en enviar datos inesperados a los parámetros para provocar errores o respuestas inusuales que revelen información sensible. Algunos ejemplos:
 
 - Enviar tipos de datos inesperados: strings en lugar de números, símbolos especiales (`%`, `"`, `&`, `<`, `>`), booleanos, etc.
 - Introducir payloads conocidos como `'||1=1--`, `' OR 'x'='x`, `../../../../etc/passwd`, entre otros.
