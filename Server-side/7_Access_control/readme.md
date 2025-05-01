@@ -157,9 +157,13 @@ GET /account/details?user_id=112  --> Cambiar por 113
 
 Si el backend no verifica que el usuario autenticado es el dueño de `user_id`, puede acceder a información ajena.
 
+
+
+[Lab: Information disclosure in error messages](1_Information_disclosure_in_error_messages.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
 ---
-
-
 
 ### 🔒 Prevención de vulnerabilidades de acceso
 
