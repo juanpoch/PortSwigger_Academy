@@ -23,7 +23,7 @@ No encontramos enlaces ocultos ni comentarios inspeccionando las peticiones.
 Procedemos a buscar el robots.txt y observamos que se lista el panel de administración:
 ![image](https://github.com/user-attachments/assets/9a76f9f2-8f99-40b0-8e8a-7c593ac2ca4b)
 
-Accedemos al panel de administración y sin ningún tipo de restricciones, vemos que tenemos la opción de eliminar usuarios:
+Accedemos al panel de administración sin ningún tipo de restricciones, vemos que tenemos la opción de eliminar usuarios:
 ![image](https://github.com/user-attachments/assets/409763ca-694d-48be-aa25-2131a278f618)
 
 ⚠️ `Análisis`: El acceso al panel administrativo sin autenticación representa un claro caso de vertical privilege escalation. Este tipo de fallo permite a usuarios no privilegiados realizar acciones sensibles, como la eliminación de cuentas.
