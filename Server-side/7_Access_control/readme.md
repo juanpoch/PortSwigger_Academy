@@ -9,7 +9,7 @@ En esta sección vamos a explicar en profundidad qué son los controles de acces
 El control de acceso es el conjunto de mecanismos que definen qué usuarios pueden realizar determinadas acciones o acceder a ciertos recursos. En aplicaciones web, el control de acceso está fuertemente vinculado a:
 
 - **Autenticación**: verifica la identidad del usuario.
-- **Gestín de sesiones**: mantiene esa identidad durante las peticiones HTTP subsecuentes.
+- **Gestión de sesiones**: mantiene esa identidad durante las peticiones HTTP subsecuentes.
 - **Control de acceso**: impone las restricciones sobre lo que el usuario autenticado puede hacer.
 
 Una mala implementación de controles de acceso ("broken access control") es una de las vulnerabilidades más comunes y críticas en el desarrollo de software.
