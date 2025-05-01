@@ -165,6 +165,70 @@ Si el backend no verifica que el usuario autenticado es el dueño de `user_id`, 
 
 ---
 
+## 🔒 Seguridad por oscuridad y su ineficacia como control de acceso
+
+En algunos entornos web, los desarrolladores optan por **ocultar funciones sensibles** asignándoles URLs ofuscadas o poco predecibles. Esta práctica se conoce como **seguridad por oscuridad (security through obscurity)**. Si bien puede parecer una capa de protección adicional, **no constituye un mecanismo de control de acceso efectivo**.
+
+### 🧩 ¿Qué es seguridad por oscuridad?
+Seguridad por oscuridad es una estrategia que intenta mantener ciertos componentes del sistema seguros **al ocultarlos** o **dificultar su descubrimiento**. En lugar de proteger un recurso mediante autenticación, roles o restricciones, se basa en que un atacante no adivine su existencia.
+
+> **Ejemplo:**
+>
+> Una aplicación podría alojar su panel de administración en una URL no obvia, como:
+>
+> `https://insecure-website.com/administrator-panel-yb556`
+>
+> La idea detrás de esta práctica es que un atacante no podrá descubrir esa URL a menos que la adivine o sea filtrada por otro medio.
+
+### ⚠️ ¿Por qué no es seguro?
+Aunque usar una ruta no estándar puede **dificultar brevemente el descubrimiento**, **no impide el acceso** si alguien logra identificarla. Esta protección es fácilmente evitable con técnicas como:
+
+- Content discovery con herramientas como **Gobuster**, **FFUF**, **Dirb**, etc.
+- Revisión de archivos como `robots.txt` o `sitemap.xml`.
+- Fugas en comentarios HTML o archivos JavaScript.
+- Ingeniería inversa del código fuente del frontend.
+
+> **Ejemplo concreto:**
+>
+> El siguiente fragmento de JavaScript pertenece a la interfaz de usuario:
+>
+> ```html
+> <script>
+> 	var isAdmin = false;
+> 	if (isAdmin) {
+> 		...
+> 		var adminPanelTag = document.createElement('a');
+> 		adminPanelTag.setAttribute('href', 'https://insecure-website.com/administrator-panel-yb556');
+> 		adminPanelTag.innerText = 'Admin panel';
+> 		...
+> 	}
+> </script>
+> ```
+>
+> Aunque el botón del panel de administración sólo se renderiza si `isAdmin` es `true`, **el código completo es visible para todos los usuarios**, incluyendo la URL ofuscada. Un atacante que inspeccione el JavaScript puede acceder manualmente al panel simplemente copiando la URL.
+
+### 🛡️ ¿Cuál es la alternativa correcta?
+Para proteger funciones sensibles como un panel de administración, **es necesario implementar controles de acceso reales**, por ejemplo:
+
+- Requerir autenticación válida.
+- Verificar el rol del usuario en cada solicitud del backend.
+- Restringir las funciones según principios como **mínimo privilegio** o **separación de funciones**.
+
+### ✅ Buenas prácticas
+- No confíes en la ofuscación como único mecanismo de seguridad.
+- Toda función sensible debe validar explícitamente que el usuario tiene permiso para acceder.
+- Realizá pruebas de enumeración de rutas y análisis de código en busca de fugas de URLs sensibles.
+- Usá cabeceras como `X-Robots-Tag: noindex` y bloqueos adecuados en `robots.txt`, pero **no como única protección**.
+
+### 🧠 Conclusión
+Ocultar recursos es una medida complementaria, **nunca un reemplazo del control de acceso**. En un entorno de seguridad serio, debemos asumir que un atacante puede encontrar cualquier URL. El objetivo no es ocultarlas, sino asegurarse de que **no pueda usarlas sin autorización**.
+
+[Lab: Unprotected admin functionality](1_Unprotected_admin_functionality.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
+
 ### 🔒 Prevención de vulnerabilidades de acceso
 
 1. **Verificar roles y permisos en el backend, siempre**.
