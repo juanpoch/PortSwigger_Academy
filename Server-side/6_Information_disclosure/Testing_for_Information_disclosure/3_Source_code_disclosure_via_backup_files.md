@@ -10,9 +10,9 @@ This lab leaks its source code via backup files in a hidden directory. To solve 
 Accedemos al laboratorio y tenemos una aplicación de shopping:
 ![image](https://github.com/user-attachments/assets/cfcf5cb2-b6e2-44c8-a595-5b8c6b2dcc80)
 
-Debido a que el laboratorio nos dice que hay archivos de backup en un directorio oculto, tenemos los principales archivos que generalmente se buscan en un pentesting:
+Debido a que el laboratorio nos dice que hay archivos de backup en un directorio oculto, procederemos a inspeccionar el `robots.txt`
 
-- robots.txt
+---
 
 
 ## Análisis de `robots.txt`: Implicancias en Seguridad
