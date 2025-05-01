@@ -179,6 +179,11 @@ En contextos menos familiares, es crucial **leer documentación**, hablar con ex
 
 Los fallos específicos del dominio se encuentran cuando el pentester va más allá del comportamiento técnico, y entiende **qué no debería pasar según el modelo de negocio**. Son más difíciles de automatizar y por eso representan una gran oportunidad en bug bounty, auditorías manuales y testeo creativo.
 
+
+[Lab: Excesive trust in client-side controls](1_Excessive_trust_in_client-side_controls.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
+
 ---  
 
 ### 5. Defectos específicos del dominio
