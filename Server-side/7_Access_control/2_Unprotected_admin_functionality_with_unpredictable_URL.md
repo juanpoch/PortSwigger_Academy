@@ -41,6 +41,8 @@ Accedemos al panel de administración sin ningún tipo de restricciónes:
 Vemos que podemos eliminar usuarios, eliminamos el usuario `carlos` y resolvemos el laboratorio:
 ![image](https://github.com/user-attachments/assets/ad422f45-3ce8-4c76-8c1e-5e8c9df71062)
 
+En un escenario real, esta técnica sería parte de una etapa de recolección pasiva, donde se inspecciona el código fuente, respuestas de JavaScript, e incluso respuestas de APIs que revelen rutas no documentadas
+
 
 ---
 
