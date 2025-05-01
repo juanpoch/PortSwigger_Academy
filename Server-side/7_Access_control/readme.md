@@ -97,6 +97,7 @@ Modelo ampliamente utilizado en entornos empresariales. Se crean **roles** (conj
 Cada modelo tiene sus ventajas y desventajas. En la práctica, muchas aplicaciones modernas utilizan combinaciones de estos enfoques, como RBAC complementado con controles programáticos y lógicas adicionales para ciertos casos especiales.
 
 La clave está en seleccionar el modelo (o combinación) que mejor se adapte a los requisitos de seguridad, escalabilidad y mantenibilidad de la organización.
+
 ---
 
 ### 🌐 Tipos de controles de acceso
