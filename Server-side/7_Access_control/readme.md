@@ -159,6 +159,8 @@ Si el backend no verifica que el usuario autenticado es el dueño de `user_id`, 
 
 ---
 
+
+
 ### 🔒 Prevención de vulnerabilidades de acceso
 
 1. **Verificar roles y permisos en el backend, siempre**.
@@ -170,5 +172,5 @@ Si el backend no verifica que el usuario autenticado es el dueño de `user_id`, 
 
 ---
 
-En la próxima sección comenzamos con el primer laboratorio relacionado a Broken Access Control. ¡A practicar!
+
 
