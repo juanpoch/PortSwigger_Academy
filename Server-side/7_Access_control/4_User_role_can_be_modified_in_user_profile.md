@@ -52,7 +52,7 @@ Accedimos al panel de administración, y vemos que tenemos acceso al endpoint de
 Accedemos al endpoint `/admin/delete?username=carlos` para eliminar el usuario `carlos` y resolver el laboratorio:
 ![image](https://github.com/user-attachments/assets/9062aa68-f92a-4482-93ce-9ea8c7df5e16)
 
-Hacemos click en `Follow redirection` para acceder al endpoint `My account` y mostrar el laboratorio resuelto:
+Hacemos click en `Follow redirection` para acceder al endpoint `/admin` y mostrar el laboratorio resuelto:
 ![image](https://github.com/user-attachments/assets/2b9c1f71-5625-49a7-9689-09f1a72307d7)
 
 ---
