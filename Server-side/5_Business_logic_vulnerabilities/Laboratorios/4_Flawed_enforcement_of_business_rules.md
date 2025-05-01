@@ -7,6 +7,12 @@ You can log in to your own account using the following credentials: `wiener:pete
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
 
+**Técnicas aplicadas:** Business Logic Exploitation, Coupon Abuse, Fuzzing Validation Gaps  
+**Herramientas:** Burp Suite (Proxy, Repeater)  
+**Vulnerabilidad:** Flawed Enforcement of Business Rules
+
+
+
 ---
 
 
@@ -78,4 +84,18 @@ Aplicamos los descuentos múltiples veces hasta que podamos comprar el producto:
 
 Compramos el producto haciendo click en `Place order` y resolvemos el laboratorio:
 ![image](https://github.com/user-attachments/assets/6f4afe44-72bd-4deb-a426-c01606a76008)
+
+
+### ✅ Conclusión
+
+El sistema permite aplicar múltiples códigos de descuento de forma alternada debido a una validación defectuosa. Aunque impide usar un mismo cupón más de una vez consecutiva, no bloquea el uso intercalado entre varios cupones.
+
+Este tipo de vulnerabilidad demuestra una **implementación incorrecta de las reglas de negocio**, permitiendo a usuarios maliciosos reducir drásticamente el precio de un producto mediante abuso de cupones.
+
+### 🛡️ Recomendaciones
+
+- Implementar una lógica de validación que registre **cuáles cupones ya fueron aplicados**, no solo el último.
+- Asociar los cupones aplicados a la sesión o al carrito, y bloquear repeticiones.
+- Validar en el backend que el monto total refleje los descuentos esperados, evitando montos negativos o irrisorios.
+
 
