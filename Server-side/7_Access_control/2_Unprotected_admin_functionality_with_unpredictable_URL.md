@@ -4,5 +4,6 @@ This lab has an unprotected admin panel. It's located at an unpredictable locati
 
 Solve the lab by accessing the admin panel, and using it to delete the user `carlos`.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
