@@ -55,7 +55,7 @@ No toda divulgación amerita un reporte crítico. Algunas claves para evaluarlo:
 
 Es importante no reportar *falsos positivos*. Datos menores sólo se deben reportar si tienen **explotabilidad clara**.
 
-## ᵇᴿᵖ – ¿Cómo encontrar y explotar estas vulnerabilidades?
+## ¿Cómo encontrar y explotar estas vulnerabilidades?
 
 ### 1. Inspeccionar los comentarios HTML
 Muchos desarrolladores dejan comentarios como:
@@ -90,7 +90,7 @@ O errores como:
 Fatal error: Uncaught exception 'PDOException'...
 ```
 
-## ᴿᵉᵒ – Prevención
+## Prevención
 
 - **Usar mensajes genéricos** para errores ("credenciales inválidas" en vez de "usuario inexistente").
 - **Eliminar comentarios de desarrollo** en producción.
@@ -99,7 +99,7 @@ Fatal error: Uncaught exception 'PDOException'...
 - **Revisar configuración de terceros**: si usás frameworks o CMS, revisá qué headers o rutas se exponen por defecto.
 - **Auditorías regulares de seguridad** y uso de herramientas automáticas para buscar leaks.
 
-## ᵃᵉᵒ – Conclusión
+## Conclusión
 
 Las vulnerabilidades de *Information Disclosure* no deben subestimarse. Aunque por sí solas muchas veces no permiten explotar el sistema directamente, pueden **ser el trampolín para ataques más complejos**. La información es poder, y en ciberseguridad, **cada bit cuenta**.
 
