@@ -329,6 +329,100 @@ En resumen: **los parámetros del cliente no son confiables para aplicar control
 
 ---
 
+## 🔒 Broken Access Control from Platform Misconfiguration y Coincidencias de URL
+
+### ⚠️ Fallos en controles de acceso a nivel de plataforma
+
+Muchas aplicaciones modernas delegan parte del control de acceso al nivel de la plataforma (por ejemplo, configuraciones de web servers o frameworks), usando reglas del tipo:
+
+```
+DENY: POST, /admin/deleteUser, managers
+```
+
+Esta regla prohibiría que los usuarios con el rol "manager" realicen peticiones `POST` al endpoint `/admin/deleteUser`. Sin embargo, esto puede romperse debido a configuraciones erróneas o comportamientos especiales del servidor.
+
+#### 🔎 Bypass con headers no estándar
+Muchos frameworks y servidores admiten headers HTTP especiales como `X-Original-URL`, `X-Rewrite-URL` o `X-Forwarded-Prefix`. Estos pueden ser utilizados por proxies inversos o configuraciones internas para reescribir rutas.
+
+**Ejemplo de exploit:**
+```http
+POST / HTTP/1.1
+Host: vulnerable.com
+X-Original-URL: /admin/deleteUser
+...
+```
+
+Aunque la URL sea `/`, el servidor podría usar el valor de `X-Original-URL` para enrutar la petición internamente. Si la plataforma no valida el header correctamente, el control de acceso puede ser saltado.
+
+#### 🔀 Cambios en el método HTTP
+Si los controles de acceso sólo están definidos para ciertos métodos, como `POST`, pero el backend también acepta `GET`, `PUT` u otros para el mismo recurso, un atacante puede cambiar el verbo HTTP:
+
+**Ejemplo:**
+```http
+GET /admin/deleteUser HTTP/1.1
+```
+Esto podría ejecutar la misma acción que el `POST` si el backend no restringe el método.
+
+---
+
+### 🔗 Desajustes en coincidencias de URL
+
+Algunos controles de acceso pueden depender de coincidencias estrictas de ruta, pero otros componentes pueden tener reglas más relajadas.
+
+#### 1. Mayúsculas y minúsculas:
+Un servidor puede permitir acceder a `/ADMIN/DELETEUSER` aunque el path definido sea `/admin/deleteUser`. Si el sistema de control de acceso distingue mayúsculas y minúsculas, podría fallar:
+
+```
+Acceso real: /ADMIN/DELETEUSER ✔
+Controles aplicados a: /admin/deleteUser ❌
+```
+
+#### 2. Sufijos (Spring `useSuffixPatternMatch`)
+En versiones anteriores de Spring (pre 5.3), la opción `useSuffixPatternMatch=true` está habilitada por defecto. Esto permite acceder a:
+```
+/admin/deleteUser.json
+/admin/deleteUser.anything
+```
+Que serán tratados como `/admin/deleteUser`. Si el sistema de control de acceso sólo protege la versión exacta, se puede omitir.
+
+#### 3. Slash final opcional
+Algunos frameworks tratan `/admin/deleteUser` y `/admin/deleteUser/` como rutas diferentes. Si los controles de acceso sólo aplican a una, podría omitirse agregando o quitando la barra final.
+
+---
+
+### 🤹 Horizontal Privilege Escalation
+
+Este tipo de escalada ocurre cuando un usuario puede acceder a recursos de otros usuarios del mismo nivel.
+
+**Ejemplo:**
+```
+Usuario accede a su cuenta:
+https://insecure-website.com/myaccount?id=123
+```
+Un atacante cambia:
+```
+?id=124
+```
+Y accede al perfil de otro usuario.
+
+Este es un caso clásico de:
+> 📄 **IDOR (Insecure Direct Object Reference)**
+
+Los IDOR ocurren cuando valores controlados por el usuario acceden directamente a objetos sin validación adecuada.
+
+---
+
+### ✅ Recomendaciones
+- Validar todos los headers utilizados para enrutar peticiones, incluyendo los no estándares.
+- Restringir los métodos HTTP permitidos a nivel de servidor (p.ej., bloquear TRACE, PUT si no se usan).
+- Usar coincidencias estrictas y unificadas de URL.
+- Desactivar `useSuffixPatternMatch` en Spring si no es necesario.
+- Nunca confiar en identificadores controlados por el cliente para el acceso a recursos. Validar en base a la sesión del usuario autenticado.
+
+
+
+---
+
 ### 🔒 Prevención de vulnerabilidades de acceso
 
 1. **Verificar roles y permisos en el backend, siempre**.
