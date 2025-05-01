@@ -91,7 +91,7 @@ Uno de los errores más frecuentes y peligrosos en el diseño de aplicaciones es
 
 Estas suposiciones erróneas son el origen de muchas **vulnerabilidades de lógica de negocios**, ya que los desarrolladores, al no contemplar escenarios atípicos, dejan huecos en los controles y validaciones. Este tipo de fallos no siempre es técnico en esencia, sino conceptual: ocurre cuando se asume más de lo que realmente se controla.
 
-[Lab: Excesive trust in client-side controls](1_Excessive_trust_in_client-side_controls.md)  
+[Lab: Inconsistent security controls](3_Inconsistent_security_controls.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
