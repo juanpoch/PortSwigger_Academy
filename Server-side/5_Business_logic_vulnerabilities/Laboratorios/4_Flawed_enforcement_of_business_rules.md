@@ -76,22 +76,6 @@ Accedemos al endpoint `/cart` y observamos los descuentos aplicados:
 Aplicamos los descuentos múltiples veces hasta que podamos comprar el producto:
 ![image](https://github.com/user-attachments/assets/7ae205c3-ca9f-4115-bd87-e7cba9ae3dbd)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Compramos el producto haciendo click en `Place order` y resolvemos el laboratorio:
+![image](https://github.com/user-attachments/assets/6f4afe44-72bd-4deb-a426-c01606a76008)
 
