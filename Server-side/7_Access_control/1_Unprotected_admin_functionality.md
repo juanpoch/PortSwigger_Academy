@@ -1,4 +1,4 @@
-Lab: Unprotected admin functionality
+# Lab: Unprotected admin functionality
 
 This lab has an unprotected admin panel.
 
