@@ -48,6 +48,55 @@ Si este archivo está accesible públicamente, un atacante podría utilizarlo pa
 
 
 Accedemos al endpoint `/cgi-bin/phpinfo.php`:
+![image](https://github.com/user-attachments/assets/b0d1325e-36cd-4e79-ba2f-5297ad92ded5)
+
+![image](https://github.com/user-attachments/assets/289861c2-5f4d-4c7c-b696-6f9413a3f76e)
+
+
+
+Esta es una exposición directa y crítica de información sensible en un entorno de producción. El endpoint `/cgi-bin/phpinfo.php` que muestra la salida de `phpinfo()` está abierto al público, lo cual es una vulnerabilidad de divulgación de información grave.
+
+Esta captura (y lo que puede seguir al hacer scroll) revela:
+
+- Versión completa de PHP y sistema operativo:
+`PHP Version 7.4.3-4ubuntu2.29` sobre `Linux 8c94bf721940 4.14.355-275.603.amzn2.x86_64`
+
+- Rutas internas del servidor:
+Como `/etc/php/7.4/cgi/conf.d/20-xsl.ini`, `/etc/php/7.4/cgi/php.ini`, etc.
+
+- Información de configuración detallada:
+Incluyendo extensiones, sockets, módulos activados, soporte para protocolos (https, ftp, phar, tlsv1.0, etc).
+
+- Configuración del motor Zend y OPcache, que podría ayudar a explotar vulnerabilidades específicas si alguna de las extensiones estuviera desactualizada o mal configurada.
+
+Procedemos a buscar `SECRET_KEY` y encontramos el valor `cbf1s7t5i9upoetja42ylb02cvctyta2` asociado a la misma:
+![image](https://github.com/user-attachments/assets/86248113-48de-413f-a8b5-3d7979d451aa)
+
+Por lo que podemos resolver el laboratorio haciendo click en `Submit solution` e ingresando el valor `cbf1s7t5i9upoetja42ylb02cvctyta2 `:
+![image](https://github.com/user-attachments/assets/087bf8c8-a857-4b7e-9091-f348be4b6458)
+
+---
+
+## ✅ Conclusión
+
+Se identificó una vulnerabilidad de divulgación de información mediante la exposición pública de una página de debug (`/cgi-bin/phpinfo.php`) que ejecuta la función `phpinfo()` de PHP.
+
+Este archivo reveló información sensible del entorno de ejecución, incluyendo la variable de entorno `SECRET_KEY`, cumpliendo así el objetivo del laboratorio.
+
+## 🛡️ Recomendaciones
+
+- Nunca desplegar archivos de depuración (`phpinfo()`, `debug.php`, etc.) en entornos de producción.
+- Implementar controles de acceso para endpoints internos o reservados para desarrolladores.
+- Auditar el código antes de cada despliegue para eliminar comentarios o archivos no esenciales.
+
+## 📚 Lecciones aprendidas
+
+- Los comentarios HTML pueden revelar rutas críticas que faciliten el descubrimiento de funcionalidades internas.
+- La función `phpinfo()` puede exponer datos sensibles como rutas internas, variables de entorno y configuraciones del servidor.
+- La inspección manual y el uso de herramientas como Burp Suite ayudan a detectar detalles que los escáneres automáticos podrían pasar por alto.
+
+
+
 
 
 
