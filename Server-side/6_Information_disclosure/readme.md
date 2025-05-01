@@ -36,7 +36,7 @@ Las causas más comunes incluyen:
 - Mostrar mensajes de error diferenciados para cada caso ("usuario no existe" vs. "contraseña incorrecta").
 - Respuestas HTTP o mensajes específicos según el estado interno del sistema.
 
-## ᵀᵗᵗᵉᴼᵀ – Impacto de la divulgación de información
+## Impacto de la divulgación de información
 
 El impacto depende de **qué tipo de información se revela**:
 
