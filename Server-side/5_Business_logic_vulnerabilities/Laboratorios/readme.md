@@ -91,10 +91,6 @@ Uno de los errores más frecuentes y peligrosos en el diseño de aplicaciones es
 
 Estas suposiciones erróneas son el origen de muchas **vulnerabilidades de lógica de negocios**, ya que los desarrolladores, al no contemplar escenarios atípicos, dejan huecos en los controles y validaciones. Este tipo de fallos no siempre es técnico en esencia, sino conceptual: ocurre cuando se asume más de lo que realmente se controla.
 
-[Lab: Inconsistent security controls](3_Inconsistent_security_controls.md)  
-
-![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
-
 ---
 
 ### 🔐 Trusted users won't always remain trustworthy
@@ -108,6 +104,11 @@ Supongamos una plataforma de e-learning donde, al momento de registrarse, los us
 Sin embargo, la aplicación **nunca vuelve a validar** esa condición más adelante. ¿Qué ocurre si el usuario edita directamente su perfil y cambia el email a `@gmail.com`? ¿O si accede a funcionalidades futuras con un rol premium sin haber sido revalidado? Si no se vuelve a validar esa condición, el sistema queda abierto a abusos.
 
 > ❗ Este tipo de fallo es común en sistemas que confían en información **almacenada** o en decisiones tomadas en momentos anteriores, sin reevaluar su validez actual.
+
+
+[Lab: Inconsistent security controls](3_Inconsistent_security_controls.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
 ---
 
