@@ -124,7 +124,7 @@ También pueden sugerir vectores de ataques:
 **Regla de oro**: si podés demostrar cómo una pieza de información técnica facilita otro ataque, entonces el hallazgo escala en severidad.
 
 
-[Lab: Excesive trust in client-side controls](1_Excessive_trust_in_client-side_controls.md)  
+[Lab: Information disclosure in error messages](1_Information_disclosure_in_error_messages.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
