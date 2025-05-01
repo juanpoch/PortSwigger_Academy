@@ -9,7 +9,7 @@ Las **vulnerabilidades de divulgación de información**, también conocidas com
 
 Si bien algunos datos pueden parecer triviales, incluso la más pequeña fuga puede ser utilizada por un atacante como una **pieza clave para realizar ataques más complejos**, como inyecciones, escaladas de privilegios o bypass de autenticaciones.
 
-## ᵀᵃᵗᴿᵉᴼᵀᵉᵗᵉᵏ – Ejemplos típicos
+## Ejemplos típicos
 
 Algunos ejemplos comunes de divulgación de información:
 
