@@ -45,7 +45,7 @@ El impacto depende de **qué tipo de información se revela**:
 
 Ejemplo: Saber que el sitio usa `Apache 2.4.29` puede parecer inofensivo. Pero si esa versión es vulnerable a un exploit conocido, **el atacante tiene medio camino hecho**.
 
-## ᵉᵗᵒ – Evaluando la severidad
+## Evaluando la severidad
 
 No toda divulgación amerita un reporte crítico. Algunas claves para evaluarlo:
 
