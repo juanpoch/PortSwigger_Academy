@@ -24,6 +24,10 @@ Procedemos a buscar el panel de administración, vamos a realizar un ataque de f
 
 ![image](https://github.com/user-attachments/assets/841608f1-9e74-4bdd-a914-8855e3709297)
 
+Vemos que el endpoint `/admin` nos arroja un resultado `401 Unauthorized`:
+![image](https://github.com/user-attachments/assets/11d821de-b302-4a0f-aa4f-26a598af7271)
+
+
 
 
 
