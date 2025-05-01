@@ -16,8 +16,6 @@ Una mala implementación de controles de acceso ("broken access control") es una
 
 ---
 
-### 🔖 Modelos de seguridad de control de acceso
-
 # 🔖 Modelos de Seguridad de Control de Acceso
 
 Los modelos de seguridad de control de acceso definen formalmente las reglas mediante las cuales los sistemas determinan si un sujeto (por ejemplo, un usuario) puede acceder a un objeto (por ejemplo, un recurso, archivo o funcionalidad). Elegir el modelo adecuado es clave para implementar políticas de seguridad que equilibren protección, eficiencia y facilidad de gestión.
