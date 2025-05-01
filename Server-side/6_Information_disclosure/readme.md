@@ -1,9 +1,6 @@
 # Information disclosure
 
 
-
-## ᵚᵉᵏ – ¿Qué es la divulgación de información?
-
 Las **vulnerabilidades de divulgación de información**, también conocidas como *information disclosure* o *information leakage*, se producen cuando una aplicación web **revela involuntariamente datos sensibles** a los usuarios. Esta información puede ser:
 
 - Datos de otros usuarios (nombres, direcciones de email, información financiera)
