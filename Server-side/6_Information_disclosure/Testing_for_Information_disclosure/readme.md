@@ -292,7 +292,7 @@ Este tipo de fallos no solo comprometen la confidencialidad de la aplicación, s
 
 Estas medidas ayudan a reducir significativamente la superficie de ataque relacionada con la exposición accidental del código fuente o datos privados.
 
-[Lab: Information disclosure in error messages](1_Information_disclosure_in_error_messages.md)  
+[Lab: Source code disclosure via backup files](3_Source_code_disclosure_via_backup_files.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
