@@ -317,13 +317,15 @@ Este tipo de errores es fácil de cometer y puede parecer funcional en etapas te
 
 En resumen: **los parámetros del cliente no son confiables para aplicar control de acceso**. Siempre validar del lado servidor.
 
+[Lab: User role controlled by request parameter](3_User_role_controlled_by_request_parameter.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+
 [Lab: Unprotected admin functionality with unpredictable URL](2_Unprotected_admin_functionality_with_unpredictable_URL.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
-[Lab: Unprotected admin functionality with unpredictable URL](2_Unprotected_admin_functionality_with_unpredictable_URL.md)  
-
-![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
 
