@@ -18,18 +18,87 @@ Una mala implementación de controles de acceso ("broken access control") es una
 
 ### 🔖 Modelos de seguridad de control de acceso
 
-#### ✅ **Programmatic Access Control**
-Un enfoque flexible y granular. Se define una matriz de privilegios (por rol o usuario) almacenada en una base de datos, y el código del backend consulta esa matriz para decidir qué acciones están permitidas.
+# 🔖 Modelos de Seguridad de Control de Acceso
 
-#### ✉️ **Discretionary Access Control (DAC)**
-El usuario "dueño" de un recurso puede decidir quién más puede accederlo. Tiene mucha flexibilidad, pero puede volverse muy complejo de administrar.
+Los modelos de seguridad de control de acceso definen formalmente las reglas mediante las cuales los sistemas determinan si un sujeto (por ejemplo, un usuario) puede acceder a un objeto (por ejemplo, un recurso, archivo o funcionalidad). Elegir el modelo adecuado es clave para implementar políticas de seguridad que equilibren protección, eficiencia y facilidad de gestión.
 
-#### 🏛️ **Mandatory Access Control (MAC)**
-Modelo centralizado (común en entornos militares) donde los usuarios no pueden modificar las reglas de acceso. Todo está definido por clasificación.
+---
 
-#### 📂 **Role-Based Access Control (RBAC)**
-Se definen roles con permisos asociados (por ejemplo: "Admin", "Editor", "Viewer"), y los usuarios se asignan a esos roles. Es uno de los modelos más populares en aplicaciones empresariales.
+## ✅ Programmatic Access Control (Control de Acceso Programático)
+Este modelo no depende de una estructura fija como los roles o grupos, sino que define una **matriz de privilegios** almacenada normalmente en una base de datos. El sistema consulta esta matriz en tiempo real para validar si un usuario puede ejecutar determinada acción sobre un recurso.
 
+### ✨ Ventajas:
+- Altamente granular.
+- Flexible y personalizable.
+- Permite implementar reglas específicas para contextos complejos (por ejemplo: restricciones por horario, ubicación, estado de un proceso, etc.).
+
+### 📆 Ejemplo:
+```sql
+-- Tabla de privilegios
+user_id | recurso     | accion     | permitido
+--------|-------------|------------|-----------
+1       | /admin      | DELETE     | true
+2       | /admin      | DELETE     | false
+```
+El backend consulta esta matriz antes de ejecutar la acción solicitada.
+
+---
+
+## ✉️ Discretionary Access Control (DAC - Control de Acceso Discrecional)
+En este modelo, el **dueño del recurso** tiene la potestad de decidir quién puede acceder a él y en qué medida.
+
+### ✨ Ventajas:
+- Muy flexible para entornos colaborativos.
+- Fácil de entender.
+
+### ⚠️ Riesgos:
+- Difícil de escalar en sistemas grandes.
+- Los usuarios pueden cometer errores y otorgar permisos excesivos.
+
+### 📆 Ejemplo:
+Un usuario crea un archivo y comparte acceso de lectura con otro usuario. Si se equivoca y da acceso de escritura, podría causar una brecha.
+
+---
+
+## 🏛️ Mandatory Access Control (MAC - Control de Acceso Obligatorio)
+Modelo estricto y centralizado. Los usuarios no pueden modificar los permisos. El sistema define reglas globales y etiquetas de seguridad.
+
+### 🔒 Claves del modelo:
+- Cada objeto tiene una clasificación (por ejemplo: Confidencial, Secreto, Top Secret).
+- Cada sujeto tiene un nivel de autorización.
+- El acceso solo se permite si la autorización del sujeto es igual o superior a la clasificación del objeto.
+
+### ✨ Usos comunes:
+- Entornos militares o gubernamentales.
+- Sistemas que requieren cumplimiento estricto de confidencialidad.
+
+### 📆 Ejemplo:
+Un empleado con nivel "Secreto" no podrá acceder a documentos "Top Secret", pero sí a documentos "Confidencial" o "Público".
+
+---
+
+## 📂 Role-Based Access Control (RBAC - Control de Acceso Basado en Roles)
+Modelo ampliamente utilizado en entornos empresariales. Se crean **roles** (conjuntos de permisos) y los usuarios son asignados a uno o más roles.
+
+### 📄 Ejemplo de roles:
+- `Admin`: Puede gestionar usuarios, editar contenido y ver reportes.
+- `Editor`: Puede crear y editar contenido.
+- `Viewer`: Solo puede leer contenido.
+
+### ✨ Ventajas:
+- Escalable y fácil de administrar.
+- Se adapta bien a organizaciones estructuradas por funciones.
+- Reduce el riesgo de errores humanos en la asignación de permisos.
+
+### ⚠️ Consideraciones:
+- Definir demasiados roles puede hacer que el sistema sea complejo de mantener.
+
+---
+
+## 🔹 Conclusión
+Cada modelo tiene sus ventajas y desventajas. En la práctica, muchas aplicaciones modernas utilizan combinaciones de estos enfoques, como RBAC complementado con controles programáticos y lógicas adicionales para ciertos casos especiales.
+
+La clave está en seleccionar el modelo (o combinación) que mejor se adapte a los requisitos de seguridad, escalabilidad y mantenibilidad de la organización.
 ---
 
 ### 🌐 Tipos de controles de acceso
