@@ -101,7 +101,7 @@ Una suposición **extremadamente peligrosa** en seguridad web es creer que una v
 
 Supongamos una plataforma de e-learning donde, al momento de registrarse, los usuarios deben ingresar una dirección de correo corporativa para acceder a cursos premium. Se valida correctamente durante el registro que el correo termine en `@empresa.com`, y si pasa, el usuario accede a más funcionalidades.
 
-Sin embargo, la aplicación **nunca vuelve a validar** esa condición más adelante. ¿Qué ocurre si el usuario edita directamente su perfil y cambia el email a `@gmail.com`? ¿O si accede a funcionalidades futuras con un rol premium sin haber sido reválido? Si no se vuelve a validar esa condición, el sistema queda abierto a abusos.
+Sin embargo, la aplicación **nunca vuelve a validar** esa condición más adelante. ¿Qué ocurre si el usuario edita directamente su perfil y cambia el email a `@gmail.com`? ¿O si accede a funcionalidades futuras con un rol premium sin haber sido revalidado? Si no se vuelve a validar esa condición, el sistema queda abierto a abusos.
 
 > ❗ Este tipo de fallo es común en sistemas que confían en información **almacenada** o en decisiones tomadas en momentos anteriores, sin reevaluar su validez actual.
 
