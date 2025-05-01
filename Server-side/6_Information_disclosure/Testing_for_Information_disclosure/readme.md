@@ -123,6 +123,11 @@ También pueden sugerir vectores de ataques:
 
 **Regla de oro**: si podés demostrar cómo una pieza de información técnica facilita otro ataque, entonces el hallazgo escala en severidad.
 
+
+[Lab: Excesive trust in client-side controls](1_Excessive_trust_in_client-side_controls.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
 ---
 
 ## ✅ Prevención de vulnerabilidades de divulgación
