@@ -322,7 +322,7 @@ En resumen: **los parámetros del cliente no son confiables para aplicar control
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 
-[Lab: Unprotected admin functionality with unpredictable URL](2_Unprotected_admin_functionality_with_unpredictable_URL.md)  
+[Lab: User role can be modified in user profile](4_User_role_can_be_modified_in_user_profile.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
