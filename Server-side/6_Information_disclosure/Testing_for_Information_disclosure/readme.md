@@ -229,6 +229,75 @@ El debugging data puede ser una mina de oro para un atacante. Muchas veces es el
 
 ---
 
+# Páginas de cuenta de usuario y archivos de respaldo
+
+## Páginas de cuenta de usuario
+
+Por naturaleza, las páginas de perfil o cuenta de un usuario suelen contener información sensible, como el correo electrónico, número de teléfono, clave API, entre otros. Dado que los usuarios normalmente solo tienen acceso a su propia página de cuenta, esto no representa una vulnerabilidad en sí mismo. Sin embargo, algunos sitios contienen fallos de lógica que potencialmente permiten a un atacante aprovechar estas páginas para visualizar los datos de otros usuarios.
+
+Por ejemplo, consideremos un sitio que determina qué página de cuenta cargar basándose en un parámetro `user`:
+
+```
+GET /user/personal-info?user=carlos
+```
+
+La mayoría de los sitios web implementan medidas para evitar que un atacante simplemente cambie ese parámetro y acceda a las páginas de otros usuarios. Sin embargo, a veces la lógica para cargar elementos individuales de datos no es tan robusta.
+
+Es posible que un atacante no pueda cargar completamente la página de cuenta de otro usuario, pero que sí pueda explotar un fallo en la lógica que recupera y muestra, por ejemplo, el correo electrónico del usuario. Si esa lógica no valida que el parámetro `user` coincida con el usuario actualmente autenticado, bastará con modificar ese parámetro para revelar el correo electrónico de cualquier otro usuario.
+
+Este tipo de problemas son un caso común de vulnerabilidades de control de acceso o IDOR (Insecure Direct Object References), las cuales analizaremos más adelante en profundidad.
+
+---
+
+## Divulgación de código fuente mediante archivos de respaldo
+
+Obtener acceso al código fuente de una aplicación web facilita enormemente la tarea de comprender su funcionamiento interno y diseñar ataques de mayor severidad. En muchos casos, datos sensibles como claves de API o credenciales de acceso a componentes de backend están hardcodeados directamente en el código.
+
+Si logramos identificar que la aplicación usa una tecnología de código abierto específica (por ejemplo, una versión conocida de WordPress, Laravel o Django), esto nos permite acceder a parte del código fuente ya documentado. Sin embargo, también puede ser posible acceder directamente al código personalizado del sitio web.
+
+En algunos casos, el sitio web expone involuntariamente su propio código fuente. Durante la etapa de mapeo de un sitio, podrías descubrir que algunos archivos fuente son referenciados directamente en el frontend o desde JavaScript. Sin embargo, al solicitar dichos archivos, normalmente el servidor los ejecuta (por ejemplo, archivos `.php`) en lugar de devolverlos como texto plano. Pero bajo ciertas condiciones, esto puede ser evadido.
+
+Una técnica común es buscar archivos temporales o de respaldo que los editores de texto generan automáticamente mientras se edita un archivo. Estos archivos suelen tener nombres similares al original pero con una pequeña modificación, como:
+
+- `archivo.php~`
+- `archivo.php.bak`
+- `archivo.old`
+- `archivo.php.save`
+- `.#archivo.php`
+- `archivo.php.swp` (tipos usados por editores como `vi` o `vim`)
+
+Si el servidor no tiene restricciones que impidan acceder a estos archivos, es posible que simplemente al solicitar la URL correspondiente se devuelva el contenido del archivo fuente en texto plano, permitiendo a un atacante analizarlo y extraer información crítica.
+
+### 🧠 Ejemplo práctico
+Supongamos que en un sitio descubrimos que existe `login.php`. Podemos probar solicitudes como:
+
+```
+GET /login.php~
+GET /login.php.bak
+GET /.login.php.swp
+```
+
+Si alguna de estas solicitudes responde con un `200 OK` y muestra contenido legible, significa que tenemos exposición directa al código fuente, lo cual podría revelar contraseñas, conexiones a base de datos o incluso rutas internas del servidor.
+
+Este tipo de fallos no solo comprometen la confidencialidad de la aplicación, sino que suelen llevar directamente a la explotación de otras vulnerabilidades críticas, como RCE, LFI, bypass de autenticación, entre otros.
+
+---
+
+### ✅ Recomendaciones de mitigación
+
+- No dejar archivos de respaldo, temporales o versiones antiguas accesibles en producción.
+- Implementar reglas en el servidor (como `.htaccess` o configuraciones en Nginx) que bloqueen accesos a extensiones como `.bak`, `.old`, `.swp`, `.save`, etc.
+- Auditar periódicamente el contenido de los servidores web y eliminar archivos innecesarios.
+- Aplicar un control estricto de acceso a cualquier recurso que contenga código fuente o datos sensibles.
+
+Estas medidas ayudan a reducir significativamente la superficie de ataque relacionada con la exposición accidental del código fuente o datos privados.
+
+[Lab: Information disclosure in error messages](1_Information_disclosure_in_error_messages.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
+
 ## ✅ Prevención de vulnerabilidades de divulgación
 
 1. **Eliminar contenido interno antes de producción**:
