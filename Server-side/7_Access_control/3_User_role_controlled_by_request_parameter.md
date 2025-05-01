@@ -6,5 +6,6 @@ Solve the lab by accessing the admin panel and using it to delete the user `carl
 
 You can log in to your own account using the following credentials: `wiener:peter`
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
