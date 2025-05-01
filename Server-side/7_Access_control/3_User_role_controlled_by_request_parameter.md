@@ -18,8 +18,11 @@ Accedemos al panel de login y nos autenticamos con nuestras credenciales `wiener
 
 ![image](https://github.com/user-attachments/assets/313c582b-b244-4426-b6ef-0e2391f51ce2)
 
-La siguiente petición corresponde al proceso de autenticación:
-![image](https://github.com/user-attachments/assets/81d9fc4a-dce3-4f3e-b098-3db87b3675a5)
+La siguiente petición corresponde al proceso de autenticación:  
+
+![image](https://github.com/user-attachments/assets/0d03e7ce-c383-402b-a0f7-70fb61d75712)  
+
+
 Esta respuesta HTTP revela una vulnerabilidad muy crítica relacionada con control de acceso basado en parámetros manipulables por el cliente, en este caso mediante una cookie llamada Admin.
 
 Esto sugiere que el sistema determina si un usuario tiene privilegios de administrador basándose en el valor de esa cookie, lo cual representa una violación al principio de confianza cero en el cliente.
