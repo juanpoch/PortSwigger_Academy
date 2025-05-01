@@ -21,7 +21,7 @@ Tenemos el siguiente comentario:
 ```
 Este comentario HTML indica que existe o existió un enlace al archivo `/cgi-bin/phpinfo.php`, el cual normalmente ejecuta el script `phpinfo()` de PHP.
 
-🚨 Implicancias de seguridad
+### 🚨 Implicancias de seguridad
 El archivo `phpinfo.php` es utilizado comúnmente para propósitos de debugging y muestra una gran cantidad de información sensible, incluyendo:
 
 - Versión exacta de PHP.
