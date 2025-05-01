@@ -298,6 +298,81 @@ Estas medidas ayudan a reducir significativamente la superficie de ataque relaci
 
 ---
 
+### Divulgación de Información por Configuración Insegura
+
+Una de las fuentes más comunes de vulnerabilidades de divulgación de información en aplicaciones web se origina en **configuraciones incorrectas o inseguras**. Esto ocurre particularmente cuando se utilizan **tecnologías de terceros**, frameworks, bibliotecas o servidores cuyas opciones de configuración no son comprendidas en su totalidad por quienes las implementan.
+
+#### 🔧 Causas Comunes de Configuración Insegura
+
+1. **Uso de valores por defecto:**
+   - Muchas veces se implementan servidores o aplicaciones sin cambiar las configuraciones por defecto.
+   - Ejemplo: dejar activado el listado de directorios en Apache (`Options Indexes`).
+
+2. **Exposición de herramientas de depuración en producción:**
+   - Archivos como `phpinfo.php`, `debug_toolbar`, paneles administrativos, o verbose error pages.
+   - Estas herramientas pueden exponer variables de entorno, rutas internas, claves, y configuraciones sensibles.
+
+3. **Métodos HTTP habilitados innecesariamente:**
+   - Algunos servidores responden a métodos como `TRACE`, `OPTIONS`, `PUT`, o `DELETE`, los cuales no son necesarios para una aplicación web común.
+   
+4. **Módulos de logging o verbose logs:**
+   - Logs detallados accesibles públicamente o incluídos accidentalmente en el frontend (por ejemplo, mediante JavaScript).
+
+5. **Servicios innecesarios expuestos:**
+   - Servidores que corren servicios como Redis, Elasticsearch o bases de datos accesibles por IP pública sin autenticación.
+
+---
+
+#### 🔎 Caso específico: Método HTTP TRACE
+
+El método TRACE fue diseñado para fines de depuración HTTP. Permite al cliente enviar una solicitud que es **devuelta tal como fue recibida** por el servidor. Esto puede parecer inofensivo, pero presenta riesgos importantes:
+
+- Si hay **cabeceras internas** agregadas por proxies o firewalls (por ejemplo, `X-Auth-Token`, `X-Forwarded-For`), estas pueden ser **reveladas involuntariamente**.
+- Puede ser explotado mediante un ataque **Cross-Site Tracing (XST)** si se combina con XSS, permitiendo a un atacante robar cookies o tokens.
+
+**Ejemplo de prueba usando curl:**
+```bash
+curl -i -X TRACE https://vulnerable-site.com/
+```
+
+Si la respuesta incluye la solicitud original, el método TRACE está habilitado.
+
+---
+
+#### 🧰 Implicancias para la seguridad
+
+- La configuración insegura **amplía la superficie de ataque** de forma innecesaria.
+- Puede brindar a los atacantes **información crítica para la explotación de vulnerabilidades más severas** (como RCE, SQLi o LFI).
+- Contribuye a vulnerabilidades del tipo **Information Disclosure**, **Misconfiguration**, y **Broken Access Control**.
+
+---
+
+#### 💪 Buenas prácticas de configuración segura
+
+1. **Deshabilitar funcionalidades innecesarias:** TRACE, verbose logging, debug endpoints, métodos HTTP no requeridos.
+
+2. **Usar headers de seguridad:**
+   - `X-Frame-Options: DENY`
+   - `X-Content-Type-Options: nosniff`
+   - `Referrer-Policy`, `Permissions-Policy`, etc.
+
+3. **Auditorías regulares de configuración:** tanto manuales como automatizadas, especialmente tras updates o deployments.
+
+4. **Escaneo con herramientas de seguridad:** Burp Scanner, Nikto, Nuclei, o herramientas de SAST (Static Application Security Testing).
+
+5. **Desplegar entornos segmentados:** Asegurarse de que desarrollo, staging y producción no compartan configuraciones inseguras ni accesos públicos.
+
+---
+
+La configuración insegura es una de las causas más frecuentes y evitables de filtración de datos. Aunque muchas veces es subestimada, puede convertirse en la pieza clave que habilita cadenas de ataque mucho más complejas.
+
+[Lab: Authentication bypass via information disclosure](4_Authentication_bypass_via_information_disclosure.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
+
+
+---
+
 ## ✅ Prevención de vulnerabilidades de divulgación
 
 1. **Eliminar contenido interno antes de producción**:
