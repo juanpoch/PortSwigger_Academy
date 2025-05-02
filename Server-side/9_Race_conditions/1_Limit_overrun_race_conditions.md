@@ -55,42 +55,34 @@ Enviamos la solicitud `POST /cart/coupon` al `Repeater` para inspeccionar mejor 
 
 Esta es una buena noticia, porque podremos hacer múltiples peticiones en 251 ms, y posiblemente podremos realizar múltiples peticiones de cupón de descuento en esta ventana de tiempo.
 
-Para producir este ataque, volvemos a remover el cupón de descuento mediante el botón `Remove` y luego enviamos la solicitud `POST /cart/coupon` al `Intruder`:
-![image](https://github.com/user-attachments/assets/e28937f6-628b-4409-a9a2-09aeea6e2828)
 
-Configuramos el `Intruder` para enviar 10 `Null Payloads`:
+Podríamos configurar el `Intruder` para enviar 10 `Null Payloads`:
 ![image](https://github.com/user-attachments/assets/f26a8a7b-daac-40bd-897a-6fa58678fc84)
 
 
-Realizamos el ataque:
-![image](https://github.com/user-attachments/assets/0f3979bc-ce15-4e40-a11a-d51a0a0d89b9)
-
-En este caso como tenemos Burp Suite community edition, no se puede efectuar el ataque en la ventana de tiempo, pero deberían salir varias solicitudes con `Length=100` el cual corresponde al mensaje `Coupon applied`.
-
-
-Vamos a realizar un método con el `Repeater` para realizar múltiples solicitudes al mismo tiempo.
+Pero en este caso vamos a realizar un método con el `Repeater` para realizar múltiples solicitudes al mismo tiempo, lo cual es mucho más eficiente.
 
 
 En el `Repeater` hacemos click en los 3 puntos y seleccionamos `Create tab group`:
-![image](https://github.com/user-attachments/assets/d87de45b-7933-4176-a26c-f34a3ef5a881)
+![image](https://github.com/user-attachments/assets/e8022194-42e8-4959-8bfd-fc44e9928405)
+
 
 Luego enviamos la misma solicitud más de 30 veces, presionando `CTRL R` en el teclado. Acto seguido, enviaremos todas las solicitudes en paralelo, haciendo click en el botón desplegable del botón send y eligiendo `Send group in parallel (single-packet attack)`:
-![image](https://github.com/user-attachments/assets/f350cb83-654b-495e-a2ac-be63e2391ccf)
-![image](https://github.com/user-attachments/assets/b45fbea1-87a9-4efd-864f-536c4f001a72)
-
-Realizamos el ataque y vemos que algunos aplicaron y otros no. Removemos el cupón y atacamos de nuevo:
-![image](https://github.com/user-attachments/assets/a434d99b-2a74-4482-9dcf-80d90d6f41dc)
+![image](https://github.com/user-attachments/assets/448256cb-fa2f-47a8-9546-67d1995e50d2)
 
 
+Realizamos el ataque y vemos que algunos aplicaron y otros no:
+![image](https://github.com/user-attachments/assets/4884b9ac-83ea-4ae4-a6bb-0f8218014b37)
+
+Actualizamos el endpoint `/cart` y vemos que estuvimos cerca de aplicar los descuentos necesarios para poder comprar el producto:
+![image](https://github.com/user-attachments/assets/f521864f-4e92-4aff-8e55-d658a856addf)
 
 
+Removemos el cupón y atacamos de nuevo, lo hacemos varias veces hasta que podemos comprar el producto:
+![image](https://github.com/user-attachments/assets/69d4f444-960b-4bb4-bcb3-88bdd363ca12)
 
+Compramos el producto y resolvemos el laboratorio:
+![image](https://github.com/user-attachments/assets/906cddbc-d8fb-4516-8c17-207672ce4f26)
 
-
-
-
-
-
-
-
+---
 
