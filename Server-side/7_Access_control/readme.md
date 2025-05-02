@@ -617,7 +617,7 @@ Una vez dentro del perfil del administrador, el atacante podría:
 ### 📊 Conclusión:
 Una vulnerabilidad de **IDOR** (Insecure Direct Object Reference) que permite acceso horizontal puede convertirse en una amenaza crítica si el atacante la utiliza para comprometer a un usuario con privilegios superiores. Por eso, es esencial implementar controles de acceso estrictos tanto a nivel horizontal como vertical.
 
-[Lab: User ID controlled by request parameter with data leakage in redirect](7_User_ID_controlled_by_request_parameter_with_data_leakage_in_redirect.md)  
+[Lab: User ID controlled by request parameter with password disclosure](8_User_ID_controlled_by_request_parameter_with_password_disclosure.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
