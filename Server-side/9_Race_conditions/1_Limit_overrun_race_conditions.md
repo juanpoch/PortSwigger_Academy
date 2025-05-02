@@ -10,6 +10,17 @@ You can log in to your account with the following credentials: `wiener:peter`.
 
 ---
 
+---
+
+Una **limit overrun race condition** es una condición de carrera que permite evadir restricciones de lógica de negocio aplicando múltiples solicitudes en una ventana crítica de tiempo. Ocurre cuando una aplicación verifica una condición (como si un cupón ya fue usado), pero la acción que modifica ese estado ocurre en un paso separado. Este desfase permite a un atacante realizar múltiples operaciones simultáneamente antes de que el estado se actualice, aprovechando un tipo de vulnerabilidad conocido como **TOCTOU (Time Of Check to Time Of Use)**.
+
+El concepto de TOCTOU se refiere a una discrepancia entre el momento en que se realiza una verificación y el momento en que se usa esa información. En aplicaciones web, este tipo de fallas pueden explotarse enviando múltiples solicitudes paralelas, generando una colisión lógica y rompiendo los límites establecidos por el sistema, como aplicar varias veces un cupón de descuento, canjear créditos repetidamente o eludir controles antifraude.
+
+---
+
+
+---
+
 Accedemos al laboratorio y nos encontramos con una aplicación de shopping:
 ![image](https://github.com/user-attachments/assets/2ef7c095-d5ed-4ce1-9cb5-d0decb4eb0b0)
 
@@ -87,4 +98,28 @@ Compramos el producto y resolvemos el laboratorio:
 ![image](https://github.com/user-attachments/assets/906cddbc-d8fb-4516-8c17-207672ce4f26)
 
 ---
+
+## ✅ Conclusión
+
+Este laboratorio demostró una vulnerabilidad de tipo **race condition** en el flujo de compra de una tienda online, específicamente un **limit overrun**. La lógica de aplicación del cupón `PROMO20` contenía una falla del tipo **TOCTOU (Time-of-Check to Time-of-Use)**, permitiendo aplicar el mismo descuento más de una vez si las solicitudes se enviaban en paralelo durante la "ventana de carrera". Mediante el uso de la funcionalidad **Send group in parallel (single-packet attack)** de Burp Repeater, logramos ejecutar múltiples solicitudes dentro de ese micro-segmento de tiempo, aplicando el descuento varias veces y logrando comprar el producto por debajo de su precio real.
+
+---
+
+## 🛡 Recomendaciones
+
+- **Sincronización transaccional**: Implementar operaciones atómicas o bloqueos (locks) a nivel de base de datos para evitar condiciones de carrera durante la verificación y aplicación de descuentos.
+- **Validación posterior al procesamiento**: Asegurarse de verificar nuevamente si el cupón ya fue usado justo antes de confirmar la transacción, no solo al inicio del proceso.
+- **Limitar acciones simultáneas por sesión**: Restringir la cantidad de operaciones que pueden realizarse desde una misma cuenta/session/IP en un corto período de tiempo.
+- **Auditoría de condiciones de carrera**: Analizar todos los procesos multi-paso que modifiquen estados sensibles (como saldos, descuentos, o canjes) para identificar posibles TOCTOU.
+
+---
+
+## 📚 Lecciones aprendidas
+
+- Las condiciones de carrera no requieren acceso avanzado al sistema: pueden explotarse desde la lógica de negocio, simplemente manipulando el tiempo y la concurrencia.
+- Herramientas como **Burp Suite Repeater (2023.9+)** ofrecen capacidades muy potentes para enviar solicitudes simultáneas, como el **single-packet attack**, clave para este tipo de explotación.
+- Es crucial entender la diferencia entre "check" y "use" en flujos transaccionales. Cuando están desacoplados, existe la posibilidad de explotar esa brecha temporal.
+- La explotación exitosa no siempre requiere vulnerabilidades técnicas complejas: los errores lógicos o de diseño pueden tener impactos igual o más severos.
+
+
 
