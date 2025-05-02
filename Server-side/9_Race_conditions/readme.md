@@ -1,8 +1,8 @@
-# Guía: Race Conditions (Condiciones de carrera)
+# Race Conditions 
 
 ## ¿Qué es una race condition?
 
-Una **race condition** (condición de carrera) es una vulnerabilidad que ocurre cuando una aplicación web procesa múltiples solicitudes concurrentes sin mecanismos adecuados de sincronización o bloqueo. Esto permite que dos o más hilos de ejecución accedan a recursos compartidos de forma simultánea, generando comportamientos inesperados.
+Una **race condition** es una vulnerabilidad que ocurre cuando una aplicación web procesa múltiples solicitudes concurrentes sin mecanismos adecuados de sincronización o bloqueo. Esto permite que dos o más hilos de ejecución accedan a recursos compartidos de forma simultánea, generando comportamientos inesperados.
 
 Estas vulnerabilidades están íntimamente relacionadas con los **business logic flaws** y su explotación se basa en generar colisiones entre operaciones que no deberían solaparse en el tiempo.
 
