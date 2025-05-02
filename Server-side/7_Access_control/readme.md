@@ -665,7 +665,7 @@ El atacante suele realizar "parameter tampering", es decir, manipular parámetro
 
 ## 📂 Vulnerabilidad de IDOR con acceso directo a archivos estáticos
 
-En algunos casos, las vulnerabilidades de **IDOR (Insecure Direct Object Reference)** surgen cuando los recursos sensibles están almacenados como archivos estáticos en el servidor, accesibles mediante URLs predecibles.
+En algunos casos, las vulnerabilidades de **IDOR** surgen cuando los recursos sensibles están almacenados como archivos estáticos en el servidor, accesibles mediante URLs predecibles.
 
 Por ejemplo:
 
