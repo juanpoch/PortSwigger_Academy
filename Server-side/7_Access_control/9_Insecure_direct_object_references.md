@@ -40,7 +40,7 @@ Esta nueva captura confirma completamente la explotación de la vulnerabilidad I
   ```
 
 🔴 Impacto:
-Esto eleva la vulnerabilidad de "revelación de información" a una escalada de privilegios si la contraseña corresponde a un usuario, en este caso asumimos que es del usuario `carlos`. En un entorno real, deberíamos probar esta contraseña contra una lista de usuarios posibles.
+Esta vulnerabilidad IDOR permite el acceso a archivos confidenciales sin autenticación contextual. En este caso, deriva en la exposición de credenciales sensibles que permiten autenticación no autorizada y toma de control de otra cuenta.
 
 💡 Este es un caso típico de IDOR + falta de control de acceso + información sensible mal gestionada.
 
