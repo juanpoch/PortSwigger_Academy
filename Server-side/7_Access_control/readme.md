@@ -501,6 +501,74 @@ GET /api/users/c90ec581-760a-4f14-996a-d7c6f67ef9a5/profile
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
+---
+
+### 🔐 Filtración de información sensible en respuestas con redirección
+
+En algunos casos, una aplicación *sí detecta* que el usuario actual no tiene permiso para acceder a cierto recurso, y responde con una **redirección al login** (por ejemplo, con un código HTTP `302 Found` o `303 See Other`). A primera vista, esto parece una implementación adecuada de control de acceso, ya que evita el acceso completo al recurso restringido.
+
+**Sin embargo, puede haber un fallo crítico**:  
+📦 **La respuesta HTTP que contiene la redirección también puede incluir información sensible del recurso solicitado.**
+
+---
+
+### 🧠 ¿Cómo puede ocurrir esto?
+
+Veamos un ejemplo realista. Imaginá que un usuario autenticado con ID `1002` intenta acceder a los datos de un usuario diferente (ID `1001`), accediendo a la siguiente URL:
+
+```
+GET /user/account?id=1001 HTTP/1.1
+Cookie: session=eyJh...
+```
+
+La aplicación detecta correctamente que el usuario no tiene permiso, y devuelve:
+
+```http
+HTTP/1.1 302 Found
+Location: /login
+```
+
+Pero **en el cuerpo de la respuesta**, por un error del backend, incluye algo como:
+
+```html
+<!-- User email: carlos@example.com -->
+<!-- User address: 123 Admin Street -->
+```
+
+---
+
+### 🛠 ¿Por qué ocurre esto?
+
+Esto suele suceder por fallos de lógica en el backend. Algunas causas comunes:
+
+- La aplicación **procesa y recupera la información del recurso** antes de verificar si el usuario tiene permiso.
+- El servidor genera el contenido de la respuesta **y luego decide** que el usuario no puede verlo, pero **no limpia adecuadamente** el cuerpo de la respuesta.
+- Algunos frameworks **agregan metadatos o trazas** en la redirección por defecto, exponiendo valores que deberían permanecer privados.
+
+---
+
+### 📌 ¿Qué tipo de datos podrían filtrarse?
+
+- Correos electrónicos de otros usuarios
+- Direcciones físicas
+- Tokens de acceso o identificadores internos
+- Rutas privadas o nombres de archivo
+- Fragmentos de datos HTML sensibles (por ejemplo, valores pre-cargados en formularios)
+
+---
+
+### ✅ Recomendaciones para evitar esta vulnerabilidad
+
+- **Verificar permisos antes de cargar datos.** El backend debe rechazar el acceso *antes* de interactuar con el recurso.
+- **Sanitizar completamente las respuestas de redirección.** Nunca incluir datos sensibles si se va a redirigir al usuario.
+- **Auditar las rutas protegidas** usando herramientas de pentesting automatizadas y manuales para detectar este patrón.
+- Implementar pruebas de seguridad (unitarias o funcionales) que validen que las redirecciones no contienen contenido no autorizado.
+
+[Lab: User ID controlled by request parameter with unpredictable user IDs](6_User_ID_controlled_by_request_paramete_with_unpredictable_user_IDs.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
+
+
 
 ---
 
