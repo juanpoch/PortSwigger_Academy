@@ -107,7 +107,7 @@ Este laboratorio demostró una vulnerabilidad de tipo **race condition** en el f
 
 ## 🛡 Recomendaciones
 
-- **Sincronización transaccional**: Implementar operaciones atómicas o bloqueos (locks) a nivel de base de datos para evitar condiciones de carrera durante la verificación y aplicación de descuentos.
+- **Sincronización transaccional**: Implementar operaciones atómicas o bloqueos a nivel de base de datos para evitar condiciones de carrera durante la verificación y aplicación de descuentos.
 - **Validación posterior al procesamiento**: Asegurarse de verificar nuevamente si el cupón ya fue usado justo antes de confirmar la transacción, no solo al inicio del proceso.
 - **Limitar acciones simultáneas por sesión**: Restringir la cantidad de operaciones que pueden realizarse desde una misma cuenta/session/IP en un corto período de tiempo.
 - **Auditoría de condiciones de carrera**: Analizar todos los procesos multi-paso que modifiquen estados sensibles (como saldos, descuentos, o canjes) para identificar posibles TOCTOU.
