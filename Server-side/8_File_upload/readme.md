@@ -190,8 +190,8 @@ Y recibirá la respuesta ejecutada en el servidor.
 2. **Reenviar desde el Repeater** modificando:
 
    * El nombre del archivo (ej: `shell.php`)
-   * El `Content-Type` → mantenelo como `image/png` o `image/jpeg`
-   * El contenido real → reemplazalo por código PHP
+   * El `Content-Type` → mantener como `image/png` o `image/jpeg`
+   * El contenido real → reemplazar por código PHP
 3. Observar si la respuesta es exitosa.
 4. Intentar acceder al archivo cargado desde la URL correspondiente.
 
