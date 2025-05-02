@@ -42,7 +42,7 @@ Resolvemos el laboratorio brindando la API Key de carlos `pWNYPEwfSAdlcnvpSgat6F
 
 ## ✅ Conclusión
 
-Se identificó una vulnerabilidad de **IDOR (Insecure Direct Object Reference)** en el parámetro `id` del endpoint `/my-account`. Esto permitió acceder a recursos sensibles (API Key) de otros usuarios autenticados, violando los controles de acceso horizontales.
+Se identificó una vulnerabilidad de **IDOR** en el parámetro `id` del endpoint `/my-account`. Esto permitió acceder a recursos sensibles de otros usuarios autenticados, violando los controles de acceso horizontales.
 
 La aplicación no verifica si el usuario autenticado coincide con el valor del parámetro `id`, permitiendo así que cualquier usuario autenticado acceda a los datos de otros usuarios.
 
