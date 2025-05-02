@@ -118,4 +118,8 @@ Una función de carga de imagen aparentemente inocente puede convertirse en un v
 
 A continuación se aplicarán estos conceptos en un laboratorio práctico para identificar y explotar una función de carga vulnerable:
 
-Server-side/8_File_upload/1_Remote_code_execution_via_web_shell_upload.md
+[Lab: Remote code execution via web shell upload](1_Remote_code_execution_via_web_shell_upload.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
