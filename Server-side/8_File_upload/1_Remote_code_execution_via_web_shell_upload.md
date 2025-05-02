@@ -30,7 +30,7 @@ Esta captura muestra una operación de carga de archivos típica, en la que el u
 `Nota`: En Burp Suite, en la pestaña `http history`, recordar hacer click en `Filter settings`, tildar `Images` y luego click en `Apply`:
 ![image](https://github.com/user-attachments/assets/6050600a-3e62-4ae4-ae85-9e71f4eaf9f3)
 
-Con esta configuración, vemos las imágenes cargadas y vemos el directorio de carga `/files/avatars/test.png`:
+Con esta configuración, vemos las imágenes cargadas y vemos el directorio de carga `/files/avatars/`:
 ![image](https://github.com/user-attachments/assets/ed057386-db66-49ef-b559-54ee578ed851)
 
 El directorio de carga también podemos visualizarlo en el DOM inspeccionando el elemento:
