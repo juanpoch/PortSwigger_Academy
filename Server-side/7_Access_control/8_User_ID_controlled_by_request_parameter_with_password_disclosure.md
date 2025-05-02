@@ -6,5 +6,6 @@ To solve the lab, retrieve the administrator's password, then use it to delete t
 
 You can log in to your own account using the following credentials: `wiener:peter`
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
