@@ -116,4 +116,6 @@ Las vulnerabilidades de carga de archivos son extremadamente peligrosas y pueden
 
 Una función de carga de imagen aparentemente inocente puede convertirse en un vector para ejecutar una web shell y comprometer completamente el servidor.
 
-A continuación se aplicarán estos conceptos en un laboratorio práctico para identificar y explotar una función de carga vulnerable.
+A continuación se aplicarán estos conceptos en un laboratorio práctico para identificar y explotar una función de carga vulnerable:
+
+Server-side/8_File_upload/1_Remote_code_execution_via_web_shell_upload.md
