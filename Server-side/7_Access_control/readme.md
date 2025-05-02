@@ -623,6 +623,83 @@ Una vulnerabilidad de **IDOR** (Insecure Direct Object Reference) que permite ac
 
 ---
 
+## 🧩 Insecure Direct Object References (IDOR)
+
+Los IDOR (Insecure Direct Object References) son una subcategoría de las vulnerabilidades de control de acceso. Se producen cuando una aplicación utiliza directamente entradas proporcionadas por el usuario para acceder a recursos u objetos internos, sin realizar una validación adecuada sobre si el usuario tiene autorización para interactuar con dichos recursos.
+
+Esta vulnerabilidad fue formalmente reconocida como parte del OWASP Top 10 en 2007, lo que contribuyó a su popularidad en el campo de la seguridad web. Aunque no todas las fallas de acceso directo son IDOR, esta categoría describe uno de los errores de implementación más comunes y peligrosos en el control de acceso.
+
+---
+
+### 🌐 Ejemplo básico de IDOR:
+
+Un usuario autenticado accede a su perfil personal mediante la siguiente URL:
+```
+GET /profile?id=102
+```
+
+Pero si el atacante cambia el valor del parámetro manualmente:
+```
+GET /profile?id=101
+```
+
+Y puede acceder al perfil de otro usuario sin estar autorizado, entonces estamos frente a un caso clásico de IDOR.
+
+---
+
+### 🔒 Impacto de un IDOR:
+
+- Acceso no autorizado a información confidencial (emails, números de tarjeta, documentos).
+- Posibilidad de modificar o eliminar recursos ajenos (por ejemplo: eliminar facturas, editar configuraciones, etc).
+- Escalada horizontal o vertical de privilegios si el recurso afectado está vinculado a funcionalidades privilegiadas.
+
+---
+
+### 🤔 ¿Cómo se explota un IDOR?
+
+El atacante suele realizar "parameter tampering", es decir, manipular parámetros en la URL, cookies o cuerpos de peticiones POST:
+
+- Identificadores numéricos: `/invoice/3489`
+- UUIDs: `/download?file=68ad2d02-7821-4a6d-bde3-849aa102ab5e`
+- Nombres de archivo: `/uploads/john_resume.pdf`
+
+Muchas veces los valores se predicen, descubren mediante fuzzing, o se extraen desde otras funcionalidades (como listados de usuarios, mensajes o historial).
+
+---
+
+### 🌍 Casos reales conocidos
+
+- **Facebook IDOR**: vulnerabilidad en 2015 permitió ver fotos privadas de usuarios modificando IDs en peticiones.
+- **Instagram IDOR**: filtración de información personal a través de manipulación de IDs en el endpoint de comentarios.
+
+---
+
+### 🚫 Prevención de IDOR:
+
+1. **Evitar confiar en datos del cliente** para la autorización.
+2. **Validar en el servidor** que el recurso solicitado pertenece al usuario autenticado.
+3. **Diseñar el acceso mediante identificadores internos o referencias opacas**, no IDs predecibles.
+4. **Implementar controles de acceso por objeto**, por ejemplo:
+```python
+if current_user.id != resource.owner_id:
+    return HTTP 403 Forbidden
+```
+5. **Auditorías y pruebas de pentesting** centradas en horizontal privilege escalation.
+
+---
+
+### 🎓 Conclusión
+
+Los IDOR representan una de las formas más comunes y peligrosas de vulnerabilidades en aplicaciones modernas. Su explotación puede realizarse con herramientas básicas y conocimiento mínimo del sistema, por lo que su mitigación debe ser prioridad. Al implementar un modelo de control de acceso robusto y evitar decisiones de autorización en el lado cliente, las organizaciones pueden protegerse eficazmente contra esta clase de fallas.
+
+
+
+[Lab: User ID controlled by request parameter with password disclosure](8_User_ID_controlled_by_request_parameter_with_password_disclosure.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
+
+---
+
 ### 🔒 Prevención de vulnerabilidades de acceso
 
 1. **Verificar roles y permisos en el backend, siempre**.
