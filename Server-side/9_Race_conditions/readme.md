@@ -99,3 +99,8 @@ Este último reduce a cero el impacto del network jitter, completando todas las 
 Las race conditions representan vulnerabilidades críticas cuando se explotan en lógicas sensibles como pagos, transferencias, descuentos o autenticación. Con una buena comprensión de su comportamiento interno, es posible encontrar y explotar estas fallas en ambientes reales o de laboratorio.
 
 > 💡 **Consejo**: Identificá flujos que impliquen validación previa y posterior actualización de estado. Ahí es donde suele estar la ventana de carrera.
+
+
+[Lab: Remote code execution via web shell upload](1_Remote_code_execution_via_web_shell_upload.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
