@@ -6,5 +6,6 @@ To solve the lab, upload a basic PHP web shell and use it to exfiltrate the cont
 
 You can log in to your own account using the following credentials: `wiener:peter`
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
