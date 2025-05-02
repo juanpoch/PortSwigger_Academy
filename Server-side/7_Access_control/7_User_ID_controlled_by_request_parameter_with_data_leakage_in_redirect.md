@@ -6,4 +6,6 @@ To solve the lab, obtain the API key for the user `carlos` and submit it as the 
 
 You can log in to your own account using the following credentials: `wiener:peter`
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
 ---
