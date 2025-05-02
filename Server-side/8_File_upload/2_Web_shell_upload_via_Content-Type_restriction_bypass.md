@@ -16,7 +16,7 @@ Iniciamos el laboratorio y nos encontramos con una aplicación de blog:
 Nos autenticamos con nuestras credenciales `wiener:peter` y accedemos al dashboard del usuario:
 ![image](https://github.com/user-attachments/assets/1aa16cfa-7fea-4cca-b070-ed55b9321cbd)
 
-Vemos que hay una funcionalidad para subir imágenes, en este caso como sabemos que el laboratorio tiene validaciones de tipo `Content-Type`, subimos un archivo malicioso que contiene una webshell, llamado ``:
+Vemos que hay una funcionalidad para subir imágenes, en este caso como sabemos que el laboratorio tiene validaciones de tipo `Content-Type`, subimos un archivo malicioso que contiene una webshell:
 ![image](https://github.com/user-attachments/assets/bf61dad2-78fd-41a7-8b8c-ba4729e529c3)
 
 El servidor nos responde que el archivo cargado tiene un content type ` application/x-php` y que sólo permite `image/jpeg` o `image/png`.
