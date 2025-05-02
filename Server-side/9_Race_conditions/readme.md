@@ -101,6 +101,6 @@ Las race conditions representan vulnerabilidades críticas cuando se explotan en
 > 💡 **Consejo**: Identificá flujos que impliquen validación previa y posterior actualización de estado. Ahí es donde suele estar la ventana de carrera.
 
 
-[Lab: Remote code execution via web shell upload](1_Remote_code_execution_via_web_shell_upload.md)  
+[Lab: Limit overrun race conditions](1_Limit_overrun_race_conditions.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
