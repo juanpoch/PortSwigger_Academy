@@ -663,6 +663,23 @@ El atacante suele realizar "parameter tampering", es decir, manipular parámetro
 - UUIDs: `/download?file=68ad2d02-7821-4a6d-bde3-849aa102ab5e`
 - Nombres de archivo: `/uploads/john_resume.pdf`
 
+## 📂 Vulnerabilidad de IDOR con acceso directo a archivos estáticos
+
+En algunos casos, las vulnerabilidades de **IDOR (Insecure Direct Object Reference)** surgen cuando los recursos sensibles están almacenados como archivos estáticos en el servidor, accesibles mediante URLs predecibles.
+
+Por ejemplo:
+
+```
+https://insecure-website.com/static/12144.txt
+```
+
+En este caso, si el nombre del archivo es secuencial o fácil de adivinar, un atacante puede modificar el número para acceder a archivos de otros usuarios. Esto podría permitirle obtener **información sensible**, como **transcripciones de chat**, **datos personales** o incluso **credenciales**.
+
+🔒 **Riesgo**: No hay verificación de acceso, y el servidor confía únicamente en la estructura de la URL para proteger los recursos.
+
+🛡️ **Contramedida**: Implementar validación de permisos del lado servidor antes de servir cualquier recurso estático sensible. Evitar rutas predecibles o accesibles públicamente para archivos confidenciales.
+
+
 Muchas veces los valores se predicen, descubren mediante fuzzing, o se extraen desde otras funcionalidades (como listados de usuarios, mensajes o historial).
 
 ---
