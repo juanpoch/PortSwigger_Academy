@@ -82,7 +82,7 @@ Procedemos a brindar la API Key de carlos `lsgjTqEQJPVnGHMURjRTwf7z9nXtBTGd` y r
 
 ## ✅ Conclusión
 
-Se explotó con éxito una vulnerabilidad de **Insecure Direct Object Reference (IDOR)** mediante el uso de un identificador de usuario (UUID) expuesto en la interfaz pública de la aplicación. Esta falla permitió realizar una **escalada horizontal de privilegios**, accediendo a la cuenta de otro usuario y obteniendo su **API Key**, sin validación de ownership del recurso.
+Se explotó con éxito una vulnerabilidad de **Insecure Direct Object Reference** mediante el uso de un identificador de usuario (UUID) expuesto en la interfaz pública de la aplicación. Esta falla permitió realizar una **escalada horizontal de privilegios**, accediendo a la cuenta de otro usuario y obteniendo su **API Key**, sin validación de ownership del recurso.
 
 La aplicación asocia los datos sensibles al parámetro `id` de forma directa y confía en que el cliente no manipulará su valor, lo que representa una grave violación de principios de control de acceso.
 
