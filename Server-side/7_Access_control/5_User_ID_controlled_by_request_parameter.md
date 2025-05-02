@@ -32,7 +32,7 @@ Vemos que controlamos el parámetro `id`, el cual nos devuelve la API Key del us
 Enviamos la petición al `Repeater` y cambiamos el valor del parámetro `id` por el de `carlos`:
 ![image](https://github.com/user-attachments/assets/d5d89455-6f97-49da-ac61-91d0faf3d48d)
 
-Permitir el acceso a /my-account?id=carlos sin verificar si el usuario autenticado corresponde al ID solicitado es una falla de control de acceso horizontal.
+Permitir el acceso a `/my-account?id=carlos` sin verificar si el usuario autenticado corresponde al ID solicitado es una falla de control de acceso horizontal.
 La API key es un dato altamente sensible. Mostrarla en el frontend sin ningún tipo de cifrado o restricción es un riesgo grave.
 
 Resolvemos el laboratorio brindando la API Key de carlos `pWNYPEwfSAdlcnvpSgat6FNd679Jvzfd`:
