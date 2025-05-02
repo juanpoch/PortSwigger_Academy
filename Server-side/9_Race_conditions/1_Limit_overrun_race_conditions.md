@@ -44,7 +44,7 @@ Y nos redirige al endpoint `/cart?couponError=COUPON_ALREADY_APPLIED&coupon=PROM
 
 Por lo que sabemos que cada vez que nos redirija a este endpoint, no estaremos siendo capaces de aplicar el cupón de descuento.
 
-Procedemos a eliminar el cupón aplicado haciendo click en `Remove`:
+Procedemos a eliminar el cupón aplicado haciendo click en `Remove` (es necesario actualizar el endpoint `/cart`):
 
 ![image](https://github.com/user-attachments/assets/bc43f19e-66d5-46f8-96ab-9873aec435f3)
 
