@@ -694,7 +694,7 @@ Los IDOR representan una de las formas más comunes y peligrosas de vulnerabilid
 
 
 
-[Lab: User ID controlled by request parameter with password disclosure](8_User_ID_controlled_by_request_parameter_with_password_disclosure.md)  
+[Lab: Insecure direct object references](9_Insecure_direct_object_references.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
