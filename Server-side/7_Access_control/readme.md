@@ -569,6 +569,57 @@ Esto suele suceder por fallos de lógica en el backend. Algunas causas comunes:
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
 
+---
+
+## 🔗 Horizontal to Vertical Privilege Escalation
+
+Una **escalada de privilegios horizontal** ocurre cuando un usuario accede a recursos de otros usuarios con el mismo nivel de privilegios. En cambio, una **escalada vertical** implica que un usuario con menos privilegios accede a funcionalidades reservadas para usuarios con roles superiores (como administradores).
+
+### ⚠️ De horizontal a vertical: el puente
+En algunas situaciones, una vulnerabilidad de tipo horizontal puede utilizarse como trampolín para escalar verticalmente. Este escenario se da cuando:
+
+- El atacante puede acceder a los recursos de otro usuario.
+- El usuario objetivo tiene más privilegios (por ejemplo, es un administrador).
+
+#### 🔎 Ejemplo práctico:
+Un atacante identificado como `user1` accede a su propio perfil mediante:
+```
+GET /myaccount?id=123
+```
+Mediante manipulación de parámetro, intenta acceder al perfil del usuario `456`:
+```
+GET /myaccount?id=456
+```
+Si `456` corresponde a un administrador y la aplicación no valida correctamente el acceso, el atacante ahora está viendo el perfil de un usuario con mayores privilegios.
+
+### 🔒 Posibilidades de explotación:
+Una vez dentro del perfil del administrador, el atacante podría:
+
+- **Ver y editar la contraseña del administrador**: si hay formularios de actualización accesibles.
+- **Leer información sensible**: como usuarios registrados, configuraciones, logs, etc.
+- **Acceder a funcionalidades privilegiadas**: como paneles de administración.
+
+#### 🔐 Escenario típico en aplicaciones vulnerables:
+- Los usuarios son identificados por ID en parámetros GET o POST (`id=456`).
+- No hay verificación del lado del servidor que compruebe si el usuario autenticado tiene permiso para consultar ese recurso.
+- Los administradores acceden al mismo endpoint que los usuarios, pero con más funcionalidades visibles.
+
+### ❌ Consecuencias:
+- Pérdida de control sobre funciones administrativas.
+- Exposición total de datos sensibles.
+- Compromiso del sistema si el atacante gana persistencia desde una cuenta de administrador.
+
+### 🔧 Recomendaciones de mitigación:
+- ✅ **Implementar controles de acceso basados en el contexto de usuario autenticado**: El backend debe validar que el usuario autenticado tiene acceso al recurso solicitado, no confiar en valores de parámetro (`id`, `username`, etc.).
+- ✅ **Evitar la exposición de funciones privilegiadas en interfaces compartidas**.
+- ✅ **Registrar y auditar accesos sospechosos**, como peticiones donde un usuario accede a un recurso que no le corresponde.
+
+### 📊 Conclusión:
+Una vulnerabilidad de **IDOR** (Insecure Direct Object Reference) que permite acceso horizontal puede convertirse en una amenaza crítica si el atacante la utiliza para comprometer a un usuario con privilegios superiores. Por eso, es esencial implementar controles de acceso estrictos tanto a nivel horizontal como vertical.
+
+[Lab: User ID controlled by request parameter with data leakage in redirect](7_User_ID_controlled_by_request_parameter_with_data_leakage_in_redirect.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
 ---
 
