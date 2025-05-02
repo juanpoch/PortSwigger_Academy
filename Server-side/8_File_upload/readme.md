@@ -1,6 +1,6 @@
 ## Vulnerabilidades de Carga de Archivos
 
-Las vulnerabilidades de carga de archivos permiten a un atacante subir archivos maliciosos a un servidor web. Cuando no se validan correctamente el nombre, el tipo, el contenido o el tamaño de los archivos, se pueden producir **fallos críticos de seguridad**, incluyendo ejecución remota de código (RCE), escalación de privilegios, denegación de servicio (DoS), o exfiltración de información confidencial.
+Las vulnerabilidades de carga de archivos permiten a un atacante subir archivos maliciosos a un servidor web. Cuando no se validan correctamente el nombre, el tipo, el contenido o el tamaño de los archivos, se pueden producir **fallos críticos de seguridad**, incluyendo ejecución remota de código, escalación de privilegios, denegación de servicio, o exfiltración de información confidencial.
 
 ---
 
