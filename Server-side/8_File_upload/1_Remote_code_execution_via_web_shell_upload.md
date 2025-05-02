@@ -55,7 +55,7 @@ Esta captura es una explotación directa y crítica de una vulnerabilidad de car
 
 - Escalada total de privilegios: Si el archivo PHP se ejecuta correctamente, el atacante gana control total sobre el servidor (web shell). En este caso puntual, permite acceder a información confidencial del usuario carlos.
 
-Accedemos al endpoint y `files/avatars/test.php` y leemos el archivo `/home/carlos/secret`:
+Accedemos al endpoint `files/avatars/test.php` y leemos el archivo `/home/carlos/secret`:
 ![image](https://github.com/user-attachments/assets/7b53328b-11d1-4b03-986d-f56512b9c8f7)
 
 Alternativamente podríamos intentar subir la web shell:
