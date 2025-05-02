@@ -6,5 +6,6 @@ To solve the lab, successfully purchase a `Lightweight L33t Leather Jacket`.
 
 You can log in to your account with the following credentials: `wiener:peter`.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
