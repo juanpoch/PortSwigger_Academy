@@ -186,20 +186,20 @@ Y recibirá la respuesta ejecutada en el servidor.
 
 ### 🧠 ¿Cómo detectar esta validación débil durante un pentest?
 
-1. **Subí un archivo válido (por ejemplo, una imagen `.png`) y capturá la petición.**
-2. **Reenviala desde el Repeater** modificando:
+1. **Subir un archivo válido (por ejemplo, una imagen `.png`) y capturar la petición.**
+2. **Reenviar desde el Repeater** modificando:
 
    * El nombre del archivo (ej: `shell.php`)
    * El `Content-Type` → mantenelo como `image/png` o `image/jpeg`
    * El contenido real → reemplazalo por código PHP
-3. Observá si la respuesta es exitosa.
-4. Intentá acceder al archivo cargado desde la URL correspondiente.
+3. Observar si la respuesta es exitosa.
+4. Intentar acceder al archivo cargado desde la URL correspondiente.
 
 ---
 
 ### 💨 Impacto
 
-* Si el archivo es ejecutado como código, **permite RCE (Remote Code Execution)**.
+* Si el archivo es ejecutado como código, **permite RCE**.
 * Incluso si no se ejecuta, puede permitir **phishing, XSS o almacenamiento de cargas maliciosas**.
 * Una validación superficial basada en encabezados **es trivial de evadir con herramientas como Burp Suite**.
 
