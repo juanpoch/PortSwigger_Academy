@@ -19,7 +19,8 @@ La **ventana de carrera (race window)** es el pequeño periodo de tiempo entre d
 3. Aplica el descuento.
 4. Actualiza el código como usado: `code_already_used = true`.
 
-![Flujo normal](./img1.png)
+![image](https://github.com/user-attachments/assets/4b8877b7-b562-4031-a8c7-3ab32b2c8e6d)
+
 
 ### Lógica vulnerable (dos solicitudes simultáneas):
 
@@ -31,7 +32,8 @@ Si dos solicitudes se envían casi al mismo tiempo:
 
 Esto ocurre porque ambas solicitudes acceden a una **sub-state** transitoria antes de que el sistema se actualice correctamente.
 
-![Race condition explotada](./img2.png)
+![image](https://github.com/user-attachments/assets/eed33616-9620-45e2-8205-96da2e35d1dd)
+
 
 ---
 
@@ -60,7 +62,8 @@ Buscar funcionalidades de:
 
 El objetivo es interceptar la **race window** enviando múltiples solicitudes concurrentes.
 
-![Latencias en la red](./img3.png)
+![image](https://github.com/user-attachments/assets/fea24e3e-b42a-45d4-bd9a-342f03099501)
+
 
 ### Paso 3: Enviar 20-30 solicitudes para maximizar colisiones
 
@@ -71,7 +74,8 @@ Burp Repeater (desde la versión 2023.9) permite:
 
 Este último reduce a cero el impacto del network jitter, completando todas las solicitudes dentro del mismo paquete TCP.
 
-![Múltiples colisiones](./img4.png)
+![image](https://github.com/user-attachments/assets/9dff6522-9461-4f81-826c-109c07a695a8)
+
 
 ### Herramientas recomendadas
 
