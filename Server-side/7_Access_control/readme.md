@@ -615,7 +615,7 @@ Una vez dentro del perfil del administrador, el atacante podría:
 - ✅ **Registrar y auditar accesos sospechosos**, como peticiones donde un usuario accede a un recurso que no le corresponde.
 
 ### 📊 Conclusión:
-Una vulnerabilidad de **IDOR** (Insecure Direct Object Reference) que permite acceso horizontal puede convertirse en una amenaza crítica si el atacante la utiliza para comprometer a un usuario con privilegios superiores. Por eso, es esencial implementar controles de acceso estrictos tanto a nivel horizontal como vertical.
+Una vulnerabilidad de **IDOR** que permite acceso horizontal puede convertirse en una amenaza crítica si el atacante la utiliza para comprometer a un usuario con privilegios superiores. Por eso, es esencial implementar controles de acceso estrictos tanto a nivel horizontal como vertical.
 
 [Lab: User ID controlled by request parameter with password disclosure](8_User_ID_controlled_by_request_parameter_with_password_disclosure.md)  
 
@@ -623,9 +623,9 @@ Una vulnerabilidad de **IDOR** (Insecure Direct Object Reference) que permite ac
 
 ---
 
-## 🧩 Insecure Direct Object References (IDOR)
+## 🧩 Insecure Direct Object References
 
-Los IDOR (Insecure Direct Object References) son una subcategoría de las vulnerabilidades de control de acceso. Se producen cuando una aplicación utiliza directamente entradas proporcionadas por el usuario para acceder a recursos u objetos internos, sin realizar una validación adecuada sobre si el usuario tiene autorización para interactuar con dichos recursos.
+Los IDOR son una subcategoría de las vulnerabilidades de control de acceso. Se producen cuando una aplicación utiliza directamente entradas proporcionadas por el usuario para acceder a recursos u objetos internos, sin realizar una validación adecuada sobre si el usuario tiene autorización para interactuar con dichos recursos.
 
 Esta vulnerabilidad fue formalmente reconocida como parte del OWASP Top 10 en 2007, lo que contribuyó a su popularidad en el campo de la seguridad web. Aunque no todas las fallas de acceso directo son IDOR, esta categoría describe uno de los errores de implementación más comunes y peligrosos en el control de acceso.
 
