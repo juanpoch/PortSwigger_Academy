@@ -425,6 +425,85 @@ Los IDOR ocurren cuando valores controlados por el usuario acceden directamente 
 
 ---
 
+## 🔐 IDOR con Identificadores No Predecibles (GUIDs)
+
+### 🧠 Contexto
+Cuando una aplicación usa identificadores secuenciales o predecibles (por ejemplo: `id=1`, `id=2`, etc.), es fácil para un atacante adivinar otros valores y realizar ataques de tipo **IDOR** (Insecure Direct Object Reference), accediendo a recursos ajenos.
+
+Para mitigar esto, muchas aplicaciones modernas utilizan **GUIDs** (Globally Unique Identifiers), que son valores largos y difíciles de predecir, por ejemplo:
+```
+9a32db79-91f2-4a57-a8ef-134e4d3218ff
+```
+
+Esto dificulta (pero **no previene**) los ataques IDOR.
+
+---
+
+### ⚠️ ¿Dónde está el problema?
+Aunque los GUIDs no sean predecibles, pueden **filtrarse de otras maneras**. Muchas veces, otros endpoints o secciones del sitio exponen información relacionada a usuarios o recursos, incluyendo estos identificadores únicos.
+
+#### 🔍 Ejemplo práctico:
+
+Una aplicación muestra reseñas de productos con identificadores de usuario:
+
+```json
+[
+  {
+    "user": {
+      "name": "Carlos",
+      "id": "c90ec581-760a-4f14-996a-d7c6f67ef9a5"
+    },
+    "review": "Muy buen producto!"
+  }
+]
+```
+
+Un atacante puede:
+
+1. **Recolectar GUIDs** observando este tipo de respuestas (por ejemplo, usando un proxy como Burp).
+2. Usar estos GUIDs en otros endpoints, por ejemplo:
+
+```
+GET /api/users/c90ec581-760a-4f14-996a-d7c6f67ef9a5/profile
+```
+
+3. Si no hay un control de acceso efectivo, podría visualizar (o modificar) los datos del usuario Carlos.
+
+---
+
+### 💪 Técnicas comunes para explotar estos escenarios
+
+- Revisar JSON, HTML o comentarios en páginas que muestren IDs de usuario.
+- Analizar endpoints que retornen múltiples objetos (ej. `/reviews`, `/posts`, `/comments`).
+- Observar parámetros `userId`, `accountId`, `client_id`, `guid`, etc. en URLs, cuerpo de la petición, headers o respuestas.
+- Automatizar la búsqueda con Burp Suite + Logger++, o con scripts personalizados.
+
+---
+
+### 🛡️ ¿Cómo prevenir esto?
+
+- **Implementar controles de acceso a nivel de backend.** No confiar jamás en que un identificador poco predecible es suficiente.
+- **Evitar exponer GUIDs innecesariamente**. Mostrar solo los datos requeridos para el usuario.
+- **Usar Access Control Lists (ACLs)** o lógica robusta en el backend que valide si el usuario realmente está autorizado a acceder al recurso referenciado.
+
+---
+
+### 📚 Resumen
+
+| Riesgo | Falsa sensación de seguridad por usar GUIDs |
+|--------|----------------------------------------------|
+| Error | Suponer que lo impredecible = seguro          |
+| Realidad | Los GUIDs pueden ser expuestos indirectamente |
+| Prevención | Autorización robusta en el backend        |
+
+
+[Lab: User ID controlled by request parameter](5_User_ID_controlled_by_request_parameter.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
+
+
+---
+
 ### 🔒 Prevención de vulnerabilidades de acceso
 
 1. **Verificar roles y permisos en el backend, siempre**.
