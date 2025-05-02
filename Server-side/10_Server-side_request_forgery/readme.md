@@ -1,10 +1,10 @@
-## 🧠 Server-Side Request Forgery (SSRF) - Guía Teórica con Ejemplos
+## 🧠 Server-Side Request Forgery 
 
 ---
 
 ### 🔎 ¿Qué es una vulnerabilidad SSRF?
 
-La **Server-Side Request Forgery (SSRF)** es una vulnerabilidad de seguridad web que permite a un atacante manipular al servidor para que realice solicitudes HTTP (u otros protocolos) a ubicaciones no previstas o restringidas. En otras palabras, **el atacante logra que el servidor haga una solicitud en su nombre**, generalmente a recursos internos o protegidos.
+La **Server-Side Request Forgery** es una vulnerabilidad de seguridad web que permite a un atacante manipular al servidor para que realice solicitudes HTTP (u otros protocolos) a ubicaciones no previstas o restringidas. En otras palabras, **el atacante logra que el servidor haga una solicitud en su nombre**, generalmente a recursos internos o protegidos.
 
 A diferencia de un ataque convencional donde el atacante interactúa directamente con el recurso, en SSRF **el servidor vulnerable actúa como intermediario**. Esto puede dar lugar a filtración de datos internos, evasiones de controles de acceso, ataques a la infraestructura interna (intranet), o incluso ejecución remota de comandos en casos avanzados.
 
