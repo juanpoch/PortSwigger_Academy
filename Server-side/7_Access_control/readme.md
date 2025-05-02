@@ -419,7 +419,9 @@ Los IDOR ocurren cuando valores controlados por el usuario acceden directamente 
 - Desactivar `useSuffixPatternMatch` en Spring si no es necesario.
 - Nunca confiar en identificadores controlados por el cliente para el acceso a recursos. Validar en base a la sesión del usuario autenticado.
 
+[Lab: User ID controlled by request parameter](5_User_ID_controlled_by_request_parameter.md)  
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
 ---
 
