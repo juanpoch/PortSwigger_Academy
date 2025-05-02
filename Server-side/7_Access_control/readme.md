@@ -564,7 +564,7 @@ Esto suele suceder por fallos de lógica en el backend. Algunas causas comunes:
 - **Auditar las rutas protegidas** usando herramientas de pentesting automatizadas y manuales para detectar este patrón.
 - Implementar pruebas de seguridad (unitarias o funcionales) que validen que las redirecciones no contienen contenido no autorizado.
 
-[Lab: User ID controlled by request parameter with unpredictable user IDs](6_User_ID_controlled_by_request_paramete_with_unpredictable_user_IDs.md)  
+[Lab: User ID controlled by request parameter with data leakage in redirect](7_User_ID_controlled_by_request_parameter_with_data_leakage_in_redirect.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
