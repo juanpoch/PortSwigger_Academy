@@ -497,7 +497,7 @@ GET /api/users/c90ec581-760a-4f14-996a-d7c6f67ef9a5/profile
 | Prevención | Autorización robusta en el backend        |
 
 
-[Lab: User ID controlled by request parameter](5_User_ID_controlled_by_request_parameter.md)  
+[Lab: User ID controlled by request parameter with unpredictable user IDs](6_User_ID_controlled_by_request_paramete_with_unpredictable_user_IDs.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
 
