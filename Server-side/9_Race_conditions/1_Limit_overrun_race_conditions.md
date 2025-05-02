@@ -45,6 +45,9 @@ Y nos redirige al endpoint `/cart?couponError=COUPON_ALREADY_APPLIED&coupon=PROM
 Por lo que sabemos que cada vez que nos redirija a este endpoint, no estaremos siendo capaces de aplicar el cupón de descuento.
 
 Procedemos a eliminar el cupón aplicado haciendo click en `Remove`:
+
+![image](https://github.com/user-attachments/assets/bc43f19e-66d5-46f8-96ab-9873aec435f3)
+
 ![image](https://github.com/user-attachments/assets/cc83ef4d-fb6e-403e-9996-e286850debf3)
 
 Enviamos la solicitud `POST /cart/coupon` al `Repeater` para inspeccionar mejor el proceso. Vemos que la solicitud tarda un tiempo en realizarse, puntualmente se demora 251 ms:
