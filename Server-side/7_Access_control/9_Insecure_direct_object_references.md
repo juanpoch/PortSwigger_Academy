@@ -52,7 +52,7 @@ Procedemos a iniciar sesión como `carlos` con las credenciales `carlos:om3kkg8b
 
 ## ✅ Conclusión
 
-En este laboratorio se identificó una vulnerabilidad de tipo **Insecure Direct Object Reference (IDOR)** en la funcionalidad de descarga de transcripciones de chat. La aplicación permite a cualquier usuario autenticado acceder a archivos estáticos en el servidor, cuya ruta es predecible (`/download-transcript/<id>.txt`), sin aplicar ningún tipo de validación o control de acceso contextual. Como consecuencia, fue posible acceder a conversaciones ajenas y extraer **información altamente sensible**, incluyendo una contraseña en texto plano perteneciente a otro usuario (`carlos`), lo que permitió una **escalada horizontal de privilegios**.
+En este laboratorio se identificó una vulnerabilidad de tipo **Insecure Direct Object Reference** en la funcionalidad de descarga de transcripciones de chat. La aplicación permite a cualquier usuario autenticado acceder a archivos estáticos en el servidor, cuya ruta es predecible (`/download-transcript/<id>.txt`), sin aplicar ningún tipo de validación o control de acceso contextual. Como consecuencia, fue posible acceder a conversaciones ajenas y extraer **información altamente sensible**, incluyendo una contraseña en texto plano perteneciente a otro usuario (`carlos`), lo que permitió una **escalada horizontal de privilegios**.
 
 ---
 
