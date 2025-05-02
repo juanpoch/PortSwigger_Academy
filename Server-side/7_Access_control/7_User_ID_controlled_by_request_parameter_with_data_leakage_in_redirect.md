@@ -53,7 +53,7 @@ Procedemos a resolver el laboratorio ingresando el valor de la API Key de carlos
 
 ## 🔎 Análisis general del laboratorio
 
-Este laboratorio demuestra un caso de **IDOR (Insecure Direct Object Reference)** en combinación con una **fuga de información sensible a través de una respuesta de redirección (HTTP 302)**.
+Este laboratorio demuestra un caso de **IDOR** en combinación con una **fuga de información sensible a través de una respuesta de redirección**.
 
 Aunque el sistema detecta que el usuario no tiene permiso para acceder a la cuenta de otro usuario (`/my-account?id=carlos`) y redirige correctamente al login, **el cuerpo de la respuesta contiene datos sensibles antes de la redirección efectiva**, entre ellos la API Key del usuario `carlos`.
 
@@ -61,13 +61,13 @@ Esto demuestra una implementación insegura del control de acceso: el servidor d
 
 ## 🚨 Falla explotada
 
-- **IDOR (Insecure Direct Object Reference):** Acceso directo a la información de otro usuario mediante manipulación del parámetro `id`.
-- **Fuga de datos en redirección (302):** A pesar de la redirección, el cuerpo HTML ya contenía la API Key del usuario objetivo (`carlos`).
+- **IDOR:** Acceso directo a la información de otro usuario mediante manipulación del parámetro `id`.
+- **Fuga de datos en redirección:** A pesar de la redirección, el cuerpo HTML ya contenía la API Key del usuario objetivo (`carlos`).
 
 ## 🛡️ Recomendaciones
 
 - Validar que el usuario autenticado tenga permiso para acceder al recurso solicitado **antes de generar cualquier contenido en la respuesta**.
-- Asegurarse de que las respuestas de redirección (302) no incluyan ningún contenido sensible en su cuerpo.
+- Asegurarse de que las respuestas de redirección no incluyan ningún contenido sensible en su cuerpo.
 - Implementar un sistema de control de acceso centralizado en el backend (por ejemplo, basado en sesiones y roles).
 - Monitorear logs de acceso para detectar patrones de manipulación de parámetros (`id`, `userId`, etc).
 
