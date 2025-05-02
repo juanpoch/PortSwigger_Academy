@@ -60,7 +60,9 @@ Buscar funcionalidades de:
 
 ### Paso 2: Lanzar solicitudes en paralelo
 
-El objetivo es interceptar la **race window** enviando múltiples solicitudes concurrentes.
+El principal desafío es sincronizar las solicitudes para que al menos dos ventanas de carrera coincidan, lo que provocaría una colisión. Esta ventana suele ser de tan solo milisegundos, e incluso puede ser más corta.
+
+Incluso si envía todas las solicitudes exactamente al mismo tiempo, en la práctica hay varios factores externos incontrolables e impredecibles que afectan cuándo el servidor procesa cada solicitud y en qué orden.
 
 ![image](https://github.com/user-attachments/assets/fea24e3e-b42a-45d4-bd9a-342f03099501)
 
