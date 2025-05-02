@@ -51,7 +51,7 @@ Procedemos a utilizar el endpoint `/my-account?id=0c8e792e-d4fc-4089-bb6e-6ecdbf
 
 Respuesta exitosa:
 
-- La aplicación no valida si el usuario autenticado corresponde al ID solicitado.
+- El backend no implementa una comprobación del ownership del recurso solicitado, lo que permite que cualquier usuario autenticado acceda a datos ajenos
 
 - Se muestra información sensible de carlos, incluyendo su API Key:
 
@@ -60,14 +60,14 @@ lsgjTqEQJPVnGHMURjRTwf7z9nXtBTGd
 ```
 
 Por lo que obtuvimos las siguientes fallas de seguridad:
-- Broken Access Control:
-El backend confía en el parámetro id sin verificar si corresponde al usuario autenticado.
+- Broken Access Control / IDOR:
+El backend confía en el parámetro id sin verificar si corresponde al usuario autenticado, permitiendo el acceso directo a objetos ajenos.
 
-- IDOR clásico con UUID:
-Aunque el identificador no es un número incremental simple, sigue siendo vulnerable si el valor se filtra o puede deducirse.
+- UUID disclosure + IDOR chain:
+Aunque se usen identificadores UUID impredecibles, la aplicación los expone en el frontend, facilitando al atacante su recolección y posterior explotación mediante una vulnerabilidad IDOR. Esto demuestra que la seguridad no debe basarse únicamente en la ofuscación.
 
 - Impacto crítico:
-El atacante accede a una API Key que podría permitir autenticación o acceso programático a funciones restringidas.
+El atacante accede a una API Key sensible que puede utilizarse para autenticación o para acceder a funcionalidades restringidas de la aplicación de forma programática.
 
 
 
