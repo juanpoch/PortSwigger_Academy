@@ -4,5 +4,6 @@ This lab stores user chat logs directly on the server's file system, and retriev
 
 Solve the lab by finding the password for the user `carlos`, and logging into their account.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
