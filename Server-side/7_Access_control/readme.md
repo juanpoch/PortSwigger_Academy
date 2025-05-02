@@ -428,9 +428,9 @@ Los IDOR ocurren cuando valores controlados por el usuario acceden directamente 
 ## 🔐 IDOR con Identificadores No Predecibles (GUIDs)
 
 ### 🧠 Contexto
-Cuando una aplicación usa identificadores secuenciales o predecibles (por ejemplo: `id=1`, `id=2`, etc.), es fácil para un atacante adivinar otros valores y realizar ataques de tipo **IDOR** (Insecure Direct Object Reference), accediendo a recursos ajenos.
+Cuando una aplicación usa identificadores secuenciales o predecibles (por ejemplo: `id=1`, `id=2`, etc.), es fácil para un atacante adivinar otros valores y realizar ataques de tipo **IDOR**, accediendo a recursos ajenos.
 
-Para mitigar esto, muchas aplicaciones modernas utilizan **GUIDs** (Globally Unique Identifiers), que son valores largos y difíciles de predecir, por ejemplo:
+Para mitigar esto, muchas aplicaciones modernas utilizan **GUIDs**, que son valores largos y difíciles de predecir, por ejemplo:
 ```
 9a32db79-91f2-4a57-a8ef-134e4d3218ff
 ```
