@@ -22,7 +22,7 @@ En el dashboard del usuario, vemos dos funcionalidades, la de `Update email` y l
 Petición en Burp Suite:
 ![image](https://github.com/user-attachments/assets/22c4487e-e655-4d45-80ce-7b0df7958f78)
 
-Enviamos esta petición al `Repeater` y cambiamos el valor del parámetro `id:wiener` por `id:administrator`:
+Enviamos esta petición al `Repeater` y cambiamos el valor del parámetro `id=wiener` por `id=administrator`:
 ![image](https://github.com/user-attachments/assets/340cd4ad-79bc-4bbf-b7e0-dfb0a63910c6)
 
 Esta petición muestra un grave caso de escalada de privilegios horizontal convertida en vertical mediante IDOR, con exposición directa de una contraseña en el cuerpo de la respuesta HTML.
