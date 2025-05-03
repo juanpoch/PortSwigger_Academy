@@ -84,4 +84,8 @@ Resultado esperado: si `/admin` solo está disponible internamente, el servidor 
 
 ---
 
+[Lab: Limit overrun race conditions](1_Limit_overrun_race_conditions.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
 
