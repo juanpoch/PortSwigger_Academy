@@ -28,7 +28,7 @@ http://stock.weliketoshop.net:8080/product/stock/check?productId=3&storeId=1
 Esto indica que el servidor está haciendo una solicitud HTTP saliente a la URL que el cliente define. Esta es la esencia de un SSRF.
 
 Indicadores:
-- El parámetro stockApi es directamente manipulable por el usuario.
+- El parámetro `stockApi` es directamente manipulable por el usuario.
 
 - La respuesta contiene datos obtenidos por el servidor a partir de la URL proporcionada.
 
