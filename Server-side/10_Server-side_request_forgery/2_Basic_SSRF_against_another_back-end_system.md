@@ -26,7 +26,7 @@ Usamos la funcionalidad de `Check stock` para inspeccionarla con Burp Suite y no
 
 
 La aplicación es similar al lab anterior: un sistema de compras con verificación de stock por producto.
-Por lo que otra vez tenemos un vector de potencial SSRF, ya que la aplicación está confiando en el parámetro `stockApi` para dirijirse a una URL que valida el stock del producto.
+Por lo que otra vez tenemos un vector de potencial SSRF, ya que la aplicación está confiando en el parámetro `stockApi` para dirigirse a una URL que valida el stock del producto.
 
 
 Como el laboratorio dice que tenemos que escanear el rango interno `192.168.0.X`, procedemos a ver si tenemos acceso al endpoint `http://192.168.0.1:8080`:
@@ -62,6 +62,10 @@ Vemos que el endpoint `192.168.0.188` arroja un `200 OK` y nos permite ingresar 
 Accedemos al endpoint `http://192.168.0.188:8080/admin` y filtramos en el código fuente por `carlos`. Encontramos el enlace `http://192.168.0.188:8080/admin/delete?username=carlos` para eliminar su usuario :
 
 ![image](https://github.com/user-attachments/assets/748d18ef-8cf9-49a5-8bfc-417b7ba4fc37)
+
+```bash
+stockApi=http%3a%2f%2f192.168.0.188%3a8080%2fadmin%2fdelete%3Fusername%3Dcarlos
+```
 
 Accedemos al endpoint para eliminar el usuario `carlos`:
 ![image](https://github.com/user-attachments/assets/4f5b5434-e4e7-481a-a08d-0fa789e1b86e)
