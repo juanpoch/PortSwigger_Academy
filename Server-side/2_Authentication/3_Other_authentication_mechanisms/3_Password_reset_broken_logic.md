@@ -21,10 +21,10 @@ Capturando el tráfico con `Burp Suite`, inspeccionamos la funcionalidad de `For
 Ingresamos nuestro usuario `wiener` para inspeccionar la siguiente request:
 ![image](https://github.com/user-attachments/assets/128465ab-393e-4dcb-86cd-b546c755214b)
 
-Como nos pide que ingresemos a nuestro email, inspeccionamos el mail utilizando el botón `Email client`:
+Como nos pide que ingresemos a nuestro email, inspeccionamos el mail utilizando el botón `Email client`, vemos que nos brinda un link de reseteo de contraseña:
 ![image](https://github.com/user-attachments/assets/d23ddbba-b28a-4b15-a473-20fdc0c5cd5f)
 
-Vemos que nos brinda un link de reseteo de contraseña, accedemos al mismo:
+Este es un link único y temporal generado automáticamente para el usuario gracias a la generación del token aleatorio que se inserta en el link como el valor del parámetro `temp-forgot-password-token`. accedemos al link de reseteo de contraseña:
 ![image](https://github.com/user-attachments/assets/cac8c6af-3f41-47e4-bacc-1c2c9af17354)
 
 El link contiene un parámetro `temp-forgot-password-token`.
