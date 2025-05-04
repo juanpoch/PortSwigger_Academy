@@ -42,7 +42,7 @@ Probamos el endpoint `192.168.0.2`:
 
 
 
-El laboratorio nos pide que escaniemos el rango re red `192.168.0.x` para encontrar el directorio `/admin`:
+El laboratorio nos pide que hagamos un escaneo del rango rde red `192.168.0.x` para encontrar el directorio `/admin`:
 ![image](https://github.com/user-attachments/assets/d54a0e2a-626a-47cd-89b3-fbd0a3b92cbe)
 
 
