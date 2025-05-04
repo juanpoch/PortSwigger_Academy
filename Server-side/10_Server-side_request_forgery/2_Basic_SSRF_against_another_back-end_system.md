@@ -29,11 +29,19 @@ Como el laboratorio dice que tenemos que escanear el rango interno `192.168.0.X`
 ![image](https://github.com/user-attachments/assets/ff226a48-b025-4f90-8c93-de4e4a80c860)
 
 
-Si bien nos dice `missing parameter`, el laboratorio nos pide que escaniemos el rango re red `192.168.0.x` para encontrar el directorio `/admin`:
-![image](https://github.com/user-attachments/assets/d54a0e2a-626a-47cd-89b3-fbd0a3b92cbe)
+El servidor nos devuelve un `400 Bad Request` y nos dice `missing parameter`.
 
 Probamos el endpoint `192.168.0.2`:
-![image](https://github.com/user-attachments/assets/115dbbd7-9046-4377-9a73-9d6fb1e812c5)
+![image](https://github.com/user-attachments/assets/dba25c51-2478-476a-a623-6679f570ae9e)
+![image](https://github.com/user-attachments/assets/ebd14de8-121b-4f82-989c-b970ade0a4c5)
+
+
+
+
+El laboratorio nos pide que escaniemos el rango re red `192.168.0.x` para encontrar el directorio `/admin`:
+![image](https://github.com/user-attachments/assets/d54a0e2a-626a-47cd-89b3-fbd0a3b92cbe)
+
+
 
 
 Si probamos la dirección `192.168.0.1` nos lanza una respuesta `500 Internal Server Error`:
