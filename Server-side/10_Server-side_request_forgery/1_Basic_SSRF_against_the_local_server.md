@@ -84,7 +84,7 @@ En este laboratorio se demostró una vulnerabilidad **Server-Side Request Forger
 
 - Un SSRF permite a un atacante hacer que el servidor realice una solicitud HTTP a un recurso arbitrario, lo que puede llevar al acceso no autorizado o incluso a ejecución de comandos si se encadena con otras vulnerabilidades.
 - Es fundamental entender que **el hecho de que el cliente no pueda acceder directamente a un recurso protegido no impide que lo haga indirectamente a través del servidor**, si este actúa como proxy sin restricciones.
-- **Codificar correctamente las URLs (URL encoding)** es clave para inyectar valores válidos en parámetros como `stockApi`.
+- **Codificar correctamente las URLs** es clave para inyectar valores válidos en parámetros como `stockApi`.
 - Este tipo de laboratorio refuerza el conocimiento práctico sobre **cómo una mala implementación de lógica de negocio puede llevar a impactos críticos** como acceso a paneles administrativos internos.
 
 ---
