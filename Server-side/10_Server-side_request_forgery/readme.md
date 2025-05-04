@@ -88,4 +88,71 @@ Resultado esperado: si `/admin` solo está disponible internamente, el servidor 
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
+---
 
+## Ataques SSRF contra el servidor y sistemas internos
+
+### Por qué las aplicaciones confían en solicitudes locales
+
+En muchas arquitecturas web, se asume erróneamente que **las solicitudes provenientes del propio servidor son seguras**. Esta suposición abre la puerta a las vulnerabilidades SSRF (Server-Side Request Forgery). Veamos algunos motivos comunes por los cuales una aplicación puede comportarse de esta manera:
+
+* **Controles de acceso en capas externas**: Algunas veces, la lógica que valida si un usuario puede acceder a una URL determinada no está implementada dentro de la aplicación, sino en un componente externo (por ejemplo, un WAF, proxy inverso o firewall). Cuando la aplicación hace una petición a sí misma, estos controles pueden ser evitados porque la conexión no pasa por esos intermediarios.
+
+* **Recuperación ante desastres (Disaster Recovery)**: Para permitir que un administrador pueda recuperar el sistema si pierde el acceso, algunas aplicaciones permiten acceder a la interfaz administrativa desde localhost sin autenticación. Esta decisión se basa en la suposición de que nadie podría originar una solicitud desde dentro del propio servidor salvo un usuario legítimo.
+
+* **Puertos diferentes para interfaces críticas**: A veces, la interfaz de administración se encuentra en otro puerto distinto al de la aplicación pública, y se cree que al no estar expuesto directamente a internet, está protegido. Sin embargo, si un atacante puede forzar al servidor a hacer solicitudes internas, este aislamiento por puerto se vuelve inútil.
+
+Estas "relaciones de confianza implícitas" entre servicios internos son exactamente lo que hacen que **una vulnerabilidad SSRF se convierta en una amenaza crítica**.
+
+### Ataques SSRF contra sistemas back-end internos
+
+Más allá de explotar recursos locales (localhost), un atacante puede usar SSRF para interactuar con otros sistemas internos de la red que **no son accesibles desde el exterior**. Estos sistemas suelen tener direcciones IP privadas, como:
+
+* `192.168.x.x`
+* `10.x.x.x`
+* `172.16.x.x` a `172.31.x.x`
+
+Dado que estos sistemas están protegidos por la topología de red (segmentación), muchas veces tienen **controles de seguridad mínimos o nulos**, bajo el supuesto de que no serán accesibles desde el exterior. Sin embargo, si la aplicación vulnerable puede interactuar con ellos, un atacante puede aprovechar esto para:
+
+* Acceder a paneles administrativos internos.
+* Obtener información sensible.
+* Ejecutar acciones como borrar registros, reiniciar sistemas, u otras funciones críticas.
+
+#### Ejemplo práctico:
+
+Supongamos que una aplicación vulnerable permite especificar la URL desde donde obtener stock, mediante el parámetro `stockApi`. El atacante envía:
+
+```
+POST /product/stock HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 118
+
+stockApi=http://192.168.0.68/admin
+```
+
+Si el servidor puede hacer solicitudes internas y no hay controles de validación estrictos, esta solicitud **forzará al servidor a acceder al panel administrativo interno ubicado en `192.168.0.68`**, devolviendo su contenido al atacante.
+
+#### Posibles objetivos dentro de la red interna:
+
+* APIs de gestión (`http://192.168.1.1/api/config`)
+* Consolas de bases de datos (`http://10.0.0.5/phpmyadmin`)
+* Servicios de monitorización (`http://localhost:3000/`)
+* Instancias de cloud metadata (`http://169.254.169.254/latest/meta-data/`)
+
+Estas interfaces suelen devolver **datos sensibles o tokens** que permiten escalar privilegios dentro de la infraestructura.
+
+### Importancia de validar correctamente
+
+Este tipo de ataques demuestra que **confiar en IPs internas o nombres como `localhost` no es una medida de seguridad válida**. Las aplicaciones deben:
+
+* Validar estrictamente las URLs recibidas del cliente.
+* Implementar listas blancas (whitelists) de destinos permitidos.
+* Restringir el acceso del servidor a direcciones internas si no es necesario.
+
+---
+
+A continuación veremos un laboratorio práctico que permite explotar un SSRF contra un sistema interno basado en una dirección IP privada.
+
+[Lab: Basic SSRF against the local server](1_Basic_SSRF_against_the_local_server.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
