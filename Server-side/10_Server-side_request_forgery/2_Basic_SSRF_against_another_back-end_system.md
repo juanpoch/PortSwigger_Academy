@@ -43,13 +43,7 @@ El laboratorio nos pide que escaniemos el rango re red `192.168.0.x` para encont
 
 
 
-
-Si probamos la dirección `192.168.0.1` nos lanza una respuesta `500 Internal Server Error`:
-![image](https://github.com/user-attachments/assets/ac6f987d-c9c8-451e-9fa5-aa7add867cfa)
-
-![image](https://github.com/user-attachments/assets/5a2818aa-82ba-48e5-8dc7-705c7abe40ed)
-
-Por lo que tenemos respuestas diferenciadas en función de si el host está activo o no.
+Hasta ahora tenemos respuestas diferenciadas en función de si el host está activo o no.
 
 
 Enviamos la petición anterior al `Intruder` para realizar fuerza bruta de hosts:
