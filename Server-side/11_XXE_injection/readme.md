@@ -89,7 +89,9 @@ En escenarios reales, el XML puede tener varios nodos. El atacante debe probar s
 
 ---
 
+[Lab: Basic SSRF against the local server](1_Basic_SSRF_against_the_local_server.md)  
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
 
@@ -102,12 +104,4 @@ En escenarios reales, el XML puede tener varios nodos. El atacante debe probar s
 
 ---
 
-## 📃 Lecciones aprendidas
 
-* Las vulnerabilidades XXE pueden parecer complejas, pero a menudo surgen por configuraciones inseguras.
-* Son un vector frecuente en APIs SOAP, servicios legados, y sistemas que procesan XML.
-* Pueden convertirse en SSRF, filtración de datos o incluso RCE.
-
----
-
-Próximamente: resolución paso a paso del laboratorio de lectura de archivos con XXE.
