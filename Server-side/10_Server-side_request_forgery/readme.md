@@ -94,7 +94,7 @@ Resultado esperado: si `/admin` solo está disponible internamente, el servidor 
 
 ### Por qué las aplicaciones confían en solicitudes locales
 
-En muchas arquitecturas web, se asume erróneamente que **las solicitudes provenientes del propio servidor son seguras**. Esta suposición abre la puerta a las vulnerabilidades SSRF (Server-Side Request Forgery). Veamos algunos motivos comunes por los cuales una aplicación puede comportarse de esta manera:
+En muchas arquitecturas web, se asume erróneamente que **las solicitudes provenientes del propio servidor son seguras**. Esta suposición abre la puerta a las vulnerabilidades SSRF. Veamos algunos motivos comunes por los cuales una aplicación puede comportarse de esta manera:
 
 * **Controles de acceso en capas externas**: Algunas veces, la lógica que valida si un usuario puede acceder a una URL determinada no está implementada dentro de la aplicación, sino en un componente externo (por ejemplo, un WAF, proxy inverso o firewall). Cuando la aplicación hace una petición a sí misma, estos controles pueden ser evitados porque la conexión no pasa por esos intermediarios.
 
