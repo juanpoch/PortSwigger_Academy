@@ -15,7 +15,7 @@ Iniciamos el lab y tenemos el típico blog:
 Ingresamos al panel de login a través del botón `My account`:
 ![image](https://github.com/user-attachments/assets/c8654c04-fe13-4f94-af3a-672b769182c6)
 
-Capturando el tráfico con `Burp Suite`, inspeccionamos la funcionalidad de `Forgot password?`:
+Capturando el tráfico con `Burp Suite`, inspeccionamos el flujo de la funcionalidad `Forgot password?`:
 ![image](https://github.com/user-attachments/assets/a3bfe564-6773-4847-aa76-747cc08d1d47)
 
 Ingresamos nuestro usuario `wiener` para inspeccionar la siguiente request:
