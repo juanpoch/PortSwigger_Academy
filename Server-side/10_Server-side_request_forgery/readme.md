@@ -153,6 +153,6 @@ Este tipo de ataques demuestra que **confiar en IPs internas o nombres como `loc
 
 A continuación veremos un laboratorio práctico que permite explotar un SSRF contra un sistema interno basado en una dirección IP privada.
 
-[Lab: Basic SSRF against the local server](1_Basic_SSRF_against_the_local_server.md)  
+[Lab: Basic SSRF against another back-end system](2_Basic_SSRF_against_another_back-end_system.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
