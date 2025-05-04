@@ -67,7 +67,7 @@ Vemos que logramos eliminar el usuario `carlos`, por lo que resolvimos el labora
 
 ### ✅ Conclusión
 
-En este laboratorio se demostró una vulnerabilidad **Server-Side Request Forgery** donde el servidor hacía solicitudes HTTP salientes basadas en una entrada controlada por el usuario (`stockApi`). Al manipular esta entrada, se logró que el servidor accediera a recursos internos como `http://127.0.0.1/admin`, lo que permitió eludir controles de acceso y acceder al panel administrativo. Desde allí, se procedió a eliminar el usuario `carlos`, completando el objetivo del laboratorio.
+En este laboratorio se demostró una vulnerabilidad **Server-Side Request Forgery** donde el servidor hacía solicitudes HTTP salientes basadas en una entrada controlada por el usuario (parámetro `stockApi`). Al manipular esta entrada, se logró que el servidor accediera a recursos internos como `http://127.0.0.1/admin`, lo que permitió eludir controles de acceso y acceder al panel administrativo. Desde allí, se procedió a eliminar el usuario `carlos`, completando el objetivo del laboratorio.
 
 ---
 
