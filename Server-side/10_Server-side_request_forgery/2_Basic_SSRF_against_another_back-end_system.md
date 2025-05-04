@@ -63,12 +63,15 @@ Accedemos al endpoint `http://192.168.0.188:8080/admin` y filtramos en el códig
 
 ![image](https://github.com/user-attachments/assets/748d18ef-8cf9-49a5-8bfc-417b7ba4fc37)
 
-```bash
-stockApi=http%3a%2f%2f192.168.0.188%3a8080%2fadmin%2fdelete%3Fusername%3Dcarlos
-```
+
 
 Accedemos al endpoint para eliminar el usuario `carlos`:
 ![image](https://github.com/user-attachments/assets/4f5b5434-e4e7-481a-a08d-0fa789e1b86e)
+
+Valor del parámetro `stockApi` utilizado:
+```bash
+stockApi=http%3a%2f%2f192.168.0.188%3a8080%2fadmin%2fdelete%3Fusername%3Dcarlos
+```
 
 Nos responde con un `302 Found` lo cual es un redirect hacia el panel de administración `http://192.168.0.188:8080/admin` a estas alturas ya resolvimos el laboratorio, insertamos la dirección al panel administrativo en el payload para visualizar el banner:
 
