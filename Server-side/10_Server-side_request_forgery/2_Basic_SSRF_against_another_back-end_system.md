@@ -83,16 +83,6 @@ Para ver si hay respuestas diferenciadas y reconocer el host activo (incluso se 
 
 En este caso el host 192.168.1.140 tuvo una respuesta diferente, por lo que podríamos hacer fuerza bruta a los directorios para encontrar el panel administrativo.
 
----
-
-# Lab: Basic SSRF against another back-end system
-
-This lab has a stock check feature which fetches data from an internal system.
-
-To solve the lab, use the stock check functionality to scan the internal `192.168.0.X` range for an admin interface on port `8080`, then use it to delete the user `carlos`.
-
-![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
-
 
 ---
 
