@@ -73,10 +73,12 @@ Nos responde con un `302 Found` lo cual es un redirect hacia el panel de adminis
 
 ---
 
-`Nota`: Nosotros sabíamos de la existencia de un directorio `/admin`, pero en la realidad podríamos haber enviado el endpoint al `Intruder` sin el `/admin`:
+`Nota`: Nosotros sabíamos de la existencia de un directorio `/admin`, pero en la realidad podríamos haber enviado el endpoint al `Intruder` sin el `/admin`:  
+
 ![image](https://github.com/user-attachments/assets/82007b20-e1de-4449-9aa7-c20e180a518f)
 
-Para ver si hay respuestas diferenciadas y reconocer el host activo (incluso se podría hacer fuerza bruta a los puertos para enumerarlos también):
+Para ver si hay respuestas diferenciadas y reconocer el host activo (incluso se podría hacer fuerza bruta a los puertos para enumerarlos también): 
+
 ![image](https://github.com/user-attachments/assets/d4710c55-7221-4eb6-8e2d-187d9218be83)
 
 En este caso el host 192.168.1.140 tuvo una respuesta diferente, por lo que podríamos hacer fuerza bruta a los directorios para encontrar el panel administrativo.
