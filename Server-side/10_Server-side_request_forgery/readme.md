@@ -106,7 +106,7 @@ Estas "relaciones de confianza implícitas" entre servicios internos son exactam
 
 ### Ataques SSRF contra sistemas back-end internos
 
-Más allá de explotar recursos locales (localhost), un atacante puede usar SSRF para interactuar con otros sistemas internos de la red que **no son accesibles desde el exterior**. Estos sistemas suelen tener direcciones IP privadas, como:
+Más allá de explotar recursos locales), un atacante puede usar SSRF para interactuar con otros sistemas internos de la red que **no son accesibles desde el exterior**. Estos sistemas suelen tener direcciones IP privadas, como:
 
 * `192.168.x.x`
 * `10.x.x.x`
