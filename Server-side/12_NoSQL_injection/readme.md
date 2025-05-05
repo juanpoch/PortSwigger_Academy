@@ -1,6 +1,6 @@
 # NoSQL Injection
 
-## 🔎 ¿Qué es una NoSQL Injection?
+
 
 Una **NoSQL Injection** es una vulnerabilidad de seguridad que permite a un atacante manipular las consultas realizadas por una aplicación hacia una base de datos NoSQL. A diferencia de las bases de datos relacionales SQL, las NoSQL (como MongoDB, CouchDB, Firebase, etc.) utilizan distintos lenguajes de consulta, estructuras de datos flexibles y menos restricciones relacionales.
 
