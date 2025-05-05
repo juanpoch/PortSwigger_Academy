@@ -1,4 +1,4 @@
-# Guía completa sobre NoSQL Injection
+# NoSQL Injection
 
 ## 🔎 ¿Qué es una NoSQL Injection?
 
