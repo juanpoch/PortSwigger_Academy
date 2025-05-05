@@ -95,9 +95,9 @@ En escenarios reales, el XML puede tener varios nodos. El atacante debe probar s
 
 ---
 
-## XXE como vector de SSRF (Server-Side Request Forgery)
+## XXE como vector de SSRF
 
-Una de las implicancias más críticas de una vulnerabilidad XXE (XML External Entity) es la posibilidad de convertirla en un ataque de tipo **SSRF**. Este tipo de ataque permite forzar al servidor a realizar solicitudes HTTP (u otros protocolos) hacia recursos internos o externos sin autorización del atacante, utilizando la funcionalidad de análisis XML como canal.
+Una de las implicancias más críticas de una vulnerabilidad XXE es la posibilidad de convertirla en un ataque de tipo **SSRF**. Este tipo de ataque permite forzar al servidor a realizar solicitudes HTTP (u otros protocolos) hacia recursos internos o externos sin autorización del atacante, utilizando la funcionalidad de análisis XML como canal.
 
 ### ¿Cómo se explota una XXE para realizar un SSRF?
 
@@ -178,14 +178,4 @@ Esta técnica XXE->SSRF es una de las combinaciones más peligrosas en ambientes
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
-
-## 🚫 Mitigación y mejores prácticas
-
-* ❌ No uses parsers XML inseguros o con configuraciones por defecto.
-* ✅ Deshabilitá resolución de entidades externas (ej. `disableEntityExpansion=true`).
-* ✉️ Usá formatos más seguros como JSON.
-* ⛨️ Aplicá control de salida: nunca reflejes ciegamente contenido XML procesado.
-
----
-
 
