@@ -95,6 +95,15 @@ En escenarios reales, el XML puede tener varios nodos. El atacante debe probar s
 
 ---
 
+
+---
+
+[Lab: Exploiting XXE using external entities to retrieve files](1_Exploiting_XXE_using_external_entities_to_retrieve_files.mdd)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
+
 ## 🚫 Mitigación y mejores prácticas
 
 * ❌ No uses parsers XML inseguros o con configuraciones por defecto.
