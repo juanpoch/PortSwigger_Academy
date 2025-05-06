@@ -75,11 +75,11 @@ Procedemos a probar uno por uno. Los payloads se inyectan url encodeados.
 
 Primer inyección `' && 1 == 1` produce un error de sintaxis:
 ![image](https://github.com/user-attachments/assets/175f663d-ec0d-4157-bf6f-67ccfbc4b47b)
-Segunda inyección `' && '1' == '1`, si bien no produjo un error de sintaxis, no está trayendo todos los productos:
+Segunda inyección `' && '1' == '1`, si bien no produjo un error de sintaxis, no está trayendo todos los productos (es posible que funcione bien con `||`):
 ![image](https://github.com/user-attachments/assets/5fe96202-3e0d-4612-a495-b92592e645d9)
 Tercera inyección `' || 1 == 1` produce un error de sintaxis:
 ![image](https://github.com/user-attachments/assets/2a567a55-3e1e-466b-8971-48f51d133809)
-Cuarta inyección `' || '1' == '1` vemos que trajo todos los productos:
+Cuarta inyección `' || '1' == '1` vemos que trajo todos los productos como suponíamos:
 ![image](https://github.com/user-attachments/assets/6ca1c46a-d5dc-40f3-92f5-abfba0aa26b0)
 
 Probamos las otras 2:
