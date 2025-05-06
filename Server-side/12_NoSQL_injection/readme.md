@@ -159,8 +159,10 @@ this.category == 'fizzy' || '1'=='1'
 
 ---
 
-[Lab: Exploiting XXE using external entities to retrieve files](1_Exploiting_XXE_using_external_entities_to_retrieve_files.md)  
+[Lab: Detecting NoSQL injection](1_Detecting_NoSQL_injection.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
 
 
