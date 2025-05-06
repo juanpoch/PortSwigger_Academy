@@ -4,5 +4,6 @@ The product category filter for this lab is powered by a MongoDB NoSQL database.
 
 To solve the lab, perform a NoSQL injection attack that causes the application to display unreleased products.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
