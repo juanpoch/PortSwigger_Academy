@@ -67,4 +67,6 @@ Tenemos distintas opciones para este ataque:
 ' && '1' == '1  --> 'Accessories' && ...
 ' || 1 == 1
 ' || '1' == '1
+' || 1 ||
+' || 1 || '
 ```
