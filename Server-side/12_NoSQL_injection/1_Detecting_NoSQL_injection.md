@@ -92,5 +92,41 @@ Sexta inyección `' || 1 || '` también funcionó:
 Resolvimos el laboratorio:
 ![image](https://github.com/user-attachments/assets/e9d8298c-1cc2-482e-b1f3-0f2f3bddc317)
 
+---
+
+## ✅ Laboatorio resuelto
+
+El payload `' || '1' == '1` permitió modificar la lógica interna de la consulta, haciendo que el filtro por categoría devuelva todos los productos, incluyendo los **"unreleased"**, como pedía el enunciado.
+
+---
+
+## 🔹 Conclusiones
+
+Este laboratorio demuestra claramente cómo una inyección NoSQL puede:
+
+- Romper la lógica de filtrado (inyección de operadores booleanos).
+- Revelar productos ocultos o restringidos.
+- Generar errores que exponen información sensible del backend (tracebacks).
+
+---
+
+## 🧰 Recomendaciones
+
+- Nunca concatenar directamente entradas del usuario en consultas dinámicas.
+- Usar ORM o query builders que escapen operadores (`$ne`, `$where`, etc.).
+- Validar y sanear todas las entradas antes de pasarlas al motor de base de datos.
+- Deshabilitar operadores peligrosos como `$where` en MongoDB si no son necesarios.
+
+---
+
+## 📃 Lecciones aprendidas
+
+- La inyección NoSQL no se limita a operadores `$ne` o `$gt`, también puede utilizar **JavaScript inline**.
+- Las respuestas error pueden ser un canal de aprendizaje para el atacante.
+- Los ataques booleanos siguen siendo una técnica eficaz para inferir vulnerabilidades.
+
+---
+
+
 
 
