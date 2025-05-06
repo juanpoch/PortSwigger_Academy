@@ -43,4 +43,28 @@ Probamos con el siguiente, `'` y vemos que genera un error:
 
 Esta respuesta con error `JSInterpreterFailure` y mensaje `SyntaxError: unterminated string literal` confirma de forma clara que hay una inyección NoSQL basada en sintaxis. El error ocurre porque se pudo romper la cadena de texto utilizada en la consulta de MongoDB.
 
+El parámetro `category=Accessories'` rompió la sintaxis del query en el backend. Esto sugiere que el servidor está interpolando la entrada de forma insegura en una cadena tipo:
+```javascript
+this.category == 'Accessories''
+```
 
+Si intentamos inyectar el payload `category=Accessories'+'` url encodeado, vemos que no generamos un error de sintaxis:
+![image](https://github.com/user-attachments/assets/a93e078a-a0c5-4a2f-9b9e-4203eeca158b)
+
+es el momento ideal para probar una condición booleana controlada por nosotros.
+
+Supongamos que tenemos una condición similar a la siguiente:
+```javascript
+if(this.category == "Accessories" && this.limit == 3){
+//... do something
+}
+```
+Siguiendo esta idea, intentaríamos inyectar condiciones booleanas de modo tal que podamos remover la segunda sentencia `&& this.limit == 3`.
+
+Tenemos distintas opciones para este ataque:
+```php
+' && 1 == 1
+' && '1' == '1  --> 'Accessories' && ...
+' || 1 == 1
+' || '1' == '1
+```
