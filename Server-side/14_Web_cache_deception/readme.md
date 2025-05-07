@@ -190,4 +190,4 @@ Adicionalmente:
 
 ---
 
-En la próxima sección abordaremos el laboratorio: **"Exploiting Web Cache Deception via static extension"**, donde aplicaremos estas técnicas paso a paso para identificar y explotar un endpoint vulnerable a WCD.
+
