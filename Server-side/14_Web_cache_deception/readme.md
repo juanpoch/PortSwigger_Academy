@@ -190,7 +190,7 @@ Adicionalmente:
 
 ---
 
-[Lab: Exploiting an API endpoint using documentation](1_Exploiting_an_API_endpoint_using_documentation.md)  
+[Lab: Exploiting path mapping for web cache deception](1_Exploiting_path_mapping_for_web_cache_deception.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
