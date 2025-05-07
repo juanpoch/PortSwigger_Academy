@@ -103,4 +103,6 @@ Probar también:
 
 ---
 
+[Lab: Detecting NoSQL injection](1_Detecting_NoSQL_injection.md)  
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
