@@ -276,7 +276,10 @@ En caso de que la app no procese adecuadamente esta estructura, se recomienda:
 * Establecer `Content-Type: application/json`.
 * Inyectar el payload como JSON en el cuerpo.
 
-💡 **Consejo**: En Burp Suite, la extensión **Content Type Converter** puede facilitar esta transformación automáticamente.
+💡 En Burp Suite, la extensión **Content Type Converter** puede facilitar esta transformación automáticamente.
+
+[MongoDB NoSQL injection BApp - PortSwigger](https://portswigger.net/bappstore/db57ecbe2cb7446292a94aa6181c9278)
+
 ---
 
 [Lab: Detecting NoSQL injection](1_Detecting_NoSQL_injection.md)
