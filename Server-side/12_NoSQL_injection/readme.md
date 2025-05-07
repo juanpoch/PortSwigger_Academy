@@ -281,7 +281,7 @@ En caso de que la app no procese adecuadamente esta estructura, se recomienda:
 [MongoDB NoSQL injection BApp - PortSwigger](https://portswigger.net/bappstore/db57ecbe2cb7446292a94aa6181c9278)
 
 ---
-2_Exploiting_NoSQL_operator_injection_to_bypass_authentication.md
+
 [Lab: Exploiting NoSQL operator injection to bypass authentication](2_Exploiting_NoSQL_operator_injection_to_bypass_authentication.md)
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)
