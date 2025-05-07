@@ -103,6 +103,6 @@ Probar también:
 
 ---
 
-[Lab: Detecting NoSQL injection](1_Detecting_NoSQL_injection.md)  
+[Lab: Exploiting an API endpoint using documentation](1_Exploiting_an_API_endpoint_using_documentation.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
