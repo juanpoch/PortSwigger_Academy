@@ -85,6 +85,21 @@ Ingresamos el siguiente payload:
 abc123xy" onload="alert(1)
 ```
 
+Recordar que nosotros tenemos esta etiqueta:
+```html
+<img src="/resources/images/tracker.gif?searchTerms=abc123xy">
+```
+
+Una vez inyectado el payload, la etiqueta quedaría así:
+```html
+<img src="/resources/images/tracker.gif?searchTerms=abc123xy" onload="alert(1)">
+```
+✅ Con esta técnica logramos cerrar el atributo `src` con `"`, e inyectamos un nuevo atributo: `onload="alert(1)"`.
+
+Esto provoca que cuando el navegador renderiza la imagen, se ejecute `alert(1)` como parte del evento `onload`.
+
+Este tipo de ataque se conoce como **attribute injection** mediante *break out*, y es común cuando la inyección ocurre dentro de un atributo HTML. Permite ejecutar código sin necesidad de etiquetas `<script>`.  
+
 Resolvemos el lab:
 ![image](https://github.com/user-attachments/assets/88aa4b5c-ea21-4a1b-a75a-21d047e412d4)
 
