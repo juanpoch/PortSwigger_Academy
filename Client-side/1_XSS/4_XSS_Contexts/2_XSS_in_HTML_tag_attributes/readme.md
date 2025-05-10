@@ -46,6 +46,7 @@ Si no se puede insertar un `<script>`, se puede intentar romper el atributo e in
 " autofocus onfocus=alert(document.domain) x="
 ```
 
+
 ### ¿Qué hace este payload?
 
 * Termina el atributo actual (`"`).
@@ -67,6 +68,13 @@ Si no se puede insertar un `<script>`, se puede intentar romper el atributo e in
 
 ---
 
+[Lab: Exploiting XXE to perform SSRF attacks](2_Exploiting_XXE_to_perform_SSRF_attacks.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
+
+
 ## 🔗 Caso 3: Atributos que permiten ejecución directa (`href`, `src`, etc.)
 
 Hay algunos atributos como `href` en `<a>`, `src` en `<iframe>` o `action` en formularios, que permiten definir directamente una URI o protocolo.
@@ -85,6 +93,12 @@ El protocolo `javascript:` es interpretado por el navegador como código ejecuta
 * Bloqueado por algunos navegadores o políticas CSP modernas.
 
 🔒 **Recomendación:** probar también con `data:` y `vbscript:` (en navegadores antiguos).
+
+---
+
+[Lab: Exploiting XXE to perform SSRF attacks](2_Exploiting_XXE_to_perform_SSRF_attacks.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
 
