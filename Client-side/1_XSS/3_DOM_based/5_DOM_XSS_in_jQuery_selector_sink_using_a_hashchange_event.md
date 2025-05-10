@@ -8,6 +8,24 @@ To solve the lab, deliver an exploit to the victim that calls the `print()` func
 
 ---
 
+## 🧪 Introducción al laboratorio
+
+Este laboratorio presenta una vulnerabilidad de tipo **DOM-based Cross-Site Scripting (DOM XSS)** que se manifiesta en el uso inseguro del fragmento de URL (`location.hash`) en combinación con jQuery.
+
+El sitio vulnerable implementa una funcionalidad de **scroll automático** que utiliza el valor del hash (`#`) para localizar dinámicamente una entrada de blog y desplazar la vista hasta ese elemento. Esto se realiza mediante un selector jQuery `:contains(...)`, que recibe el contenido directamente desde el `hash` de la URL, sin ninguna sanitización o validación previa.
+
+Este comportamiento puede ser manipulado por un atacante para inyectar contenido HTML malicioso, como una etiqueta `<img>` con un atributo `onerror`, y lograr así la ejecución de JavaScript arbitrario en el navegador de la víctima.
+
+Nuestro objetivo será:
+
+- Comprender cómo jQuery maneja la entrada controlada en los selectores.
+- Manipular el `hash` para inyectar un nodo `<img>` con código malicioso.
+- Automatizar el ataque utilizando un `<iframe>` que desencadene el evento `hashchange` y dispare el exploit sin necesidad de interacción del usuario.
+
+La explotación exitosa del laboratorio requiere lograr que el navegador de la víctima ejecute la función `print()` como prueba de concepto del XSS.
+
+---
+
 Iniciamos el laboratorio y nos encontramos con el siguiente website:
 ![image](https://github.com/user-attachments/assets/28a82381-d411-4af3-91f7-ddbca9a94b8a)
 
@@ -376,6 +394,37 @@ Luego click en `Deliver exploit to victim` y resolvemos el lab:
 
 
 ---
+## ✅ Conclusión estructurada paso a paso
+
+### 1. `location.hash` como fuente de entrada controlada
+Todo lo que el usuario coloque después del `#` en la URL se extrae mediante `window.location.hash`, se decodifica y se **inyecta directamente** dentro de un selector jQuery `:contains(...)` — sin ningún tipo de sanitización.
+
+---
+
+### 2. jQuery interpreta mal input HTML en selectores
+Cuando el selector `:contains(...)` recibe contenido con etiquetas HTML malformadas, **jQuery interpreta eso como HTML real** y puede llegar a crear nodos DOM **en memoria** (aunque no visibles ni insertados automáticamente).
+
+---
+
+### 3. Inyección de `<img>` con `onerror` para ejecutar código
+Si el nodo creado es una etiqueta `<img>`, el navegador intentará cargar la URL indicada en `src`. Si esa imagen no existe (por ejemplo, `src=0`), se dispara el evento `onerror`, lo que permite ejecutar JavaScript arbitrario como `alert(1)` o `print()`.
+
+---
+
+### 4. Uso de `iframe` para automatizar el ataque (sin interacción)
+La vulnerabilidad se explota **sin intervención del usuario** usando un `iframe` que:
+
+- Carga la página vulnerable con un `hash` vacío.
+- Luego modifica dinámicamente su propio `src` para incluir el payload malicioso en el `hash`.
+- Esto desencadena el evento `hashchange`, **activando el XSS automáticamente**.
+
+---
+
+🔒 Todo este flujo representa un **clásico DOM-based XSS** utilizando:
+- `jQuery` como **sink**
+- `location.hash` como **source**
+- y un **vector HTML malformado** como entrada.
+
 
 ---
 
