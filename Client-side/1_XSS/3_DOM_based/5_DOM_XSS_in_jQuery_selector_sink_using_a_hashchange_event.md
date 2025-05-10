@@ -375,21 +375,32 @@ Luego click en `Deliver exploit to victim` y resolvemos el lab:
 ![image](https://github.com/user-attachments/assets/f4cd5610-8b2c-45bb-b885-79375fd1ba34)
 
 
+---
 
+---
 
+## ✅ Conclusiones
 
+- Este laboratorio presenta una vulnerabilidad **DOM-based XSS**, donde el valor de `location.hash` se usa sin sanitización dentro de un selector jQuery.
+- jQuery interpreta ciertas entradas como fragmentos HTML y puede crear nodos DOM en memoria si la entrada es malformada.
+- Si bien estos nodos no se adjuntan automáticamente al DOM, pueden ser manipulados o insertados manualmente para provocar una ejecución de código.
+- Usamos un `iframe` con `onload` para automatizar la modificación del hash y activar el exploit sin interacción del usuario.
 
+---
 
+## 🛡️ Recomendaciones
 
+- Nunca usar directamente entradas del usuario en constructores de selectores como `:contains(...)` sin validación ni escape.
+- Actualizar jQuery a versiones recientes (3.x o superiores), que no permiten la interpretación de fragmentos HTML dentro de selectores.
+- Usar funciones seguras para manipular el DOM como `textContent`, `createElement` y evitar `.html()` o `.innerHTML` con contenido no confiable.
+- Aplicar políticas de **Content Security Policy (CSP)** que bloqueen esquemas peligrosos y la ejecución de scripts inyectados.
 
+---
 
+## 🎓 Lecciones aprendidas
 
-
-
-
-
-
-
-
-
+- Las vulnerabilidades **DOM XSS** pueden activarse a partir de propiedades como `location.hash`, `location.search`, `document.referrer`, etc.
+- El selector `:contains()` en jQuery es susceptible si se combina con entrada controlada por el usuario.
+- El uso de `iframe + onload` permite automatizar ataques de tipo DOM XSS, simulando a una víctima real sin interacción manual.
+- En Chrome moderno, funciones como `alert()` están bloqueadas en iframes cross-origin, por lo que se recomienda usar `print()` como alternativa.
 
