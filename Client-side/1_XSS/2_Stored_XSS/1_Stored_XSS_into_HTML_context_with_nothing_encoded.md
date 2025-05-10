@@ -38,7 +38,8 @@ Probamos con un payload malicioso, comenzamos inyectando etiquetas `<h1>`:
 
 Notamos que las etiquetas logran inyectarse y el navegador las interpreta:  
 
-![image](https://github.com/user-attachments/assets/472fe3ce-1a31-43b4-91d3-d9454cbfb4ae)
+![image](https://github.com/user-attachments/assets/28bb78e9-2a1f-4d30-b183-be9a7b40b342)
+
 
 Por lo que ahora sí inyectamos el típico payload `<script>alert(1)</script>`:  
 ![image](https://github.com/user-attachments/assets/318f7bea-7cb7-43fc-8b90-4168ec90bd19)
