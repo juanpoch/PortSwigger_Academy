@@ -68,7 +68,7 @@ Si no se puede insertar un `<script>`, se puede intentar romper el atributo e in
 
 ---
 
-[Lab: Exploiting XXE to perform SSRF attacks](2_Exploiting_XXE_to_perform_SSRF_attacks.md)  
+[Lab: XSS in HTML tag attributes](2_XSS_in_HTML_tag_attributesd)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
