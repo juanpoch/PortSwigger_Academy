@@ -96,7 +96,7 @@ El protocolo `javascript:` es interpretado por el navegador como código ejecuta
 
 ---
 
-[Lab: Exploiting XXE to perform SSRF attacks](2_Exploiting_XXE_to_perform_SSRF_attacks.md)  
+[Lab: Stored XSS into anchor href attribute with double quotes HTML-encoded](2_Stored_XSS_into_anchor_href_attribute_with_double_quotes_HTML-encoded.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
