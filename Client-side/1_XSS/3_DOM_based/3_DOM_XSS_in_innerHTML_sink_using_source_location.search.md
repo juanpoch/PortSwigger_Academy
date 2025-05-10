@@ -102,9 +102,9 @@ Como anunciamos al inicio del lab, las etiquetas `<script>` no serán ejecutadas
 ---
 🧠 ¿Por qué funciona la inyección de `<img>` dentro de `<span>`?
 
-En este laboratorio, el valor inyectado por el usuario se inserta dentro de una etiqueta <span> mediante innerHTML. Como .innerHTML interpreta el contenido como HTML, el navegador procesa cualquier etiqueta válida que se le pase.
+En este laboratorio, el valor inyectado por el usuario se inserta dentro de una etiqueta `<span>` mediante `innerHTML`. Como `.innerHTML` interpreta el contenido como HTML, el navegador procesa cualquier etiqueta válida que se le pase.
 
-La etiqueta <span> es un contenedor inline, pero puede contener elementos como `<img>` sin ningún problema, ya que `<img>` también es un elemento inline.
+La etiqueta `<span>` es un contenedor inline, pero puede contener elementos como `<img>` sin ningún problema, ya que `<img>` también es un elemento inline.
 
 ✅ Ejemplo práctico
 
@@ -123,7 +123,7 @@ El navegador interpreta esta estructura como HTML válido, y como no hay ninguna
 
 🔒 ¿Por qué no funcionan las etiquetas <script>?
 
-Los navegadores modernos ignoran etiquetas <script> insertadas mediante .innerHTML por razones de seguridad. Sin embargo, atributos de eventos como onerror o onload sí son ejecutados, lo que permite a los atacantes encontrar caminos alternativos como:
+Los navegadores modernos ignoran etiquetas <script> insertadas mediante `.innerHTML` por razones de seguridad. Sin embargo, atributos de eventos como `onerror` o `onload` sí son ejecutados, lo que permite a los atacantes encontrar caminos alternativos como:
 
 ```html
 <img src=x onerror=...>
