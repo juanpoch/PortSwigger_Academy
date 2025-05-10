@@ -8,6 +8,19 @@ To solve this lab, make the "back" link alert `document.cookie`.
 
 ---
 
+## 🎯 Introducción
+
+En este laboratorio vamos a explorar una vulnerabilidad conocida como **Web Cache Deception**, que ocurre cuando un sistema de caché almacena y luego sirve contenido sensible que debería ser exclusivo de un usuario autenticado.
+
+Nuestro objetivo es **obtener la API key del usuario `carlos`**, que se encuentra protegida detrás de una sesión autenticada. Para lograrlo, vamos a:
+
+* Analizar cómo el backend interpreta rutas dinámicas.
+* Identificar una discrepancia en el tratamiento de extensiones por parte del sistema de caché.
+* Forzar al usuario víctima a cargar una URL maliciosa que provoque que su información sensible se almacene en caché.
+* Recuperar esa información sin necesidad de autenticación.
+
+Este laboratorio es especialmente útil para comprender cómo errores de configuración en los sistemas de caché pueden convertirse en vulnerabilidades críticas cuando se combinan con rutas dinámicas que devuelven datos sensibles.
+
 Tenemos una página para visualizar comentarios:
 ![image](https://github.com/user-attachments/assets/c51ee4ab-fecc-4c7e-a839-55ebac682c97)
 
@@ -43,8 +56,55 @@ Este script usa `jQuery` para ejecutar una función cuando la página termina de
 Para validarlo, inyectamos un valor arbitrario de prueba al parámetro `returnPath=abc123xy`:
 ![image](https://github.com/user-attachments/assets/e10e9abf-c4e7-45dd-9518-ce249356bd82)
 
-Como notamos que efectivamente el valor del parámetro se está inyectando como valor del atributo `href` sin ningún tipo de valor, procedemos a insertar el siguiente payload: `javascript:alert(document.cookie)` como valor del parámetro `returnPath` y hacemos click en `back`:
-![image](https://github.com/user-attachments/assets/5e70f43c-ceef-4861-bb78-9d855d818f11)
+Como notamos que efectivamente el valor del parámetro se está inyectando como valor del atributo `href` sin ningún tipo de valor, procedemos a insertar el siguiente payload: `javascript:alert(document.cookie)` como valor del parámetro `returnPath` y resolvemos el laboratorio:
+![image](https://github.com/user-attachments/assets/f1c26743-1099-4b62-9d41-e5732f04cacf)
 
 
 ---
+
+...
+
+### ❓ ¿Por qué usamos `javascript:alert(document.cookie)` y no solo `alert(...)`?
+
+Cuando insertamos código en el atributo `href` de un enlace (`<a>`), el navegador **espera recibir una URL o URI válida**. No basta con inyectar `alert(1)`, porque eso **no es una URL válida** y el navegador no lo ejecutará como código.
+
+En cambio, el esquema `javascript:` le dice al navegador: *"Ejecutá el código que sigue como JavaScript"*. Por lo tanto:
+
+```html
+<a href="javascript:alert(document.cookie)">Back</a>
+```
+
+Cuando el usuario haga clic en ese enlace, se ejecutará la función `alert(document.cookie)`.
+
+| Inyección                           | ¿Funciona? | ¿Por qué?                                                                |
+| ----------------------------------- | ---------- | ------------------------------------------------------------------------ |
+| `alert(1)`                          | ❌          | No es una URL válida, el navegador intenta navegar a una URL inexistente |
+| `javascript:alert(1)`               | ✅          | Ejecuta código JavaScript en el contexto de la página                    |
+| `javascript:alert(document.cookie)` | ✅          | Ejecuta código para obtener cookies del usuario                          |
+
+Esta técnica es típica en ataques de tipo **DOM-based XSS**, donde el valor de un parámetro de la URL se inyecta como destino de un atributo sensible (`href`, `src`, etc.).
+
+---
+
+## ✅ Conclusiones
+
+- El laboratorio presenta una vulnerabilidad **DOM-based XSS** donde el valor del parámetro `returnPath` es insertado directamente en el atributo `href` de un enlace mediante jQuery, sin ningún tipo de validación ni sanitización.
+- Al permitir que el valor `href` sea controlado por el usuario, se habilita el uso de esquemas peligrosos como `javascript:`, lo que puede derivar en la ejecución de código arbitrario cuando se hace clic en el enlace.
+- La reflexión no ocurre en el código fuente servido por el servidor, sino que se produce únicamente en el DOM a través de código JavaScript.
+
+---
+
+## 🛡️ Recomendaciones
+
+- **Nunca insertar directamente esquemas peligrosos como `javascript:` en atributos sensibles como `href`, `src`, o `action`.**
+- Validar explícitamente que los valores inyectados en `href` comiencen con protocolos seguros como `https://` o rutas relativas `/ruta`.
+- Utilizar funciones que codifiquen o filtren entradas, especialmente cuando se trabaja con librerías como jQuery que manipulan directamente el DOM.
+- Considerar una política de **Content Security Policy (CSP)** para bloquear la ejecución de URIs tipo `javascript:`.
+
+---
+
+## 🎓 Lecciones aprendidas
+
+- La función `.attr("href", ...)` en jQuery puede ser peligrosa si se le pasa directamente contenido controlado por el usuario, ya que el navegador interpreta ese contenido como un destino legítimo.
+- Los ataques basados en `javascript:` como `javascript:alert(document.cookie)` siguen siendo efectivos si no hay validación del esquema del URI.
+- Este tipo de XSS ocurre exclusivamente en el DOM (no en la respuesta HTML), lo que demuestra la importancia de revisar también el JavaScript del lado cliente al auditar una aplicación.
