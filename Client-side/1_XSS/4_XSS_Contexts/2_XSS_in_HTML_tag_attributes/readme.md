@@ -68,7 +68,7 @@ Si no se puede insertar un `<script>`, se puede intentar romper el atributo e in
 
 ---
 
-[Lab: XSS in HTML tag attributes](2_XSS_in_HTML_tag_attributesd)  
+[Lab: Reflected XSS into attribute with angle brackets HTML-encoded](1_Reflected_XSS_into_attribute_with_angle_brackets_HTML-encoded.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
