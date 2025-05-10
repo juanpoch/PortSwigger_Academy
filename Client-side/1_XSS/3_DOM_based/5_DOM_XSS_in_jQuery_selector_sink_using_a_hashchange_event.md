@@ -8,7 +8,7 @@ To solve the lab, deliver an exploit to the victim that calls the `print()` func
 
 ---
 
-Tenemos el siguiente website:
+Iniciamos el laboratorio y nos encontramos con el siguiente website:
 ![image](https://github.com/user-attachments/assets/28a82381-d411-4af3-91f7-ddbca9a94b8a)
 
 Inspeccionamos el código fuente en búsca de etiquetas `<script>`, vemos jQuery:
