@@ -119,7 +119,7 @@ El HTML generado dinámicamente por el navegador, después de la inyección, luc
   <span>'</span>
 </h1>
 ```
-El navegador interpreta esta estructura como HTML válido, y como no hay ninguna política de seguridad (como CSP) ni validación previa, se ejecuta el atributo onerror del elemento `<img>`.
+El navegador interpreta esta estructura como HTML válido, y como no hay ninguna política de seguridad (como CSP) ni validación previa, se ejecuta el atributo `onerror` del elemento `<img>`.
 
 🔒 ¿Por qué no funcionan las etiquetas <script>?
 
