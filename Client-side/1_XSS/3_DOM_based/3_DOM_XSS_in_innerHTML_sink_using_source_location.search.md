@@ -123,7 +123,7 @@ El navegador interpreta esta estructura como HTML válido, y como no hay ninguna
 
 🔒 ¿Por qué no funcionan las etiquetas `<script>`?
 
-Los navegadores modernos ignoran etiquetas <script> insertadas mediante `.innerHTML` por razones de seguridad. Sin embargo, atributos de eventos como `onerror` o `onload` sí son ejecutados, lo que permite a los atacantes encontrar caminos alternativos como:
+Los navegadores modernos ignoran etiquetas `<script>` insertadas mediante `.innerHTML` por razones de seguridad. Sin embargo, atributos de eventos como `onerror` o `onload` sí son ejecutados, lo que permite a los atacantes encontrar caminos alternativos como:
 
 ```html
 <img src=x onerror=...>
