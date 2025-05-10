@@ -40,7 +40,7 @@ El script es ejecutado con éxito y resolvemos el laboratorio:
 ## ✅ Conclusiones
 
 - El laboratorio presenta una vulnerabilidad **reflected XSS** donde el parámetro `search` se refleja sin codificar dentro del HTML.
-- El navegador interpreta la entrada del usuario como parte del DOM, permitiendo la ejecución de scripts arbitrarios.
+- El navegador interpreta la respuesta del servidor y construye el DOM. Si la entrada del usuario se refleja sin codificar en el HTML, puede ser procesada como parte del DOM e incluir scripts que serán ejecutados.
 - No existe ninguna medida de mitigación como escaping, sanitización o cabeceras de seguridad.
 
 ---
