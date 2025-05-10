@@ -5,7 +5,7 @@ This lab contains a DOM-based cross-site scripting vulnerability in the search q
 To solve this lab, perform a cross-site scripting attack that calls the `alert` function.  
 
 
-![Apprentice](https://img.shields.io/badge/Aprentice-%2300a86b?style=for-the-badge&logo=portainer&logoColor=white)
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 
 ---
@@ -95,3 +95,27 @@ Se puede visualizar que la inyección de un nuevo atributo fue exitosa.
 
 
 ---
+
+## ✅ Conclusiones
+
+- El laboratorio presenta una vulnerabilidad **DOM-based XSS** causada por el uso inseguro de `document.write` en combinación con una fuente controlada por el usuario: `location.search`.
+- El parámetro `search` es insertado sin sanitización dentro del atributo `src` de una etiqueta `<img>`, lo que permite realizar un ataque al manipular el DOM en tiempo real.
+- La reflexión no ocurre en el código fuente del servidor, sino **en el DOM generado dinámicamente por JavaScript en el navegador**.
+
+---
+
+## 🛡️ Recomendaciones
+
+- **Evitar el uso de `document.write()`**, especialmente cuando se manejan datos del usuario. Usar métodos más seguros como `createElement()` y `textContent`.
+- Validar y sanitizar cualquier entrada proveniente de `location`, `document`, `cookie`, etc., antes de usarla en el DOM.
+- Aplicar políticas de **Content Security Policy (CSP)** para limitar la ejecución de scripts inyectados.
+- Utilizar frameworks modernos que manejan automáticamente la sanitización del DOM, como React o Angular.
+
+---
+
+## 🎓 Lecciones aprendidas
+
+- Las vulnerabilidades **DOM XSS** no son visibles en el código fuente del servidor, sino que se generan por cómo el navegador procesa el DOM.
+- Identificar el "sink" (`document.write`, `innerHTML`, etc.) y la fuente (`location.search`) es clave para analizar este tipo de ataques.
+- En este caso, al reflejarse dentro de un atributo HTML (`src`), fue necesario hacer un **break out** del atributo y usar un evento (`onload`) para ejecutar código.
+- El payload `abc123xy" onload="alert(1)` demuestra que incluso atributos aparentemente seguros pueden ser explotados si no hay validación.
