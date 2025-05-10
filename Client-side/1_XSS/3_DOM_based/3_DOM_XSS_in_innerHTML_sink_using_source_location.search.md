@@ -99,3 +99,64 @@ Como anunciamos al inicio del lab, las etiquetas `<script>` no serán ejecutadas
 ![image](https://github.com/user-attachments/assets/a704227f-a5dd-4710-b4a4-48f9be049687)
 
 
+---
+🧠 ¿Por qué funciona la inyección de <img> dentro de <span>?
+
+En este laboratorio, el valor inyectado por el usuario se inserta dentro de una etiqueta <span> mediante innerHTML. Como .innerHTML interpreta el contenido como HTML, el navegador procesa cualquier etiqueta válida que se le pase.
+
+La etiqueta <span> es un contenedor inline, pero puede contener elementos como <img> sin ningún problema, ya que <img> también es un elemento inline.
+
+✅ Ejemplo práctico
+
+El HTML generado dinámicamente por el navegador, después de la inyección, luce así:
+
+<h1>
+  <span>0 search results for '</span>
+  <span id="searchMessage">
+    <img src=0 onerror=alert(1)>
+  </span>
+  <span>'</span>
+</h1>
+
+El navegador interpreta esta estructura como HTML válido, y como no hay ninguna política de seguridad (como CSP) ni validación previa, se ejecuta el atributo onerror del elemento <img>.
+
+🔒 ¿Por qué no funcionan las etiquetas <script>?
+
+Los navegadores modernos ignoran etiquetas <script> insertadas mediante .innerHTML por razones de seguridad. Sin embargo, atributos de eventos como onerror o onload sí son ejecutados, lo que permite a los atacantes encontrar caminos alternativos como:
+
+<img src=x onerror=...>
+
+<iframe src=javascript:...>
+
+<svg onload=...> (aunque bloqueado en muchos navegadores actuales)
+
+
+
+
+---
+
+---
+
+## ✅ Conclusiones
+
+- Este laboratorio presenta una vulnerabilidad **DOM-based XSS**, donde el valor de `location.search` es insertado sin sanitización en el DOM mediante el uso de `.innerHTML`.
+- La reflexión ocurre en tiempo real dentro de una etiqueta `<span>`, y no es parte del código fuente original servido por el servidor.
+- El uso de etiquetas `<script>` no tiene efecto en este contexto, pero es posible ejecutar código a través de vectores alternativos como `<img onerror=...>`.
+
+---
+
+## 🛡️ Recomendaciones
+
+- Evitar el uso de `innerHTML` con datos controlados por el usuario. Usar alternativas más seguras como `.textContent` o `createElement()` con `appendChild()`.
+- Validar y/o sanitizar cualquier dato proveniente del usuario antes de insertarlo en el DOM.
+- Implementar una **Content Security Policy (CSP)** estricta para minimizar el impacto de XSS, incluso si se logra inyectar contenido.
+- Utilizar librerías especializadas como **DOMPurify** para limpiar entradas potencialmente peligrosas.
+
+---
+
+## 🎓 Lecciones aprendidas
+
+- Los ataques **DOM-based XSS** ocurren completamente en el navegador, y no se reflejan en el código fuente del servidor.
+- `innerHTML` permite la interpretación de etiquetas HTML y atributos como `onerror`, lo que lo convierte en un *sink* peligroso.
+- En contextos donde `<script>` no se ejecuta, es posible recurrir a elementos como `<img>` o `<iframe>` para lograr la ejecución de código.
+- Probar primero con payloads básicos (`abc123xy`) ayuda a identificar el
