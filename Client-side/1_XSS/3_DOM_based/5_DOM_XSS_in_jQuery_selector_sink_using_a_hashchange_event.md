@@ -10,7 +10,7 @@ To solve the lab, deliver an exploit to the victim that calls the `print()` func
 
 ## 🧪 Introducción al laboratorio
 
-Este laboratorio presenta una vulnerabilidad de tipo **DOM-based Cross-Site Scripting (DOM XSS)** que se manifiesta en el uso inseguro del fragmento de URL (`location.hash`) en combinación con jQuery.
+Este laboratorio presenta una vulnerabilidad de tipo **DOM-based Cross-Site Scripting** que se manifiesta en el uso inseguro del fragmento de URL (`location.hash`) en combinación con jQuery.
 
 El sitio vulnerable implementa una funcionalidad de **scroll automático** que utiliza el valor del hash (`#`) para localizar dinámicamente una entrada de blog y desplazar la vista hasta ese elemento. Esto se realiza mediante un selector jQuery `:contains(...)`, que recibe el contenido directamente desde el `hash` de la URL, sin ninguna sanitización o validación previa.
 
