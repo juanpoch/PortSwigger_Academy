@@ -9,7 +9,7 @@ To solve this lab, make the "back" link alert `document.cookie`.
 ---
 
 
-Tenemos una página para visualizar comentarios:
+Iniciamos el laboratorio y nos encontramos con una página para visualizar comentarios:
 ![image](https://github.com/user-attachments/assets/c51ee4ab-fecc-4c7e-a839-55ebac682c97)
 
 
