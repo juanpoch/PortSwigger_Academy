@@ -10,14 +10,19 @@ To solve this lab, perform a cross-site scripting attack that calls the `alert` 
 
 ---
 
-Tenemos un laboratorio que tiene la funcionalidad de búsqueada a través de una query string.
+Iniciamos el laboratorio y nos encontramos con un blog público, el cual tiene la funcionalidad de búsqueada a través de una query string:
+![image](https://github.com/user-attachments/assets/d812c1dd-b38d-4bf4-990f-307ee98adb58)
 
-Realizamos una búsqueda de prueba para localizar dónde está siendo reflejada:
-![image](https://github.com/user-attachments/assets/5bf2b581-28fb-4085-b442-5ecd54d99164)
 
-Vemos la reflexión en 2 lugares distintos:
-- Dentro de la etiqueta `<h1>`: Probablemente es parte de la respuesta que está enviando el servidor.
-- Dentro de la etiqueta `<img>`: Esto tiene más probabilidad de estar siendo reflejado en el DOM.
+Realizamos una búsqueda de prueba para localizar dónde está siendo reflejada, utilizamos nuestro payload `abc123xy`:
+![image](https://github.com/user-attachments/assets/e6e406cd-027a-43de-8274-065ee1f087b6)
+
+
+Pero si inspeccionamos el DOM, vemos la reflexión en 2 lugares distintos:
+![image](https://github.com/user-attachments/assets/872486a6-a0a9-4b92-abd4-4fe40440dbfb)
+
+- Dentro de la etiqueta `<h1>`: Como vimos en Burp Suite, es parte de la respuesta que está enviando el servidor.
+- Dentro de la etiqueta `<img>`: Esto está siendo reflejado en el DOM.
 
 ![image](https://github.com/user-attachments/assets/1b4e2c5e-38b7-4fe6-8968-d4df4815302f)
 
@@ -68,7 +73,7 @@ Este `query` se inyecta directamente en el HTML mediante `document.write()` sin 
 Si el valor de `query` contiene código HTML o JavaScript, **se insertará en el DOM y el navegador lo ejecutará**.
 
 
-El condicional es el encargado de llamar a la función trackSearch(query); si se pasa un parámetro para `query`.  
+El condicional es el encargado de llamar a la función `trackSearch(query);` si se pasa un parámetro para `query`.  
 
 ---
 
