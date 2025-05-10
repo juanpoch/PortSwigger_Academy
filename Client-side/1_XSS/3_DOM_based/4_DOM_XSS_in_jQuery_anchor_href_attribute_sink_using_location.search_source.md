@@ -8,18 +8,6 @@ To solve this lab, make the "back" link alert `document.cookie`.
 
 ---
 
-## 🎯 Introducción
-
-En este laboratorio vamos a explorar una vulnerabilidad conocida como **Web Cache Deception**, que ocurre cuando un sistema de caché almacena y luego sirve contenido sensible que debería ser exclusivo de un usuario autenticado.
-
-Nuestro objetivo es **obtener la API key del usuario `carlos`**, que se encuentra protegida detrás de una sesión autenticada. Para lograrlo, vamos a:
-
-* Analizar cómo el backend interpreta rutas dinámicas.
-* Identificar una discrepancia en el tratamiento de extensiones por parte del sistema de caché.
-* Forzar al usuario víctima a cargar una URL maliciosa que provoque que su información sensible se almacene en caché.
-* Recuperar esa información sin necesidad de autenticación.
-
-Este laboratorio es especialmente útil para comprender cómo errores de configuración en los sistemas de caché pueden convertirse en vulnerabilidades críticas cuando se combinan con rutas dinámicas que devuelven datos sensibles.
 
 Tenemos una página para visualizar comentarios:
 ![image](https://github.com/user-attachments/assets/c51ee4ab-fecc-4c7e-a839-55ebac682c97)
