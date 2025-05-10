@@ -47,6 +47,7 @@ Para validarlo, inyectamos un valor arbitrario de prueba al parámetro `returnPa
 Como notamos que efectivamente el valor del parámetro se está inyectando como valor del atributo `href` sin ningún tipo de valor, procedemos a insertar el siguiente payload: `javascript:alert(document.cookie)` como valor del parámetro `returnPath` y resolvemos el laboratorio:
 ![image](https://github.com/user-attachments/assets/f1c26743-1099-4b62-9d41-e5732f04cacf)
 
+`Nota`: Para activar el popup debemos hacer click en el botón `< Back`
 
 ---
 
