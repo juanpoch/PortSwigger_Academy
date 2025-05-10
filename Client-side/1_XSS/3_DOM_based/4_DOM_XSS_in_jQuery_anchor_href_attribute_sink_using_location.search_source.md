@@ -51,8 +51,6 @@ Como notamos que efectivamente el valor del parámetro se está inyectando como 
 
 ---
 
-...
-
 ### ❓ ¿Por qué usamos `javascript:alert(document.cookie)` y no solo `alert(...)`?
 
 Cuando insertamos código en el atributo `href` de un enlace (`<a>`), el navegador **espera recibir una URL o URI válida**. No basta con inyectar `alert(1)`, porque eso **no es una URL válida** y el navegador no lo ejecutará como código.
