@@ -40,8 +40,10 @@ Luego tenemos el `<script>` de abajo, que genera un `href` para el enlace:
 
 Este script usa `jQuery` para ejecutar una función cuando la página termina de cargar. Dentro de esa función, selecciona un enlace HTML con el ID `backLink` y le asigna dinámicamente un atributo `href` utilizando el valor del parámetro `returnPath` extraído de la URL actual. Esto significa que si la URL del navegador contiene `?returnPath=valor`, ese valor se insertará como destino del enlace. Si no se valida correctamente, un atacante podría manipular ese parámetro (por ejemplo, usando `javascript:alert(1)`) para ejecutar código malicioso cuando el usuario haga clic en el enlace, lo que representa una vulnerabilidad de tipo `DOM-based XSS`.
 
+Para validarlo, inyectamos un valor arbitrario de prueba al parámetro `returnPath=abc123xy`:
+![image](https://github.com/user-attachments/assets/e10e9abf-c4e7-45dd-9518-ce249356bd82)
 
-Insertamos el siguiente payload: `javascript:alert(document.cookie)` como valor del parámetro `returnPath` y hacemos click en `back`:
+Como notamos que efectivamente el valor del parámetro se está inyectando como valor del atributo `href` sin ningún tipo de valor, procedemos a insertar el siguiente payload: `javascript:alert(document.cookie)` como valor del parámetro `returnPath` y hacemos click en `back`:
 ![image](https://github.com/user-attachments/assets/5e70f43c-ceef-4861-bb78-9d855d818f11)
 
 
