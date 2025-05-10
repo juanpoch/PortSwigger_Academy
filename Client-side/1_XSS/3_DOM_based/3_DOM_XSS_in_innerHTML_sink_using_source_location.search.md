@@ -121,7 +121,7 @@ El HTML generado dinámicamente por el navegador, después de la inyección, luc
 ```
 El navegador interpreta esta estructura como HTML válido, y como no hay ninguna política de seguridad (como CSP) ni validación previa, se ejecuta el atributo `onerror` del elemento `<img>`.
 
-🔒 ¿Por qué no funcionan las etiquetas <script>?
+🔒 ¿Por qué no funcionan las etiquetas `<script>`?
 
 Los navegadores modernos ignoran etiquetas <script> insertadas mediante `.innerHTML` por razones de seguridad. Sin embargo, atributos de eventos como `onerror` o `onload` sí son ejecutados, lo que permite a los atacantes encontrar caminos alternativos como:
 
