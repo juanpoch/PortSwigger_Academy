@@ -4,7 +4,7 @@ This lab contains a simple reflected cross-site scripting vulnerability in the s
 
 To solve the lab, perform a cross-site scripting attack that calls the `alert` function. 
 
-![image](https://github.com/user-attachments/assets/4b8877b7-b562-4031-a8c7-3ab32b2c8e6d)
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
 
