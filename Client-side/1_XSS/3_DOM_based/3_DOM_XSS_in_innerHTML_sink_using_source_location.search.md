@@ -161,4 +161,4 @@ Los navegadores modernos ignoran etiquetas `<script>` insertadas mediante `.inne
 - Los ataques **DOM-based XSS** ocurren completamente en el navegador, y no se reflejan en el código fuente del servidor.
 - `innerHTML` permite la interpretación de etiquetas HTML y atributos como `onerror`, lo que lo convierte en un *sink* peligroso.
 - En contextos donde `<script>` no se ejecuta, es posible recurrir a elementos como `<img>` o `<iframe>` para lograr la ejecución de código.
-- Probar primero con payloads básicos (`abc123xy`) ayuda a identificar el
+- Probar primero con payloads básicos (`abc123xy`) ayuda a identificar el punto exacto de reflexión en el DOM antes de inyectar código.
