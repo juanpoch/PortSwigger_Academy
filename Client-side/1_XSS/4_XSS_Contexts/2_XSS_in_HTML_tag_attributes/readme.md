@@ -136,16 +136,4 @@ Permite definir atajos de teclado para enfocar un elemento. Combinado con evento
 
 ---
 
-## 🏁 Próximos pasos
-
-Esta guía sirve como base teórica para abordar los laboratorios de PortSwigger relacionados con `XSS in HTML tag attributes`. A medida que avances por los labs, podrás aplicar estas técnicas en diferentes contextos, identificando si estás en un contexto de atributo cerrado, uno directamente ejecutable o uno con inyección parcial.
-
-A continuación, se presentarán writeups individuales para:
-
-1. `XSS in attribute context with HTML injection`  ✅
-2. `XSS in href attribute with javascript:`  ✅
-3. `XSS in canonical tag with accesskey and onfocus` ✅
-
-Cada uno reforzará lo aprendido aquí con ejemplos reales, bypasses y automatización de explotación.
-
 ---
