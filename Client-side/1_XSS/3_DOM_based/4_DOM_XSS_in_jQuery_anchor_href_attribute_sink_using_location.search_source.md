@@ -4,6 +4,8 @@ This lab contains a DOM-based cross-site scripting vulnerability in the submit f
 
 To solve this lab, make the "back" link alert `document.cookie`.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
 ---
 
 Tenemos una página para visualizar comentarios:
