@@ -32,13 +32,15 @@ Vemos que nuestra inyección en el campo comentario se almacena entre etiquetas 
 ![image](https://github.com/user-attachments/assets/7df45320-dd18-4f24-bf62-1899fd1ba4df)
 
 
-Probamos con un payload malicioso, comenzamos inyectando etiquetas `<h1>`:
+Probamos con un payload malicioso, comenzamos inyectando etiquetas `<h1>`:  
+
 ![image](https://github.com/user-attachments/assets/8053948d-56d1-4360-bf45-bfcc295c35f0)
 
-Notamos que las etiquetas logran inyectarse y el navegador las interpreta:
+Notamos que las etiquetas logran inyectarse y el navegador las interpreta:  
+
 ![image](https://github.com/user-attachments/assets/472fe3ce-1a31-43b4-91d3-d9454cbfb4ae)
 
-Por lo que ahora sí inyectamos el típico payload `<script>alert(1)</script>`:
+Por lo que ahora sí inyectamos el típico payload `<script>alert(1)</script>`:  
 ![image](https://github.com/user-attachments/assets/318f7bea-7cb7-43fc-8b90-4168ec90bd19)
 Notamos que las etiquetas se inyectaron correctamente:
 ![image](https://github.com/user-attachments/assets/a9a61589-5649-4df0-8266-001cb6d3d952)
