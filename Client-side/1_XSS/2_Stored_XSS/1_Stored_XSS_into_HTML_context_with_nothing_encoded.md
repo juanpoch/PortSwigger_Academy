@@ -32,13 +32,50 @@ Vemos que nuestra inyección en el campo comentario se almacena entre etiquetas 
 ![image](https://github.com/user-attachments/assets/7df45320-dd18-4f24-bf62-1899fd1ba4df)
 
 
-Probamos con un payload malicioso:
+Probamos con un payload malicioso, comenzamos inyectando etiquetas `<h1>`:
+![image](https://github.com/user-attachments/assets/8053948d-56d1-4360-bf45-bfcc295c35f0)
 
-![image](https://github.com/user-attachments/assets/f5abf470-36f3-492d-b426-a07c1fe7765d)
+Notamos que las etiquetas logran inyectarse y el navegador las interpreta:
+![image](https://github.com/user-attachments/assets/472fe3ce-1a31-43b4-91d3-d9454cbfb4ae)
 
-Posteamos y accedemos a visualizar el comentario a ver si se ejecuta (click en "back to blog"):
-![image](https://github.com/user-attachments/assets/2a03f9c5-d48a-4f10-accd-d86da0fea847)
-![image](https://github.com/user-attachments/assets/5d8b5366-e565-4033-8c50-6f6b0c951f13)
+Por lo que ahora sí inyectamos el típico payload `<script>alert(1)</script>`:
+![image](https://github.com/user-attachments/assets/318f7bea-7cb7-43fc-8b90-4168ec90bd19)
+Notamos que las etiquetas se inyectaron correctamente:
+![image](https://github.com/user-attachments/assets/a9a61589-5649-4df0-8266-001cb6d3d952)
+
+
+Si recargamos la página notamos que se ejecuta el popup y resolvemos el laboratorio:
+![image](https://github.com/user-attachments/assets/1bc9da43-7714-4f8a-b250-83ce02a9d88a)
+
+
+---
+
+
+---
+
+## ✅ Conclusiones
+
+- El laboratorio presenta una vulnerabilidad de tipo **stored XSS**, donde el contenido enviado por el usuario se almacena y se refleja directamente en el HTML sin ningún tipo de codificación o validación.
+- El navegador interpreta el contenido inyectado como parte del DOM, permitiendo la ejecución automática de scripts maliciosos al visualizar la publicación.
+- No existen controles preventivos por parte del backend para filtrar o sanear los comentarios.
+
+---
+
+## 🛡️ Recomendaciones
+
+- Implementar **escapado adecuado en la salida** (output encoding) para todo dato proveniente de entradas del usuario.
+- Aplicar **filtros y validación del lado servidor** para impedir etiquetas y atributos peligrosos como `<script>`, `onerror`, etc.
+- Utilizar librerías de sanitización como **DOMPurify** en entornos JavaScript.
+- Definir una **Content Security Policy (CSP)** restrictiva como capa adicional de defensa.
+
+---
+
+## 🎓 Lecciones aprendidas
+
+- Las vulnerabilidades de tipo **stored XSS** son especialmente peligrosas porque afectan a múltiples usuarios sin necesidad de interacción directa con el atacante.
+- El hecho de que el contenido se muestre sin codificación y dentro de un contexto HTML permite la ejecución inmediata de scripts.
+- Probar primero con etiquetas inofensivas (`<b>`, `<h1>`) ayuda a entender si el navegador interpreta el contenido como HTML.
+- El payload `<script>alert(1)</script>` sigue siendo una técnica válida y eficaz para confirmar la ejecución de XSS.
 
 
 
