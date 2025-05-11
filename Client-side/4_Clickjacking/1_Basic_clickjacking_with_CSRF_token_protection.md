@@ -131,3 +131,8 @@ Ahora procedemos a bajar la transparencia de modo que el `iframe` quede casi imp
 De modo tal que si la víctima visita esta página, verá lo siguiente:
 ![image](https://github.com/user-attachments/assets/edca2881-3f92-40ca-9583-0aceacf2d34b)
 
+Como el valor de `z-index` del elemento `click` es menor al del elemento `iframe`, cuando el usuario haga click en `CLICK`, en realidad va a estar haciendo click sobre el botón `Delete account` del `iframe`.
+
+En el exploit server hacemos click en `Store` y luego en `Deliver exploit to victim` para resolver el laboratorio:
+
+
