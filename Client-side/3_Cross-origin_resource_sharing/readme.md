@@ -107,6 +107,12 @@ Este tipo de ataque es posible sólo si:
 
 Este código permite al atacante **leer información sensible** desde el navegador de la víctima autenticada.
 
+[Lab: CSRF vulnerability with no defenses](1_CSRF_vulnerability_with_no_defenses.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
+
 ## 🚨 Otras configuraciones inseguras
 
 ### 🔒 1. Errores en el parseo de dominios
