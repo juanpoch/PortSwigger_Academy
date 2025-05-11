@@ -44,18 +44,19 @@ Ahora procedemos a darle estilo al `iframe`:
 <style>
   iframe {
     position: relative;
-    width: 1000 px;
-    height: 700 px;
+    width: 1000px;
+    height: 700px;
     opacity: 0.1;
     z-index: 2;
-
+    display: block;
+  }
 </style>
 
-
 <iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+
 ```
 
-
+Vemos que se agrandó el `iframe`, incluso si acercamos el mouse sobre un elemento vemos que cambia el ícono, lo que nos da la pauta de que tenemos interacción con los elementos.
 
 
 
