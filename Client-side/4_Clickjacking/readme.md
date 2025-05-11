@@ -73,7 +73,7 @@ Un ataque clickjacking básico se puede construir utilizando HTML y CSS:
 
 ---
 
-[Lab: CORS vulnerability with basic origin reflection](1_CORS_vulnerability_with_basic_origin_reflection.md)  
+[Lab: Basic clickjacking with CSRF token protection](1_Basic_clickjacking_with_CSRF_token_protection.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
