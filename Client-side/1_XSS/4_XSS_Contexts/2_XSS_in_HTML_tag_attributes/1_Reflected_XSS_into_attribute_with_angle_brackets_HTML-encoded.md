@@ -7,7 +7,11 @@ This lab contains a reflected cross-site scripting vulnerability in the search b
 
 ---
 
-Ingresamos un payload de prueba y vemos que es reflejado en 2 oportunidades, una de ellas es en contexto de atributo:
+Iniciamos el laboratorio y nos encontramos con un blog público:
+![image](https://github.com/user-attachments/assets/c75eae1f-42fb-4424-850d-e7544faa8b04)
+
+
+Sabemos que este laboratorio tiene una vulnerabilidad en la funcionalidad de búsqueda del blog, por lo que ingresamos un payload de prueba y vemos que es reflejado en 2 oportunidades, una de ellas es en contexto de atributo:
 ![image](https://github.com/user-attachments/assets/04515733-0eeb-45f0-9c3e-e9f7e0744fd0)
 
 Vemos que escapa los signos `<>`:
