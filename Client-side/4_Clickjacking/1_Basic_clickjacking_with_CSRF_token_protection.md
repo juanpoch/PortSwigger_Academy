@@ -59,7 +59,7 @@ Vemos que se agrandó el `iframe`, incluso si acercamos el mouse sobre un elemen
 ![image](https://github.com/user-attachments/assets/ca7740a5-0311-496b-9583-cd66a5e57d82)
 
 
-Ahora vamos a agregar un botón:
+Ahora vamos a agregar un un elemento `<div>`:
 
 ```html
 <style>
