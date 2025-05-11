@@ -113,12 +113,11 @@ El objetivo es cambiar el email de la cuenta del usuario víctima por `pwned@evi
 * El script selecciona el primer formulario de la página (`forms[0]`) y lo **envía automáticamente**.
 * Si el usuario está logueado en `vulnerable-website.com`, su navegador enviará también la cookie de sesión.
 
----
 
 Si el usuario víctima visita esta página mientras está autenticado en el sitio vulnerable:
 
 * Su navegador enviará la cookie de sesión.
-* El servidor procesará la petición como si el usuario la hubiese enviado.
+* El sitio web vulnerable procesará la solicitud de forma normal, la tratará como si hubiera sido realizada por el usuario víctima y cambiará su dirección de correo electrónico.
 
 ---
 
