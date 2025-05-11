@@ -69,6 +69,14 @@ Entonces el código se verá así:
 var input = '';alert(document.domain)//';
 ```
 Esto cierra la cadena original, inyecta el código malicioso y comenta el resto del código para que no genere errores de sintaxis.
+
+---
+
+[Lab: Reflected XSS into attribute with angle brackets HTML-encoded](1_Reflected_XSS_into_attribute_with_angle_brackets_HTML-encoded.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
 ### Escapando barras invertidas
 
 Algunas aplicaciones, para evitar `XSS`, intentan proteger las comillas que delimitan la cadena de JavaScript agregando una barra invertida `\` delante. 
