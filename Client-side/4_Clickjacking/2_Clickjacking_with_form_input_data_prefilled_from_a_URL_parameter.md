@@ -6,5 +6,6 @@ To solve the lab, craft some HTML that frames the account page and fools the use
 
 You can log in to your own account using the following credentials: `wiener:peter`
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
