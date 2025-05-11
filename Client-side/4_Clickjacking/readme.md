@@ -23,8 +23,8 @@ Este tipo de ataque se diferencia del **CSRF** porque requiere una acción direc
 | Característica           | Clickjacking          | CSRF                  |
 | ------------------------ | --------------------- | --------------------- |
 | Requiere interacción     | Sí (clic del usuario) | No (envío automático) |
-| Uso de iframes           | Sí                    | No                    |
-| Dependencia visual       | Sí (engae visual)     | No                    |
+| Uso de iframes           | Sí (obligatorio)      | Opcional (no necesario) |
+| Dependencia visual       | Sí (engaño visual)    | No                    |
 | Afectado por CSRF tokens | No                    | Sí                    |
 
 ---
