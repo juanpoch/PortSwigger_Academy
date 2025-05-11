@@ -109,6 +109,25 @@ Este tipo de ataque es posible sólo si:
 
 Este código permite al atacante **leer información sensible** desde el navegador de la víctima autenticada.
 
+### Cómo se usa este exploit?
+El atacante coloca este código malicioso en su sitio (attacker.com) o lo incrusta en una campaña de phishing.
+
+La víctima (que está logueada en vulnerable-website.com) visita el sitio atacante.
+
+El navegador de la víctima:
+
+Carga la página maliciosa.
+
+Ejecuta el JavaScript automáticamente.
+
+Hace una solicitud autenticada a vulnerable-website.com.
+
+Recibe los datos sensibles.
+
+Los redirige a attacker.com.
+
+📥 El atacante recibe la información en su endpoint /log?data=....
+
 [Lab: CORS vulnerability with basic origin reflection](1_CORS_vulnerability_with_basic_origin_reflection.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
