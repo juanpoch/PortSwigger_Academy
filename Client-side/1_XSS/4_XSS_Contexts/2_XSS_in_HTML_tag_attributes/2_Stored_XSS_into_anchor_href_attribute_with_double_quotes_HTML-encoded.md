@@ -17,7 +17,9 @@ También podemos comentar el post, además nosotros sabemos que este laboratorio
 
 ![image](https://github.com/user-attachments/assets/53c7ba6c-153b-4d61-aa81-d55925644073)
 
-Vemos que la `url` se refleja en el atributo `href`, por lo tanto inyectamos el siguiente payload:
+Vemos que la `url` se refleja en el atributo `href`, por lo tanto estamos ante una posible implementación del caso 3, "Atributos que permiten ejecución directa (href, src, etc.)".
+
+Inyectamos el siguiente payload:
 ```html
 javascript:alert(document.domain)
 ```
