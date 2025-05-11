@@ -34,7 +34,7 @@ Vamos a ir haciendo pruebas para analizar cómo va cambiando el código y el res
 
 Comenzamos insertando el siguiente código en nuestra página:
 ```html
-<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account"></iframe>
 ```
 Esto genera un cuadro embebido que carga la página especificada en el atributo `src`. Podemos ver visualmente que el contenido del `iframe` corresponde al dashboard del usuario:
 ![image](https://github.com/user-attachments/assets/c9df01fc-50a8-44f4-8875-eb0d31100bde)
