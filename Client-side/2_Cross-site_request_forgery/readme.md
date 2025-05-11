@@ -115,10 +115,6 @@ El objetivo es cambiar el email de la cuenta del usuario víctima por `pwned@evi
 
 ---
 
-##
-
----
-
 Si el usuario víctima visita esta página mientras está autenticado en el sitio vulnerable:
 
 * Su navegador enviará la cookie de sesión.
