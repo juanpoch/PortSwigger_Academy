@@ -6,6 +6,10 @@ This lab contains a reflected cross-site scripting vulnerability in the search q
 
 ---
 
+Iniciamos el laboratorio y nos encontramos con un foro público:
+
+![image](https://github.com/user-attachments/assets/dc108d1e-fee1-4ce8-b41d-426f5c2834b5)
+
 Iniciamos probando la funcionalidad de búsqueda, insertando una cadena arbitraria que nos permita ver el contexto de reflexión:
 ![image](https://github.com/user-attachments/assets/99d7695e-effc-4a6a-99d7-6d1aec4bb049)
 
