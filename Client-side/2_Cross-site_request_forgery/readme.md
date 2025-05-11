@@ -62,7 +62,7 @@ El atacante puede crear una página HTML maliciosa como esta:
   </body>
 </html>
 ```
-Este fragmento de código representa una prueba de concepto (PoC) para explotar una vulnerabilidad de tipo **Cross-Site Request Forgery (CSRF)**. A continuación se detalla el funcionamiento de cada parte del documento y su implicancia en el ataque.
+Este fragmento de código representa una prueba de concepto para explotar una vulnerabilidad de tipo **Cross-Site Request Forgery**. A continuación se detalla el funcionamiento de cada parte del documento y su implicancia en el ataque.
 
 ---
 
