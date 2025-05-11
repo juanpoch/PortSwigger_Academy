@@ -149,7 +149,7 @@ req.send();
 </script>"></iframe>
 ```
 
-[Lab: CORS vulnerability with basic origin reflection](1_CORS_vulnerability_with_basic_origin_reflection.md)  
+[Lab: CORS vulnerability with trusted null origin](2_CORS_vulnerability_with_trusted_null_origin.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
