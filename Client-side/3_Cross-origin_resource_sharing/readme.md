@@ -107,7 +107,7 @@ Este tipo de ataque es posible sólo si:
 
 Este código permite al atacante **leer información sensible** desde el navegador de la víctima autenticada.
 
-[Lab: CSRF vulnerability with no defenses](1_CSRF_vulnerability_with_no_defenses.md)  
+[Lab: CORS vulnerability with basic origin reflection](1_CORS_vulnerability_with_basic_origin_reflection.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
@@ -149,7 +149,13 @@ req.send();
 </script>"></iframe>
 ```
 
-## ᾑ6 Consejos para prevenir ataques CORS
+[Lab: CORS vulnerability with basic origin reflection](1_CORS_vulnerability_with_basic_origin_reflection.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
+
+## Consejos para prevenir ataques CORS
 
 * **Nunca reflejar el ********`Origin`******** directamente** en `Access-Control-Allow-Origin`.
 * Usar una **whitelist validada con exactitud** (sin regex permisivos).
