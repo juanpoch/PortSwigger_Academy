@@ -133,8 +133,52 @@ Ahora procedemos a bajar la transparencia de modo que el `iframe` quede casi imp
 De modo tal que si la víctima visita esta página, verá lo siguiente:
 ![image](https://github.com/user-attachments/assets/edca2881-3f92-40ca-9583-0aceacf2d34b)
 
-Como el valor de `z-index` del elemento `click` es menor al del elemento `iframe`, cuando el usuario haga click en `CLICK`, en realidad va a estar haciendo click sobre el botón `Delete account` del `iframe`.
+Aunque el texto `CLICK` se ve por encima, el `iframe` tiene un `z-index mayor`, lo que hace que el clic se registre sobre el botón `Delete account` embebido en él.
 
 En el exploit server hacemos click en `Store` y luego en `Deliver exploit to victim` para resolver el laboratorio:
+![image](https://github.com/user-attachments/assets/23d7e1cf-3634-4896-a7fc-aef7ddaaa2d1)
+
+---
+
+## ✅ Conclusiones
+
+Este laboratorio demostró cómo una funcionalidad protegida con token CSRF puede seguir siendo vulnerable si no se implementan medidas contra **clickjacking**. Mediante la técnica de superposición visual (UI redressing), logramos que un usuario realice una acción sensible (eliminar su cuenta) sin darse cuenta, al hacer clic en un elemento señuelo visible que en realidad activa un botón oculto dentro de un `iframe`.
+
+A pesar de que el botón requería una acción legítima del usuario y estaba protegido por CSRF tokens, el hecho de permitir que la página sea embebida en un `iframe` sin restricciones hizo posible la explotación.
+
+---
+
+## 🛡️ Recomendaciones
+
+* Utilizar encabezados HTTP que impidan el embebido de la aplicación en iframes:
+
+  ```http
+  X-Frame-Options: DENY
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors 'none';
+  ```
+
+* Incluir una capa adicional de confirmación para acciones destructivas (por ejemplo, `¿Estás seguro de eliminar tu cuenta?`).
+
+* Evitar confiar únicamente en CSRF tokens como medida de protección si el entorno visual del usuario puede ser manipulado.
+
+* Revisar periódicamente la interfaz web con pruebas de clickjacking en diferentes navegadores.
+
+---
+
+## 📚 Lecciones aprendidas
+
+* **Clickjacking y CSRF no se excluyen:** un token CSRF no protege contra una interacción visual engañosa.
+
+* **La opacidad no anula la funcionalidad:** un botón dentro de un `iframe` casi invisible puede seguir siendo interactuable.
+
+* **El navegador no es defensa suficiente:** Chrome incluye detección de transparencia en iframes, pero esta protección no es confiable ni está presente en todos los navegadores.
+
+* **El orden de apilamiento (`z-index`) y la transparencia (`opacity`) pueden utilizarse para manipular al usuario sin ocultar elementos completamente.**
+
+* Siempre que una aplicación permita ser embebida sin restricción, existe un riesgo real de clickjacking incluso si otras medidas están presentes.
+
+---
+
 
 
