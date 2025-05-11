@@ -18,7 +18,7 @@ La SOP impide que scripts cargados desde un origen accedan a datos de otro orige
 
 Un script cargado desde `https://ejemplo.com` **no podrá acceder** al contenido de `https://api.ejemplo.com` sin una política CORS adecuada.
 
-## ⚖️ Relaxación controlada mediante CORS
+## ⚖️ Flexibilización controlada mediante CORS
 
 CORS permite que el servidor indique explícitamente qué orígenes están autorizados para acceder a sus recursos, usando cabeceras como:
 
