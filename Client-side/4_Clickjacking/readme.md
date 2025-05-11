@@ -108,6 +108,13 @@ Esto se puede combinar con un ataque de clickjacking para presentar un formulari
 
 ---
 
+[Lab: Clickjacking with form input data prefilled from a URL parameter](2_Clickjacking_with_form_input_data_prefilled_from_a_URL_parameter.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+
+---
+
 ## 🚫 Prevención: Frame busting y otras técnicas
 
 Para prevenir clickjacking, se deben **restringir los sitios que pueden embeber la página en un iframe**. Existen dos enfoques: del lado cliente y del lado servidor.
