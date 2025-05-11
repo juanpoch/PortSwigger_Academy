@@ -33,3 +33,30 @@ Explicación:
 - `onfocus=alert(document.domain)`: Define un handler de evento, que se ejecuta cuando el input recibe el foco.
 - `x="`: 	Agrega un atributo inventado `(x)` con una comilla de cierre, para evitar romper el HTML
 
+---
+---
+
+## ✅ Conclusiones
+
+- Este laboratorio presenta una vulnerabilidad de **Reflected XSS en contexto de atributo HTML**, donde la entrada del usuario es inyectada dentro de un valor de atributo y los signos `< >` están codificados, pero las comillas y espacios no.
+- Aunque no es posible cerrar la etiqueta ni usar `<script>`, sí es posible **inyectar nuevos atributos**, como `autofocus` y `onfocus`, que permiten ejecutar JavaScript.
+- El evento `onfocus` se dispara automáticamente cuando el campo de entrada recibe el foco, especialmente si se combina con `autofocus`.
+
+---
+
+## 🛡️ Recomendaciones
+
+- Escapar adecuadamente **comillas (`"`) y espacios** dentro de atributos HTML, no solo los signos `< >`.
+- Evitar reflejar directamente valores dentro de atributos sin validación o codificación estricta.
+- Utilizar funciones de salida seguras (por ejemplo, `htmlspecialchars()` en PHP, `encodeForHTMLAttribute()` en Java).
+- Implementar políticas de **Content Security Policy (CSP)** que restrinjan la ejecución de scripts en atributos.
+- Validar siempre las entradas de usuario, incluso en funcionalidades aparentemente inofensivas como la búsqueda.
+
+---
+
+## 🎓 Lecciones aprendidas
+
+- Los ataques XSS no requieren necesariamente insertar etiquetas `<script>`; pueden aprovechar eventos como `onfocus`, `onmouseover`, etc.
+- Aun cuando `< >` estén codificados, la inyección es posible si no se filtran otros caracteres críticos como `"`, `'` y `=`.
+- El atributo `autofocus` puede facilitar la explotación sin interacción del usuario al disparar eventos como `onfocus`.
+- Comprender el **contexto de inyección** (atributo, HTML, JavaScript) es clave para construir un payload exitoso.
