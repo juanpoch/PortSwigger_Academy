@@ -55,7 +55,9 @@ Ahora procedemos a darle estilo al `iframe`:
 
 ```
 
-Vemos que se agrandó el `iframe`, incluso si acercamos el mouse sobre un elemento vemos que cambia el ícono, lo que nos da la pauta de que tenemos interacción con los elementos, es decir, los botones siguen funcionando por más que sean casi transparentes.
+Vemos que se agrandó el `iframe`, incluso si acercamos el mouse sobre un elemento vemos que cambia el ícono, lo que nos da la pauta de que tenemos interacción con los elementos, es decir, los botones siguen funcionando por más que sean casi transparentes:
+![image](https://github.com/user-attachments/assets/ca7740a5-0311-496b-9583-cd66a5e57d82)
+
 
 Ahora vamos a agregar un botón:
 
