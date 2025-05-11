@@ -139,5 +139,10 @@ Vemos que el `iframe` es imperceptible:
 ![image](https://github.com/user-attachments/assets/579c6c0c-6a26-4ead-a491-2ee0c6ad42bb)
 
 
+Hacemos click en `Store` y luego en `Deliver exploit to victim` y resolvemos el laboratorio:
+![image](https://github.com/user-attachments/assets/f66164af-07b1-4ff6-bd47-195cec0eee81)
+
+
+---
 
 
