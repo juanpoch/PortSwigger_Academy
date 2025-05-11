@@ -14,8 +14,10 @@ Iniciamos el laboratorio y nos encontramos con un blog público:
 Sabemos que este laboratorio tiene una vulnerabilidad en la funcionalidad de búsqueda del blog, por lo que ingresamos un payload de prueba y vemos que es reflejado en 2 oportunidades, una de ellas es en contexto de atributo:
 ![image](https://github.com/user-attachments/assets/04515733-0eeb-45f0-9c3e-e9f7e0744fd0)
 
-Vemos que escapa los signos `<>`:
+Lo primero que tenemos que probar nosotros es el caso 1, romper un atributo y cerrar la etiqueta, pero vemos que escapa los signos `<>`:
 ![image](https://github.com/user-attachments/assets/0b81427a-892c-4d60-af6d-3a6b673c5ca3)
+
+Por lo que entonces intentamos el caso 2, "inyección de nuevos atributos con eventos (onfocus, onerror, etc.)"
 
 Intentamos inyectar el siguiente payload:
 ```html
