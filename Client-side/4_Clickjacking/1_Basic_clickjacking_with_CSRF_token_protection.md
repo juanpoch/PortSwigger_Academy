@@ -8,4 +8,6 @@ You can log in to your own account using the following credentials: `wiener:pete
 
 `Note`: The victim will be using Chrome so test your exploit on that browser.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
 ---
