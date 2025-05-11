@@ -73,6 +73,11 @@ Un ataque clickjacking básico se puede construir utilizando HTML y CSS:
 
 ---
 
+[Lab: CORS vulnerability with basic origin reflection](1_CORS_vulnerability_with_basic_origin_reflection.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
 ## 🛠️ Herramienta: Clickbandit
 
 [Clickbandit](https://portswigger.net/burp/documentation/desktop/tools/clickbandit) es una herramienta incluida en **Burp Suite** que automatiza la generación de exploits de clickjacking.
