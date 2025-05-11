@@ -38,8 +38,7 @@ Lo primero que podemos observar de esto es lo siguiente:
 
 - Envía una petición POST al endpoint `/my-account/change-email` con 2 parámetros (`email` y `csrf="CVx76vmrM8PTmiqRpDDdESV1Z9GkHBQI"` )
 
-Procedemos a validar si existe la precarga del formulario usando parámetros en la URL
-Entonces, de ser cierto, el campo `email` en el formulario:
+Procedemos a validar si existe la precarga del formulario usando parámetros en la URL. Entonces, de ser cierto, el campo `email` en el formulario:
 ```html
 <input required type="email" name="email" value="">
 ```
