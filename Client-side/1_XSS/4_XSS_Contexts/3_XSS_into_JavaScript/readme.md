@@ -72,7 +72,7 @@ Esto cierra la cadena original, inyecta el código malicioso y comenta el resto 
 
 ---
 
-[Lab: Reflected XSS into attribute with angle brackets HTML-encoded](1_Reflected_XSS_into_attribute_with_angle_brackets_HTML-encoded.md)  
+[Lab: Reflected XSS into a JavaScript string with angle brackets HTML encoded](2_Reflected_XSS_into_a_JavaScript_string_with_angle_brackets_HTML_encoded.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
