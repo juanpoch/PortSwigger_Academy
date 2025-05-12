@@ -164,7 +164,7 @@ Por eso, **los headers como ****************`X-Frame-Options`**************** o 
 
 ---
 
-[Lab: Basic clickjacking with CSRF token protection](1_Basic_clickjacking_with_CSRF_token_protection.md)  
+[Lab: Clickjacking with a frame buster script](3_Clickjacking_with_a_frame_buster_script.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
