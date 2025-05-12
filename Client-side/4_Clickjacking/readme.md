@@ -164,6 +164,12 @@ Por eso, **los headers como ****************`X-Frame-Options`**************** o 
 
 ---
 
+[Lab: Basic clickjacking with CSRF token protection](1_Basic_clickjacking_with_CSRF_token_protection.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
+
 ## 🔗 Recursos de interés
 
 * [PortSwigger - Clickjacking](https://portswigger.net/web-security/clickjacking)
