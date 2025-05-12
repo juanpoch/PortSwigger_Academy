@@ -13,3 +13,4 @@ You can log in to your own account using the following credentials: `wiener:pete
 
 ---
 
+Iniciamos el laboratorio y nos encontramos con un blog público:
