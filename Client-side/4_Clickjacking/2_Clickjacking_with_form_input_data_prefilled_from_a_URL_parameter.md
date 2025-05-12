@@ -37,8 +37,8 @@ Observamos el código fuente y vemos lo siguiente:
 Lo primero que podemos observar de esto es lo siguiente:
 
 - Envía una petición POST al endpoint `/my-account/change-email` con 2 parámetros (`email` y `csrf="CVx76vmrM8PTmiqRpDDdESV1Z9GkHBQI"` )
-
-Procedemos a validar si existe la precarga del formulario usando parámetros en la URL. Entonces, de ser cierto, el campo `email` en el formulario:
+  
+Probamos si el formulario admite prellenado usando parámetros en la URL. Entonces, de ser cierto, el campo `email` en el formulario:
 ```html
 <input required type="email" name="email" value="">
 ```
@@ -55,7 +55,7 @@ Hacemos la prueba y validamos que efectivamente existe la precarga del formulari
 Esto se puede combinar con un ataque de clickjacking para presentar un formulario listo para enviar, sobre el cual el usuario haga clic sin saberlo.
 
 
-Al igual que en el laboratorio anterior, accedemos al Exploit server y procedemos a generar nuestrá página atacante.
+Al igual que en el laboratorio anterior, accedemos al Exploit server y procedemos a generar nuestra página atacante.
 Iniciamos ingresando el siguiente código:
 ```html
 <iframe src="https://0ae60060043720a1ede85b8500cd0080.web-security-academy.net/my-account?email=test@test.com"></iframe>
@@ -144,4 +144,38 @@ Hacemos click en `Store` y luego en `Deliver exploit to victim` y resolvemos el 
 
 ---
 
+## ✅ Conclusiones
+
+Este laboratorio demuestra cómo un formulario vulnerable a prellenado por URL puede ser explotado mediante clickjacking para modificar información sensible de un usuario autenticado. El hecho de que el campo de email pueda ser controlado por un parámetro GET y que el botón de envío no esté protegido visualmente permite que un atacante incruste el formulario en un `iframe` transparente y lo superponga con un señuelo visible, logrando que el usuario realice la acción sin darse cuenta.
+
+Incluso con un token CSRF presente, si el formulario está dentro del contexto del dominio legítimo, el envío es válido. Este tipo de ataque explota la confianza del usuario en la interfaz visible y la falta de restricciones en el embebido del contenido.
+
+---
+
+## 🛡️ Recomendaciones
+
+* Incluir cabeceras HTTP que prevengan el embebido en iframes:
+
+  ```http
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none';
+  ```
+
+* Evitar que campos sensibles como `email` puedan ser prellenados vía parámetros GET, especialmente si están acompañados de acciones como `submit`.
+
+* Utilizar confirmaciones adicionales para cambios importantes de datos (por ejemplo, pedir la contraseña actual para modificar el correo).
+
+* Considerar pruebas específicas de UI redressing/clickjacking durante auditorías de seguridad.
+
+---
+
+## 📚 Lecciones aprendidas
+
+* **Clickjacking puede explotar cualquier acción con impacto, incluso si está protegida por tokens CSRF.**
+* **Permitir el prellenado de formularios desde la URL puede tener consecuencias críticas si se combina con técnicas visuales.**
+* **El diseño de la interfaz debe contemplar amenazas visuales, no solo de backend.**
+* **El uso de `iframe` con `opacity` y `z-index` puede convertir una acción legítima en un vector de ataque silencioso.**
+* **Las pruebas en navegadores modernos como Chrome son esenciales, ya que comportamientos como detección de transparencia pueden variar.**
+
+---
 
