@@ -165,6 +165,31 @@ src="https://0a4a006b0369302b806dd0ee00910067.web-security-academy.net/my-accoun
 Con este valor de opacidad logramos que el iframe sea imperceptible, el siguiente paso es nuevamente hacer clic en `Store` y luego clic en `Deliver exploit to victim` para resolver el laboratorio:
 ![image](https://github.com/user-attachments/assets/073bbae2-3e81-4aa8-b903-27162b8c6efa)
 
+---
+## ✅ Conclusiones
+
+- Se logró ejecutar un ataque de Clickjacking a pesar de que la aplicación estaba protegida con un frame buster basado en JavaScript.
+- El uso del atributo `sandbox="allow-forms"` en el iframe demostró ser efectivo para neutralizar el acceso al objeto `top`, evitando así la ejecución del script de defensa.
+- La opacidad y el posicionamiento preciso fueron claves para engañar al usuario y superponer correctamente el botón malicioso.
+
+---
+
+## 🔐 Recomendaciones
+
+- Implementar el header HTTP `Content-Security-Policy: frame-ancestors 'none';` o `X-Frame-Options: DENY` para prevenir cualquier intento de embebido, incluso en navegadores modernos.
+- Evitar confiar únicamente en soluciones JavaScript para prevenir Clickjacking, ya que pueden ser fácilmente evadidas en contextos restringidos como iframes con sandbox.
+- Considerar la validación de acciones sensibles (como cambiar un correo) con mecanismos adicionales como doble confirmación o reautenticación.
+
+---
+
+## 📚 Lecciones aprendidas
+
+- Las protecciones del lado del cliente son fácilmente evadibles si no están reforzadas por mecanismos del lado del servidor.
+- HTML y CSS pueden ser utilizados para construir ataques engañosos muy efectivos cuando se combinan con vulnerabilidades de diseño lógico.
+- Conocer el comportamiento de los atributos de seguridad como `sandbox` permite evadir controles implementados de forma incompleta o incorrecta.
+- La alineación visual y la manipulación del DOM son técnicas comunes en ataques de Clickjacking y deben ser tenidas en cuenta en cualquier análisis de seguridad front-end.
+
+
 
 
 
