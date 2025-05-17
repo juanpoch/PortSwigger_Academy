@@ -162,7 +162,8 @@ src="https://0a4a006b0369302b806dd0ee00910067.web-security-academy.net/my-accoun
 ```
 ![image](https://github.com/user-attachments/assets/683016b4-3991-4c79-a90a-fc8f74279392)
 
-Con este valor de opacidad logramos que el iframe sea imperceptible, el siguiente paso es nuevamente hacer clic en `Store` y luego clic en `Deliver exploit to victim` para resolver el laboratorio:
+Con este valor de opacidad logramos que el iframe sea imperceptible, el siguiente paso es nuevamente hacer clic en `Store` y luego clic en `Deliver exploit to victim` para resolver el laboratorio:  
+
 ![image](https://github.com/user-attachments/assets/073bbae2-3e81-4aa8-b903-27162b8c6efa)
 
 ---
