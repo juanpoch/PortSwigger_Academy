@@ -166,4 +166,7 @@ En entornos productivos, es común que el tráfico WebSocket se combine con toke
 
 ---
 
-💡 **Continuar**: [Laboratorio 1 - WebSocket XSS reflejado](#)
+[Lab: Basic clickjacking with CSRF token protection](1_Basic_clickjacking_with_CSRF_token_protection.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
