@@ -164,9 +164,11 @@ src="https://0a4a006b0369302b806dd0ee00910067.web-security-academy.net/my-accoun
 
 Con este valor de opacidad logramos que el iframe sea imperceptible, el siguiente paso es nuevamente hacer clic en `Store` y luego clic en `Deliver exploit to victim` para resolver el laboratorio:  
 
-![image](https://github.com/user-attachments/assets/073bbae2-3e81-4aa8-b903-27162b8c6efa)
+![image](https://github.com/user-attachments/assets/63ae0333-dff8-4d95-9861-9c3043ef304c)
+
 
 ---
+
 ## ✅ Conclusiones
 
 - Se logró ejecutar un ataque de Clickjacking a pesar de que la aplicación estaba protegida con un frame buster basado en JavaScript.
