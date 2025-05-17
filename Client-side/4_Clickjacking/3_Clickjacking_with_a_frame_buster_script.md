@@ -58,17 +58,15 @@ if (top != self) {
 3. `document.body.innerHTML = 'This page cannot be framed';`:
    - Esta línea reemplaza **todo el contenido del body** por un simple texto: `'This page cannot be framed'`.
    - Esto rompe el contenido original, impidiendo al atacante interactuar con los elementos legítimos (como formularios o botones).
-
-🎯 Objetivo del script:
-   - Impedir que la página se renderice correctamente si es embebida por un atacante dentro de un iframe (protección contra Clickjacking).
-
-🛠️ Cómo lo evitamos:
-   - Si el `<iframe>` incluye el atributo `sandbox="allow-forms"`, la página embebida **no puede acceder a `top`**, y por lo tanto la condición `top != self` **no puede evaluarse correctamente**.
-   - Esto neutraliza el frame buster y permite mostrar el contenido sin activar el reemplazo.
 */
 
 ```
-Esto significa que si la página es embebida en un `<iframe>`, el contenido del `<body>` se reemplaza por un mensaje, impidiendo que el formulario sea visible o usable.
+Objetivo del script:
+- Impedir que la página se renderice correctamente si es embebida por un atacante dentro de un iframe.
+
+Cómo lo evitamos:
+- Si el `<iframe>` incluye el atributo `sandbox="allow-forms"`, la página embebida **no puede acceder a `top`**, y por lo tanto la condición `top != self` **no puede evaluarse correctamente**.
+- Esto neutraliza el frame buster y permite mostrar el contenido sin activar el reemplazo.
 
 
 
