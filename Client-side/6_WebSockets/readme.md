@@ -65,6 +65,16 @@ Sec-WebSocket-Accept: 0FFP+2nmNIf/h+4BP36k9uzrYGk=
 
 ✅ Tras este intercambio, la conexión queda abierta y lista para enviar/recibir mensajes.
 
+> 💡 **Nota**
+>
+> Vale la pena destacar varias características de los mensajes de protocolo de enlace de WebSocket:
+>
+> - Los encabezados `Connection` y `Upgrade` en la solicitud y la respuesta indican que se trata de un protocolo de enlace de WebSocket.
+> - El encabezado `Sec-WebSocket-Version` de la solicitud especifica la versión del protocolo WebSocket que el cliente desea utilizar. Normalmente es `13`.
+> - El encabezado `Sec-WebSocket-Key` de la solicitud contiene un valor aleatorio codificado en Base64, que debe generarse aleatoriamente en cada solicitud de protocolo de enlace.
+> - El encabezado de respuesta `Sec-WebSocket-Accept` contiene un hash del valor enviado en el encabezado `Sec-WebSocket-Key`, concatenado con una cadena específica definida en la especificación del protocolo.  
+>   Esto se hace para evitar respuestas engañosas derivadas de servidores o proxies de caché mal configurados.
+
 ---
 
 ## 📉 Estructura de un mensaje WebSocket
