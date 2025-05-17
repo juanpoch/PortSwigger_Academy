@@ -14,3 +14,61 @@ You can log in to your own account using the following credentials: `wiener:pete
 ---
 
 Iniciamos el laboratorio y nos encontramos con un blog público:
+![image](https://github.com/user-attachments/assets/5c74e9ae-8167-4a37-936a-f722cfad0fed)
+
+## 🎯 Objetivo del laboratorio
+
+El objetivo de este laboratorio es realizar un ataque de **Clickjacking** a una aplicación protegida por un **frame buster**. Específicamente, se debe:
+
+- **Engañar al usuario para que cambie su dirección de correo electrónico** a una controlada por el atacante, sin que el usuario lo note.
+- **Eludir la protección de frame busting** utilizando técnicas que permitan embeber la página objetivo en un `<iframe>`.
+- Crear una **página maliciosa** en el servidor de exploits que simule un botón atractivo (como "Click me") superpuesto al botón real de "Update email" en la página víctima.
+
+💡 El laboratorio se resuelve cuando la dirección de correo electrónico del usuario víctima ha sido cambiada con éxito.
+
+---
+
+Procedemos a autenticarnos con nuestras credenciales `wiener:peter` para inspeccionar la funcionalidad de cambio de correo:
+![image](https://github.com/user-attachments/assets/eaefa3dc-9224-418a-a3bc-d6f06520eb40)
+
+Código fuente:
+![image](https://github.com/user-attachments/assets/be6cb75e-cd93-4151-8ecd-d849d158ab37)
+
+Observamos el frame buster:
+```javascript
+if (top != self) {
+    window.addEventListener("DOMContentLoaded", function() {
+        document.body.innerHTML = 'This page cannot be framed';
+    }, false);
+}
+
+/*
+📌 Explicación detallada:
+
+1. `if (top != self)`:
+   - Esta línea verifica si la página actual está siendo cargada **dentro de un frame**.
+   - `top` representa el contexto de la ventana principal (el tope del stack de ventanas).
+   - `self` representa el contexto del frame actual.
+   - Si no son iguales, significa que la página está embebida en un `<iframe>`.
+
+2. `window.addEventListener("DOMContentLoaded", function() { ... })`:
+   - Este evento espera a que el contenido HTML de la página se haya cargado completamente, sin esperar imágenes, hojas de estilo, etc.
+   - Una vez que se dispara, ejecuta la función definida.
+
+3. `document.body.innerHTML = 'This page cannot be framed';`:
+   - Esta línea reemplaza **todo el contenido del body** por un simple texto: `'This page cannot be framed'`.
+   - Esto rompe el contenido original, impidiendo al atacante interactuar con los elementos legítimos (como formularios o botones).
+
+🎯 Objetivo del script:
+   - Impedir que la página se renderice correctamente si es embebida por un atacante dentro de un iframe (protección contra Clickjacking).
+
+🛠️ Cómo lo evitamos:
+   - Si el `<iframe>` incluye el atributo `sandbox="allow-forms"`, la página embebida **no puede acceder a `top`**, y por lo tanto la condición `top != self` **no puede evaluarse correctamente**.
+   - Esto neutraliza el frame buster y permite mostrar el contenido sin activar el reemplazo.
+*/
+
+```
+Esto significa que si la página es embebida en un `<iframe>`, el contenido del `<body>` se reemplaza por un mensaje, impidiendo que el formulario sea visible o usable.
+
+
+
