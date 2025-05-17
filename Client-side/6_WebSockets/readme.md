@@ -161,7 +161,6 @@ y provocar una ejecución de código arbitrario en el navegador de otro usuario.
 
 ---
 
-## 📊 Tip extra para pentesters
 
 En entornos productivos, es común que el tráfico WebSocket se combine con tokens CSRF, JWT o cabeceras personalizadas. Analizá si los mensajes pueden ser replicados sin el token o si podés manipular el handshake para **reutilizar o escalar privilegios**.
 
