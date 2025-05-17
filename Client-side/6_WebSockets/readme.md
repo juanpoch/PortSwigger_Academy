@@ -157,7 +157,7 @@ y provocar una ejecución de código arbitrario en el navegador de otro usuario.
 - [MDN WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 - [RFC 6455 - The WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455)
 - [PortSwigger: WebSockets vulnerabilities](https://portswigger.net/web-security/websockets)
-- [Burp Suite Docs - WebSockets](https://portswigger.net/burp/documentation/desktop/tools/repeater/websockets)
+- [Burp Suite Proxy Interception rules](https://portswigger.net/burp/documentation/desktop/settings/tools/proxy#websocket-interception-rules)
 
 ---
 
