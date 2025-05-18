@@ -153,4 +153,6 @@ Esto filtra parte del esquema. Burp Scanner detecta esto como **"GraphQL suggest
 
 ---
 
+[Lab: Exploiting LLM APIs with excessive agency](1_Exploiting_LLM_APIs_with_excessive_agency.md)  
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
