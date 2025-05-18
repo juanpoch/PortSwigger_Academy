@@ -90,19 +90,6 @@ Nunca deberías usar `unserialize()` con datos controlados por el usuario sin ve
 */
 ```
 
-```php
-// Supongamos que se recibe el objeto desde una cookie o parámetro POST
-$user = unserialize($_COOKIE['user']);
-```
-
-Un atacante podría enviar un objeto serializado modificado como:
-
-```php
-O:8:"Exploit":0:{}
-```
-
-Si la clase `Exploit` existe y tiene un método `__wakeup()` o `__destruct()` malicioso, se ejecutará.
-
 ---
 
 ## 💣 Impacto de la vulnerabilidad
