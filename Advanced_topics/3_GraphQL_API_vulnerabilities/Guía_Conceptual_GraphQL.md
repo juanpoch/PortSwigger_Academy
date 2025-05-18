@@ -154,6 +154,8 @@ query {
   }
 }
 ```
+En este caso, el servidor responde únicamente con los datos del empleado que coincide con dicho ID.
+Los argumentos que se aceptan para un tipo se definen en el esquema.
 
 ### ✅ Variables
 Separan datos de la consulta:
