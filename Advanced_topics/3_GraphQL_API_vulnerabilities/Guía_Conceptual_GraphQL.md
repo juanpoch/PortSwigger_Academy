@@ -257,8 +257,6 @@ query {
 - Alias para evadir rate-limiting
 - Mutaciones mal validadas → **alteración de datos**
 
-Para detalles técnicos y explotar estas fallas: ver la guía [GraphQL API Vulnerabilities](./graphql_api_vulnerabilities.md)
 
 ---
 
-¿Querés que ahora prepare ejercicios prácticos para aplicar estos conceptos desde Burp o desde consola?
