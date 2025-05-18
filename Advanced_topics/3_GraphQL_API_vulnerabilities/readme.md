@@ -50,6 +50,8 @@ Entonces estás frente a un endpoint GraphQL válido.
 - `/api`
 - `/v1/graphql`
 
+`Nota`: Los servicios GraphQL suelen responder a cualquier solicitud no GraphQL con un error de "query not present" o similar. Tenga esto en cuenta al realizar pruebas con endpoints GraphQL.
+
 ### 🧪 Métodos HTTP
 
 - `POST` con `Content-Type: application/json` es el estándar.
