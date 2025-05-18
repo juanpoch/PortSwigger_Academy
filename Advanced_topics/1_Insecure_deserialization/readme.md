@@ -143,8 +143,8 @@ El atacante puede reutilizar código legítimo de la aplicación para lograr eje
 
 ObjectInputStream in = new ObjectInputStream(request.getInputStream());
 MyObject obj = (MyObject) in.readObject();
+```
 
-/*
 🔍 Explicación paso a paso:
 
 1. `request.getInputStream()`
@@ -175,7 +175,7 @@ MyObject obj = (MyObject) in.readObject();
     - Constructores con efectos secundarios
 
 💡 Ejemplo de uso malicioso (con herramienta ysoserial):
-```
+
 ```bash
 java -jar ysoserial.jar CommonsCollections1 'calc.exe' > payload.ser
 ```
@@ -191,7 +191,8 @@ Entonces se ejecuta `calc.exe` (o cualquier comando) del lado del servidor.
 
 - Nunca se debe deserializar contenido no verificado desde el usuario.
 - Si no es posible evitarlo, se deben aplicar mecanismos de validación estrictos *antes* de la deserialización.
-*/
+
+--- 
 
 Si una app usa:
 ```java
