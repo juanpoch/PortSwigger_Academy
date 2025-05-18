@@ -108,8 +108,6 @@ El LLM puede tener acceso a APIs sensibles y usarlas fuera de contexto. Esto amp
 ## 🎓 Recursos recomendados
 
 - [OWASP Top 10 for LLM Applications (2024)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Prompt Injection Attacks (Simon Willison)](https://simonwillison.net/2023/Apr/25/prompt-injection/)
-- [AI Hacking Village - DEFCON Talks](https://www.youtube.com/@AIVillageDefcon)
 
 ---
 
