@@ -192,7 +192,6 @@ Entonces se ejecuta `calc.exe` (o cualquier comando) del lado del servidor.
 - Nunca se debe deserializar contenido no verificado desde el usuario.
 - Si no es posible evitarlo, se deben aplicar mecanismos de validación estrictos *antes* de la deserialización.
 
---- 
 
 Si una app usa:
 ```java
