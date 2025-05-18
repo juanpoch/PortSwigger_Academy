@@ -4,5 +4,6 @@ The blog page for this lab contains a hidden blog post that has a secret passwor
 
 Learn more about [Working with GraphQL in Burp Suite](https://portswigger.net/burp/documentation/desktop/testing-workflow/working-with-graphql).
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
