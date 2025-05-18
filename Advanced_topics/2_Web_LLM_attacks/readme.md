@@ -120,6 +120,6 @@ Los LLMs en aplicaciones web abren una poderosa pero riesgosa superficie de ataq
 ---
 
 
-[Lab: Modifying serialized objects](1_Modifying_serialized_objects.md)  
+[Lab: Exploiting LLM APIs with excessive agency](1_Exploiting_LLM_APIs_with_excessive_agency.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
