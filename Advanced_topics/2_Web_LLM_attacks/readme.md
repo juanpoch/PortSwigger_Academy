@@ -1,4 +1,4 @@
-# 🧠 Web LLM Attacks - Guía Completa para Pentesters Web
+# Web LLM Attacks 
 
 > Esta guía explora cómo los modelos de lenguaje grandes (LLMs) integrados en sitios web pueden ser explotados como vectores de ataque, tanto para obtener información como para ejecutar acciones maliciosas a través de APIs o funciones conectadas.
 
