@@ -158,7 +158,7 @@ En este caso, el servidor responde únicamente con los datos del empleado que co
 Los argumentos que se aceptan para un tipo se definen en el esquema.
 
 ### ✅ Variables
-Separan datos de la consulta:
+Las variables le permiten pasar argumentos dinámicos, en lugar de tener argumentos directamente dentro de la consulta misma.
 ```graphql
 query getEmployeeWithVariable($id: ID!) {
   getEmployees(id: $id) {
@@ -174,6 +174,19 @@ query getEmployeeWithVariable($id: ID!) {
   "id": 1
 }
 ```
+- `query getEmployeeWithVariable` → es el nombre de la consulta (opcional pero recomendable).
+
+- `($id: ID!)` → estamos declarando una variable llamada `$id`, de tipo `ID`, y el `!` indica que es obligatoria.
+
+- `getEmployees(id: $id)` → en lugar de pasar un valor literal como `id: 1`, pasamos la variable `$id`.
+- Los valores van en un JSON separado, como este:
+  ```json
+  {
+  "id": 1
+  }
+  ```
+  Este JSON acompaña la consulta en la petición HTTP (por ejemplo, en el cuerpo del POST), y se usa para resolver las variables declaradas.
+
 
 ### ✅ Alias
 Permiten renombrar respuestas para evitar colisiones:
