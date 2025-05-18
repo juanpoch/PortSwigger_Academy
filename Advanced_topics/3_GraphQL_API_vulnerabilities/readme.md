@@ -141,7 +141,7 @@ Esto filtra parte del esquema. Burp Scanner detecta esto como **"GraphQL suggest
 ## 🔗 Recursos adicionales
 
 - [What is GraphQL? - PortSwigger](https://portswigger.net/web-security/graphql)
-- [Working with GraphQL in Burp Suite](https://portswigger.net/burp/documentation/guided/getting-started/graphql)
+- [Working with GraphQL in Burp Suite](https://portswigger.net/burp/documentation/desktop/testing-workflow/working-with-graphql)
 - [Clairvoyance - Github](https://github.com/nikitastupin/clairvoyance)
 
 ---
