@@ -112,6 +112,35 @@ query {
   }
 }
 ```
+- En este caso `getEmployees`, una operación de tipo `query` que retorna una lista de empleados.
+- Para cada empleado se piden los siguientes datos:
+   - `id`
+   - `name.firstname`
+   - `name.lastname`
+ 
+Respuesta:
+```json
+{
+  "data": {
+    "getEmployees": [
+      {
+        "id": 1,
+        "name": {
+          "firstname": "Carlos",
+          "lastname": "Montoya"
+        }
+      },
+      {
+        "id": 2,
+        "name": {
+          "firstname": "Peter",
+          "lastname": "Wiener"
+        }
+      }
+    ]
+  }
+}
+```
 
 ### ✅ Argumentos
 Permiten filtrar resultados:
