@@ -112,6 +112,30 @@ El atacante puede reutilizar código legítimo de la aplicación para lograr eje
 
 ---
 
+## 📊 Comparativa de formatos de serialización por lenguaje
+
+| Lenguaje    | Método de serialización | Formato             | Legible para humanos | Soporta clases/objetos | ¿Peligroso si se deserializa entrada del usuario? |
+|-------------|--------------------------|----------------------|-----------------------|------------------------|--------------------------------------------------|
+| **PHP**     | `serialize()` / `unserialize()` | Texto estructurado | Parcialmente           | ✅ Sí (con atributos y clases) | ✅ Muy peligroso (`__wakeup()`, `__destruct()`)     |
+| **Python**  | `pickle` / `cPickle`      | Binario              | ❌ No                  | ✅ Sí (estructura + comportamiento) | ✅ Muy peligroso                                     |
+| **Java**    | `Serializable` / `readObject()` | Binario (con cabecera `AC ED`) | ❌ No              | ✅ Sí                   | ✅ Muy peligroso (gadget chains)                    |
+| **Ruby**    | `Marshal.dump` / `load`   | Binario              | ❌ No                  | ✅ Sí                   | ✅ Peligroso                                         |
+| **.NET**    | `BinaryFormatter`         | Binario              | ❌ No                  | ✅ Sí                   | ✅ Muy peligroso                                     |
+| **JSON**    | `json.dumps()` / `loads()`| Texto plano (UTF-8)  | ✅ Sí                  | ❌ Solo datos (sin métodos/clases) | ⚠️ Bajo (solo si se evalúa maliciosamente)         |
+| **XML**     | Variado (`SimpleXML`, DOM) | Texto plano (marcado) | ✅ Sí                | ❌ Solo estructura        | ⚠️ Bajo (riesgo si se usa con `XXE`)                |
+
+---
+
+### 🧠 Observaciones
+
+- Los formatos binarios suelen ser más difíciles de detectar y manipular, pero **igual de explotables**.
+- Los formatos de texto como JSON o XML **no representan un riesgo de deserialización insegura por sí solos**, pero pueden ser peligrosos si son usados de forma insegura (e.g., `eval()` en JSON, o mal manejo de entidades externas en XML).
+- El **peligro real surge cuando se deserializa un objeto completo**, no solo sus datos.
+
+---
+
+
+
 ## 🔧 Ejemplo de ataque en Java
 
 Si una app usa:
