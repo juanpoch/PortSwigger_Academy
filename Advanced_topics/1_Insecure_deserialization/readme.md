@@ -40,6 +40,54 @@ Incluso puede reemplazar un objeto esperado por uno de **una clase totalmente di
 
 ## ⛔️ Ejemplo de código vulnerable en PHP
 
+<?php
+
+// Supongamos que una aplicación PHP hace esto:
+$user = unserialize($_COOKIE['user']);
+
+/*
+✨ Explicación paso a paso:
+
+1. ¿Qué hace `unserialize()`?
+   - Convierte una cadena serializada (texto) en un objeto PHP real.
+   - Por ejemplo, convierte esta cadena:
+     O:4:"User":2:{s:4:"name";s:6:"carlos";s:7:"isAdmin";b:0;}
+     en:
+     $user = new User();
+     $user->name = "carlos";
+     $user->isAdmin = false;
+
+2. ¿Cuál es el riesgo?
+   - Si la cadena proviene de una fuente **controlada por el usuario** (como una cookie), un atacante puede manipularla.
+
+3. Supongamos que un atacante envía:
+   O:7:"Exploit":0:{}
+   - `O:7:"Exploit"` indica que se va a deserializar un objeto de clase `Exploit`.
+   - `0:{}` indica que no tiene atributos.
+
+4. Si existe una clase `Exploit` en el código del servidor como esta:
+*/
+
+class Exploit {
+    public function __wakeup() {
+        // Este código se ejecuta automáticamente al deserializar el objeto
+        system("rm -rf /var/www/html"); // Ejemplo de comando peligroso
+    }
+}
+
+/*
+⚠️ El método especial `__wakeup()` en PHP se ejecuta *automáticamente* cuando se deserializa un objeto de esa clase.
+
+Lo mismo ocurre con `__destruct()` (cuando el objeto es destruido), `__call()`, o `__toString()` si son invocados indirectamente.
+
+5. Por lo tanto, al deserializar un objeto de la clase `Exploit`, PHP ejecuta el código del método `__wakeup()` *sin que el desarrollador lo haya llamado*. Esto se conoce como **object injection**.
+
+6. Resultado: el atacante logra ejecutar código arbitrario simplemente enviando una cookie con un objeto manipulado.
+
+✅ Conclusión:
+Nunca deberías usar `unserialize()` con datos controlados por el usuario sin verificar que sean seguros.
+*/
+
 ```php
 // Supongamos que se recibe el objeto desde una cookie o parámetro POST
 $user = unserialize($_COOKIE['user']);
