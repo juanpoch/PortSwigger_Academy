@@ -40,6 +40,7 @@ Incluso puede reemplazar un objeto esperado por uno de **una clase totalmente di
 
 ## ⛔️ Ejemplo de código vulnerable en PHP
 
+```php
 <?php
 
 // Supongamos que una aplicación PHP hace esto:
@@ -87,6 +88,7 @@ Lo mismo ocurre con `__destruct()` (cuando el objeto es destruido), `__call()`, 
 ✅ Conclusión:
 Nunca deberías usar `unserialize()` con datos controlados por el usuario sin verificar que sean seguros.
 */
+```
 
 ```php
 // Supongamos que se recibe el objeto desde una cookie o parámetro POST
