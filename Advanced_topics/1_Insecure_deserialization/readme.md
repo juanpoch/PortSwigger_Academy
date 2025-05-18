@@ -138,6 +138,61 @@ El atacante puede reutilizar código legítimo de la aplicación para lograr eje
 
 ## 🔧 Ejemplo de ataque en Java
 
+```java
+// Ejemplo típico en Java vulnerable a deserialización insegura
+
+ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+MyObject obj = (MyObject) in.readObject();
+
+/*
+🔍 Explicación paso a paso:
+
+1. `request.getInputStream()`
+   - Extrae el cuerpo de la solicitud HTTP entrante (body), generalmente binario.
+   - Se asume que este flujo contiene un objeto serializado.
+
+2. `new ObjectInputStream(...)`
+   - Crea un lector que puede interpretar datos binarios como objetos Java.
+   - Lee estructuras serializadas creadas con `ObjectOutputStream` en el cliente.
+
+3. `in.readObject()`
+   - Reconstruye el objeto desde los datos serializados.
+   - El objeto puede ser de cualquier clase que implemente `Serializable`.
+
+4. `(MyObject) ...`
+   - Se hace un *cast* para convertir el objeto genérico a la clase esperada `MyObject`.
+   - Si el objeto serializado no es compatible con `MyObject`, lanza una excepción.
+
+⚠️ Peligro
+
+- Si el contenido del `InputStream` es controlado por el usuario, un atacante puede:
+  - Enviar un objeto malicioso serializado.
+  - Ejecutar código arbitrario en el servidor (por ejemplo, usando gadget chains).
+  - Invocar métodos especiales como:
+    - `readObject()`
+    - `finalize()`
+    - `readResolve()`
+    - Constructores con efectos secundarios
+
+💡 Ejemplo de uso malicioso (con herramienta ysoserial):
+```
+```bash
+java -jar ysoserial.jar CommonsCollections1 'calc.exe' > payload.ser
+```
+Ese payload puede ser enviado como el cuerpo de una solicitud HTTP. Si el servidor deserializa sin verificar:
+
+```java
+ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+in.readObject();
+```
+Entonces se ejecuta `calc.exe` (o cualquier comando) del lado del servidor.
+
+📆 Conclusión
+
+- Nunca se debe deserializar contenido no verificado desde el usuario.
+- Si no es posible evitarlo, se deben aplicar mecanismos de validación estrictos *antes* de la deserialización.
+*/
+
 Si una app usa:
 ```java
 ObjectInputStream in = new ObjectInputStream(request.getInputStream());
