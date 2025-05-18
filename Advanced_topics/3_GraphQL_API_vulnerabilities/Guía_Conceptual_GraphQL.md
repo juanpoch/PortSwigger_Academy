@@ -198,14 +198,22 @@ query {
 ```
 
 ### ✅ Fragmentos
-Fragmentos reutilizables de campos:
+Un fragmento en `GraphQL` es una especie de plantilla reutilizable de campos que pertenecen a un tipo de dato. Se utiliza para hacer varias consultas que piden los mismos campos sobre el mismo tipo de objeto.
+
+Definir el fragmento:
 ```graphql
 fragment productInfo on Product {
   id
   name
   listed
 }
+```
+- Se definió un fragmento llamado `productInfo`.
+- Aplica al tipo `Product`.
+- Incluye los campos `id`, `name` y `listed`.
 
+Usar el fragmento en una consulta:
+```graphql
 query {
   getProduct(id: 1) {
     ...productInfo
@@ -213,6 +221,11 @@ query {
   }
 }
 ```
+- `getProduct(id: 1)` es la consulta.
+
+- `...productInfo` inserta los campos del fragmento.
+
+- También se agrega un campo adicional (`stock`) específico de esta consulta.
 
 ---
 
