@@ -120,3 +120,6 @@ Los LLMs en aplicaciones web abren una poderosa pero riesgosa superficie de ataq
 ---
 
 
+[Lab: Modifying serialized objects](1_Modifying_serialized_objects.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
