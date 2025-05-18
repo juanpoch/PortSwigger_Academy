@@ -98,7 +98,9 @@ Respuesta:
 ## 🌐 Componentes comunes
 
 ### ✅ Campos
-Cada tipo contiene campos seleccionables:
+En GraphQL, cada tipo de dato (como `Employee`, `Product`, `User`) tiene campos que representan los atributos o propiedades que se pueden consultar o modificar.
+
+Cuando se hace una consulta, se puede elegir exactamente qué campos recibir en la respuesta, y la API los devuelve:
 ```graphql
 query {
   getEmployees {
