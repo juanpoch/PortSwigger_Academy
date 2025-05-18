@@ -111,7 +111,6 @@ Un atacante puede enviar un objeto serializado de una clase diferente, que al de
 - [PortSwigger - Insecure Deserialization](https://portswigger.net/web-security/deserialization)
 - [OWASP - Deserialization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html)
 - [PayloadsAllTheThings - Insecure Deserialization](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Deserialization)
-- [Java deserialization attack explained](https://www.baeldung.com/java-deserialization)
 - [YSoSerial - Java gadget chain generator](https://github.com/frohoff/ysoserial)
 
 ---
