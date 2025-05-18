@@ -57,6 +57,38 @@ query getBlogSummaries {
   }
 }
 ```
+## 🔍 Explicación paso a paso de la respuesta GraphQL
+
+### 1. `data`
+
+Este es el objeto raíz que envuelve la respuesta de una consulta GraphQL.
+
+Siempre que no haya errores, GraphQL devuelve un objeto con una clave `data` que contiene el resultado de la operación.
+
+---
+
+### 2. `getAllBlogPosts`
+
+Es el campo (o *resolver*) que corresponde a la consulta enviada desde el cliente.
+
+En este caso, se pidió que devuelva todas las publicaciones del blog, y responde con un array de objetos.
+
+---
+
+### 3. Cada objeto del array contiene:
+
+| Campo     | Descripción                        |
+| --------- | ---------------------------------- |
+| `image`   | Ruta de la imagen asociada al post |
+| `title`   | Título de la publicación           |
+| `summary` | Resumen o descripción corta        |
+| `id`      | Identificador único del post       |
+
+---
+
+👉 **Estos campos específicos fueron definidos explícitamente en la consulta GraphQL.**
+
+GraphQL **solo devuelve los campos que el cliente pide**, lo que lo diferencia de REST, donde normalmente se recibe un objeto completo con todos los campos posibles.
 
 En resumen, ya tenemos nuestro endpoint `GraphQL` que se tramita por POST.
 
