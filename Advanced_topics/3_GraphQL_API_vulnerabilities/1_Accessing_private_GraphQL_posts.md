@@ -269,7 +269,7 @@ Este JSON es clave para comprender cómo atacar o consumir una API GraphQL: nos 
 
 ---
 
-Si volvemos a la Instrospecion query, observamos que nos arroja un resolver llamado `getBlogPost`:
+Entonces gracias a la `Instrospection query`, observamos que nos arroja un resolver llamado `getBlogPost`:
 ![image](https://github.com/user-attachments/assets/a648d998-278a-441d-a4b4-00fdc99d4028)
 
 Esto indica que:
