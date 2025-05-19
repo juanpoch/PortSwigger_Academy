@@ -108,7 +108,8 @@ Algunos sistemas soportan:
 
 ### 1. Evitá usar URLs absolutas
 
-Usá URLs relativas siempre que sea posible.
+- Usar URLs relativas siempre que sea posible.
+- Al usar URL absolutas, se debe especificar manualmente el dominio actual en un archivo de configuración y hacer referencia a este valor en lugar del encabezado del host.
 
 ### 2. No confiar en Host / Validar Host
 
