@@ -5,3 +5,7 @@ This lab uses an OAuth service to allow users to log in with their social media 
 To solve the lab, log in to Carlos's account. His email address is `carlos@carlos-montoya.net`.
 
 You can log in with your own social media account using the following credentials: `wiener:peter`.
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
+
+---
