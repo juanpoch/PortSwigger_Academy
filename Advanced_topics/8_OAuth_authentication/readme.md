@@ -52,7 +52,7 @@ Aunque OAuth no fue diseñado para autenticar usuarios, se utiliza para:
 3. Se utiliza esa información para identificar al usuario y autenticarlo
 
 ---
-[Lab: Host header authentication bypass](2_Host_header_authentication_bypass.md)  
+[Lab: Authentication bypass via OAuth implicit flow](1_Authentication_bypass_via_OAuth_implicit_flow.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
