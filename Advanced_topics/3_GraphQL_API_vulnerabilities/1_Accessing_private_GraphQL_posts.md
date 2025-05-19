@@ -8,7 +8,8 @@ Learn more about [Working with GraphQL in Burp Suite](https://portswigger.net/bu
 
 ---
 
-Iniciamos el laboratorio y nos encontramos con un blog público:
+Al iniciar el laboratorio, observamos un blog que lista publicaciones mediante un endpoint GraphQL. Nuestro objetivo será identificar y acceder a un post oculto que contiene una contraseña sensible.
+
 ![image](https://github.com/user-attachments/assets/300c9221-0665-430d-8841-d0eb206e32fe)
 
 Como podemos ver, se nos tramita el endpoint `/graphql/v1` que nos habilita la pestaña `GraphQL`, por lo que tenemos la certeza que nos encontramos ante un endpoint `GraphQL`:
@@ -98,7 +99,7 @@ GraphQL **solo devuelve los campos que el cliente pide**, lo que lo diferencia d
 
 En resumen, ya tenemos nuestro endpoint `GraphQL` que se tramita por POST.
 
-Adicionalmente haremos la `Uniersal query` para ratificar que nos encontramos efectiamente ante un endpoint `GraphQL`:
+Lanzamos la consulta universal `__typename` para confirmar que estamos ante un endpoint válido de GraphQL:
 ```json
 {
   "query": "query { __typename }"
@@ -201,8 +202,38 @@ query getBlogSummaries {
 Enviamos la request y obtenemos `"postPassword": "qx4hmk83rhp46ec3g40txo2z54linmlj"`:
 ![image](https://github.com/user-attachments/assets/1d9b2c24-d459-440a-9b0b-7c9f41cd63d0)
 
+Subimos la solución y resolvemos el laboratorio:
+![image](https://github.com/user-attachments/assets/3cc20c94-35be-42db-9981-46971a0625cb)
 
 
+---
+
+---
+
+## ✅ Conclusiones
+
+En este laboratorio identificamos una **vulnerabilidad de tipo IDOR (Insecure Direct Object Reference)** expuesta en un endpoint GraphQL. Aunque el resolver `getAllBlogPosts` ocultaba de forma aparente los posts privados, el resolver `getBlogPost` permitía acceder directamente a ellos a través del ID, sin ninguna validación de acceso.
+
+Esta situación refleja una **falta de control de acceso a nivel de objeto**, lo cual permitió obtener campos sensibles como `postPassword` de un recurso oculto.
+
+---
+
+## 🛡️ Recomendaciones
+
+- Implementar controles de autorización en **todos los resolvers**, no solo en aquellos que listan recursos.
+- Validar que el usuario autenticado tenga permiso para acceder al recurso solicitado, especialmente cuando se permiten consultas por ID.
+- Evitar exponer campos sensibles como `postPassword` a menos que sea estrictamente necesario.
+- Deshabilitar la introspección (`__schema`) en entornos productivos, ya que puede facilitar el descubrimiento de resolvers internos o sensibles.
+- Realizar pruebas de seguridad automatizadas y manuales sobre el esquema GraphQL con herramientas como Burp, InQL, GraphQLmap o Altair.
+
+---
+
+## 🎓 Lecciones aprendidas
+
+- GraphQL solo responde con los campos explícitamente solicitados por el cliente, lo que mejora la eficiencia, pero puede ocultar relaciones sensibles que aún existen en el backend.
+- Los resolvers individuales como `getBlogPost(id)` deben tener **controles propios de autorización**, independientemente de que otro resolver como `getAllBlogPosts` filtre contenido sensible.
+- La introspección es una funcionalidad poderosa para descubrir el esquema, pero en manos de un atacante puede facilitar la explotación.
+- Es importante prestar atención a los **gaps entre lógica de presentación y lógica de acceso**: que algo no se muestre no significa que no sea accesible.
 
 
 
