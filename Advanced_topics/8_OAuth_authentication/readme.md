@@ -1,4 +1,4 @@
-# Guía: Vulnerabilidades en OAuth 2.0
+# Vulnerabilidades en OAuth 2.0
 
 ---
 
