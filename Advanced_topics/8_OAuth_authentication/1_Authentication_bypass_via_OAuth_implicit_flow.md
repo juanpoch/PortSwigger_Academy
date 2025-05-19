@@ -16,7 +16,9 @@ Iniciamos el laboratorio y nos encontramos con un blog público:
 Accedemos al panel de autenticación mediante el botón `My account`, el servidor nos redirige al panel de autenticación mediante social media:
 ![image](https://github.com/user-attachments/assets/12741918-7ba6-4dd3-8807-bebcf0b17cdd)
 ![image](https://github.com/user-attachments/assets/0016b9fa-55ed-4296-ae28-c81bbd8effdb)
-![image](https://github.com/user-attachments/assets/73f2120a-81f0-48dd-b079-f5522cd53e33)
+Se tramita automáticamente la siguiente petición:
+![image](https://github.com/user-attachments/assets/13b64989-424c-4530-a1c7-d872777ea8ed)
+
 
 ## Análisis de captura OAuth 2.0 - Grant Type: Implicit
 
@@ -28,8 +30,8 @@ Esta captura representa un flujo OAuth 2.0 utilizando el grant type **implicit**
 
 ```http
 GET /auth?
-client_id=q7zDba...curvehI
-&redirect_uri=https://0a58009704049f381c098b0d044003c.web-security-academy.net/oauth-callback
+client_id=ru15c4...fzdg
+&redirect_uri=https://0a99009704ddab7c8265b12900d400dd.web-security-academy.net/oauth-callback
 &response_type=token
 &nonce=...
 &scope=openid%20profile%20email
