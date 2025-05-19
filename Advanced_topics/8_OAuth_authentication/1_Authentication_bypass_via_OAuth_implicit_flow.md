@@ -50,34 +50,27 @@ client_id=ru15c4...fzdg
 
 ```http
 HTTP/2 302 Found
-Location: https://.../oauth-callback#access_token=JzDp...&token_type=Bearer&scope=openid%20profile%20email
+Location: /interaction/BsxAB9ITORLl8gR52_2tn
 ```
 
-El servidor responde con un redireccionamiento (`302 Found`) hacia el `redirect_uri`, **incluyendo el ********`access_token`******** en el fragmento de URL** (lo que viene después de `#`).
+El servidor nos redirige al panel de login:
+![image](https://github.com/user-attachments/assets/c4e7eab6-303e-48aa-9d7d-5da9bc4c525a)
 
-#### Importante:
+Nos autenticamos con nuestras credenciales `wiener:peter`
+![image](https://github.com/user-attachments/assets/f4458ee9-4448-430f-870b-477f444b7674)
+![image](https://github.com/user-attachments/assets/cb1ad96a-513d-4308-8d78-ca629743612e)
 
-* El `access_token` **no se envía al servidor**, ya que el fragmento no forma parte de la petición HTTP. Solo el navegador lo puede leer.
-* Esto obliga a que la aplicación cliente use **JavaScript** para capturar el `access_token`.
 
----
-
-### ⚠️ Riesgos del Implicit Flow
-
-| Riesgo                                        | Descripción                                                                                                  |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Token en URL fragment                         | Cualquier código JS que corra en el contexto de la página puede acceder al token si no hay CSP estricta.     |
-| No hay canal seguro servidor-servidor         | El `access_token` se expone directamente al navegador.                                                       |
-| No se usa `client_secret`                     | Lo que limita la validación del cliente.                                                                     |
-| Posible exposición por redirecciones abiertas | Si el `redirect_uri` está mal validado, el token podría ser enviado a un dominio controlado por un atacante. |
 
 ![image](https://github.com/user-attachments/assets/ac9cd0fb-3837-483c-ae39-0ba66ad2c5b1)
 
-Nos autenticamos con nuestras credenciales `wiener:peter`:
-![image](https://github.com/user-attachments/assets/ddf98926-9cf4-4f9d-880a-d211bb28d0d9)
 
-La aplicación nos solicita autorizar su acceso a nuestro perfil y email, por lo que aceptamos haciendo clic en `Continue`:
-![image](https://github.com/user-attachments/assets/bc042af2-5e13-418c-a910-8bd35f8b4b2e)
+
+La aplicación nos solicita autorizar su acceso a nuestro perfil y email:
+![image](https://github.com/user-attachments/assets/b4488913-fcdd-4a75-92b2-0cc9500f1fa6)
+
+Por lo que aceptamos haciendo clic en `Continue`:
+
 
 Vemos que se tramita una solicitud POST al endpoint `/authenticate` con los siguientes datos:
 ```json
