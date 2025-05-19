@@ -70,6 +70,6 @@ Aunque OAuth no fue diseñado para autenticar usuarios, se utiliza para:
 
 * [OAuth grant types (Web Security Academy)](https://portswigger.net/web-security/oauth/grant-types)
 * [Hidden OAuth Attack Vectors (PortSwigger Research)](https://portswigger.net/research/hidden-oauth-attack-vectors)
-* [OpenID Connect vulnerabilities](https://portswigger.net/web-security/oauth/openid-connect)
+* [OpenID Connect vulnerabilities](https://portswigger.net/web-security/oauth/openid#openid-connect-vulnerabilities)
 
 ---
