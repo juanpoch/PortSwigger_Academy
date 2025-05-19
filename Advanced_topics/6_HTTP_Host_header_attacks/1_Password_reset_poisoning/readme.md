@@ -4,6 +4,9 @@ La técnica de **Password Reset Poisoning** permite a un atacante manipular un s
 
 ---
 
+[Técnica documentada por James Kettle](https://www.skeletonscribe.net/2013/05/practical-http-host-header-attacks.html)
+
+---
 ## 🔎 ¿Cómo funciona un restablecimiento de contraseña normal?
 
 1. El usuario envía su correo o nombre de usuario.
