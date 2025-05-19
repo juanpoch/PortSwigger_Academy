@@ -175,6 +175,99 @@ El resolver `getAllBlogPosts` omite ese post a propósito. Posiblemente:
 - O bien, el servidor filtra los resultados por otros criterios (por ejemplo, moderación o publicación pendiente).
 
   
+Este JSON corresponde a una **respuesta de introspección GraphQL**, que describe el *esquema* completo de la API. Vamos a leerlo paso a paso para entender su estructura.
+
+---
+
+## 🔎 Lectura general
+
+```json
+"__schema": {
+  "queryType": { "name": "query" },
+  "mutationType": null,
+  "subscriptionType": null,
+  "types": [ ... ],
+  "directives": [ ... ]
+}
+```
+
+* `queryType`: define el tipo base de todas las queries (en este caso: `query`).
+* `mutationType` y `subscriptionType`: no hay mutaciones ni suscripciones.
+* `types`: contiene la descripción de todos los tipos que existen en el esquema.
+* `directives`: contiene directivas que el cliente puede usar (como `@include`, `@skip`, etc).
+
+---
+
+## 📊 Tipo principal del laboratorio: `BlogPost`
+
+Dentro de `types` encontramos el tipo `BlogPost`:
+
+```json
+{
+  "kind": "OBJECT",
+  "name": "BlogPost",
+  "fields": [ ... ]
+}
+```
+
+### Campos de `BlogPost`:
+
+Cada objeto tiene:
+
+| Campo          | Tipo                | Descripción                       |
+| -------------- | ------------------- | --------------------------------- |
+| `id`           | `Int!`              | ID numérico obligatorio           |
+| `image`        | `String!`           | Ruta a la imagen                  |
+| `title`        | `String!`           | Título del post                   |
+| `author`       | `String!`           | Nombre del autor                  |
+| `date`         | `Timestamp!`        | Fecha de publicación              |
+| `summary`      | `String!`           | Resumen corto                     |
+| `paragraphs`   | `[String!]!`        | Párrafos del post                 |
+| `isPrivate`    | `Boolean!`          | Si es público o privado           |
+| `postPassword` | `String` (nullable) | Contraseña del post si es privado |
+
+---
+
+## 🔄 Queries disponibles
+
+```json
+{
+  "name": "query",
+  "fields": [
+    {
+      "name": "getBlogPost",
+      "args": [ { "name": "id", "type": "Int!" } ],
+      "type": "BlogPost"
+    },
+    {
+      "name": "getAllBlogPosts",
+      "args": [],
+      "type": "[BlogPost!]!"
+    }
+  ]
+}
+```
+
+### Explicación de resolvers:
+
+| Resolver          | Descripción                                                |
+| ----------------- | ---------------------------------------------------------- |
+| `getAllBlogPosts` | Devuelve todos los posts visibles (posiblemente públicos). |
+| `getBlogPost(id)` | Devuelve un post específico por ID.                        |
+
+---
+
+## 🔊 Conclusión
+
+* El endpoint tiene **queries** pero no **mutations** ni **subscriptions**.
+* Podemos usar `getBlogPost(id)` para forzar el acceso directo a cualquier post, incluso si está oculto en `getAllBlogPosts`.
+* Gracias a la introspección, detectamos campos sensibles como `postPassword` y `isPrivate`.
+
+---
+
+Este JSON es clave para comprender cómo atacar o consumir una API GraphQL: nos revela la estructura completa de datos, funciones y campos disponibles.
+
+---
 
 Si volvemos a la Instrospecion query, observamos que nos arroja un resolver llamado `getBlogPost`:
 ![image](https://github.com/user-attachments/assets/a648d998-278a-441d-a4b4-00fdc99d4028)
