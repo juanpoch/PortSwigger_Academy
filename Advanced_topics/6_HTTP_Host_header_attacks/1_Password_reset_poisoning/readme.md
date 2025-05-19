@@ -88,7 +88,7 @@ https://vulnerable.com/reset?token=...
 
 ## 🎓 Laboratorios disponibles
 
-[Lab: Modifying serialized objects](1_Modifying_serialized_objects.md)  
+[Lab: Basic password reset poisoning](1_Basic_password_reset_poisoning.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
