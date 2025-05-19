@@ -86,11 +86,11 @@ https://vulnerable.com/reset?token=...
 
 ---
 
-## 🎓 Laboratorio disponible
+## 🎓 Laboratorios disponibles
 
-* **Lab: Password reset poisoning via Host header**
+[Lab: Modifying serialized objects](1_Modifying_serialized_objects.md)  
 
-[Resolver este laboratorio te permite practicar esta técnica en un entorno seguro.](https://portswigger.net/web-security/password-reset-poisoning/lab-host-header)
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
 
