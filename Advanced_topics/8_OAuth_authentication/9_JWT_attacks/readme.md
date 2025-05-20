@@ -78,20 +78,7 @@ Por eso:
 
 > ⛔ La seguridad de un JWT **depende totalmente de la verificación correcta de la firma** por parte del servidor.
 
-Si la firma no se valida o la clave es débil/conocida, un atacante puede:
-
-* Alterar claims (como el `email`, `sub` o `role`)
-* Hacerse pasar por otro usuario
-* Escalar privilegios
-
 ---
-
-### 🌐 Herramienta recomendada:
-
-Explorá cualquier JWT en [https://jwt.io/](https://jwt.io/) para ver sus tres partes y probar cambios manualmente.
-
----
-
 
 ## ⚡️ Ataques JWT: Conceptos clave
 
@@ -102,6 +89,13 @@ Los ataques a JWTs permiten:
 * Bypass de autenticación sin contraseña
 
 > El impacto suele ser crítico: acceso total a cuentas o paneles administrativos.
+
+---
+
+### 🌐 Herramienta recomendada:
+
+Explorá cualquier JWT en [https://jwt.io/](https://jwt.io/) para ver sus tres partes y probar cambios manualmente.
+
 
 ---
 
