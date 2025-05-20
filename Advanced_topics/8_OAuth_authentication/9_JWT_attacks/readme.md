@@ -170,16 +170,41 @@ No obstante, algunas vulnerabilidades típicas (como el mal uso del campo `alg` 
 
 ## 🔧 Vulnerabilidades típicas en JWTs
 
-### 1. **Verificación incorrecta de firma**
 
-Algunos desarrolladores confunden:
+## 1 Verificación incorrecta de firma en JWT
 
-* `verify()` ✅: verifica la firma
-* `decode()` ❌: solo decodifica el token (sin validar)
+Una de las vulnerabilidades más comunes en la implementación de JWT es **no verificar correctamente la firma del token**. Esto suele deberse a un mal uso de las funciones que ofrecen las bibliotecas JWT.
 
-Si solo usan `decode()`, cualquier JWT es aceptado, incluso si fue modificado.
+---
 
-**Ejemplo:**
+### ⚙️ Confusión típica: `decode()` vs `verify()`
+
+Muchas bibliotecas de JWT (como `jsonwebtoken` en Node.js) ofrecen dos funciones clave:
+
+| Método     | ¿Qué hace?                             | ¿Verifica la firma? |
+| ---------- | -------------------------------------- | ------------------- |
+| `decode()` | Solo decodifica el JWT (base64 → JSON) | ❌ No                |
+| `verify()` | Decodifica **y verifica** la firma     | ✅ Sí                |
+
+🔴 **Problema:** Algunos desarrolladores solo usan `decode()`, lo que **omite la validación de la firma**, dejando la aplicación vulnerable.
+
+---
+
+### 🧪 Ejemplo práctico
+
+Supongamos que el servidor espera un JWT como este:
+
+```json
+{
+  "username": "carlos",
+  "isAdmin": false
+}
+```
+
+El atacante puede:
+
+1. Decodificar el token original (base64url → JSON).
+2. Modificar el payload:
 
 ```json
 {
@@ -188,7 +213,38 @@ Si solo usan `decode()`, cualquier JWT es aceptado, incluso si fue modificado.
 }
 ```
 
-El atacante cambia el payload, reconstituye el token, y es aceptado sin validación.
+3. Volver a codificar el header y el payload.
+4. Dejar la firma original, o usar cualquier firma falsa.
+
+➡️ Si el backend **no verifica la firma**, aceptará este token como válido y dará acceso administrativo.
+
+---
+
+### 🛠 Herramientas para probar esto
+
+* [jwt.io](https://jwt.io/) permite crear tokens falsos visualmente.
+* Extensiones de Burp como **JWT Editor** o **JWT4B** permiten automatizar estos ataques.
+
+---
+
+### 🔐 Consecuencias
+
+* Escalación de privilegios (`isAdmin: false` → `true`)
+* Suplantación de identidad (`username: "carlos"`)
+* Acceso a funciones restringidas o datos sensibles
+
+---
+
+### ✅ Recomendaciones de defensa
+
+* Usar siempre `verify()` (o su equivalente) en el backend.
+* Asegurarse de que se lanza un error si la firma **no es válida o está ausente**.
+* Rechazar tokens con errores de estructura o firma, sin excepciones silenciosas.
+
+---
+
+> 📌 **Nunca confíes en el contenido de un JWT si no has verificado su firma.** La codificación base64URL solo oculta, no protege.
+
 
 ### 2. **Algoritmo ********************`none`******************** en el header**
 
