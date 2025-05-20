@@ -171,7 +171,7 @@ No obstante, algunas vulnerabilidades típicas (como el mal uso del campo `alg` 
 ## 🔧 Vulnerabilidades típicas en JWTs
 
 
-## 1 Verificación incorrecta de firma en JWT
+## 1. Verificación incorrecta de firma en JWT
 
 Una de las vulnerabilidades más comunes en la implementación de JWT es **no verificar correctamente la firma del token**. Esto suele deberse a un mal uso de las funciones que ofrecen las bibliotecas JWT.
 
