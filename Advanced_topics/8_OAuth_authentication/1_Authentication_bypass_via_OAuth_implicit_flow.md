@@ -149,8 +149,12 @@ Usamos los siguientes datos en el cuerpo de la solicitud:
 }
 ```
 
+Enviamos la petición con el email del usuario carlos:
+![image](https://github.com/user-attachments/assets/a7672cea-76c6-40c0-b944-3acbf8a21dbe)
+
 Para resolver el laboratorio, debemos abrir el dashboard del usuario `carlos` con las cookies proporcionadas por el servidor. Para eso una forma de hacerlo es con clic derecho on la request and seleccionar `"Request in browser" > "In original session"`. Copiar esta URL y visitarla en el navegador:
-![image](https://github.com/user-attachments/assets/4ba7e744-3219-45bd-b625-3c170d123ddd)
+![image](https://github.com/user-attachments/assets/0ba60953-fc9c-47fc-8bd1-7b5c7cd05feb)
+
 
 ---
 
