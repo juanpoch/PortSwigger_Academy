@@ -4,7 +4,7 @@
 
 ### Qué son los JWTs?
 
-Los **JWTs (JSON Web Tokens)** son objetos JSON codificados y firmados criptográficamente que se usan para intercambiar información entre dos partes. Se utilizan principalmente para:
+Los **JWTs** son objetos JSON codificados y firmados criptográficamente que se usan para intercambiar información entre dos partes. Se utilizan principalmente para:
 
 * Autenticación
 * Manejo de sesiones
