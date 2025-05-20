@@ -10,14 +10,76 @@ You can log in with your own social media account using the following credential
 
 ---
 
-Iniciamos el laboratorio y nos encontramos con un blog público:
+- Iniciamos el laboratorio y nos encontramos con un blog público:
 ![image](https://github.com/user-attachments/assets/6ab96322-ed8d-4a44-8eab-8666d9cb392f)
 
-Accedemos al panel de autenticación mediante el botón `My account`, el servidor nos redirige al panel de autenticación mediante social media:
-![image](https://github.com/user-attachments/assets/12741918-7ba6-4dd3-8807-bebcf0b17cdd)
-![image](https://github.com/user-attachments/assets/0016b9fa-55ed-4296-ae28-c81bbd8effdb)
-Se tramita automáticamente la siguiente petición:
-![image](https://github.com/user-attachments/assets/13b64989-424c-4530-a1c7-d872777ea8ed)
+- Accedemos al panel de autenticación mediante el botón `My account`, el servidor nos redirige al panel de autenticación mediante social media:
+![image](https://github.com/user-attachments/assets/30b76db7-5d14-4ad4-a630-fe8ae7f3cd26)
+
+ Esto es un simple redirect al endpoint de login social. El sitio detecta que el usuario no está autenticado, y lo redirige a iniciar sesión vía OAuth.
+
+- Redirección al flujo OAuth:
+![image](https://github.com/user-attachments/assets/075dea35-fce3-4806-b029-765354152b91)
+![image](https://github.com/user-attachments/assets/4982f90d-6239-4ae3-828e-50745fa11620)
+
+Aquí el frontend le indica al usuario que será redirigido al proveedor de identidad externo (OAuth server).
+
+- Inicio del flujo OAuth:
+![image](https://github.com/user-attachments/assets/512e3862-1e37-4bd6-8891-81b87d9bf06a)
+ - `client_id`: identifica a la app cliente (el blog).
+
+ - `redirect_uri`: adónde redirigir luego de autenticarse.
+
+ - `response_type=token`: 👉 esto indica que estamos usando el implicit flow (el token se devolverá directamente en la URL).
+
+ - `scope=openid profile email`: solicita acceso a información del perfil del usuario.
+
+ El proveedor de OAuth responde con `302 Found` y una cookie llamada `_interaction` para gestionar el estado de la sesión
+
+
+- Redirección a /interaction:
+![image](https://github.com/user-attachments/assets/edad755c-4aae-4edd-9960-882ef4def348)
+
+El navegador sigue la redirección, y el servidor OAuth responde con una página HTML de login del proveedor.
+
+Este es el formulario de login de la red social simulada, donde el usuario deberá autenticarse.
+
+- Nos autenticamos con nuestras credenciales `wiener:peter`:
+![image](https://github.com/user-attachments/assets/e4ff6c93-8b31-4440-ba1b-82e487e29127)
+
+- Nos redirije al endpoint `https://oauth-0a9c0076043a35778081151f023f0053.oauth-server.net/auth/awdq01OS9zrmYp8UqZMX4`:
+
+![image](https://github.com/user-attachments/assets/d9fcb388-6b84-4986-8a5d-27f9fa95d278)
+
+- Nos redirije al panel
+![image](https://github.com/user-attachments/assets/9f89d3b5-ae0b-426f-aa72-0f509c0de81c)
+
+Esta última captura muestra la respuesta final del proveedor OAuth después de haber completado todo el proceso de autenticación, justo antes de redirigir al usuario nuevamente al cliente (el blog).
+El contenido del body es una página HTML que contiene el formulario final de redirección del flujo OAuth. Esta respuesta incluye el HTML con los estilos y el frontend necesario para que el JavaScript del navegador extraiga el access token (cuando sea el momento) y lo incluya en una redirección al cliente.
+
+Sin embargo, no estás viendo todavía el access token, porque como es un Implicit Flow, ese token vendrá en un fragmento #access_token=... que:
+
+No es visible para el servidor, solo para el navegador.
+
+Será manejado por JavaScript, que hará luego el POST /authenticate hacia la aplicación.
+
+Aceptamos y hacemos click en `Continue`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Análisis de captura OAuth 2.0 - Grant Type: Implicit
