@@ -10,12 +10,15 @@ Los **JWTs** son objetos JSON codificados y firmados criptográficamente que se 
 * Manejo de sesiones
 * Control de acceso
 
-Un JWT contiene:
+A diferencia de los tokens de sesión clásicos, todos los datos que necesita un servidor se almacenan en el lado del cliente dentro del propio JWT. Esto convierte a los JWT en una opción popular para sitios web altamente distribuidos donde los usuarios necesitan interactuar fluidamente con múltiples servidores back-end.
 
-1. **Header**: metadatos del token (algoritmo, tipo)
-2. **Payload**: los "claims" (información del usuario)
-3. **Signature**: firma digital para verificar integridad y autenticidad
+## 🔒 JWT: Estructura y relevancia de la firma
 
+Los JWT están compuestos por tres partes codificadas en base64URL y separadas por puntos:
+
+```
+HEADER.PAYLOAD.SIGNATURE
+```
 Ejemplo de token:
 
 ```
@@ -24,7 +27,69 @@ eyJ1c2VybmFtZSI6ImNhcmxvcyIsImlzQWRtaW4iOmZhbHNlfQ.
 TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ```
 
-Puedes decodificar JWTs en [jwt.io](https://jwt.io/) para explorarlos visualmente.
+### ✉️ Encabezado (Header)
+
+Contiene metadatos sobre el token, como el algoritmo de firma:
+
+```json
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+
+### 📅 Carga úTil (Payload)
+
+Contiene las **claims** o declaraciones del usuario. Ejemplo:
+
+```json
+{
+  "iss": "portswigger",
+  "exp": 1648037164,
+  "name": "Carlos Montoya",
+  "sub": "carlos",
+  "role": "blog_author",
+  "email": "carlos@carlos-montoya.net",
+  "iat": 1516239022
+}
+```
+
+Estas claims son información legible por cualquiera que posea el token.
+
+### ✔️ Firma (Signature)
+
+Garantiza que el token **no fue modificado** desde que fue emitido. Se genera a partir del header y el payload, junto con una **clave secreta** del servidor:
+
+```
+HMAC-SHA256(
+  base64url(header) + "." + base64url(payload),
+  secret
+)
+```
+
+---
+
+### ⚠️ Riesgo de manipulación
+
+Tanto el header como el payload **son fácilmente decodificables y modificables**, ya que están sólo codificados en base64URL, **no cifrados**.
+
+Por eso:
+
+> ⛔ La seguridad de un JWT **depende totalmente de la verificación correcta de la firma** por parte del servidor.
+
+Si la firma no se valida o la clave es débil/conocida, un atacante puede:
+
+* Alterar claims (como el `email`, `sub` o `role`)
+* Hacerse pasar por otro usuario
+* Escalar privilegios
+
+---
+
+### 🌐 Herramienta recomendada:
+
+Explorá cualquier JWT en [https://jwt.io/](https://jwt.io/) para ver sus tres partes y probar cambios manualmente.
+
+
 
 ---
 
