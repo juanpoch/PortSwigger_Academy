@@ -66,6 +66,7 @@ HMAC-SHA256(
   secret
 )
 ```
+En algunos casos, también cifra el hash resultante.  
 
 ---
 
