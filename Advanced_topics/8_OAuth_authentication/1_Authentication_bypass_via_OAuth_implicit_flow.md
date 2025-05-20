@@ -47,11 +47,11 @@ Este es el formulario de login de la red social simulada, donde el usuario deber
 - Nos autenticamos con nuestras credenciales `wiener:peter`:
 ![image](https://github.com/user-attachments/assets/e4ff6c93-8b31-4440-ba1b-82e487e29127)
 
-- Nos redirije al endpoint `https://oauth-0a9c0076043a35778081151f023f0053.oauth-server.net/auth/awdq01OS9zrmYp8UqZMX4`:
+- Nos redirige al endpoint `https://oauth-0a9c0076043a35778081151f023f0053.oauth-server.net/auth/awdq01OS9zrmYp8UqZMX4`:
 
 ![image](https://github.com/user-attachments/assets/d9fcb388-6b84-4986-8a5d-27f9fa95d278)
 
-- Nos redirije al panel
+- Nos redirige al panel
 ![image](https://github.com/user-attachments/assets/9f89d3b5-ae0b-426f-aa72-0f509c0de81c)
 
 
@@ -77,7 +77,7 @@ Esta redirección devuelve el access token en el fragmento de la URL (#), típic
 Nos arroja el token `access_token=hIGFosmK9wJ_3BhoQXpt4oMr6OkstLXXAiraSZ19kWm&amp`.
 
 
-- Luego viene la petición al endóint `/oauth-callback`:
+- Luego viene la petición al endpoint `/oauth-callback`:
 ![image](https://github.com/user-attachments/assets/8a40a493-0776-4ccd-8aeb-c938d6f2f309)
 
 Que nos arroja el siguiente script:
@@ -126,7 +126,15 @@ Confirma que el token obtenido es válido para el usuario wiener.
 
 Pero en este laboratorio, esta respuesta es irrelevante para el servidor vulnerable, que confía únicamente en los datos del POST /authenticate enviados desde el navegador.
 
-- Petición POST al endóing `/authenticate`:
+### 🔁 Resumen del flujo OAuth
+
+1. `GET /my-account` → redirección a `/social-login`
+2. Redirección a OAuth server → login + consentimiento
+3. Redirección a `redirect_uri#access_token`
+4. JavaScript envía token en `POST /authenticate`
+
+
+- Petición POST al endpoint `/authenticate`:
 ![image](https://github.com/user-attachments/assets/218af919-bd14-4a3d-a479-c0e590993212)
 
 Usamos los siguientes datos en el cuerpo de la solicitud:
@@ -152,13 +160,35 @@ Usamos los siguientes datos en el cuerpo de la solicitud:
 Enviamos la petición con el email del usuario carlos:
 ![image](https://github.com/user-attachments/assets/a7672cea-76c6-40c0-b944-3acbf8a21dbe)
 
-Para resolver el laboratorio, debemos abrir el dashboard del usuario `carlos` con las cookies proporcionadas por el servidor. Para eso una forma de hacerlo es con clic derecho on la request and seleccionar `"Request in browser" > "In original session"`. Copiar esta URL y visitarla en el navegador:
+Para resolver el laboratorio, debemos abrir el dashboard del usuario `carlos` con las cookies proporcionadas por el servidor. Para eso una forma de hacerlo es con clic derecho en la request and seleccionar `"Request in browser" > "In original session"`. Copiar esta URL y visitarla en el navegador:
 ![image](https://github.com/user-attachments/assets/0ba60953-fc9c-47fc-8bd1-7b5c7cd05feb)
 
 
 ---
 
+---
 
-  
+## ✅ Comentarios finales
+
+### 🔍 Conclusiones
+
+- El laboratorio demuestra cómo una implementación incorrecta del flujo **OAuth Implicit** puede permitir a un atacante **suplantar la identidad de otro usuario**.
+- El punto crítico fue el endpoint `/authenticate`, donde la aplicación vulnerable aceptaba cualquier combinación de `email` y `access_token` **sin verificar que el token pertenezca realmente a ese correo**.
+- El token fue obtenido de forma legítima por el usuario `wiener`, pero fue reutilizado para autenticarse como `carlos`.
+
+### 💡 Recomendaciones
+
+- **Evitar el uso de Implicit Flow** en aplicaciones modernas. Actualmente, se recomienda usar **Authorization Code Flow con PKCE**.
+- Validar del lado del servidor la identidad asociada al `access_token`, consultando directamente al proveedor OAuth (`/userinfo` o `/me`), en lugar de aceptar los datos enviados por el cliente.
+- Nunca confiar en valores sensibles enviados por el frontend como el `email` del usuario.
+
+### 📚 Lecciones aprendidas
+
+- El fragmento `#access_token` no es visible para el servidor, solo para el navegador. Esto limita el control del backend si se confía en lo que el frontend le envía.
+- Los flujos OAuth implican múltiples redirecciones por diseño, cada una cumpliendo un rol: autenticación, consentimiento, retorno seguro.
+- Es clave entender **qué parte del flujo ocurre en el navegador y cuál en el servidor**, para identificar correctamente los vectores de ataque.
+
+---
+
 
 
