@@ -1,10 +1,8 @@
 ## 🛡️ JWT Attacks&#x20;
 
-Esta guía cubre en profundidad los ataques contra mecanismos mal implementados basados en **JSON Web Tokens**, con enfoque en los laboratorios de PortSwigger. Incluye explicaciones técnicas, ejemplos reales y consejos prácticos.
 
----
 
-### ❓ ¿Qué son los JWTs?
+### Qué son los JWTs?
 
 Los **JWTs (JSON Web Tokens)** son objetos JSON codificados y firmados criptográficamente que se usan para intercambiar información entre dos partes. Se utilizan principalmente para:
 
