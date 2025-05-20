@@ -147,7 +147,7 @@ Usamos los siguientes datos en el cuerpo de la solicitud:
 ```
 ✅ Este es el request vulnerable.
 
-🟥 En el laboratorio, el servidor no valida si el token coincide con el email. Por lo tanto, podés modificar el campo email por ejemplo a:
+🟥 En el laboratorio, el servidor acepta el campo `email` enviado por el cliente sin comprobar si corresponde al `access_token` recibido. Por lo tanto, podemos modificar el campo email por ejemplo a:
 
 ```json
 {
