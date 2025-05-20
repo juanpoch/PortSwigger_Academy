@@ -99,6 +99,75 @@ Explorá cualquier JWT en [https://jwt.io/](https://jwt.io/) para ver sus tres p
 
 ---
 
+## 🔄 JWT vs JWS vs JWE
+
+### 📘 JWT (JSON Web Token)
+
+La especificación JWT es bastante limitada: **define solo un formato estándar** para representar información ("claims") como un objeto JSON estructurado y portable.
+
+Un JWT **por sí solo no implica ni firma ni cifrado**. Simplemente indica cómo deben organizarse los datos:
+
+```json
+{
+  "sub": "carlos",
+  "email": "carlos@ejemplo.com",
+  "admin": true
+}
+```
+
+Pero para que estos datos sean confiables o confidenciales, hay que aplicar otras especificaciones adicionales: **JWS o JWE**.
+
+---
+
+### 🔐 JWS (JSON Web Signature)
+
+* Es la forma **firmada** de un JWT.
+* Proporciona **integridad** y **autenticidad** de los datos.
+* Usa un algoritmo de firma como HMAC-SHA256 o RS256.
+
+📌 Cuando la gente habla de "JWTs", **casi siempre se refiere a tokens JWS**.
+
+**Ejemplo de estructura JWS:**
+
+```
+base64url(header).base64url(payload).base64url(signature)
+```
+
+➡️ El contenido se puede leer (está codificado en base64URL), pero **no se puede modificar sin invalidar la firma**.
+
+---
+
+### 🔒 JWE (JSON Web Encryption)
+
+* Es la forma **cifrada** de un JWT.
+* Protege la **confidencialidad** del contenido.
+* El contenido del token **no puede ser leído** sin la clave privada adecuada.
+
+**Uso típico:** cuando se quiere transmitir datos sensibles y mantenerlos ocultos al cliente o intermediarios.
+
+**Ejemplo de uso:** tokens que contienen datos financieros, historial clínico, etc.
+
+---
+
+### 📝 Nota importante
+
+> Para simplificar, en la mayoría de materiales (y en PortSwigger), el término **"JWT" se refiere a JWS**, salvo que se especifique lo contrario.
+
+No obstante, algunas vulnerabilidades típicas (como el mal uso del campo `alg` o la manipulación de claims) también pueden aplicarse a tokens JWE mal implementados.
+
+---
+
+### 🧠 Resumen
+
+| Tipo | Firma        | Cifrado | Visibilidad del contenido |
+| ---- | ------------ | ------- | ------------------------- |
+| JWT  | ❌            | ❌       | ✅ legible                 |
+| JWS  | ✅            | ❌       | ✅ legible pero protegido  |
+| JWE  | ✅ (opcional) | ✅       | ❌ no legible              |
+
+---
+
+
 ## 🔧 Vulnerabilidades típicas en JWTs
 
 ### 1. **Verificación incorrecta de firma**
