@@ -245,7 +245,7 @@ El atacante puede:
 
 > 📌 **Nunca confíes en el contenido de un JWT si no has verificado su firma.** La codificación base64URL solo oculta, no protege.
 
-[Lab: Authentication bypass via OAuth implicit flow](1_Authentication_bypass_via_OAuth_implicit_flow.md)  
+[Lab: JWT authentication bypass via unverified signature](1_JWT_authentication_bypass_via_unverified_signature.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
