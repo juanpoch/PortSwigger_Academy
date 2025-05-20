@@ -58,7 +58,7 @@ Estas claims son información legible por cualquiera que posea el token.
 
 ### ✔️ Firma (Signature)
 
-Garantiza que el token **no fue modificado** desde que fue emitido. Se genera a partir del header y el payload, junto con una **clave secreta** del servidor:
+La firma farantiza que el token **no fue modificado** desde que fue emitido. Se genera aplicando una función hash sobre el header y payload, usando una **clave secreta** del servidor:
 
 ```
 HMAC-SHA256(
@@ -89,21 +89,8 @@ Si la firma no se valida o la clave es débil/conocida, un atacante puede:
 
 Explorá cualquier JWT en [https://jwt.io/](https://jwt.io/) para ver sus tres partes y probar cambios manualmente.
 
-
-
 ---
 
-### 🔒 ¿Cómo funciona la firma de un JWT?
-
-La firma se genera aplicando una función hash sobre el header y payload, usando una **clave secreta** del servidor:
-
-```
-HMAC-SHA256(base64url(header) + "." + base64url(payload), secret)
-```
-
-❌ Si un atacante **modifica el payload**, la firma ya no es válida... a menos que la aplicación **no verifique la firma correctamente** o use una clave débil.
-
----
 
 ## ⚡️ Ataques JWT: Conceptos clave
 
