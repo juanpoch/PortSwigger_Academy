@@ -9,5 +9,6 @@ You can log in to your own account using the following credentials: `wiener:pete
 >Tip
 >We recommend familiarizing yourself with [how to work with JWTs in Burp Suite](https://portswigger.net/burp/documentation/desktop/testing-workflow/session-management/jwts) before attempting this lab.
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
