@@ -54,100 +54,100 @@ Este es el formulario de login de la red social simulada, donde el usuario deber
 - Nos redirije al panel
 ![image](https://github.com/user-attachments/assets/9f89d3b5-ae0b-426f-aa72-0f509c0de81c)
 
-Esta última captura muestra la respuesta final del proveedor OAuth después de haber completado todo el proceso de autenticación, justo antes de redirigir al usuario nuevamente al cliente (el blog).
-El contenido del body es una página HTML que contiene el formulario final de redirección del flujo OAuth. Esta respuesta incluye el HTML con los estilos y el frontend necesario para que el JavaScript del navegador extraiga el access token (cuando sea el momento) y lo incluya en una redirección al cliente.
 
-Sin embargo, no estás viendo todavía el access token, porque como es un Implicit Flow, ese token vendrá en un fragmento #access_token=... que:
+En esta captura se muestra la interfaz de autorización que el proveedor OAuth presenta al usuario.
 
-No es visible para el servidor, solo para el navegador.
+El proveedor de identidad (OAuth server) informa al usuario que la aplicación cliente (WeLikeToBlog) está solicitando acceso a ciertos datos del perfil. En este caso:
 
-Será manejado por JavaScript, que hará luego el POST /authenticate hacia la aplicación.
+- 📧 Email
+- 👤 Perfil
 
-Aceptamos y hacemos click en `Continue`
+Este paso representa el **momento en que el usuario otorga consentimiento explícito** para compartir sus datos con la aplicación cliente.
 
+🟠 Al hacer clic en **[Continue]**, el flujo avanza y el navegador será redirigido a la URL de retorno (`redirect_uri`) especificada por la app cliente, con un `access_token` incluido en el **fragmento de la URL** (es decir, después del símbolo `#`).
 
+- Aceptamos y hacemos click en `Continue`:
+![image](https://github.com/user-attachments/assets/dc319802-e073-4609-8507-58ab3b5c35d1)
 
+- Luego de algunas redirecciones, vemos la petición GET al endpoint `/auth/awdq01OS9zrmYp8UqZMX4`:
+![image](https://github.com/user-attachments/assets/34df29ec-0fdf-452a-9f6a-28f87f56fc8d)
+Esta redirección devuelve el access token en el fragmento de la URL (#), típico del OAuth implicit flow.
+🔎 Este fragmento no lo ve el servidor (no viaja con el request al backend), sino que es procesado por el navegador mediante JavaScript.
 
-
-
-
-
-
-
-
-
-
+Nos arroja el token `access_token=hIGFosmK9wJ_3BhoQXpt4oMr6OkstLXXAiraSZ19kWm&amp`.
 
 
+- Luego viene la petición al endóint `/oauth-callback`:
+![image](https://github.com/user-attachments/assets/8a40a493-0776-4ccd-8aeb-c938d6f2f309)
 
-
-
-## Análisis de captura OAuth 2.0 - Grant Type: Implicit
-
-Esta captura representa un flujo OAuth 2.0 utilizando el grant type **implicit**, que es un tipo de autorización común en aplicaciones del lado del cliente (como SPA - Single Page Applications) pero con importantes implicancias de seguridad.
-
----
-
-### 📂 Request:
-
-```http
-GET /auth?
-client_id=ru15c4...fzdg
-&redirect_uri=https://0a99009704ddab7c8265b12900d400dd.web-security-academy.net/oauth-callback
-&response_type=token
-&nonce=...
-&scope=openid%20profile%20email
+Que nos arroja el siguiente script:
+```javascript
+const token = urlSearchParams.get('access_token');
+fetch('https://oauth-server.net/me', {
+  headers: { Authorization: `Bearer ${token}` }
+})
+  .then( ... perfil del usuario ... )
+  .then(() => {
+    fetch('/authenticate', {
+      method: 'POST',
+      body: JSON.stringify({ email: j.email, username: j.sub, token })
+    });
+});
 ```
 
-#### Campos importantes:
+Este script es crítico para entender la vulnerabilidad:
 
-* `client_id`: identificador único de la aplicación cliente.
-* `redirect_uri`: URI donde se redirigirá al usuario tras completar la autorización. **Es crítico validarlo adecuadamente para evitar ataques como token leakage.**
-* `response_type=token`: indica que se está usando el **implicit flow** (sin código de autorización intermedio).
-* `scope`: se está solicitando acceso al `openid`, `profile`, y `email` del usuario.
+✅ Extrae el `access_token` del fragmento `#`.
 
----
+✅ Lo usa para obtener los datos del usuario autenticado (GET /me).
 
-### 📥 Response:
+✅ Y luego hace un POST `/authenticate` al servidor vulnerable, enviando:
 
-```http
-HTTP/2 302 Found
-Location: /interaction/BsxAB9ITORLl8gR52_2tn
-```
+- email
 
-El servidor nos redirige al panel de login:
-![image](https://github.com/user-attachments/assets/c4e7eab6-303e-48aa-9d7d-5da9bc4c525a)
+- username
 
-Nos autenticamos con nuestras credenciales `wiener:peter`
-![image](https://github.com/user-attachments/assets/f4458ee9-4448-430f-870b-477f444b7674)
-![image](https://github.com/user-attachments/assets/cb1ad96a-513d-4308-8d78-ca629743612e)
+- token
 
+Petición GET al endpoint `/me`:
+![image](https://github.com/user-attachments/assets/aae9a382-43d8-4372-80ca-659c67084cda)
 
-
-![image](https://github.com/user-attachments/assets/ac9cd0fb-3837-483c-ae39-0ba66ad2c5b1)
-
-
-
-La aplicación nos solicita autorizar su acceso a nuestro perfil y email:
-![image](https://github.com/user-attachments/assets/b4488913-fcdd-4a75-92b2-0cc9500f1fa6)
-
-Por lo que aceptamos haciendo clic en `Continue`:
-
-
-Vemos que se tramita una solicitud POST al endpoint `/authenticate` con los siguientes datos:
+Obtiene los siguientes datos:
 ```json
-{"email":"wiener@hotdog.com","username":"wiener","token":"S-E6OGelo7ngSiSaKGJcaRLDfIKiwSXv38rgYWQ_QIn"}
+{
+  "sub": "wiener",
+  "name": "Peter Wiener",
+  "email": "wiener@hotdog.com",
+  "email_verified": true
+}
 ```
 
-- Se está enviando un `access_token` directamente en el cuerpo `JSON` junto con `username` y `email`.
+Confirma que el token obtenido es válido para el usuario wiener.
 
-- Esto es típico de un flujo `OAuth Implicit` o una mala implementación del `Authorization Code Flow`, donde el cliente almacena el token en el navegador y luego lo reutiliza para autenticarse.
+Pero en este laboratorio, esta respuesta es irrelevante para el servidor vulnerable, que confía únicamente en los datos del POST /authenticate enviados desde el navegador.
 
-El servidor nos responde con la siguiente cookie de sesión: `2Iwx9sYwwm7NmI7IOXZ6TRzusBZhcy8c`, lo que indica que nos autenticamos correctamente.
+- Petición POST al endóing `/authenticate`:
+![image](https://github.com/user-attachments/assets/218af919-bd14-4a3d-a479-c0e590993212)
 
+Usamos los siguientes datos en el cuerpo de la solicitud:
+```json
+{
+  "email": "wiener@hotdog.com",
+  "username": "wiener",
+  "token": "hIGFosmK9wJ_3BhoQXtAoMfe6KostLXXAirzSZl9kWm"
+}
+```
+✅ Este es el request vulnerable.
 
-Si no existe ningún tipo de validación entre el token y los datos, y a su vez se permite la reutilización del token, podremos usar la dirección de email del usuario carlos (`carlos@carlos-montoya.net`) e intentar autenticarnos como tal:
-![image](https://github.com/user-attachments/assets/1fdf1321-9ce4-40f2-a948-24230995a202)
+🟥 En el laboratorio, el servidor no valida si el token coincide con el email. Por lo tanto, podés modificar el campo email por ejemplo a:
+
+```json
+{
+  "email": "carlos@carlos-montoya.net",
+  "username": "wiener",
+  "token": "hIGFosmK9wJ_3BhoQXtAoMfe6KostLXXAirzSZl9kWm"
+}
+```
 
 Para resolver el laboratorio, debemos abrir el dashboard del usuario `carlos` con las cookies proporcionadas por el servidor. Para eso una forma de hacerlo es con clic derecho on la request and seleccionar `"Request in browser" > "In original session"`. Copiar esta URL y visitarla en el navegador:
 ![image](https://github.com/user-attachments/assets/4ba7e744-3219-45bd-b625-3c170d123ddd)
