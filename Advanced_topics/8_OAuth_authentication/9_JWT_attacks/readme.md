@@ -239,7 +239,7 @@ Burp Suite permite:
 * Modificar header, payload y regenerar token
 * Automatizar pruebas con extensiones como:
 
-  * [JWT Editor](https://portswigger.net/bappstore/50e2bbf4f38d4c3aa723d7ab6179a5b9)
+  * [Working with JWTs](https://portswigger.net/burp/documentation/desktop/testing-workflow/session-management/jwts)
   * [JWT4B](https://github.com/ticarpi/jwt_tool)
 
 ---
