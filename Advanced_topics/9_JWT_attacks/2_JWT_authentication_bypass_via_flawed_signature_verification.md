@@ -17,7 +17,7 @@ Accedemos al panel de autenticación a través de `My account` y nos autenticamo
 
 ![image](https://github.com/user-attachments/assets/be69a900-cda7-4b68-a79c-ae69473d8fa4)
 
-Notamos que noS autenticamos correctamente y el servidor nos devuelve un JWT, luego nos redirije al panel `/my-account?id=wiener`:
+Notamos que nos autenticamos correctamente y el servidor nos devuelve un JWT, luego nos redirige al panel `/my-account?id=wiener`:
 ![image](https://github.com/user-attachments/assets/1165a975-01e2-436d-a270-9a2027c700ff)
 
 Enviamos esa solicitud al repeater e intentamos acceder al panel `/admin`:
@@ -38,6 +38,9 @@ Sabemos que el servidor está configurado de forma insegura para aceptar JWTs si
 
 El campo alg del header de un JWT indica qué algoritmo debe usar el servidor para verificar la firma del token. Si se permite el valor none, se está indicando literalmente que el token no está firmado y que no requiere validación criptográfica.
 
+📌 Este tipo de vulnerabilidad es grave porque le permite al atacante suprimir completamente el uso de firma digital. Al establecer `alg: none`, el servidor interpreta que no debe verificar la integridad del token, lo que permite modificar libremente el payload y autenticarse como cualquier usuario.
+
+
 El siguiente paso es generar un token con solo dos partes:
 `base64url(header).base64url(payload)`.
 
@@ -51,7 +54,7 @@ Enviamos la solicitud:
 
 Observamos que tenemos acceso al panel administrativo con la funcionalidad de eliminar usuarios. 
 
-Nos dirijimos al endpoint `/admin/delete?username=carlos` para eliminar al usuario `carlos` y resolver el laboratorio:
+Nos dirigimos al endpoint `/admin/delete?username=carlos` para eliminar al usuario `carlos` y resolver el laboratorio:
 ![image](https://github.com/user-attachments/assets/96325918-ab04-4097-a5da-376320321eb6)
 
 ![image](https://github.com/user-attachments/assets/68035729-f2dd-4861-99af-49c09a487c56)
@@ -61,6 +64,28 @@ Nos dirijimos al endpoint `/admin/delete?username=carlos` para eliminar al usuar
 ---
 
 
+## ✅ Comentarios finales
+
+### 🔍 Conclusiones
+
+* Este laboratorio expone una vulnerabilidad severa causada por la aceptación de tokens JWT con el algoritmo `none`, lo que permite eludir completamente la verificación criptográfica de la firma.
+* El servidor confía ciegamente en el campo `alg` del header del JWT, permitiendo a un atacante suprimir la firma y modificar el contenido del token.
+* Esto habilita la suplantación de usuarios y el acceso no autorizado a funcionalidades administrativas.
+
+### 💡 Recomendaciones
+
+* **Nunca permitir `alg: none`** como algoritmo de firma.
+* Configurar las bibliotecas JWT para que **ignoren el valor del header `alg`** y usen solo algoritmos predefinidos del lado del servidor.
+* Validar siempre la firma del token con claves seguras y adecuadas.
+* Implementar listas blancas de algoritmos permitidos (por ejemplo, solo `HS256` o `RS256`).
+
+### 📚 Lecciones aprendidas
+
+* El header del JWT puede ser manipulado por el cliente; no debe ser considerado confiable.
+* Permitir algoritmos no seguros como `none` expone a la aplicación a bypass total de autenticación.
+* Es fundamental entender cómo funcionan internamente las bibliotecas JWT utilizadas para evitar errores de configuración críticos.
+
+---
 
 
 
