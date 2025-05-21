@@ -14,7 +14,7 @@ Los laboratorios están organizados en tres categorías principales:
 
 - 🛠️ [**Server-side topics**](Server-side): Vulnerabilidades del lado servidor como control de acceso, inyecciones, manejo de sesiones, etc.
 - 🧠 [**Client-side topics**](Client-side): Vulnerabilidades del lado cliente como XSS, DOM-based issues, CSRF, entre otras.
-- 🔬 **Advanced topics**: Laboratorios que requieren técnicas más complejas o combinadas.
+- 🔬 [**Advanced topics**](Advanced_topics): Laboratorios que requieren técnicas más complejas o combinadas.
 
 > 📁 Los directorios `Access_Control`, `Authentication`, `File_Upload` y otros se mantienen por compatibilidad, pero serán progresivamente migrados a las categorías principales mencionadas arriba.
 
