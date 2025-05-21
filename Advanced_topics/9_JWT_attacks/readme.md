@@ -251,32 +251,90 @@ El atacante puede:
 
 ---
 
-### 2. **Algoritmo ********************`none`******************** en el header**
+### 2. **Aceptando tokens sin firma**
 
-El header del JWT incluye el campo `alg`:
+## ⚠️ Vulnerabilidad por uso del algoritmo `none` en JWT
 
-```json
-{ "alg": "HS256", "typ": "JWT" }
-```
-
-⚠️ Si el servidor acepta `"alg": "none"`, el atacante puede enviar un token sin firma:
+Una de las vulnerabilidades más conocidas en el uso de JWT es cuando el servidor **acepta tokens sin firma**, específicamente aquellos que declaran en su header:
 
 ```json
-{ "alg": "none" }
+{
+  "alg": "none",
+  "typ": "JWT"
+}
 ```
 
-Token final:
+---
 
+### 🧠 ¿Por qué es esto un problema?
+
+El campo `alg` del header de un JWT indica qué algoritmo debe usar el servidor para verificar la firma del token. Si se permite el valor `none`, se está indicando literalmente que **el token no está firmado** y que no requiere validación criptográfica.
+
+Esto implica que un atacante puede:
+
+1. Tomar un JWT válido.
+2. Modificar libremente su payload:
+
+```json
+{
+  "sub": "administrator",
+  "role": "admin"
+}
 ```
+
+3. Cambiar el header a:
+
+```json
+{
+  "alg": "none"
+}
+4. Generar un token con solo dos partes:
+```
+
 base64url(header).base64url(payload).
-```
 
-❌ Algunos servidores vulnerables aceptan este token como válido, permitiendo modificar el payload sin restricción.
+````
+(Sin firma, solo con un punto al final)
 
-**Técnicas de evasión**:
+👉 Si el servidor acepta este token como válido, entonces el atacante puede autenticarse como cualquier usuario sin conocer ninguna clave secreta.
 
-* Capitalización mezclada: `NoNe`
-* Codificación UTF-8 anormal
+---
+
+### 🧨 Técnicas de evasión comunes
+Incluso si el servidor intenta filtrar `alg=none`, hay formas de evadir el control:
+
+- **Capitalización mezclada**:
+  ```json
+  { "alg": "NoNe" }
+````
+
+* **Codificación UTF-8 anormal**:
+
+  * Representar "none" con codificación hexadecimal
+  * Inyectar caracteres invisibles o alternativos
+
+Estas técnicas pueden evadir validaciones débiles que solo comparan cadenas exactas y no interpretan correctamente los tipos de codificación.
+
+---
+
+### 🔐 Impacto
+
+* Autenticación sin firma = sin seguridad
+* Suplantación de usuarios legítimos
+* Acceso no autorizado a recursos protegidos
+
+---
+
+### ✅ Recomendaciones de defensa
+
+* Rechazar explícitamente cualquier token que declare `alg: none`
+* Validar los algoritmos permitidos de forma **whitelist** (por ejemplo, solo `HS256`, `RS256`)
+* Usar librerías JWT que **ignoren el valor del header `alg` y usen un algoritmo configurado del lado del servidor**
+
+---
+
+> 📌 Esta vulnerabilidad fue explotada en ataques reales como el de Auth0 (2017), y es una de las razones por las que se recomienda evitar confiar en el header del JWT sin controles estrictos.
+
 
 ### 3. **Uso de claves públicas como si fueran privadas**
 
