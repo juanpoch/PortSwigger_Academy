@@ -2,6 +2,10 @@
 
 Este repositorio contiene writeups de los laboratorios de **PortSwigger Web Security Academy**. Cada archivo ofrece una solución detallada, explicaciones técnicas y ejemplos paso a paso para facilitar el aprendizaje de técnicas prácticas de explotación web.
 
+![image](https://github.com/user-attachments/assets/1d0dc523-dde2-4865-a158-169c7031e8c0)
+🚀 Actualmente, he completado los **59 laboratorios de nivel Apprentice** con documentación exhaustiva, lo cual representa el 100% de los labs Apprentice.  
+📈 Mi progreso general en la plataforma incluye también laboratorios de nivel Practitioner y Mystery Labs.
+
 ---
 
 ## 📂 Organización del contenido
