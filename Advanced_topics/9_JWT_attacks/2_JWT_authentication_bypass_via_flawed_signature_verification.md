@@ -42,7 +42,7 @@ El campo alg del header de un JWT indica qué algoritmo debe usar el servidor pa
 
 
 El siguiente paso es generar un token con solo dos partes:
-`base64url(header).base64url(payload)`.
+`base64url(header).base64url(payload).`.
 
 Si el servidor acepta este token como válido, entonces podremos autenticarnos como cualquier usuario sin conocer ninguna clave secreta.
 
