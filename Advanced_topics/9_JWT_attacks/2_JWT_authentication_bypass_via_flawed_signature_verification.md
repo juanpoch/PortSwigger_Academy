@@ -46,7 +46,7 @@ El siguiente paso es generar un token con solo dos partes:
 
 Si el servidor acepta este token como válido, entonces podremos autenticarnos como cualquier usuario sin conocer ninguna clave secreta.
 
-Antes de enviar la solicitud debemos firmarla con el algoritmo `none`- Para eso hacer clic en `Attack` > `"none" Signing Algorithm`, luego elegir el valor del algoritmo (en este caso `none`) y hacer clic en `OK`:
+Antes de enviar la solicitud debemos firmarla con el algoritmo `none`. Para eso hacer clic en `Attack` > `"none" Signing Algorithm`, luego elegir el valor del algoritmo (en este caso `none`) y hacer clic en `OK`:
 ![image](https://github.com/user-attachments/assets/98ad6ba5-893c-47b1-8f22-dec772dc1619)
 
 Enviamos la solicitud:
