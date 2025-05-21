@@ -23,6 +23,8 @@ Notamos que nos autenticamos correctamente y el servidor nos devuelve un JWT, lu
 Enviamos esa solicitud al repeater e intentamos acceder al panel `/admin`:
 ![image](https://github.com/user-attachments/assets/ef34fdac-bb9a-4eae-abb5-007be258a4d8)
 
+El servidor nos devuelve el mensaje que necesitamos ser el usuario administrador para acceder al panel administrativo.
+
 Procedemos a intentar suplantar el campo `"sub":"wiener"` por `"sub":"administrator"` sin enviar una firma válida:
 ![image](https://github.com/user-attachments/assets/2a12560f-559d-40bc-a75f-24893d184479)
 
