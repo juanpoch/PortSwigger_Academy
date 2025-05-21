@@ -6,5 +6,6 @@ To solve the lab, modify your session token to gain access to the admin panel at
 
 You can log in to your own account using the following credentials: `wiener:peter`
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
