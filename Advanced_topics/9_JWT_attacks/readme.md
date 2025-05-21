@@ -338,6 +338,9 @@ Estas técnicas pueden evadir validaciones débiles que solo comparan cadenas ex
 
 ---
 
+[Lab: JWT authentication bypass via flawed signature verification](2_JWT_authentication_bypass_via_flawed_signature_verification.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
 ---
 
