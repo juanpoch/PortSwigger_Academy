@@ -288,10 +288,11 @@ Esto implica que un atacante puede:
 {
   "alg": "none"
 }
-4. Generar un token con solo dos partes:
 ```
+4. Generar un token con solo dos partes:
 
-base64url(header).base64url(payload).
+
+`base64url(header).base64url(payload).`
 
 
 (Sin firma, solo con un punto al final)
@@ -335,6 +336,10 @@ Estas técnicas pueden evadir validaciones débiles que solo comparan cadenas ex
 
 > 📌 Esta vulnerabilidad fue explotada en ataques reales como el de Auth0 (2017), y es una de las razones por las que se recomienda evitar confiar en el header del JWT sin controles estrictos.
 
+---
+
+
+---
 
 ### 3. **Uso de claves públicas como si fueran privadas**
 
