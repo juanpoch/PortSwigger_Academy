@@ -30,7 +30,7 @@ Luego tramitamos el endpoint `/my-account?id=wiener` con ese `JWT`:
 El objetivo de este laboratorio es acceder al panel `/admin` y eliminar al usuario `carlos`. Intentamos acceder al endpoint `/admin` en el Repeater, pero no tenemos acceso al panel:
 ![image](https://github.com/user-attachments/assets/961e2162-2d7b-4161-a471-c9a49a9e95f1)
 
-Accedemos a la pestaña `JSON Web Token` correspondiente a la extensión `JWT Editor` y cambiamos el valor del campo `"sub":"wiener"` por `"sub":"administrator"`:
+Accedemos a la pestaña `JSON Web Token` correspondiente a la extensión `JWT Editor` y cambiamos el valor del campo `"sub":"wiener"` por `"sub":"administrator"`:  
 ![image](https://github.com/user-attachments/assets/2d669fc1-61bf-44af-9324-979f023c4423)
 
 Enviamos la petición con el JWT modificado, sin una firma válida:
