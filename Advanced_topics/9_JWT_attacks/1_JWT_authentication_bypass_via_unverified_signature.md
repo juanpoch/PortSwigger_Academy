@@ -33,7 +33,7 @@ El objetivo de este laboratorio es acceder al panel `/admin` y eliminar al usuar
 Accedemos a la pestaña `JSON Web Token` correspondiente a la extensión `JWT Editor` y cambiamos el valor del campo `"sub":"wiener"` por `"sub":"administrator"`:
 ![image](https://github.com/user-attachments/assets/2d669fc1-61bf-44af-9324-979f023c4423)
 
-Enviamos la petición sin firmar:
+Enviamos la petición con el JWT modificado, sin una firma válida:
 ![image](https://github.com/user-attachments/assets/cde320ef-ab44-4852-9254-aac3331bea12)
 
 🔍 Esta vulnerabilidad se debe a que el servidor utiliza la función `decode()` en lugar de `verify()`, lo que permite aceptar cualquier JWT sin verificar su firma. Esto permite que un atacante modifique el payload, reemplace el valor del campo `sub`, y acceda como otro usuario sin necesidad de firmar el token con una clave válida.
