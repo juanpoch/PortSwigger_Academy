@@ -293,7 +293,7 @@ Esto implica que un atacante puede:
 
 base64url(header).base64url(payload).
 
-````
+
 (Sin firma, solo con un punto al final)
 
 👉 Si el servidor acepta este token como válido, entonces el atacante puede autenticarse como cualquier usuario sin conocer ninguna clave secreta.
@@ -306,7 +306,7 @@ Incluso si el servidor intenta filtrar `alg=none`, hay formas de evadir el contr
 - **Capitalización mezclada**:
   ```json
   { "alg": "NoNe" }
-````
+  ```
 
 * **Codificación UTF-8 anormal**:
 
