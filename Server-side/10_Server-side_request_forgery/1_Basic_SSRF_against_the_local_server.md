@@ -37,7 +37,8 @@ Procedemos a explotar la vulnerabilidad intentando acceder a recursos internos, 
 stockApi=http%3a%2f%2f127.0.0.1
 ```
 Enviamos la solicitud al repeater y realizamos el ataque:
-![image](https://github.com/user-attachments/assets/a3ad4a95-6cc8-4996-a9ba-283855cf6540)
+![image](https://github.com/user-attachments/assets/a498630d-4c0e-4781-a154-ff19ce12e1e6)
+
 
 Notamos que somos capaces de acceder al localhost, por lo que pudimos explotar la vulnerabilidad `SSRF`. Vemos que tenemos acceso al panel de administración, por lo que ingresamos al mismo buscando su enlace en el código fuente:
 ![image](https://github.com/user-attachments/assets/fea99248-b429-401e-a03f-bd00e3939ba2)
