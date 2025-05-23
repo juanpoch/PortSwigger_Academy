@@ -34,7 +34,7 @@ Indicadores:
 
 Procedemos a explotar la vulnerabilidad intentando acceder a recursos internos, particularmente utilizamos el siguiente payload, el cual buscará acceder al localhost a través del parámetro `stockApi`:
 ```bash
-stockApi=http%3a%2f%2f127.0.01
+stockApi=http%3a%2f%2f127.0.0.1
 ```
 Enviamos la solicitud al repeater y realizamos el ataque:
 ![image](https://github.com/user-attachments/assets/a3ad4a95-6cc8-4996-a9ba-283855cf6540)
