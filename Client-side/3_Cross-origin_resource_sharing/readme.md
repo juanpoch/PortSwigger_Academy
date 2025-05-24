@@ -156,6 +156,17 @@ Access-Control-Allow-Origin: null
 Access-Control-Allow-Credentials: true
 ```
 
+Cuando el navegador no puede determinar un origen seguro, establece el valor de la cabecera `Origin: null`.
+Esto ocurre en casos como:
+
+| Caso                                      | ¿Por qué es `null`?                                        |
+|------------------------------------------|-------------------------------------------------------------|
+| `iframe` que carga desde `file://`       | No hay un esquema válido para `Origin`.                    |
+| Scripts embebidos desde archivos locales | Lo mismo: no hay dominio.                                  |
+| `sandboxed iframes` sin `allow-same-origin` | El navegador deliberadamente elimina el `origin`.       |
+| URLs como `data:` o `blob:`              | No tienen un origen tradicional.                           |
+
+
 **Exploit con iframe sandbox:**
 
 ```html
