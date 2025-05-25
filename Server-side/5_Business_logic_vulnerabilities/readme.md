@@ -18,7 +18,7 @@ Supongamos un sitio de compras que tiene esta regla:
 
 - Solo se puede aplicar un cupón de descuento si el carrito supera los $100.
 
-Pero la validación está solo del lado cliente (JavaScript). Un atacante podría interceptar la solicitud, modificar el total o forzar el uso del cupón desde Burp Suite.
+Pero la validación está solo del lado cliente. Un atacante podría interceptar la solicitud, modificar el total o forzar el uso del cupón desde Burp Suite.
 
 Resultado: descuento aplicado sin cumplir la condición.
 
