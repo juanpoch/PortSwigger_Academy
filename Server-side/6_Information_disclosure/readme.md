@@ -101,7 +101,7 @@ Fatal error: Uncaught exception 'PDOException'...
 
 ## Conclusión
 
-Las vulnerabilidades de *Information Disclosure* no deben subestimarse. Aunque por sí solas muchas veces no permiten explotar el sistema directamente, pueden **ser el trampolín para ataques más complejos**. La información es poder, y en ciberseguridad, **cada bit cuenta**.
+Las vulnerabilidades de *Information Disclosure* no deben subestimarse. Aunque por sí solas muchas veces no permiten explotar el sistema directamente, pueden **ser el trampolín para ataques más complejos**.
 
 Aprender a reconocer, evaluar y explotar estas fugas es una habilidad esencial para cualquier analista, pentester o bug bounty hunter.
 
