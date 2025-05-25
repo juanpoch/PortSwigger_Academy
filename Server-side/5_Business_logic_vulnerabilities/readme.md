@@ -29,7 +29,7 @@ Resultado: descuento aplicado sin cumplir la condición.
 Las vulnerabilidades de lógica suelen surgir por:
 
 - Asumir que los usuarios solo usarán la app como fue diseñada.
-- Validar condiciones críticas **solo en el cliente (JavaScript)**.
+- Validar condiciones críticas **solo en el cliente**.
 - No verificar el estado del sistema entre pasos del flujo.
 - Flujos de negocio mal definidos o pobremente documentados.
 - Desarrolladores que no conocen toda la aplicación o sus dependencias.
