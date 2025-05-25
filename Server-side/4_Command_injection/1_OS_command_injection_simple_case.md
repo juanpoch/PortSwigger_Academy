@@ -38,7 +38,7 @@ stockreport.sh 1 1
 Enviamos la solicitud al repeater, y en el inspector, visualizamos la sección `Request body parameters`, hacemos click en `>` para editar los parámetros que vamos a tramitar:
 ![image](https://github.com/user-attachments/assets/3b7898e2-ccc9-4107-be3f-d7b874077b95)
 
-Insertamos un payload de prueba `& echo test &`, hacemos click en `Apply changes` y enciamos la solicitud:
+Insertamos un payload de prueba `& echo test &`, hacemos click en `Apply changes` y enviamos la solicitud:
 ![image](https://github.com/user-attachments/assets/9505e8dd-a4d9-49b5-9916-46f95d301ac7)
 
 Vemos que la cadena `test` es devuelta por el servidor, por lo que confirmamos que tenemos ejecución remota de comandos.
