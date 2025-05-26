@@ -223,7 +223,7 @@ https://vulnerable-site.com/logs/debug.log
 
 El debugging data puede ser una mina de oro para un atacante. Muchas veces es el **primer paso para una cadena de exploits más compleja**. Saber reconocerlo e interpretarlo es esencial para cualquier pentester, y deshabilitarlo correctamente es fundamental para cualquier desarrollador.
 
-[Lab: Information disclosure in error messages](1_Information_disclosure_in_error_messages.md)  
+[Lab: Information disclosure on debug page](2_Information_disclosure_on_debug_page.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green) 
 
