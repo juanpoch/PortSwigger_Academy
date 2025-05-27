@@ -75,7 +75,7 @@ Un empleado con nivel "Secreto" no podrá acceder a documentos "Top Secret", per
 
 ---
 
-## 📂 Role-Based Access Control (RBAC - Control de Acceso Basado en Roles)
+## 📂 Role-Based Access Control
 Modelo ampliamente utilizado en entornos empresariales. Se crean **roles** (conjuntos de permisos) y los usuarios son asignados a uno o más roles.
 
 ### 📄 Ejemplo de roles:
