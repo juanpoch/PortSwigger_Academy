@@ -42,7 +42,7 @@ El backend consulta esta matriz antes de ejecutar la acción solicitada.
 
 ---
 
-## ✉️ Discretionary Access Control (DAC - Control de Acceso Discrecional)
+## ✉️ Discretionary Access Control
 En este modelo, el **dueño del recurso** tiene la potestad de decidir quién puede acceder a él y en qué medida.
 
 ### ✨ Ventajas:
