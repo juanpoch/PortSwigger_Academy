@@ -16,7 +16,6 @@ El laboratorio nos dice que tenemos que encontrar un panel de administración de
 Primero observamos las peticiones tanto del panel principal como el de login:
 ![image](https://github.com/user-attachments/assets/f30e153a-2959-4911-a1cf-ce2d347e418d)
 
-![image](https://github.com/user-attachments/assets/0b8bacf4-5a38-463e-998b-9b571a0698b8)
 
 No encontramos enlaces ocultos ni comentarios inspeccionando las peticiones.
 
