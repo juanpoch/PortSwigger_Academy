@@ -16,7 +16,7 @@ Iniciamos el laboratorio y tenemos una aplicación de blog:
 Accedemos al panel de autenticación y nos logueamos con nuestras credenciales `wiener:peter`. Observamos el endpoint `/my-account?id=wiener`:
 ![image](https://github.com/user-attachments/assets/dd34d67f-d5d9-44c5-b16d-a1b7266a3a3d)
 
-Notamos que tenemos una funcionalidad de carga de archivos, por lo que subimos una imagen de prueba para analizarla. Cargamos la imágen y haceos click en `Upload`:
+Notamos que tenemos una funcionalidad de carga de archivos, por lo que subimos una imagen de prueba para analizarla. Cargamos la imágen y hacemos click en `Upload`:
 ![image](https://github.com/user-attachments/assets/90924fc6-07f2-4171-9b09-41c2e65fc4ad)
 
 Volvemos a nuestra cuenta y se ve nuestra imagen cargada:
