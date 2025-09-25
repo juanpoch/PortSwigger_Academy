@@ -25,6 +25,17 @@ Las aplicaciones modernas muchas veces reciben datos del cliente (formularios, U
 
 El atacante puede modificar la sintaxis de la consulta con caracteres especiales, logrando alterar su comportamiento.
 
+Caracteres que podrían romper la sintaxis:
+```sql
+"
+'
+`
+{
+}
+$
+;
+```
+
 Ejemplo:
 
 ```js
