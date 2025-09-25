@@ -43,6 +43,16 @@ Ejemplo:
 db.products.find({ category: userInput })
 ```
 
+Inyecciones posibles si encontramos un error de sintáxis con el caracter `'`:
+```sql
+' && 1 == 1
+' && '1' == '1  --> 'Accessories' && ...
+' || 1 == 1
+' || '1' == '1
+' || 1 ||
+' || 1 || '
+```
+
 Si `userInput` es:
 
 ```js
