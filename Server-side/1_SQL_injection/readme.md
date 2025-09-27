@@ -86,17 +86,17 @@ Esto genera la consulta SQL:
 SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 ```
 
-- `released = 1` limita la muestra a productos "liberados".
+* `released = 1` limita la muestra a productos marcados como "liberados" o publicados.
 
-| Parte | Explicación |
-|:------|:------------|
-| `SELECT *` | Selecciona todas las filas de la tabla indicada. |
-| `FROM products` | Indica la tabla de donde se van a extraer los datos. En este caso, de la tabla llamada `products`. |
-| `WHERE` | Agrega una condición: solo se devolverán los registros que cumplan los criterios especificados. |
-| `category = 'Gifts'` | Primera condición: el valor de la columna `category` debe ser igual a `'Gifts'`. Solo selecciona productos de la categoría "Gifts" (regalos). |
-| `AND released = 1` | Segunda condición: además, el valor de la columna `released` debe ser `1`. Esto indica que el producto debe estar liberado o publicado. |
+| Parte                | Explicación                                                                                                                              |
+| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| `SELECT *`           | Selecciona todas las columnas de la tabla indicada.                                                                                      |
+| `FROM products`      | Especifica la tabla de la que se extraerán los datos. En este caso, la tabla se llama `products`.                                        |
+| `WHERE`              | Añade una condición: solo se devolverán los registros que cumplan los criterios especificados.                                           |
+| `category = 'Gifts'` | Primera condición: el valor de la columna `category` debe ser igual a `'Gifts'`. Filtra los productos de la categoría "Gifts" (regalos). |
+| `AND released = 1`   | Segunda condición: además, el valor de la columna `released` debe ser `1`. Esto indica que el producto debe estar liberado o publicado.  |
 
-En otras palabras, esto significa "mostrame todas las filas de la tabla `products` donde la columna `category=Gifts` y la columna `released=1`".
+En otras palabras, la consulta significa: **“Selecciona todas las columnas de todas las filas de la tabla `products` en las que la columna `category` sea `'Gifts'` y la columna `released` tenga el valor `1`.”**
 
 **Ataque:**
 
