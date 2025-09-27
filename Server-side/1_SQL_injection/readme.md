@@ -98,7 +98,7 @@ Suponiendo que la base de datos es la siguiente:
 
 * `released = 1` limita la muestra a productos marcados como "liberados" o publicados.
 
-La consulta devuelve todas las columnas (`id, name, category, price, released`) pero solo de las filas que cumplan:
+La consulta devuelve (imprime) todas las columnas (`id, name, category, price, released`) pero solo de las filas que cumplan:
 
 - `category = 'Gifts'`
 - `released = 1`
