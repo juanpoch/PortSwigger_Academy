@@ -80,13 +80,35 @@ Un sitio de compras muestra productos por categoría. Al seleccionar "Gifts", el
 https://insecure-website.com/products?category=Gifts
 ```
 
+
 Esto genera la consulta SQL:
 
 ```sql
 SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 ```
+Suponiendo que la base de datos es la siguiente:
+
+| id | name       | category | price | released |
+| -- | ---------- | -------- | ----- | -------- |
+| 1  | Teddy Bear | Gifts    | 20    | 1        |
+| 2  | Toy Car    | Toys     | 15    | 1        |
+| 3  | Mug        | Gifts    | 8     | 0        |
+| 4  | Chocolate  | Gifts    | 5     | 1        |
+| 5  | Board Game | Toys     | 30    | 1        |
 
 * `released = 1` limita la muestra a productos marcados como "liberados" o publicados.
+
+Esto devuelve todas las columnas (`id, name, category, price, released`) pero solo de las filas que cumplan:
+
+- `category = 'Gifts'`
+- `released = 1`
+
+### Resultado:
+| id | name       | category | price | released |
+| -- | ---------- | -------- | ----- | -------- |
+| 1  | Teddy Bear | Gifts    | 20    | 1        |
+| 4  | Chocolate  | Gifts    | 5     | 1        |
+
 
 | Parte                | Explicación                                                                                                                              |
 | :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
