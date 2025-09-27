@@ -308,21 +308,3 @@ Encontrar que la base tiene permisos para estas operaciones incrementa el riesgo
 
 ---
 
-## Plantilla rápida para tu writeup (fragmento)
-
-```markdown
-## Examinar la base de datos
-1. Fingerprint: `/path?param=1'` -> `SELECT version()` devolvió: "MySQL 8.0.33" -> motor: MySQL
-2. Listado de tablas (information_schema.tables): `...` -> tablas encontradas: users, orders, products
-3. Columnas de users: id, username, password, email
-4. Exfiltración: ejemplo con GROUP_CONCAT(...) -> resultado: admin:5f4d... , guest:...
-```
-
----
-
-Si querés, puedo:
-
-* Generar ejemplos concretos en Markdown listos para commitear para **cada** SGBD (MySQL, PostgreSQL, MSSQL, Oracle, SQLite).
-* Adaptar la sección de `Técnicas de enumeración` como ejercicios paso a paso para un lab Practitioner específico (indicame el lab y lo completo con requests y payloads listos para Burp Repeater).
-
-¡Listo para que lo copies en tu repo o lo modifique según prefieras!
