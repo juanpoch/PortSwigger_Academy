@@ -98,7 +98,7 @@ Suponiendo que la base de datos es la siguiente:
 
 * `released = 1` limita la muestra a productos marcados como "liberados" o publicados.
 
-Esto devuelve todas las columnas (`id, name, category, price, released`) pero solo de las filas que cumplan:
+La consulta devuelve todas las columnas (`id, name, category, price, released`) pero solo de las filas que cumplan:
 
 - `category = 'Gifts'`
 - `released = 1`
@@ -110,15 +110,16 @@ Esto devuelve todas las columnas (`id, name, category, price, released`) pero so
 | 4  | Chocolate  | Gifts    | 5     | 1        |
 
 
-| Parte                | Explicación                                                                                                                              |
-| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| `SELECT *`           | Selecciona todas las columnas de la tabla indicada.                                                                                      |
-| `FROM products`      | Especifica la tabla de la que se extraerán los datos. En este caso, la tabla se llama `products`.                                        |
-| `WHERE`              | Añade una condición: solo se devolverán los registros que cumplan los criterios especificados.                                           |
-| `category = 'Gifts'` | Primera condición: el valor de la columna `category` debe ser igual a `'Gifts'`. Filtra los productos de la categoría "Gifts" (regalos). |
-| `AND released = 1`   | Segunda condición: además, el valor de la columna `released` debe ser `1`. Esto indica que el producto debe estar liberado o publicado.  |
+Si la consulta es:
+```sql
+SELECT id, name, price FROM products WHERE category = 'Gifts' AND released = 1;
+```
+`Resultado`:
+| id | name       | price |
+| -- | ---------- | ----- |
+| 1  | Teddy Bear | 20    |
+| 4  | Chocolate  | 5     |
 
-En otras palabras, la consulta significa: **“Selecciona todas las columnas de todas las filas de la tabla `products` en las que la columna `category` sea `'Gifts'` y la columna `released` tenga el valor `1`.”**
 
 **Ataque:**
 
