@@ -7,6 +7,8 @@ Para explotar una vulnerabilidad de SQL injection es muy útil conocer el **tipo
 
 Este documento muestra consultas típicas para identificar la versión y para enumerar tablas y columnas, con variantes para MySQL, Microsoft SQL Server, PostgreSQL, Oracle y SQLite.
 
+[SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
 ---
 
 ## Identificar el tipo y la versión de la base de datos
