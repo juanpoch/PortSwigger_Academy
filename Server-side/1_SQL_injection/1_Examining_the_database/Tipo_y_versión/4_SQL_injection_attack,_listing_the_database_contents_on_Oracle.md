@@ -12,4 +12,6 @@ There is a built-in table on Oracle called `dual` which you can use for this pur
 
 [SQLi Cheet Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)  
+
 ---
