@@ -125,6 +125,11 @@ Si alguna de esas consultas no da error y la respuesta HTTP contiene la cadena `
 
 Si al ejecutar el payload aparece un error del tipo "Conversion failed when converting the varchar value 'a' to data type int", entonces la posición no admite texto (la columna es numérica).
 
+
+[Lab: SQL_injection_UNION_attack,_finding_a_column_containing_text](2_SQL_injection_UNION_attack,_finding_a_column_containing_text.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 ---
 
 ## 3) Exfiltrar datos con `UNION` una vez que conocemos columnas y tipos
