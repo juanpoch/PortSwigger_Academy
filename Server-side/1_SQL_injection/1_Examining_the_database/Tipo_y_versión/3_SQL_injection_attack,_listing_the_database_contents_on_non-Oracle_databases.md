@@ -76,3 +76,22 @@ Hacemos la consulta y filtramos por `username`:
 
 Obtenemos el username: `username_zsnozl`.
 
+Si filtramos por `password` obtenemos `password_pzwvoe`:
+<img width="1514" height="825" alt="image" src="https://github.com/user-attachments/assets/9093bccf-29fd-4425-bb60-e7ccde699c7f" />
+
+Ahora que tenemos el nombre de la tabla, y las columnas correspondientes a usuernames y passwords, procedemos a realizar la consulta final:
+```
+' UNION select password_pzwvoe, password_pzwvoe FROM users_vrjlxy--
+```
+
+Realizamos la consulta y obtenemos todas las credenciales de la tabla:
+<img width="1868" height="826" alt="image" src="https://github.com/user-attachments/assets/f53a3d63-fca0-44c0-98e7-fd78c6a4c7d9" />
+
+Para resolver el laboratorio nos logueamos como administrador con las siguientes credenciales:
+- administrator
+- x8owsse2xz05o62ehwzr
+
+
+<img width="1679" height="771" alt="image" src="https://github.com/user-attachments/assets/0f39c971-2c40-438b-8970-8926f2d542c3" />
+
+
