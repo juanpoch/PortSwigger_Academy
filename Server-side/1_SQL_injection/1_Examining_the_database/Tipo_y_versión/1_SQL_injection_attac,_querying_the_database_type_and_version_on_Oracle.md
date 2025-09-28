@@ -57,5 +57,12 @@ Confirmamos por este método que la consulta tiene 2 columnas:
 
 `Nota`: La tabla `DUAL` es una tabla especial que nos provee `ORACLE`, que pertenece al schema del usuario `SYS` pero puede ser usada por todos los usuarios.
 
+Cambiamos el tipo de dato `NULL` de nuestra consulta, para averiguar qué tipo de dato contiene cada columna. Nosotros ya sabemos que contienen cadenas ya que el texto es visible en la página, pero realizamos la consulta para confirmar:
+<img width="1874" height="802" alt="image" src="https://github.com/user-attachments/assets/ca0225fd-45b6-434e-abc7-605e8cd0157b" />
+
+Confirmamos ya que nos devuelve un código de estado 200.
+
+
+
 
 
