@@ -63,6 +63,7 @@ Hay dos técnicas comunes.
 
 ### A — `ORDER BY` por posición
 
+
 Inyectás `ORDER BY 1`, `ORDER BY 2`, `ORDER BY 3`, ... hasta que obtengas un error o un comportamiento diferencial. El primer `n` que falle indica que la consulta original tiene `n-1` columnas.
 
 Payloads (si la aplicación ya envuelve el input con comillas):
@@ -74,6 +75,8 @@ Payloads (si la aplicación ya envuelve el input con comillas):
 ```
 
 Si la app no muestra errores explícitos, observá diferencias en la respuesta (código, tamaño, contenido).
+
+[Order by](https://github.com/juanpoch/PortSwigger_Academy/blob/main/Server-side/1_SQL_injection/1_Examining_the_database/Order_by.md)
 
 ### B — `UNION SELECT NULL,...` (prueba por conteo)
 
