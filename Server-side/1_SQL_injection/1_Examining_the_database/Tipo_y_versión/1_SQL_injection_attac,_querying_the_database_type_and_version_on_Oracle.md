@@ -45,3 +45,17 @@ Probamos con `'order by 3--`:
 Como con 3 nos da `Internal Server Error`, sabemos que la consulta cuenta con 2 columnas.  
 
 - Determinar el tipo de dato de las columnas:
+
+Si la aplicación suprimiera errores, `ORDER BY` no mostraría fallos visibles, podríamos usar sentencias `'UNION SELECT NULL, NULL--` hasta que la aplicación dejase de fallar.
+
+En este caso, tenemos una base de datos `ORACLE` que debe utilizar la siguiente sentencia: `'UNION SELECT NULL, NULL from DUAL--`, ya que deben tener una cláusula `FROM`.
+
+Si no la utilizamos, la aplicación falla:
+<img width="1499" height="753" alt="image" src="https://github.com/user-attachments/assets/093f366b-718a-401f-b2ff-b4a5ac050785" />
+Confirmamos por este método que la consulta tiene 2 columnas:
+<img width="1872" height="783" alt="image" src="https://github.com/user-attachments/assets/788ed62f-5d0a-4a27-b5b3-a70667e1835f" />
+
+`Nota`: La tabla `DUAL` es una tabla especial que nos provee `ORACLE`, que pertenece al schema del usuario `SYS` pero puede ser usada por todos los usuarios.
+
+
+
