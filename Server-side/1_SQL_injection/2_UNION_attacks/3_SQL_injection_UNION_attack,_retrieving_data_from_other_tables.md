@@ -22,7 +22,7 @@ Objetivos:
 
 - Determinar el número de columnas en la consulta select, realizando un ataque `UNION`.
 - Encontrar una columna que sea compatible con cadenas.
-- Realizar un ataque `UNION` que devuelva todos los usuarios y contraseñas de la tabla `users` y columnas `username` y `passwords`
+- Realizar un ataque `UNION` que devuelva todos los usuarios y contraseñas de la tabla `users` y columnas `username` y `password`
 - Autenticarnos como el usuario `administrator`
 
 
@@ -58,3 +58,8 @@ Probamos con la segunda columna usando el payload `' UNION select 'a', 'a'--`:
 Sabemos que tenemos 2 columnas y ambas admiten cadena como tipo de dato.
 
 ---
+
+- Realizar un ataque `UNION` que devuelva todos los usuarios y contraseñas de la tabla `users` y columnas `username` y `password`
+
+Procedemos a realizar la consulta con el payload `' UNION select username, password FROM users--`:
+<img width="1858" height="822" alt="image" src="https://github.com/user-attachments/assets/6204d256-1806-4a03-8f90-b8650b56d747" />
