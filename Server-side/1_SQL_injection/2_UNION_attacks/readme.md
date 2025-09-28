@@ -183,17 +183,3 @@ Ejemplo Oracle con `UNION` (1 columna visible):
 ---
 
 
-## 7) Consejos prácticos y trucos
-
-* **Determina primero el motor**: si ves errores con `ORA-` o `SQLSTATE`, adapta payloads (DUAL, funciones, concatenadores).
-* **Usa `NULL` al principio** para contar columnas y evitar errores de tipo. Luego prueba literales para identificar columnas de texto.
-* **Identifica qué columna aparece en la página** reemplazando `NULL` por marcadores (`'col2_marker'`) y buscando en la respuesta HTML.
-* **Si la app suprime errores**, inspecciona diferencias en longitud/respuesta o usa inyección ciega (time/boolean).
-* **Evita payloads destructivos** en entornos reales. Solo en labs o con autorización.
-* **Si `UNION` está bloqueado**, prueba técnicas de subqueries, error-based o time-based para enumerar la base.
-
----
-
-
-
-¿Querés que suba esto al lienzo como archivo `SQLi_UNION_attacks.md` (ya lo creé) y además genere una versión con ejemplos listos para Burp Repeater codificados (URL-encoding) para MySQL y Oracle?"}
