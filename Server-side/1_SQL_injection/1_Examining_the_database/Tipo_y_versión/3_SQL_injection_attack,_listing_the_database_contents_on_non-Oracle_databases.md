@@ -6,5 +6,9 @@ The application has a login function, and the database contains a table that hol
 
 To solve the lab, log in as the `administrator` user. 
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
+[SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
 ---
 
