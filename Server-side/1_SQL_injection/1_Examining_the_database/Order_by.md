@@ -1,3 +1,7 @@
+# Order by
+
+---
+
 `ORDER BY` sirve para **ordenar** los resultados de una consulta según una o varias columnas.
 
 * `ORDER BY columna` → ordena por el contenido de `columna`. Por defecto `ASC` (ascendente).
