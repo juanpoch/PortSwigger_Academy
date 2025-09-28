@@ -116,6 +116,11 @@ MyDatabase     dbo           Users       Password     varchar
 
 Con esto conoces las columnas y sus tipos.
 
+
+[Lab: SQL_injection_attack,_listing_the_database_contents_on_non-Oracle_databases](3_SQL_injection_attack,_listing_the_database_contents_on_non-Oracle_databases.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)  
+
 ---
 
 ## ¿Y Oracle? — vistas del diccionario
