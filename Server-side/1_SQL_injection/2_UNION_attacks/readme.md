@@ -1,11 +1,5 @@
 # SQL injection — UNION attacks
 
-**Propósito:** explicar en español qué son los ataques SQLi mediante `UNION`, cuándo y cómo funcionan, cómo determinar el número de columnas, identificar columnas compatibles con texto, particularidades por SGBD (p.ej. Oracle `DUAL`), ejemplos de payloads y cómo exfiltrar datos concatenados. Incluye payloads listos para labs Practitioner.
-
----
-
-## ¿Qué es un ataque `UNION` en SQLi?
-
 Cuando una aplicación es vulnerable a SQL injection **y** la salida de la consulta original se refleja en la respuesta HTTP, puedes inyectar un `UNION SELECT` para añadir filas controladas por ti al conjunto de resultados. Esto permite recuperar datos de otras tablas si consigues que la consulta inyectada tenga la misma estructura (nº de columnas y tipos compatibles) que la consulta original.
 
 Ejemplo conceptual:
