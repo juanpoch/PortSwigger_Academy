@@ -41,8 +41,8 @@ SELECT a, b FROM table1 UNION SELECT c, d FROM table2;
 | - | - |
 | 1 | 2 |
 | 3 | 4 |
-| 3 | 3 |
-| 5 | 5 |
+| 2 | 3 |
+| 4 | 5 |
 
 
 
