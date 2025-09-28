@@ -12,6 +12,40 @@ SELECT c, d FROM table2;
 
 El resultado es un único conjunto con dos columnas, combinando valores de `a,b` y `c,d`.
 
+table1
+| a | b |
+| - | - |
+| 1 | 2 |
+| 3 | 4 |
+
+table2
+| c | d |
+| - | - |
+| 2 | 3 |
+| 4 | 5 |
+
+Consulta 1:
+```sql
+SELECT a, b FROM table1;
+```
+| a | b |
+| - | - |
+| 1 | 2 |
+| 3 | 4 |
+
+Consulta 2:
+```sql
+SELECT a, b FROM table1 UNION SELECT d, d FROM table2;
+```
+| a | b |
+| - | - |
+| 1 | 2 |
+| 3 | 4 |
+| 3 | 3 |
+| 5 | 5 |
+
+
+
 ---
 
 ## Requisitos para que `UNION` funcione
