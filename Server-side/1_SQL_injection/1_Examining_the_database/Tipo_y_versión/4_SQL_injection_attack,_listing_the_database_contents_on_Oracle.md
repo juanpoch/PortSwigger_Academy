@@ -37,3 +37,14 @@ Probamos con ' order by 3-- y nos arroja 500 Internal Server Error:
 
 Podemos confirmar que tenemos 2 columnas con nuestro metodo `UNION select null, null from dual--` ya que estamos ante ORACLE:
 <img width="1872" height="791" alt="image" src="https://github.com/user-attachments/assets/3453b0d8-3aac-4b13-9b62-5269811730d2" />
+
+
+- Ahora procedemos a analizar el tipo de dato que tienen las columnas, probamos con cadenas:
+<img width="1868" height="791" alt="image" src="https://github.com/user-attachments/assets/73b939bc-f0e1-43dc-8081-53fbc010d88c" />
+
+Por lo que sabemos que las columnas aceptan cadenas como tipo de dato.
+
+- Averiguamos la versión, confirmamos que es ORACLE, usamos el payload `UNION select banner, 'a' FROM v$version--` y filtramos por oracle:
+<img width="1875" height="808" alt="image" src="https://github.com/user-attachments/assets/17ce4807-8aa3-4b53-b9f7-6833a2d0692c" />
+
+Nos brinda la versión `Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production`.
