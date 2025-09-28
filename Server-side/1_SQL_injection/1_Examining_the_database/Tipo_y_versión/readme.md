@@ -62,6 +62,10 @@ entonces confirmas que el motor es Microsoft SQL Server y puedes ajustar payload
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)  
 
+[Lab: SQL_injection_attack,_querying_the_database_type_and_version_on_MySQL_and_Microsoft](2_SQL_injection_attack,_querying_the_database_type_and_version_on_MySQL_and_Microsoft.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)  
+
 ---
 
 ## Listar el contenido de la base de datos (tablas y columnas)
