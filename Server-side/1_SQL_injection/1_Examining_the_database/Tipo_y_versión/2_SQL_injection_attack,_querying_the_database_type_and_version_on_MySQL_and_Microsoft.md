@@ -26,6 +26,13 @@ Al darnos un `Internal Server Error` confirmamos que es vulnerable a `SQLi`.
 Obtenemos un `Internal Server Error`, eso es porque hay algún caracter que no está procesando, probemos con `#`:
 <img width="1871" height="733" alt="image" src="https://github.com/user-attachments/assets/5185255e-a082-4455-862d-eae0e0b34939" />
 
+Ahora que sabemos que funciona `#`, probamos con 2:
+<img width="1885" height="724" alt="image" src="https://github.com/user-attachments/assets/9101c04d-880e-422c-95c7-f26501a49b11" />
 
+Probamos con 3:
+<img width="1887" height="576" alt="image" src="https://github.com/user-attachments/assets/9091ca1b-1a62-4713-9042-705484002b9b" />
 
+Sabemos que tenemos 2 columnas.
 
+También funciona el metodo `UNION`:
+<img width="1879" height="644" alt="image" src="https://github.com/user-attachments/assets/03cd4d36-dbca-4182-9ead-204f2d6c7ffa" />
