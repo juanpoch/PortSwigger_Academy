@@ -56,7 +56,7 @@ Microsoft SQL Server 2016 (SP2) (KB4052908) - 13.0.5026.0 (X64)
 
 entonces confirmas que el motor es Microsoft SQL Server y puedes ajustar payloads posteriores.
 
-[Lab: 1 SQL injection attack, querying the database type and version on Oracle](1_SQL_injection_attack,_querying_the_database_type_and_version_on_Oracle.md)  
+[Lab: SQL injection attack, querying the database type and version on Oracle](1_SQL_injection_attack,_querying_the_database_type_and_version_on_Oracle.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)  
 
