@@ -40,7 +40,7 @@ Resultados (para `ORDER BY 2`):
 
 ## `ORDER BY n` para contar columnas
 
-* `ORDER BY n` se refiere a la **posición** `n` en la lista de columnas del `SELECT` (no a la tabla en sí).
+* `ORDER BY n` se refiere a la **posición** `n` en la lista de columnas del `SELECT`.
 * Si la consulta original tiene, por ejemplo, 3 columnas (`SELECT a, b, c ...`) y probás `ORDER BY 4`, el motor devolverá un **error** porque no existe la columna en la posición 4.
 * En una inyección SQL, iterás `ORDER BY 1`, `ORDER BY 2`, `ORDER BY 3`, ... hasta que el `ORDER BY N` produce error. El primer `N` que falla indica que hay `N-1` columnas.
 
