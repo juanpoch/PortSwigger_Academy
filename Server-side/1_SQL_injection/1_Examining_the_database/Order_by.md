@@ -34,7 +34,7 @@ Resultados (para `ORDER BY 2`):
 
 ---
 
-## 3) ¿Por qué `ORDER BY n` sirve para contar columnas en SQLi?
+## `ORDER BY n` para contar columnas
 
 * `ORDER BY n` se refiere a la **posición** `n` en la lista de columnas del `SELECT` (no a la tabla en sí).
 * Si la consulta original tiene, por ejemplo, 3 columnas (`SELECT a, b, c ...`) y probás `ORDER BY 4`, el motor devolverá un **error** porque no existe la columna en la posición 4.
