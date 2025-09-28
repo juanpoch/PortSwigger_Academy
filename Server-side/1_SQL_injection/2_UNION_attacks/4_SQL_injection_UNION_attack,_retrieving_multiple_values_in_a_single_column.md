@@ -63,14 +63,16 @@ Sabemos entonces que la consulta select tiene 2 columnas, de las cuales sólo la
 
 ---
 
-- Paso 3: Realizar un ataque UNION que devuelva todos los usuarios y contraseñas de la tabla `users` y columnas `username` y `password`.
+- `Paso 3`: Realizar un ataque UNION que devuelva todos los usuarios y contraseñas de la tabla `users` y columnas `username` y `password`.
 
 Como sólo la segunda consulta admite cadenas, deberemos realizar una concatenación para mostrar los datos de 2 columnas simultáneamente.
 
 Probamos con el operador `||` y un separador cualquiera (`~`) utilizando el payload `' UNION select NULL, username || '~' || password from users--`:
 <img width="1871" height="817" alt="image" src="https://github.com/user-attachments/assets/5c7527d9-c457-4462-a8dc-ad479f4ea7f7" />
 
-Obtenemos las credenciales del usuario que necesitamos: administrator:0c5vry42hsflekuwsuea
+Obtenemos las credenciales del usuario que necesitamos: `administrator`:`0c5vry42hsflekuwsuea`
 
 ---
 
+- `Paso 4`: Autenticarnos como el usuario `administrator`:
+<img width="1612" height="641" alt="image" src="https://github.com/user-attachments/assets/f12186aa-b9d4-4d08-8ecd-8b3af072b56b" />
