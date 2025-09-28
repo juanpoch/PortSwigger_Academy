@@ -62,7 +62,12 @@ Cambiamos el tipo de dato `NULL` de nuestra consulta, para averiguar qué tipo d
 
 Confirmamos ya que nos devuelve un código de estado 200.
 
+- Mostramos la versión:
 
+[SQLi Cheet Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
+Como sabemos que la versión es `ORACLE`, procedemos a realizar un ataque `UNION` con alguno de los 2 payloads sugeridos:
+- `SELECT banner FROM v$version`
+- `SELECT version FROM v$instance`
 
 
