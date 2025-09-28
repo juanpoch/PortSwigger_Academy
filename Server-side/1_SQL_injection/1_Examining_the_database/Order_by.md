@@ -110,7 +110,7 @@ Cuando el `UNION` deje de fallar sabrás el número de columnas.
 
 ---
 
-## 7) Ejemplo final: usar el número de columnas para `UNION` y exfiltrar
+## Ejemplo final: usar el número de columnas para `UNION` y exfiltrar
 
 Si descubriste que el `SELECT` tiene 3 columnas, podés probar:
 
@@ -122,4 +122,4 @@ Ajustá la columna que contiene texto para que la app la muestre (por ejemplo, s
 
 ---
 
-Si querés, lo subo al lienzo como archivo separado (por ejemplo `theory/ORDER_BY_SQLi.md`) y te genero un bloque listo para copiar en tu repo. ¿Querés que lo guarde así?
+
