@@ -43,3 +43,26 @@ Probamos con `' order by 4--` y nos devuelve un `Internal Server Error`, por lo 
 También podemos probar con el metodo `UNION` para confirmar usando `' UNION select NULL, NULL, NULL--`:
 <img width="1868" height="820" alt="image" src="https://github.com/user-attachments/assets/b82d8568-48cd-4843-b915-7b71c399b08a" />
 
+---
+
+- Paso 2, determinar qué columna admite cadenas.
+
+Probamos con la primer columna usando el payload `' UNION select 'a', NULL, NULL--`:  
+
+<img width="1884" height="822" alt="image" src="https://github.com/user-attachments/assets/920684f2-9a16-42d5-951f-514716517a21" />
+
+Nos devuelve un `Internal Server Error` por lo que la primer columna no admite cadenas.
+
+Probamos con la segunda columna usando el payload `' UNION select NULL, 'a', NULL--`:  
+
+<img width="1878" height="857" alt="image" src="https://github.com/user-attachments/assets/98518bc9-9255-4722-95f7-81e884ec1938" />  
+No sólo nos devuelve un código de estado 200, sino que la aplicación nos imprime la cadena 'a'.
+
+Probamos con la 3er columna utilizando el payload `UNION select NULL, 'a', 'a'--`:
+<img width="1893" height="813" alt="image" src="https://github.com/user-attachments/assets/3b1eede9-0005-42d9-9894-75fa8c9461e7" />
+
+Nos devuelve un `Internal Server Error` por lo que sabemos que sólo la segunda columna admite cadenas. Confirmamos que la columna 1 y 3 admite datos numéricos con el payload `' UNION select 1, 'a', 2--`:
+
+<img width="1869" height="823" alt="image" src="https://github.com/user-attachments/assets/32b91e9b-fe8a-4f0d-ace3-9196205bd979" />
+
+
