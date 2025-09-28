@@ -18,6 +18,8 @@ En este laboratorio debemos realizar los siguientes objetivos:
 - Imprimir el contenido de la tabla.
 - Loguearse como administrador.
 
+[SQLi Cheet Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
 Iniciamos el laboratorio y nos encontramos con un shop online:
 <img width="1368" height="945" alt="image" src="https://github.com/user-attachments/assets/2de87a5d-6cdd-400c-831c-3c0b2a8cdd36" />
 
@@ -43,3 +45,6 @@ Podemos confirmar que tenemos 2 columnas con nuestro metodo `UNION`:
 <img width="1858" height="754" alt="image" src="https://github.com/user-attachments/assets/a6679821-d605-4861-9158-a49fc7f9fa82" />
 
 Por lo que sabemos que las columnas aceptan cadenas como tipo de dato.
+
+- Averiguamos la versión (sabemos que no es `Oracle`):
+- 
