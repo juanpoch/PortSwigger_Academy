@@ -26,6 +26,8 @@ Sabemos que tenemos el parámetro `category` vulnerable a `SQLi`. Procedemos a c
 
 Al darnos un `Internal Server Error` confirmamos que es vulnerable a SQLi ya que produjo un error de sintaxis.
 
+`Nota`: En un escenario real podríamos hacer fuzzing para determinar qué caracter sql rompe la sintaxis.
+
 - Determinar el número de columnas que utiliza la consulta vulnerable (tenemos título del elemento y descripción del mismo por lo que al menos tenemos 2 columnas):
 Probamos con `' order by 2--` y nos arroja un código de estado 200:
 <img width="1881" height="763" alt="image" src="https://github.com/user-attachments/assets/851873eb-3588-4dd8-a148-dd67435d4b7e" />
