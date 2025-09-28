@@ -48,7 +48,7 @@ Resultados (para `ORDER BY 2`):
 
 ---
 
-## 4) Ejemplo práctico (SQLi)
+## Ejemplo práctico (SQLi)
 
 Imaginá que la app ejecuta internamente:
 
