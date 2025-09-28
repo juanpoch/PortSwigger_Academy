@@ -62,6 +62,8 @@ Payloads (string context):
 
 Si el `UNION` coincide con las columnas, verás una fila adicional (posiblemente con `NULL` en cada columna) o alguna diferencia en la respuesta.
 
+`Nota`: Los payloads descritos utilizan la secuencia de comentarios de doble guion `--` para comentar el resto de la consulta original después del punto de inyección. En MySQL, la secuencia de doble guion debe ir seguida de un espacio. Como alternativa, se puede utilizar `#`
+
 ---
 
 ## 2) Encontrar columnas adecuadas para datos de texto
