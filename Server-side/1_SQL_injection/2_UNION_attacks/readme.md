@@ -98,6 +98,9 @@ Si el `UNION` coincide con las columnas, verás una fila adicional (posiblemente
 
 `Nota`: Los payloads descritos utilizan la secuencia de comentarios de doble guion `--` para comentar el resto de la consulta original después del punto de inyección. En MySQL, la secuencia de doble guion debe ir seguida de un espacio. Como alternativa, se puede utilizar `#`
 
+
+[Lab: SQL_injection_UNION_attack,_determining_the_number_of_columns_returned_by_the_query](1_SQL_injection_UNION_attack,_determining_the_number_of_columns_returned_by_the_query.md)  
+
 ---
 
 ## 2) Encontrar columnas adecuadas para datos de texto
