@@ -156,7 +156,7 @@ Si desconocés los nombres de tabla/columnas, primero harás *enumeración* usan
 
 ## 4) Recuperar múltiples valores en una sola columna (concatenación)
 
-[SQLi Cheet Sheet(https://portswigger.net/web-security/sql-injection/cheat-sheet)
+[SQLi Cheet Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
 Si sólo hay 1 columna disponible, puedes concatenar varias columnas en una sola cadena separada por un separador reconocible:
 
