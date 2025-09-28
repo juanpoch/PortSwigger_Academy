@@ -16,3 +16,16 @@ Iniciamos el laboratorio y nos encontramos un shop online. El laboratorio tiene 
 
 Procedemos a probar inyectar `'` en el parámetro `category`:
 <img width="1777" height="761" alt="image" src="https://github.com/user-attachments/assets/634bda37-210c-4809-8a17-a3e5ac9595fc" />
+
+Al darnos un `Internal Server Error` confirmamos que es vulnerable a `SQLi`.
+
+
+- Determinar el número de columnas que utiliza la consulta vulnerable (tenemos título del elemento y descripción del mismo por lo que al menos tenemos 2 columnas):
+<img width="1877" height="549" alt="image" src="https://github.com/user-attachments/assets/ab003c52-9dc3-4e23-b854-1ccf6e17d00d" />
+
+Obtenemos un `Internal Server Error`, eso es porque hay algún caracter que no está procesando, probemos con `#`:
+<img width="1871" height="733" alt="image" src="https://github.com/user-attachments/assets/5185255e-a082-4455-862d-eae0e0b34939" />
+
+
+
+
