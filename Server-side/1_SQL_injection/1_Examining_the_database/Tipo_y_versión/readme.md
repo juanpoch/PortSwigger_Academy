@@ -141,7 +141,8 @@ Oracle no siempre expone `information_schema`. En su lugar dispone de vistas com
   SELECT column_name, data_type FROM all_tab_columns WHERE table_name = 'USERS';
   ```
 
-[Lab: SQL injection attack, querying the database type and version on Oracle](1_SQL_injection_attack,_querying_the_database_type_and_version_on_Oracle.md)  
+[Lab: SQL_injection_attack,_listing_the_database_contents_on_Oracle.md](4_SQL_injection_attack,_listing_the_database_contents_on_Oracle.md)  
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)  
 
 ---
 
