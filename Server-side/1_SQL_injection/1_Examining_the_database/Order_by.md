@@ -6,8 +6,6 @@
 
 ---
 
-## 2) Ejemplo visual — tabla `products`
-
 Tabla `products`:
 
 | id | name       | category | price | released |
