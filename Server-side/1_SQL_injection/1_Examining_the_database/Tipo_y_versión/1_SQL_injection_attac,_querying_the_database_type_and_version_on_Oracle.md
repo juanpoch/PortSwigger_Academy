@@ -70,4 +70,6 @@ Como sabemos que la versión es `ORACLE`, procedemos a realizar un ataque `UNION
 - `SELECT banner FROM v$version`
 - `SELECT version FROM v$instance`
 
+Como en la consulta original tenemos 2 columnas, nuestra inyección debe ser la siguiente:
+`' UNION SELECT banner FROM v$version--`
 
