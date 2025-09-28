@@ -50,3 +50,17 @@ También podemos probar con el metodo UNION para confirmar usando `' UNION selec
 
 <img width="1873" height="807" alt="image" src="https://github.com/user-attachments/assets/4c48a1ca-b20c-498b-b7c9-e486001386b1" />
 
+---
+
+- `Paso 2`: Determinar qué columna admite cadenas. Probamos con la primer columna usando el payload `' UNION select 'a', NULL--`:
+<img width="1873" height="832" alt="image" src="https://github.com/user-attachments/assets/51464e97-13b6-4911-8f4f-a8335f2c58d7" />
+Nos arroja `Internal Server Error` por lo que sabemos que la primer columna no admite cadenas.
+
+Probamos con la segunda columna usando el payload `' UNION select NULL, 'a'--`:
+<img width="1884" height="836" alt="image" src="https://github.com/user-attachments/assets/cf32e0c9-66a7-4cd6-94a2-a6f68e852558" />
+
+Sabemos entonces que la consulta select tiene 2 columnas, de las cuales sólo la segunda columna admite cadenas.
+
+---
+
+
