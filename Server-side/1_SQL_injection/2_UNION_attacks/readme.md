@@ -35,7 +35,7 @@ SELECT a, b FROM table1;
 
 Consulta 2:
 ```sql
-SELECT a, b FROM table1 UNION SELECT d, d FROM table2;
+SELECT a, b FROM table1 UNION SELECT c, d FROM table2;
 ```
 | a | b |
 | - | - |
