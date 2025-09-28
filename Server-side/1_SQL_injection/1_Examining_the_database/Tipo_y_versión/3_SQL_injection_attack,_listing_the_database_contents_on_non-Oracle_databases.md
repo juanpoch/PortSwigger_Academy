@@ -47,4 +47,18 @@ Podemos confirmar que tenemos 2 columnas con nuestro metodo `UNION`:
 Por lo que sabemos que las columnas aceptan cadenas como tipo de dato.
 
 - Averiguamos la versión (sabemos que no es `Oracle`):
-- 
+Probamos si es `Mircrosoft`:
+
+<img width="1881" height="789" alt="image" src="https://github.com/user-attachments/assets/abb0d3af-ffd3-4970-88eb-84a5db074712" />
+
+Probamos si es `PostgreSQL`:
+<img width="1870" height="793" alt="image" src="https://github.com/user-attachments/assets/7bb6def5-d3ab-4341-9f72-ed08a6f96319" />
+
+El servidor nos devuelve un código de estado 200, por lo que lo confirmamos.
+
+
+- Procedemos a listar las tablas, usamos el siguiente payload:
+```sql
+' union select table_name, 'a' from information_schema.tables--
+```
+<img width="1874" height="809" alt="image" src="https://github.com/user-attachments/assets/6e234aa1-9c87-4b2b-a0e4-a3a90fabb3db" />
