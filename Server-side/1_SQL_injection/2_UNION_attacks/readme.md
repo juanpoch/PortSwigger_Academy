@@ -170,6 +170,10 @@ Ejemplo Oracle con `UNION` (1 columna visible):
 ' UNION SELECT username || '~' || password FROM users--
 ```
 
+[Lab: SQL_injection_UNION_attack,_retrieving_multiple_values_in_a_single_column](4_SQL_injection_UNION_attack,_retrieving_multiple_values_in_a_single_column.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 ---
 
 ## 5) Particularidades por base de datos
