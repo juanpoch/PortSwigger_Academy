@@ -54,8 +54,10 @@ Probamos si es `Mircrosoft`:
 Probamos si es `PostgreSQL`:
 <img width="1870" height="793" alt="image" src="https://github.com/user-attachments/assets/7bb6def5-d3ab-4341-9f72-ed08a6f96319" />
 
-El servidor nos devuelve un código de estado 200, por lo que lo confirmamos.
+El servidor nos devuelve un código de estado 200, por lo que lo confirmamos, filtramos por postgre para conocer al versión:
+<img width="1875" height="822" alt="image" src="https://github.com/user-attachments/assets/acc02601-e720-4357-9238-d4be6d73c277" />
 
+- Versión: `PostgreSQL 12.22 (Ubuntu 12.22-0ubuntu0.20.04.4)`
 
 - Procedemos a listar las tablas, usamos el siguiente payload:
 ```sql
