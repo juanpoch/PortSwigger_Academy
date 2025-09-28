@@ -147,7 +147,7 @@ Si sabes que la consulta original tiene 2 columnas y ambas admiten texto, y exis
 
 Para saber más:  
 
-[1_Examining_the_database](https://github.com/juanpoch/PortSwigger_Academy/tree/main/Server-side/1_SQL_injection/1_Examining_the_database)  
+[Examining_the_database](https://github.com/juanpoch/PortSwigger_Academy/tree/main/Server-side/1_SQL_injection/1_Examining_the_database)  
 
 
 Si sólo la 2ª columna es visible y admite texto, y la original tiene 3 columnas, coloca los datos en la 2ª posición:
