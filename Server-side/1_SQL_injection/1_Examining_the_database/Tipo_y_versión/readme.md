@@ -123,7 +123,7 @@ Con esto conoces las columnas y sus tipos.
 
 ---
 
-## Y Oracle — vistas del diccionario
+## Oracle — vistas del diccionario
 
 Oracle no siempre expone `information_schema`. En su lugar dispone de vistas como `ALL_TABLES`, `USER_TABLES`, `ALL_TAB_COLUMNS`, `USER_TAB_COLUMNS`.
 
