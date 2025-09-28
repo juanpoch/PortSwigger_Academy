@@ -48,3 +48,29 @@ Por lo que sabemos que las columnas aceptan cadenas como tipo de dato.
 <img width="1875" height="808" alt="image" src="https://github.com/user-attachments/assets/17ce4807-8aa3-4b53-b9f7-6833a2d0692c" />
 
 Nos brinda la versión `Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production`.
+
+`Nota`: El payload `UNION select version, 'a' from v$instance--` no funcionó porque brindó un `Internal Server Error`.
+
+---
+
+El siguiente paso es determinar qué tablas contienen los `usernames` y `passwords`
+
+Realizamos la consulta con el payload `' UNION select NULL, table_name FROM all_tables--` y filtramos por users:
+<img width="1885" height="797" alt="image" src="https://github.com/user-attachments/assets/eeb2e969-ed1d-4268-af25-89462754368c" />
+
+Obtenemos una tabla llamada `USERS_BPURGG`.
+
+Procedemos a determinar los nombres de las columnas en la tabla `USERS_BPURGG`. Realizamos la consulta con el payload `' UNION select NULL, column_name FROM all_tab_columns where table_name = 'USERS_BPURGG'--` y filtramos por username:
+<img width="1876" height="810" alt="image" src="https://github.com/user-attachments/assets/af055051-d184-42b9-a028-69cab01a7382" />
+
+Obtenemos los nombres de las columnas:
+- `USERNAME_CJTRVJ`
+- `PASSWORD_EVPWYT`
+
+Ahora procedemos a consultar los valores de las columnas `USERNAME_CJTRVJ` y `PASSWORD_EVPWYT` en la tabla `USERS_BPURGG`. Utilizamos el payload `' UNION select USERNAME_CJTRVJ, PASSWORD_EVPWYT FROM USERS_BPURGG--`:
+<img width="1881" height="815" alt="image" src="https://github.com/user-attachments/assets/b77c332d-1e08-4bd7-b3d3-b11727cae96e" />
+
+Obtenemos las credenciales que necesitamos: `administrator`:`lcvdngv6pssi9hh8bks6`
+
+Nos logueamos como adminsitrator y resolvemos el laboratorio:
+<img width="1640" height="832" alt="image" src="https://github.com/user-attachments/assets/79a3686a-818b-4d12-ad20-85563038d31d" />
