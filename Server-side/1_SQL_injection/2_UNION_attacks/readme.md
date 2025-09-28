@@ -140,6 +140,10 @@ Si sabes que la consulta original tiene 2 columnas y ambas admiten texto, y exis
 ' UNION SELECT username, password FROM users--
 ```
 
+[Lab: SQL_injection_UNION_attack,_retrieving_data_from_other_tables](3_SQL_injection_UNION_attack,_retrieving_data_from_other_tables.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 Si sólo la 2ª columna es visible y admite texto, y la original tiene 3 columnas, coloca los datos en la 2ª posición:
 
 ```
