@@ -237,15 +237,3 @@ Si la respuesta se demora, el atacante deduce que la condición fue verdadera.
 - **Monitoreo de actividad anormal** en bases de datos.
 
 ---
-
-### 💬 Resumen
-
-**SQL Injection** sigue siendo una de las vulnerabilidades más críticas en aplicaciones web. Un pequeño descuido en la validación de datos de entrada puede abrir la puerta a ataques que comprometan la confidencialidad, integridad y disponibilidad de los datos y sistemas. Conocer sus fundamentos, ejemplos y mecanismos de mitigación es fundamental para todo desarrollador y analista de seguridad.
-
----
-
-### 💡¡Recuerda!
-
-> "Una aplicación web es tan segura como la confianza que puede depositarse en sus consultas de base de datos."
-
-
