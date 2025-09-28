@@ -36,3 +36,20 @@ Sabemos que tenemos 2 columnas.
 
 También funciona el metodo `UNION`:
 <img width="1879" height="644" alt="image" src="https://github.com/user-attachments/assets/03cd4d36-dbca-4182-9ead-204f2d6c7ffa" />
+
+- Ahora procedemos a analizar el tipo de dato que tienen las columnas, probamos con cadenas:
+<img width="1882" height="729" alt="image" src="https://github.com/user-attachments/assets/6ef23f6f-31c9-418e-a0c7-c681285212b8" />
+
+`Nota`: En el navegador se visualiza fácilmente que las columnas aceptas cadenas como tipo de dato:
+<img width="1600" height="985" alt="image" src="https://github.com/user-attachments/assets/f50b77d4-255f-43b9-9e36-da1eb1322e53" />
+
+- Averiguar la versión:
+
+Sabemos que no es `ORACLE` porque no necesitamos colocar la cláusula `FROM` en la consulta `UNION`.
+
+Probamos con `Microsoft` (`' union select @@version, 'a'#`):
+<img width="1870" height="801" alt="image" src="https://github.com/user-attachments/assets/e3fbfa9b-1114-4dbe-a6f5-0de3b84a2c2c" />
+
+
+Resolvimos el laboratorio:
+<img width="1538" height="978" alt="image" src="https://github.com/user-attachments/assets/1fb0d77f-f68e-4c31-9573-e5dce3b6a4f2" />
