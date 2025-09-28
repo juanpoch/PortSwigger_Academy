@@ -38,3 +38,8 @@ Probamos con `' order by 3--` y nos arroja 500 Internal Server Error:
 Podemos confirmar que tenemos 2 columnas con nuestro metodo `UNION`:
 <img width="1872" height="684" alt="image" src="https://github.com/user-attachments/assets/89a7d059-4b12-4748-9cd6-e3bb72a9a7cc" />
 
+- Ahora procedemos a analizar el tipo de dato que tienen las columnas, probamos con cadenas:
+
+<img width="1858" height="754" alt="image" src="https://github.com/user-attachments/assets/a6679821-d605-4861-9158-a49fc7f9fa82" />
+
+Por lo que sabemos que las columnas aceptan cadenas como tipo de dato.
