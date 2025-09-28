@@ -13,3 +13,13 @@ There is a built-in table on Oracle called `dual` which you can use for this pur
 [SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
 ---
+
+
+Iniciamos el laboratorio y nos encontramos con un shop online:
+<img width="1571" height="964" alt="image" src="https://github.com/user-attachments/assets/4240dc43-a451-414c-8f8a-2bfd4610ad71" />
+
+El laboratorio nos pide que mostremos la cadena de versión de la base de datos.
+
+El laboratorio nos dice que contiene una vulnerabilidad de `SQLi` en el filtro de categoría de producto y que podemos realizar un ataque `UNION`.
+
+
