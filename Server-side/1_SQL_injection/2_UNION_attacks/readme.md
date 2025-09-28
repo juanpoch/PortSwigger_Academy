@@ -101,6 +101,8 @@ Si el `UNION` coincide con las columnas, verás una fila adicional (posiblemente
 
 [Lab: SQL_injection_UNION_attack,_determining_the_number_of_columns_returned_by_the_query](1_SQL_injection_UNION_attack,_determining_the_number_of_columns_returned_by_the_query.md)  
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 ---
 
 ## 2) Encontrar columnas adecuadas para datos de texto
