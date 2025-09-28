@@ -1,5 +1,6 @@
 # SQL injection
 
+[SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
 **SQL Injection** es una vulnerabilidad de seguridad web que permite a un atacante interferir en las consultas que una aplicación realiza a su base de datos. A través de esta técnica, el atacante puede:
 
