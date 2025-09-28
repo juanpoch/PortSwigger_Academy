@@ -32,6 +32,10 @@ Filtramos por alguna categoría y confirmamos que el parámetro category es vuln
 Al darnos un `Internal Server Error` confirmamos que es vulnerable a SQLi ya que produjo un error de sintaxis, si comentamos con `'--` resolvemos el error de sintaxis:
 <img width="1517" height="818" alt="image" src="https://github.com/user-attachments/assets/7057bf37-b395-4771-a314-7db82cfc6d36" />
 
+---
+
+- Paso 1: Determinar el número de columnas de la consulta.
+
 Procedemos a determinar el número de columnas que tiene la consulta select usando el payload `' order by 1--`:
 <img width="1873" height="803" alt="image" src="https://github.com/user-attachments/assets/37e8ac1a-86d8-4a23-b052-780e3b037bb7" />
 La aplicación está devolviendo el resultado de la consulta en la respuesta. Además ordena el resultado por la columna especificada.
@@ -47,7 +51,7 @@ También podemos probar con el metodo UNION para confirmar usando `' UNION selec
 
 ---
 
-- Paso 2, determinar qué columna admite cadenas.
+- Paso 2: Determinar qué columna admite cadenas.
 Probamos con la primer columna usando el payload `' UNION select 'a', NULL--`:
 <img width="1875" height="845" alt="image" src="https://github.com/user-attachments/assets/622e8229-25db-4c78-90e4-62bcc6033648" />
 
@@ -59,7 +63,7 @@ Sabemos que tenemos 2 columnas y ambas admiten cadena como tipo de dato.
 
 ---
 
-- Realizar un ataque `UNION` que devuelva todos los usuarios y contraseñas de la tabla `users` y columnas `username` y `password`
+- Paso 3: Realizar un ataque `UNION` que devuelva todos los usuarios y contraseñas de la tabla `users` y columnas `username` y `password`
 
 Procedemos a realizar la consulta con el payload `' UNION select username, password FROM users--`:
 <img width="1858" height="822" alt="image" src="https://github.com/user-attachments/assets/6204d256-1806-4a03-8f90-b8650b56d747" />
@@ -69,4 +73,7 @@ Obtenemos las credenciales del usuario que necesitamos: `administrator`:`cpdwzpq
 
 ---
 
-- Paso 4 
+- Paso 4: Autenticarnos como el usuario `administrator`:
+<img width="1665" height="708" alt="image" src="https://github.com/user-attachments/assets/45f93013-1989-4064-b406-7a38e7a7231b" />
+
+
