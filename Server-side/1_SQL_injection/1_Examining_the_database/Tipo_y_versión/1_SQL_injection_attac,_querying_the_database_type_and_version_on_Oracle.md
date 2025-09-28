@@ -71,5 +71,11 @@ Como sabemos que la versión es `ORACLE`, procedemos a realizar un ataque `UNION
 - `SELECT version FROM v$instance`
 
 Como en la consulta original tenemos 2 columnas, nuestra inyección debe ser la siguiente:
-`' UNION SELECT banner FROM v$version--`
+`' UNION SELECT banner, NULL FROM v$version--`
+
+<img width="1888" height="807" alt="image" src="https://github.com/user-attachments/assets/ca96436e-8b75-4124-8dc3-8c17bf1506ee" />
+
+Resolvimos el laboratorio:
+<img width="1680" height="828" alt="image" src="https://github.com/user-attachments/assets/1ccc242b-efb3-4b60-96d6-00305b3f8dee" />
+
 
