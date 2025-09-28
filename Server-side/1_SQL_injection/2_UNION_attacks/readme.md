@@ -76,7 +76,7 @@ Payloads (si la aplicación ya envuelve el input con comillas):
 
 Si la app no muestra errores explícitos, observá diferencias en la respuesta (código, tamaño, contenido).
 
-[Order by](https://github.com/juanpoch/PortSwigger_Academy/blob/main/Server-side/1_SQL_injection/1_Examining_the_database/Order_by.md)
+[Explicación Order by y UNION](https://github.com/juanpoch/PortSwigger_Academy/blob/main/Server-side/1_SQL_injection/1_Examining_the_database/Order_by.md)
 
 ### B — `UNION SELECT NULL,...` (prueba por conteo)
 
