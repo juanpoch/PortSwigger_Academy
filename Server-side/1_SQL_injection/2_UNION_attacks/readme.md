@@ -1,4 +1,4 @@
-# SQL injection — UNION attacks
+# UNION attacks
 
 Cuando una aplicación es vulnerable a SQL injection **y** la salida de la consulta original se refleja en la respuesta HTTP, puedes inyectar un `UNION SELECT` para añadir filas controladas por ti al conjunto de resultados. Esto permite recuperar datos de otras tablas si consigues que la consulta inyectada tenga la misma estructura (nº de columnas y tipos compatibles) que la consulta original.
 
