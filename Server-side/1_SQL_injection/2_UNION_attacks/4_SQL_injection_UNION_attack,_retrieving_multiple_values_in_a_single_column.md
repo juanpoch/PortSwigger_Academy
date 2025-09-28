@@ -38,7 +38,7 @@ Al darnos un `Internal Server Error` confirmamos que es vulnerable a SQLi ya que
 Procedemos a determinar el número de columnas que tiene la consulta select usando el payload `' order by 1--`:
 <img width="1863" height="810" alt="image" src="https://github.com/user-attachments/assets/e5a9421a-542d-42f2-b760-82ca2652f3b8" />
 
-La aplicación está devolviendo el resultado de la consulta en la respuesta. Además ordena el resultado por la columna especificada.
+Devuelve un código de estado 200 por lo que la columna 1 existe. Notamos que los elementos no están siendo ordenados, por lo que la tabla 1 no está siendo mostrada en la pantalla.
 
 Usamos `' order by 2--` obteniendo los mismos resultados:
 <img width="1884" height="819" alt="image" src="https://github.com/user-attachments/assets/5cdbd079-4a36-4d7b-92cb-320adf0f1457" />
