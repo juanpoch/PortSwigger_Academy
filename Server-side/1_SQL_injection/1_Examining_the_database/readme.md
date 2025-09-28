@@ -2,6 +2,8 @@
 
 **Propósito:** describir cómo obtener información sobre la base de datos una vez que se ha identificado una vulnerabilidad de SQL injection. Incluye técnicas de *fingerprinting*, consultas útiles para listar versiones, tablas y columnas, diferencias entre sistemas gestores de bases de datos, y recomendaciones de mitigación.
 
+[SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
 ---
 
 ## Resumen
