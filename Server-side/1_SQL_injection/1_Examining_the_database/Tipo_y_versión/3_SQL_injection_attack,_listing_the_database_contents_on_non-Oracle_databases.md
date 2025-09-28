@@ -76,7 +76,7 @@ La tabla más interesante parece ser `users_vrjlxy`.
 Hacemos la consulta y filtramos por `username`:
 <img width="1876" height="813" alt="image" src="https://github.com/user-attachments/assets/8417ef67-0191-4557-8f8b-8feffa753e9a" />
 
-Obtenemos el username: `username_zsnozl`.
+Obtenemos el el nombre de la columna vinculada a usernames: `username_zsnozl`.
 
 Si filtramos por `password` obtenemos `password_pzwvoe`:
 <img width="1514" height="825" alt="image" src="https://github.com/user-attachments/assets/9093bccf-29fd-4425-bb60-e7ccde699c7f" />
