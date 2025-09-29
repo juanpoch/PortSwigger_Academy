@@ -130,7 +130,8 @@ Vemos que la última petición que nos dió un mensaje de bienvenida es cuando e
 
 - `Paso 5`: Inferir caracter a caracter la contraseña del usuario `administrator`.
 
-Utilizamos una consulta del estilo:
+Utilizamos una consulta del estilo:  
+
 Para posición `i` probar caracteres `c` hasta encontrar el verdadero:
 
    * `' AND SUBSTRING((SELECT Password ...), i, 1) = 'c' -- `
