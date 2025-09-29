@@ -37,7 +37,7 @@ la primera condición es verdadera y provoca la aparición de "Welcome back"; la
 
 ---
 
-## 3) ¿Cómo funciona SUBSTRING y variantes?
+## 3) Funcionamiento de SUBSTRING y variantes
 
 `SUBSTRING` extrae una subcadena de una cadena más grande. La sintaxis varía ligeramente entre SGBD.
 
@@ -45,9 +45,13 @@ la primera condición es verdadera y provoca la aparición de "Welcome back"; la
 
 * **MySQL**: `SUBSTRING(str, pos, len)`  — pos empieza en 1.
 
+`Nota`: De la cadena `str` substraigo a partir del caracter que se encuentra en la posición `pos` la cantidad de caracteres `len`.
+
   ```sql
   SUBSTRING(password, 1, 1)  -- primer carácter
   ```
+
+Se recomienda utilizar [SQLi Cheet Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 * **PostgreSQL**: `SUBSTRING(str FROM pos FOR len)` o `SUBSTRING(str, pos, len)` (la función clásica `SUBSTRING(str FROM pos FOR len)` también funciona).
 
   ```sql
