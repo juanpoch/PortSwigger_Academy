@@ -10,5 +10,9 @@ To solve the lab, log in as the `administrator` user.
 
 `Hint`: You can assume that the password only contains lowercase, alphanumeric characters. 
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
+[SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
 
 ---
