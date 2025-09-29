@@ -1,6 +1,6 @@
-# Blind SQL Injection (SQLi a ciegas)
+# Blind SQL Injection
 
-## ¿Qué es la Blind SQL Injection?
+
 
 Una **Blind SQL injection** ocurre cuando la aplicación es vulnerable a inyección SQL, pero **no muestra en la respuesta HTTP** ni los resultados de la query ni mensajes de error de la base de datos.
 Esto imposibilita técnicas visibles como ataques con `UNION`, pero aún se puede explotar mediante otras estrategias.
