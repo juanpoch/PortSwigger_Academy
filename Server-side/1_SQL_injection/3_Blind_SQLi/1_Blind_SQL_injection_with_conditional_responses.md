@@ -78,6 +78,15 @@ Esto le indica que si existe una tabla `users`, genere un valor 'x' para cada en
 Recibimos el mensaje `Welcome back!` por lo que confirmamos que la tabla `users` existe:
 <img width="1878" height="840" alt="image" src="https://github.com/user-attachments/assets/d2bbe588-96f6-41f4-9f36-996b56f9c82a" />
 
+---
+
+`Paso 3`: Confirmar que el usuario `administrator` existe en la tabla `users`
+
+Utilizamos una inyección con el payload `' and (select username from users where username= 'administrator')='administrator'--`
+
+Recibimos el mensaje `Welcome back!` por lo que confirmamos que existe un usuario `administrator`:
+<img width="1868" height="766" alt="image" src="https://github.com/user-attachments/assets/5459f239-a41a-4ba9-845f-cc070a1abaae" />
+
 
 ---
 - `Paso 2`: determinar la longitud de la contraseña del usuario administrator:
