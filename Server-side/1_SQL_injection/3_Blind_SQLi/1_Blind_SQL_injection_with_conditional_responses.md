@@ -150,4 +150,20 @@ Vemos que hay una sola petición con length diferente, correspondiente al payloa
 
 Por lo que ya sabemos que nuestro primer caracter es `6`.
 
+Con este método deberíamos hacer este ataque 20 veces. Por lo que en vez de eso, utilizamos en el `Intruder` el ataque `Cluster bomb` y añadimos el payload al caracter de posición y al caracter de igualdad.
+
+El primer payload va a ser de números e irá del 1 al 20:
+<img width="1917" height="722" alt="image" src="https://github.com/user-attachments/assets/a99ee117-21e0-4468-b8da-e99fb49095c8" />
+El segundo payload va a ser nuevamente bruteforcer para la igualdad:
+<img width="1888" height="858" alt="image" src="https://github.com/user-attachments/assets/f1b2dfbb-2752-43f7-84eb-ef12d4fb99c2" />
+
+Realizamos el ataque y filtramos en `View filter` por `Welcome back`. Vemos que podemos ordenar de menor a mayor los caracteres del payload 1, que nos da en orden los caracteres de la contraseña (payload 2):
+<img width="1847" height="545" alt="image" src="https://github.com/user-attachments/assets/4b7a4273-a57e-4006-bb03-34d216bf711f" />
+
+De modo tal que encontramos la contraseña del usuario administrator:
+`6jvvmxjbo2wfv8m9y8ot`
+
+Nos autenticamos como usuario `administrator` y resolvemos el laboratorio:
+<img width="1652" height="740" alt="image" src="https://github.com/user-attachments/assets/5f090b92-9313-44a3-817c-f3346ab484ad" />
+
 
