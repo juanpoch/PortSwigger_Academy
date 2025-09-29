@@ -37,6 +37,7 @@ Ejemplo:
 ```sql
 xyz' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='s
 ```
+Conviene usar el intruder con el payload `' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='a'--`
 
 Metodología completa: 
 [Boolean_based](https://github.com/juanpoch/PortSwigger_Academy/blob/main/Server-side/1_SQL_injection/3_Blind_SQLi/Boolean_based.md)
