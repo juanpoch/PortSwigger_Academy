@@ -53,7 +53,7 @@ Utilizamos las condiciones booleanas para demostrar la diferencia de comportamie
 
 - Utilizando el payload `' AND '1'='1`:
 `select TrackingId from tracking-table where TrackingId = 'eifuyQdkjayog4Go' AND '1'='1'`
-- - Utilizando el payload `' AND 1=1--`:
+- Utilizando el payload `' AND 1=1--`:
 `select TrackingId from tracking-table where TrackingId = 'eifuyQdkjayog4Go' AND 1=1--'`
 
 Utilizamos la condición verdadera con el payload `' AND '1'='1` y confirmamos que aparece el mensaje de bienvenida:
