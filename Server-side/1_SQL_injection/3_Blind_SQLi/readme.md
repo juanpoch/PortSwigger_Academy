@@ -35,7 +35,7 @@ Esto permite inferir bit a bit datos sensibles con funciones como `SUBSTRING`:
 
 Ejemplo:
 ```sql
-xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username='Administrator'),1,1)='s
+xyz' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='s
 ```
 
 Metodología completa: 
