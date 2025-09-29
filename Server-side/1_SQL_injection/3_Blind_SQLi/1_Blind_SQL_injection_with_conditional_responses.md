@@ -119,6 +119,13 @@ Nosotros sabemos que cuando recibimos el mensaje de bienvenida el length es de 1
 Por lo tanto sabemos que cuando no recibimos un mensaje de bienvenida el Length es de 11467:
 <img width="1870" height="937" alt="image" src="https://github.com/user-attachments/assets/61d5f540-1fb1-4def-9cfe-758ebdb4e842" />
 
+Otra forma de visualizarlo es usar el filtro en `View filter`:
+<img width="1444" height="772" alt="image" src="https://github.com/user-attachments/assets/765a8a35-e709-48ae-bd83-c8a011dbdb67" />
+
+Vemos que la última petición que nos dió un mensaje de bienvenida es cuando el length es mayor a 19:
+<img width="1525" height="902" alt="image" src="https://github.com/user-attachments/assets/bc1a44cb-4196-4b3d-8ab4-ec6def7d923a" />
+
+
 ---
 
 - `Paso 5`:
