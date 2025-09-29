@@ -25,7 +25,7 @@ Esto permite inferir bit a bit datos sensibles (ej. password del admin) con func
 xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username='Administrator'),1,1)='s
 ```
 
-Metodología compoleta: 
+Metodología completa: 
 [Boolean_based](https://github.com/juanpoch/PortSwigger_Academy/blob/main/Server-side/1_SQL_injection/3_Blind_SQLi/Boolean_based.md)
 
 ### 2. Basada en errores (Error-based)
