@@ -256,9 +256,3 @@ if 'Welcome back' in resp.text:
 ```
 
 ---
-
-
-
-
-
-Si querés, subo este documento al lienzo (ya creado) y genero además un archivo con scripts de ejemplo (Python) para automatizar extracción con búsqueda binaria, y payloads codificados para Burp Repeater. ¿Querés que lo haga?
