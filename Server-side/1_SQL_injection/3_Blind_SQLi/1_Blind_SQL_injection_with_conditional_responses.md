@@ -16,3 +16,14 @@ To solve the lab, log in as the `administrator` user.
 
 
 ---
+
+
+
+
+Objetivos:
+
+- Enumerar la contraseña del administrador.
+- Autenticarse como `administrator`.
+
+Accedemos al laboratorio y nos encontramos con un shop online:
+<img width="1585" height="974" alt="image" src="https://github.com/user-attachments/assets/cd7d468b-ef98-4f78-9056-634a6f7bddc8" />
