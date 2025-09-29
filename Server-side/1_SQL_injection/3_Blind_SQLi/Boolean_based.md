@@ -88,7 +88,7 @@ Si no → falso.
 ### Paso a paso completo:
 
 1. Confirmar que el parámetro es vulnerable con condiciones triviales (`' AND '1'='1` / `' AND '1'='2`).
-2. Determinar la longitud aproximada (opcional) probando `LENGTH`/`LEN` con booleanos o avanzando hasta obtener false cuando la posición excede la longitud.
+2. Determinar la longitud aproximada probando `LENGTH`/`LEN` con booleanos o avanzando hasta obtener false cuando la posición excede la longitud.
 3. Para posición `i` probar caracteres `c` hasta encontrar el verdadero:
 
    * `' AND SUBSTRING((SELECT Password ...), i, 1) = 'c' -- `
