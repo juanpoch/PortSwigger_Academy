@@ -69,8 +69,18 @@ Cookie: TrackingId=xyz' AND '1'='2   --> no devuelve "Welcome back"
 ```
 
 ---
+`Paso 2`: Determinar que existe la tabla users.
 
-- `Paso 2` determinar la longitud de la contraseña del usuario administrator:
+Utilizamos una inyección con el payload `' and (select 'x' from users LIMIT 1)='x'--`
+
+Esto le indica que si existe una tabla `users`, genere un valor 'x' para cada entrada en la tabla y se limite a 1 entrada. Si esa entrada que se genera es igual a 'x' entonces la sentencia es verdadera, por lo tanto si la tabla `users` no existe, la condición será falsa.
+
+Recibimos el mensaje `Welcome back!` por lo que confirmamos que la tabla `users` existe:
+<img width="1878" height="840" alt="image" src="https://github.com/user-attachments/assets/d2bbe588-96f6-41f4-9f36-996b56f9c82a" />
+
+
+---
+- `Paso 2`: determinar la longitud de la contraseña del usuario administrator:
 
 Utilizamos la inyección con el payload `' AND (SELECT LENGTH(password) FROM users WHERE username='administrator') > 10 --`:
 <img width="1872" height="824" alt="image" src="https://github.com/user-attachments/assets/d479aead-ea0b-45ca-9d65-3a91f9a3aad4" />
