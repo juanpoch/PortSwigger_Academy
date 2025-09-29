@@ -17,13 +17,29 @@ To solve the lab, log in as the `administrator` user.
 
 ---
 
-
-
-
 Objetivos:
 
 - Enumerar la contraseña del administrador.
 - Autenticarse como `administrator`.
 
 Accedemos al laboratorio y nos encontramos con un shop online:
-<img width="1585" height="974" alt="image" src="https://github.com/user-attachments/assets/cd7d468b-ef98-4f78-9056-634a6f7bddc8" />
+<img width="1557" height="982" alt="image" src="https://github.com/user-attachments/assets/d2de3b92-37ce-4435-9d9f-09e8f6454707" />
+
+Si filtramos por categoría, vemos que aparece el mensaje de bienvenida `Welcome back!`. Esto es porque una de las cookies de seguimiento disparan este comportamiento:
+<img width="1599" height="956" alt="image" src="https://github.com/user-attachments/assets/101e094d-315b-41e1-a924-5deb093583b5" />
+
+Esta cookie es el campo vulnerable del laboratorio llamado `TrackingId`:
+<img width="1507" height="798" alt="image" src="https://github.com/user-attachments/assets/0b2bb9bc-ca4d-4c44-b362-5622d11fe406" />
+
+Seguramente se está realizando una query del estilo `select TrackingId from tracking-table where TrackingId = 'eifuyQdkjayog4Go'`
+
+Si este id de seguimiento ya existe en la base de datos porque ya hemos visitado el sitio previamente con este Id, esta consulta devuelve información (en esta consulta devolvería el tracking-id) y la página nos devuelve un mensaje de bienvenida (`Welcome back!`)
+
+---
+
+- `Paso 1`: Confirmar que el parámetro es vulnerable
+
+
+
+
+
