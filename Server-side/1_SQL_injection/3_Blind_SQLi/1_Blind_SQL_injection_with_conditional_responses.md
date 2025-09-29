@@ -33,13 +33,61 @@ Esta cookie es el campo vulnerable del laboratorio llamado `TrackingId`:
 
 Seguramente se está realizando una query del estilo `select TrackingId from tracking-table where TrackingId = 'eifuyQdkjayog4Go'`
 
-Si este id de seguimiento ya existe en la base de datos porque ya hemos visitado el sitio previamente con este Id, esta consulta devuelve información (en esta consulta devolvería el tracking-id) y la página nos devuelve un mensaje de bienvenida (`Welcome back!`)
+- Si este id de seguimiento ya existe en la base de datos porque ya hemos visitado el sitio previamente con este Id, esta consulta devuelve información (en esta consulta devolvería el tracking-id) y la página nos devuelve un mensaje de bienvenida (`Welcome back!`).
+- Si el tracking id no existe, la query no devuelve nada, y no vemos ningún mensaje de bienvenida.
+
+Lo probamos, añadiendo un caracter al parámetro `TrackingId`:
+<img width="1508" height="814" alt="image" src="https://github.com/user-attachments/assets/3de64f98-0472-496b-80e6-ec3e43e0bf47" />
+
 
 ---
 
 - `Paso 1`: Confirmar que el parámetro es vulnerable
 
+Comprobamos que inyectando el caracter `'` se rompe la sintaxis, porque utilizando el mismo TrackingId no nos devuelve el mensaje de bienvenida:
+<img width="1519" height="860" alt="image" src="https://github.com/user-attachments/assets/228f6ad5-ad2c-41e3-89df-7529a92de46d" />
+
+Pero nos encontramos ante un caso de blind SQLi porque la consulta no nos devuelve ninguna información.
+
+Utilizamos las condiciones booleanas para demostrar la diferencia de comportamiento de la aplicación cuando la condición es verdadera y falsa.
+
+- Utilizando el payload `' AND '1'='1`:
+`select TrackingId from tracking-table where TrackingId = 'eifuyQdkjayog4Go' AND '1'='1'`
+- - Utilizando el payload `' AND 1=1--`:
+`select TrackingId from tracking-table where TrackingId = 'eifuyQdkjayog4Go' AND 1=1--'`
+
+Utilizamos la condición verdadera con el payload `' AND '1'='1` y confirmamos que aparece el mensaje de bienvenida:
+<img width="1871" height="801" alt="image" src="https://github.com/user-attachments/assets/d7a9c8d9-3c20-49f4-997e-d77a8bbab315" />
+Utilizamos la condición falsa con el payload `' AND '1'='2` y confirmamos que no aparece el mensaje de bienvenida:
+<img width="1886" height="828" alt="image" src="https://github.com/user-attachments/assets/b68fa791-ab3e-414b-a61b-a0b7b75a29be" />
 
 
+Entonces la aplicación cambia de comportamiento según si la condición inyectada es verdadera o falsa:
+```
+Cookie: TrackingId=xyz' AND '1'='1   --> devuelve "Welcome back"
+Cookie: TrackingId=xyz' AND '1'='2   --> no devuelve "Welcome back"
+```
 
+---
+
+- `Paso 2` determinar la longitud de la contraseña del usuario administrator:
+
+Utilizamos la inyección con el payload `' AND (SELECT LENGTH(password) FROM users WHERE username='administrator') > 10 --`:
+<img width="1872" height="824" alt="image" src="https://github.com/user-attachments/assets/d479aead-ea0b-45ca-9d65-3a91f9a3aad4" />
+
+Nos devuelve el mensaje de bienvenida por lo que la condición es verdadera y podemos confirmar que la contraseña tiene más de 10 caracteres.
+
+Utilizamos la inyección con el payload `' AND (SELECT LENGTH(password) FROM users WHERE username='administrator') > 20 --`:
+<img width="1882" height="824" alt="image" src="https://github.com/user-attachments/assets/4014badb-8881-4404-b6f1-f15aa66d6d96" />
+
+La aplicación no nos devuelve el mensaje de bienvenida, por lo tanto sabemos que la contraseña tiene más de 10 caracteres pero no más de 20.
+
+Probamos si la contraseña tiene exactamente 20 caracteres con el payload `' AND (SELECT LENGTH(password) FROM users WHERE username='administrator') = 20 --`
+<img width="1886" height="801" alt="image" src="https://github.com/user-attachments/assets/408c3bb8-79cd-45ac-90ec-d924bdc180e9" />
+
+La aplicación nos devuelve el mensaje de bienvenida `Welcome back!`. Confirmamos que la contraseña del usuario administrator posee 20 caracteres.
+
+---
+
+- `Paso 3`:
 
