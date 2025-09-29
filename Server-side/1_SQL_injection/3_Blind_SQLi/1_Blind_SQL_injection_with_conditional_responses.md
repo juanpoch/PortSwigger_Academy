@@ -109,7 +109,17 @@ Probamos si la contraseña tiene exactamente 20 caracteres con el payload `' AND
 
 La aplicación nos devuelve el mensaje de bienvenida `Welcome back!`. Confirmamos que la contraseña del usuario administrator posee 20 caracteres.
 
+Esto podríamos haberlo hecho fácilmente en el intruder:
+<img width="1890" height="891" alt="image" src="https://github.com/user-attachments/assets/662a63ab-8b5e-4ca6-bfcc-0d62ec4f2a40" />
+
+Nosotros sabemos que cuando recibimos el mensaje de bienvenida el length es de 11528:
+<img width="1869" height="912" alt="image" src="https://github.com/user-attachments/assets/d018a00c-0894-4baf-935e-80b5941ff628" />
+
+
+Por lo tanto sabemos que cuando no recibimos un mensaje de bienvenida el Length es de 11467:
+<img width="1870" height="937" alt="image" src="https://github.com/user-attachments/assets/61d5f540-1fb1-4def-9cfe-758ebdb4e842" />
+
 ---
 
-- `Paso 3`:
+- `Paso 5`:
 
