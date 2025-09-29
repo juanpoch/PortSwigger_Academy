@@ -87,9 +87,12 @@ Utilizamos una inyección con el payload `' and (select username from users wher
 Recibimos el mensaje `Welcome back!` por lo que confirmamos que existe un usuario `administrator`:
 <img width="1868" height="766" alt="image" src="https://github.com/user-attachments/assets/5459f239-a41a-4ba9-845f-cc070a1abaae" />
 
+Si probamos con otro usuario inexistente como `administratorX` confirmamos que ese usuario no existe:
+<img width="1872" height="804" alt="image" src="https://github.com/user-attachments/assets/8c29e929-78e1-43ec-9b15-146cf6107e70" />
 
 ---
-- `Paso 2`: determinar la longitud de la contraseña del usuario administrator:
+
+- `Paso 4`: determinar la longitud de la contraseña del usuario administrator:
 
 Utilizamos la inyección con el payload `' AND (SELECT LENGTH(password) FROM users WHERE username='administrator') > 10 --`:
 <img width="1872" height="824" alt="image" src="https://github.com/user-attachments/assets/d479aead-ea0b-45ca-9d65-3a91f9a3aad4" />
