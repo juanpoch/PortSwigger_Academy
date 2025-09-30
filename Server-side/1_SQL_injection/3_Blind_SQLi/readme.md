@@ -31,7 +31,7 @@ Esto permite inferir bit a bit datos sensibles con funciones como `SUBSTRING`:
 3. Para posición `i` probar caracteres `c` hasta encontrar el verdadero:
 
    * `' AND SUBSTRING((SELECT Password ...), i, 1) = 'c' -- `
-   * o usar comparaciones `>` / `<` para acelerar (`> 'm'`, etc.).
+   * o usar comparaciones `>` / `<` para acelerar (`> 'm'`, etc.) usando ASCII
 
 Ejemplo:
 ```sql
