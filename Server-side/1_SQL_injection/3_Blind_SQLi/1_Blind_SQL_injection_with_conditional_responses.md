@@ -73,7 +73,13 @@ Cookie: TrackingId=xyz' AND '1'='2   --> no devuelve "Welcome back"
 
 Utilizamos una inyección con el payload `' and (select 'x' from users LIMIT 1)='x'--`
 
-Esto le indica que si existe una tabla `users`, genere un valor 'x' para cada entrada en la tabla y se limite a 1 entrada. Si esa entrada que se genera es igual a 'x' entonces la sentencia es verdadera, por lo tanto si la tabla `users` no existe, la condición será falsa.
+- Busca en la tabla users.
+
+- No importa qué columnas tenga, porque lo único que devuelve es la constante 'x'.
+
+- `LIMIT 1` asegura que devuelva una sola fila.
+
+Esto sólo sucederá si la tabla `users`exoste.
 
 Recibimos el mensaje `Welcome back!` por lo que confirmamos que la tabla `users` existe:
 <img width="1878" height="840" alt="image" src="https://github.com/user-attachments/assets/d2bbe588-96f6-41f4-9f36-996b56f9c82a" />
