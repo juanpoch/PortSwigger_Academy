@@ -42,6 +42,12 @@ Conviene usar el intruder con el payload `' AND SUBSTRING((SELECT password FROM 
 Metodología completa: 
 [Boolean_based](https://github.com/juanpoch/PortSwigger_Academy/blob/main/Server-side/1_SQL_injection/3_Blind_SQLi/Boolean_based.md)
 
+---
+
+[Lab: Blind_SQL_injection_with_conditional_responses](1_Blind_SQL_injection_with_conditional_responses.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 ### 2. Basada en errores (Error-based)
 
 Si la aplicación filtra los resultados pero **sí muestra errores del motor SQL**, podemos usarlos para inferir datos.
