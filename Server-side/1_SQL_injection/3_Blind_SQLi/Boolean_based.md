@@ -74,7 +74,7 @@ Se recomienda utilizar [SQLi Cheet Sheet](https://portswigger.net/web-security/s
 
 ## 4) Estrategia básica para extraer un carácter (ejemplo)
 
-Queremos saber el primer carácter del password del usuario `Administrator`.
+Queremos saber el primer carácter del password del usuario `administrator`.
 
 Payload conceptual (si el valor se inyecta dentro de comillas):
 
