@@ -149,6 +149,8 @@ Payload
 ' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='a'--
 ```
 
+`Nota`: Otra forma hubiera sido utilizar el payload `' AND ASCII(SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1))> 109 --` que valida si el primer caracter es mayor a 'm' en el código ASCII.
+
 El mismo lo utilizamos en el intruder:
 <img width="1916" height="903" alt="image" src="https://github.com/user-attachments/assets/2cd3e3fe-acf1-4c79-992f-fecd11c65a1f" />
 
@@ -156,6 +158,7 @@ Vemos que hay una sola petición con length diferente, correspondiente al payloa
 <img width="1852" height="893" alt="image" src="https://github.com/user-attachments/assets/c844727b-18c2-48c5-a5c9-ebf51c0ca38c" />
 
 Por lo que ya sabemos que nuestro primer caracter es `6`.
+
 
 Con este método deberíamos hacer este ataque 20 veces. Por lo que en vez de eso, utilizamos en el `Intruder` el ataque `Cluster bomb` y añadimos el payload al caracter de posición y al caracter de igualdad.
 
