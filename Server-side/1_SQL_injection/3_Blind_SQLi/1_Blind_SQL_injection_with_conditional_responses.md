@@ -79,7 +79,7 @@ Utilizamos una inyección con el payload `' and (select 'x' from users LIMIT 1)=
 
 - `LIMIT 1` asegura que devuelva una sola fila.
 
-Esto sólo sucederá si la tabla `users`exoste.
+Esto sólo sucederá si la tabla `users`existe.
 
 Recibimos el mensaje `Welcome back!` por lo que confirmamos que la tabla `users` existe:
 <img width="1878" height="840" alt="image" src="https://github.com/user-attachments/assets/d2bbe588-96f6-41f4-9f36-996b56f9c82a" />
