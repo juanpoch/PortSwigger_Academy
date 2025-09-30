@@ -94,7 +94,8 @@ Recibimos el mensaje `Welcome back!` por lo que confirmamos que existe un usuari
 <img width="1868" height="766" alt="image" src="https://github.com/user-attachments/assets/5459f239-a41a-4ba9-845f-cc070a1abaae" />
 
 Si probamos con otro usuario inexistente como `administratorX` confirmamos que ese usuario no existe:
-<img width="1872" height="804" alt="image" src="https://github.com/user-attachments/assets/8c29e929-78e1-43ec-9b15-146cf6107e70" />
+<img width="1889" height="863" alt="image" src="https://github.com/user-attachments/assets/68c619d4-6487-44da-a928-caae4023a789" />
+
 
 ---
 
