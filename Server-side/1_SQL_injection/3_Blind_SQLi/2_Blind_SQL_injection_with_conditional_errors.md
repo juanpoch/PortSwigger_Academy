@@ -76,6 +76,16 @@ Por lo tanto la consulta `'abc' || (select '' from users where rownum=1);`  devu
 Al obtener el código de estado 200, confirmamos que la tabla users existe.
 
 
+---
 
+`Paso 3`: Confirmar que el usuario `administrator` existe en la tabla `users`.
+
+En este caso, utilizamos el payload `' || (select '' from users where username='administrator') || '`:
+
+<img width="1874" height="793" alt="image" src="https://github.com/user-attachments/assets/b78cb16e-b2ab-4042-98cf-2f6cfe27f51c" />
+
+Obtenemos un código de estado 200, por lo que confirmamos la existencia del usuario `administrator`.
+
+---
 
 
