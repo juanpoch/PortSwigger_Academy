@@ -67,11 +67,15 @@ Inyectamos el payload `' || (select '' from users where rownum = 1) || '`:
 
 <img width="1882" height="812" alt="image" src="https://github.com/user-attachments/assets/84260728-ff62-4c03-aa7a-b486b0097b8e" />
 
-`Nota`: La subconsulta `(select '' from users)` devolvería una fila por cada registro de la tabla users. Si la tabla `users` tiene, por ejemplo, 10 usuarios, esa subconsulta devuelve 10 filas. Pero la consulta externa donde está la inyección solo espera 1 valor (1 fila) para poder concatenarlo en la cadena final.
+`Nota`: La subconsulta `(select '' from users)` devolvería una fila por cada registro de la tabla users. Si la tabla `users` tiene, por ejemplo, 10 usuarios, esa subconsulta devuelve 10 filas. Pero la consulta externa donde está la inyección solo espera 1 valor (1 fila) para poder concatenarlo en la cadena final, es decir, cuando concatenamos con `||` la query espera un único valor.
+
+En Oracle, `rownum` es una pseudo-columna que numera las filas del resultado a medida que se devuelven. La primera fila devuelta recibe `rownum = 1`.
+
+Por lo tanto la consulta `'abc' || (select '' from users where rownum=1);`  devuelve exactamente una fila y funciona correctamente.
 
 Al obtener el código de estado 200, confirmamos que la tabla users existe. Tuvimos que agregar
 
 
 
-En Oracle, `rownum` es un pseudo-columna que numera las filas del resultado a medida que se devuelven. La primera fila devuelta recibe `rownum = 1`.
+
 
