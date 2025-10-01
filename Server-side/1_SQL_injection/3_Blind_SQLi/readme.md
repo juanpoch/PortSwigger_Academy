@@ -48,7 +48,7 @@ Metodología completa:
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
 
-### 2. Basada en errores (Error-based)
+### 2. Error-based
 
 Si la aplicación filtra los resultados pero **sí muestra errores del motor SQL**, podemos usarlos para inferir datos.
 
@@ -74,6 +74,8 @@ ERROR: invalid input syntax for type integer: "S3curePwd"
 ```
 
 Esto convierte una blind SQLi en visible.
+
+[Error_based](Error_based.md)
 
 ### 3. Basada en tiempos (Time-based)
 
