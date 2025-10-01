@@ -9,7 +9,7 @@ Esto imposibilita técnicas visibles como ataques con `UNION`, pero aún se pued
 
 ## Técnicas de explotación en Blind SQLi
 
-### 1. Condicionales en las respuestas (Boolean-based)
+### 1. Boolean-based
 
 1. Confirmar que el parámetro es vulnerable con condiciones triviales (`' AND '1'='1` / `' AND '1'='2`).
 
@@ -48,6 +48,8 @@ Metodología completa:
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
 
+---
+
 ### 2. Error-based
 
 Si la aplicación filtra los resultados pero **sí muestra errores del motor SQL**, podemos usarlos para inferir datos.
@@ -77,11 +79,13 @@ Esto convierte una blind SQLi en visible.
 
 [Error_based](Error_based.md)
 
+---
+
 [Lab: Blind_SQL_injection_with_conditional_errors](2_Blind_SQL_injection_with_conditional_errors.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
 
-
+---
 
 ### 3. Basada en tiempos (Time-based)
 
