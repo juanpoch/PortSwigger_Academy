@@ -99,10 +99,10 @@ Procedemos a utilizar el payload `' || (select CASE WHEN (1=0) THEN TO_CHAR(1/0)
 
 Está bien que arroje un código 200 porque en este caso se ejecutaría la porción que arroja la cadena vacía.
 
-Utilizamos ahora el payload ' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual) || '
+Utilizamos ahora el payload `' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual) || '`:
 <img width="1883" height="817" alt="image" src="https://github.com/user-attachments/assets/1dc6ed76-9d30-437c-8198-a82c0a6a038b" />
 
-En este caso vemos que al ser (1=1) verdadero, se ejecuta la porción (1/0) generando un error.
+En este caso vemos que al ser (1=1) verdadero, se ejecuta la porción (1/0) generando un error. El servidor nos responde con un `Internal server Error`.
 
 
 `Nota`: También podríamos haber utilizado el payload que vemos en el `Cheat sheet`:
@@ -112,6 +112,14 @@ En este caso vemos que al ser (1=1) verdadero, se ejecuta la porción (1/0) gene
 Cuando `1=1`:
 <img width="1908" height="816" alt="image" src="https://github.com/user-attachments/assets/513ccb3b-a913-4505-ac1a-26b3c18a8ad9" />
 
+Ahora procedemos a utilizar este payload para ver si el usuario `administrator` existe. Utilizamos el payload `' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='administrator') || '`:
+<img width="1879" height="799" alt="image" src="https://github.com/user-attachments/assets/75ab8e45-4d4f-41bc-a7ed-e3de874904c1" />
+
+Confirmamos que el usuario `administrator` existe porque si existe, se ejecutará la consulta select y se producirá el error.
+
+Si el usuario no existe en la tabla, entonces nunca se ejecutará el select y nos arrojará un 200:
+
+<img width="1876" height="792" alt="image" src="https://github.com/user-attachments/assets/d59767cb-5d3c-4b2c-8c9b-489f6018aea5" />
 
 
 ---
