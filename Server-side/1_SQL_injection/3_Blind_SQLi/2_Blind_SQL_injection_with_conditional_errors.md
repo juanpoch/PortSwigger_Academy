@@ -73,7 +73,7 @@ En Oracle, `rownum` es una pseudo-columna que numera las filas del resultado a m
 
 Por lo tanto la consulta `'abc' || (select '' from users where rownum=1);`  devuelve exactamente una fila y funciona correctamente.
 
-Al obtener el código de estado 200, confirmamos que la tabla users existe. Tuvimos que agregar
+Al obtener el código de estado 200, confirmamos que la tabla users existe.
 
 
 
