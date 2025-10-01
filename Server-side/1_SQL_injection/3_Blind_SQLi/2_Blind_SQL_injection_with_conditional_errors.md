@@ -20,7 +20,7 @@ La aplicación realiza una consulta SQL con el valor del parámetro `TrackingId`
 
 Objetivos:
 
-- Imprimir la contraseña del usuario `administrator`-
+- Imprimir la contraseña del usuario `administrator`.
 - Autenticarse como administrador.
 
 ---
