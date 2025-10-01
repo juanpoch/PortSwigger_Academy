@@ -82,9 +82,27 @@ Al obtener el código de estado 200, confirmamos que la tabla users existe.
 
 En este caso, utilizamos el payload `' || (select '' from users where username='administrator') || '`:
 
+
+Esto no va a funcionar porque la aplicación no brindará errores tanto si el usuario `administrator` existe como si no existe (la porción del select no se ejecutará).
+
+- Si `administrator` existe → `(select '')` devuelve una fila con `''`.
+
+- Si `administrator` no existe → devuelve 0 filas → la query se convierte en `'valor_original' || NULL || ''` → que es básicamente `'valor_original'`.
+
 <img width="1874" height="793" alt="image" src="https://github.com/user-attachments/assets/b78cb16e-b2ab-4042-98cf-2f6cfe27f51c" />
 
-Obtenemos un código de estado 200, por lo que confirmamos la existencia del usuario `administrator`.
+Usuario no existente:
+<img width="1880" height="818" alt="image" src="https://github.com/user-attachments/assets/595cafb9-6906-4a1f-a97b-45e423d66759" />
+
+Procedemos a utilizar el payload `' || (select CASE WHEN (1=0) THEN TO_CHAR(1/0) ELSE '' END FROM dual) || '`:
+<img width="1892" height="824" alt="image" src="https://github.com/user-attachments/assets/7ff03595-84d2-4501-b03e-efb278c46015" />
+
+Está bien que arroje un código 200 porque en este caso se ejecutaría la porción que arroja la cadena vacía.
+
+Utilizamos ahora el payload ' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual) || '
+<img width="1883" height="817" alt="image" src="https://github.com/user-attachments/assets/1dc6ed76-9d30-437c-8198-a82c0a6a038b" />
+
+En este caso vemos que al ser (1=1) verdadero, se ejecuta la porción (1/0) generando un error.
 
 ---
 
