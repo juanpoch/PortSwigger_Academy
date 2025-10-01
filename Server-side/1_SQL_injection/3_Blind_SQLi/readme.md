@@ -79,6 +79,8 @@ Esto convierte una blind SQLi en visible.
 
 [Error_based](Error_based.md)
 
+[SQL Cheat Sheaet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
 ---
 
 [Lab: Blind_SQL_injection_with_conditional_errors](2_Blind_SQL_injection_with_conditional_errors.md)  
