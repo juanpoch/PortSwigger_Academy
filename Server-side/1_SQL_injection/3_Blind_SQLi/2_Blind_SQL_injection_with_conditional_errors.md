@@ -53,7 +53,23 @@ Procedemos a confirmarlo realizando la inyección del payload `' || (select '' f
 
 Confirmamos que nos encontramos ante ORACLE.
 
+Ahora probamos hacer la misma consulta con el siguiente payload `' || (select '' from noexiste) || '` esperando obtener un `Internal Server Error`:
 
+<img width="1885" height="852" alt="image" src="https://github.com/user-attachments/assets/e9e7d9fd-e89f-4cce-93db-1c483d1afec0" />
 
+Esto nos acaba de confirmar que definitivamente realizamos una inyección SQL.
 
+---
+
+`Paso 2`: Confirmar que la tabla `users` existe en la base de datos.
+
+Inyectamos el payload `' || (select '' from users where rownum = 1) || '`:
+
+<img width="1882" height="812" alt="image" src="https://github.com/user-attachments/assets/84260728-ff62-4c03-aa7a-b486b0097b8e" />
+
+Al obtener el código de estado 200, confirmamos que la tabla users existe. Tuvimos que agregar
+
+`Nota`: lLa subconsulta `(select '' from users)` devolvería una fila por cada registro de la tabla users. Si la tabla `users` tiene, por ejemplo, 10 usuarios, esa subconsulta devuelve 10 filas. Pero la consulta externa donde está la inyección solo espera 1 valor (1 fila) para poder concatenarlo en la cadena final.
+
+En Oracle, `rownum` es un pseudo-columna que numera las filas del resultado a medida que se devuelven.
 
