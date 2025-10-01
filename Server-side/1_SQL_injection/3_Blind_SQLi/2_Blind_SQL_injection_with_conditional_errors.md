@@ -8,7 +8,10 @@ The database contains a different table called `users`, with columns called `use
 
 To solve the lab, log in as the `administrator` user. 
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 [SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
 
 
 ---
