@@ -12,7 +12,16 @@ To solve the lab, log in as the `administrator` user.
 
 [SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
+---
 
+En este laboratorio tenemos un parámetro vulnerable llamado `TrackingId`. Este parámetro es vulnerable a blind SQLi.
+
+La aplicación realiza una consulta SQL con el valor del parámetro `TrackingId`, pero la misma no retorna ningún resultado visible y tampoco es posible diferenciar resultados diferentes basados en si la consulta devuelve una fila o no. 
+
+Objetivos:
+
+- Imprimir la contraseña del usuario `administrator`-
+- Autenticarse como administrador.
 
 ---
 
