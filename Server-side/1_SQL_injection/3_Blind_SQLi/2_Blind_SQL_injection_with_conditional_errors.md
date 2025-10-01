@@ -109,6 +109,10 @@ En este caso vemos que al ser (1=1) verdadero, se ejecuta la porción (1/0) gene
 `' AND (SELECT CASE WHEN (1=0) THEN TO_CHAR(1/0) ELSE 'a' END FROM dual)='a`
 <img width="1890" height="839" alt="image" src="https://github.com/user-attachments/assets/fb63fb9e-578b-43c5-a34b-20205794b040" />
 
+Cuando `1=1`:
+<img width="1908" height="816" alt="image" src="https://github.com/user-attachments/assets/513ccb3b-a913-4505-ac1a-26b3c18a8ad9" />
+
+
 
 ---
 
