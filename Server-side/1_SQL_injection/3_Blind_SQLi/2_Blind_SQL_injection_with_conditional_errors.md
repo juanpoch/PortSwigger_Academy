@@ -136,3 +136,11 @@ Ahora probamos con un número más grande, `' || (select CASE WHEN (1=1) THEN TO
 Por lo que hasta ahora sabemos que la contraseña tiene una longitud mayor a 1 y menor a 50.
 
 
+Bajo la misma lógica, mandamos la solicitud al `Intruder` y realizamos un sniper attack:
+<img width="1919" height="947" alt="image" src="https://github.com/user-attachments/assets/4e6aa279-36ec-4671-b88a-b676648e63f8" />
+
+
+Al realizar el ataque confirmamos que la longitud de la contraseña es de 20 caracteres:
+<img width="1875" height="1013" alt="image" src="https://github.com/user-attachments/assets/a6dfafac-9992-40ec-badd-651210d6be86" />
+
+---
