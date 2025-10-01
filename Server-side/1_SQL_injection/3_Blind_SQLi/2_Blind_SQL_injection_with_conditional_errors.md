@@ -144,3 +144,21 @@ Al realizar el ataque confirmamos que la longitud de la contraseña es de 20 car
 <img width="1875" height="1013" alt="image" src="https://github.com/user-attachments/assets/a6dfafac-9992-40ec-badd-651210d6be86" />
 
 ---
+
+`Paso 5`: Imprimir la contraseña del usuario `administrator`:
+
+
+Utilizamos el payload `' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='administrator' and substr(password,1,1)='a') || '`:
+<img width="1875" height="829" alt="image" src="https://github.com/user-attachments/assets/03e3c817-e2e7-4339-a0ea-27a8c3b44102" />
+
+Para ahorrarnos hacer las consultas manuales, enviamos la petición al intruder y realizamos un sniper attack:
+<img width="1883" height="875" alt="image" src="https://github.com/user-attachments/assets/d6eb4127-6727-4527-a437-659bbb12a3ac" />
+
+Obtenemos que el primer caracter de la contraseña es `z`:
+<img width="1851" height="945" alt="image" src="https://github.com/user-attachments/assets/d2aa40b3-0c40-46eb-a6e2-fe4127d9ee0c" />
+
+Para evitarnos hacer este ataque 20 veces, realizamos un ataque `Cluster bomb` en el `Intruder`:
+<img width="1864" height="865" alt="image" src="https://github.com/user-attachments/assets/c4a9c205-bd63-429f-bc97-2323fe5a7630" />
+
+Configuración payload 2:
+<img width="1889" height="862" alt="image" src="https://github.com/user-attachments/assets/cbceedf2-7feb-4c91-8102-5e2228574180" />
