@@ -104,6 +104,12 @@ Utilizamos ahora el payload ' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE 
 
 En este caso vemos que al ser (1=1) verdadero, se ejecuta la porción (1/0) generando un error.
 
+
+`Nota`: También podríamos haber utilizado el payload que vemos en el `Cheat sheet`:
+`' AND (SELECT CASE WHEN (1=0) THEN TO_CHAR(1/0) ELSE 'a' END FROM dual)='a`
+<img width="1890" height="839" alt="image" src="https://github.com/user-attachments/assets/fb63fb9e-578b-43c5-a34b-20205794b040" />
+
+
 ---
 
 
