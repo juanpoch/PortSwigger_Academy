@@ -77,6 +77,12 @@ Esto convierte una blind SQLi en visible.
 
 [Error_based](Error_based.md)
 
+[Lab: Blind_SQL_injection_with_conditional_errors](2_Blind_SQL_injection_with_conditional_errors.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
+
+
 ### 3. Basada en tiempos (Time-based)
 
 Si la app no muestra errores y el comportamiento no cambia, se fuerza un **retraso condicional**:
