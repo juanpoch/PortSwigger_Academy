@@ -57,7 +57,7 @@ Ahora probamos hacer la misma consulta con el siguiente payload `' || (select ''
 
 <img width="1885" height="852" alt="image" src="https://github.com/user-attachments/assets/e9e7d9fd-e89f-4cce-93db-1c483d1afec0" />
 
-Esto nos acaba de confirmar que definitivamente realizamos una inyección SQL.
+Esto nos acaba de confirmar que definitivamente realizamos una inyección SQL y que acepta subconsultas.
 
 ---
 
