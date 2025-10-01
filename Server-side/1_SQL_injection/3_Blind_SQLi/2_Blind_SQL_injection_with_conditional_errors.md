@@ -162,3 +162,14 @@ Para evitarnos hacer este ataque 20 veces, realizamos un ataque `Cluster bomb` e
 
 Configuración payload 2:
 <img width="1889" height="862" alt="image" src="https://github.com/user-attachments/assets/cbceedf2-7feb-4c91-8102-5e2228574180" />
+
+Una vez realizado el ataque, filtramos por los código de estado 500 en `View filter`:
+<img width="1839" height="809" alt="image" src="https://github.com/user-attachments/assets/5f239a48-2339-4972-88ed-4c8215e4176c" />
+
+El resultado es el siguiente:
+<img width="1851" height="578" alt="image" src="https://github.com/user-attachments/assets/dbe069e4-7b9d-4845-8504-3c713fb8c078" />
+
+Obtenemos la contraseña: `zfclo5hozrfqn2srpifh`
+
+Nos autenticamos como `administrator` y resolvemos el laboratorio:
+<img width="1867" height="719" alt="image" src="https://github.com/user-attachments/assets/b2d0ddaa-dbae-4e3d-a219-97f7cd823554" />
