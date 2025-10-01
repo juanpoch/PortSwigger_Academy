@@ -71,5 +71,5 @@ Al obtener el código de estado 200, confirmamos que la tabla users existe. Tuvi
 
 `Nota`: lLa subconsulta `(select '' from users)` devolvería una fila por cada registro de la tabla users. Si la tabla `users` tiene, por ejemplo, 10 usuarios, esa subconsulta devuelve 10 filas. Pero la consulta externa donde está la inyección solo espera 1 valor (1 fila) para poder concatenarlo en la cadena final.
 
-En Oracle, `rownum` es un pseudo-columna que numera las filas del resultado a medida que se devuelven.
+En Oracle, `rownum` es un pseudo-columna que numera las filas del resultado a medida que se devuelven. La primera fila devuelta recibe `rownum = 1`.
 
