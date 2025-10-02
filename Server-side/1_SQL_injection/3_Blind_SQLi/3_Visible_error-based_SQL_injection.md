@@ -51,9 +51,20 @@ Utilizamos la función `CAST` con el payload `' AND CAST((SELECT 1) as int)--`:
 
 El servidor nos responde que el argumento luego del `AND` debería ser booleano y no entero, por eso se produce el error.
 
-Por lo que inyectamos el payload `' AND 1=CAST((SELECT 1) as int)--`:
+Por lo que inyectamos el payload `' AND 1=CAST((SELECT 1) as int)--` y vemos que solucionamos el error:
 <img width="1890" height="831" alt="image" src="https://github.com/user-attachments/assets/ea42bc12-61c2-41ff-b44f-3df9050fe2a7" />
 
 
+Ahora inyectamos el payload `' AND 1=CAST((SELECT 'abc') as int)--`:
+<img width="1880" height="633" alt="image" src="https://github.com/user-attachments/assets/983f928f-bffd-4e36-80cb-e3d9695da9af" />
+
+Vemos que el servidor devuelve el string literal como sospechabamos. Este comportamiento podría permitir imprimir información que no conozcamos dentro de una consulta `SELECT`.
+
+
+Inyectamos el payload `' AND 1=CAST((SELECT username from users) as int)--`:
+<img width="1890" height="804" alt="image" src="https://github.com/user-attachments/assets/e764268f-81fc-42c4-955f-45e6c5463744" />
+
+
+Vemos el error `Undeterminated string literal` y además vemos que la salida de nuestra consulta `CAST` está truncada, por lo que la respuesta nos está sugiriendo que hay algún tipo de límite a la cantidad de caracteres.
 
 
