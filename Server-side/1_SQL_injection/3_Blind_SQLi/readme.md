@@ -251,34 +251,6 @@ Resultado: obtuviste el valor "S3curePwd" en el mensaje de error.
 
 ---
 
-### Limitaciones y consideraciones éticas
-
-* **Depende de la configuración**: muchas apps en producción no muestran errores completos; los mensajes pueden estar suprimidos.
-* **No siempre verás el valor completo**: algunos motores truncarán o sanearán el mensaje.
-* **No es universal**: algunos SGBD o versiones no muestran el valor en el error.
-* **Ética**: sólo probar en entornos autorizados. Forzar errores en producción puede afectar disponibilidad o integridad.
-
----
-
-### Defensa y mitigaciones específicas
-
-* **No mostrar errores verbosos al usuario**. Registrar internamente.
-* **Validación y saneamiento de entrada**; prepared statements.
-* **Menor privilegio** y minimizar funciones peligrosas.
-* **WAF y monitoreo**: detectar intentos de forzar errores (múltiples `CAST`/`1/0`).
-
----
-
-### Checklist rápido para exploiters (labs)
-
-* [ ] Identificar contexto (¿dentro de comillas?).
-* [ ] Probar `CAST(... AS INT)` / `CONVERT` o triggers de error seguros.
-* [ ] Usar `LIMIT 1`/`TOP 1`/`ROWNUM=1` para una sola fila.
-* [ ] URL-encodear payload y comentar el resto de la consulta.
-* [ ] Analizar el mensaje y adaptar la extracción (iterar si se necesita exfiltrar más datos).
-
----
-
 
 ---
 
