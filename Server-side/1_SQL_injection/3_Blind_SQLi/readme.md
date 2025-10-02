@@ -116,7 +116,7 @@ Unterminated string literal started at position 52 in SQL SELECT * FROM tracking
 Interpretación:
 
 * La app te muestra **la consulta completa** que ejecutó: `SELECT * FROM tracking WHERE id = '` + tu input.
-* Vemos que el parámetro fue insertado **dentro de una cadena** entrecomillada con `'` (single-quoted string).
+* Vemos que el parámetro fue insertado **dentro de una cadena** entrecomillada con `'`.
 * Con esa pista, ahora sabés cómo cerrar la comilla y cómo comentar el resto de la consulta (`-- ` o `/* */`) para manipular la sintaxis sin romperla.
 
 **Qué hacer con esta información:**
