@@ -37,4 +37,23 @@ SELECT * FROM tracking WHERE id = '5JR9zWEzi2idX6mH'
 
 Además sabemos que el backend está esperando una cadena y por eso se produjo el error.
 
+Ahora procedemos a realizar la misma inyección pero le añadimos el comentario:
+<img width="1864" height="795" alt="image" src="https://github.com/user-attachments/assets/c7d3fa2e-1cec-4283-887a-a4a566cdd3c0" />
+
+Vemos que la salida de la inyección no está siendo reflejada en la página, por lo que tenemos un escenario de inyeción ciega.
+
+---
+
+
+Utilizamos la función `CAST` con el payload `' AND CAST((SELECT 1) as int)--`:
+
+<img width="1884" height="667" alt="image" src="https://github.com/user-attachments/assets/679df05b-5595-4d1c-b983-84bb4dfb7033" />
+
+El servidor nos responde que el argumento luego del `AND` debería ser booleano y no entero, por eso se produce el error.
+
+Por lo que inyectamos el payload `' AND 1=CAST((SELECT 1) as int)--`:
+<img width="1890" height="831" alt="image" src="https://github.com/user-attachments/assets/ea42bc12-61c2-41ff-b44f-3df9050fe2a7" />
+
+
+
 
