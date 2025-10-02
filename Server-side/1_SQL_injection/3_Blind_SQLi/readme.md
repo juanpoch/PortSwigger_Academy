@@ -105,7 +105,7 @@ Con esta información, una vulnerabilidad que era "blind" puede transformarse en
 
 ---
 
-## 2) Ejemplo típico: "Unterminated string literal"
+### Ejemplo típico: "Unterminated string literal"
 
 Si inyectás una comilla simple (`'`) en un parámetro `id` y la app devuelve:
 
@@ -125,7 +125,7 @@ Interpretación:
 
 ---
 
-## 3) Forzar errores que revelen datos: rol de `CAST()`
+### Forzar errores que revelen datos: rol de `CAST()`
 
 `CAST(expr AS type)` convierte `expr` a `type`. Si `expr` tiene un formato no convertible al tipo destino, el motor lanzará un error que **puede incluir el valor original**.
 
@@ -147,11 +147,11 @@ Este mensaje revela el contenido de `example_column`.
 
 ---
 
-## 4) Sintaxis y comportamiento por SGBD
+### Sintaxis y comportamiento por SGBD
 
 > Atención: hay diferencias en funciones y mensajes; adapta payloads por motor.
 
-### 4.1 MySQL
+#### MySQL
 
 * `CAST(expr AS SIGNED)` o `CAST(expr AS UNSIGNED)` o `CAST(expr AS DECIMAL)` puede provocar errores de conversión. Mensajes pueden ser menos verbosos según configuración.
 * Alternativas específicas para MySQL: `UPDATEXML()` o `EXTRACTVALUE()` con subselects pueden producir errores que contienen los datos.
@@ -164,7 +164,7 @@ Este mensaje revela el contenido de `example_column`.
 
 Si `some_column` = 'abc', es probable que se produzca un error del tipo “invalid integer” que incluya 'abc'.
 
-### 4.2 PostgreSQL
+#### PostgreSQL
 
 * `CAST(expr AS INTEGER)` o `expr::integer` provoca `invalid input syntax for integer: "..."` mostrando el texto no convertible.
 
@@ -176,7 +176,7 @@ Si `some_column` = 'abc', es probable que se produzca un error del tipo “inval
 
 Si devuelve texto, el error suele mostrar exactamente el texto que falló.
 
-### 4.3 Microsoft SQL Server
+#### Microsoft SQL Server
 
 * `CAST(expr AS INT)` o `CONVERT(INT, expr)` pueden lanzar errores parecidos a `Conversion failed when converting the varchar value '...' to data type int.` que incluyen el valor.
 
@@ -186,7 +186,7 @@ Si devuelve texto, el error suele mostrar exactamente el texto que falló.
 ' AND (SELECT CAST((SELECT TOP 1 column FROM table) AS INT))--
 ```
 
-### 4.4 Oracle
+#### Oracle
 
 * `CAST(expr AS NUMBER)` puede lanzar `ORA-01722: invalid number` y a veces mostrar el valor problemático según contexto. Oracle suele ser menos verboso por defecto.
 * Recordá que en Oracle hay que usar `FROM DUAL` para selects que no leen tablas.
@@ -197,13 +197,13 @@ Si devuelve texto, el error suele mostrar exactamente el texto que falló.
 ' AND (SELECT CAST((SELECT column FROM users WHERE ROWNUM=1) AS NUMBER) FROM DUAL)--
 ```
 
-### 4.5 SQLite
+#### SQLite
 
 * `CAST(expr AS INTEGER)` produce `datatype mismatch` o errores que incluyen el texto.
 
 ---
 
-## 5) Cómo formar un payload efectivo
+### Cómo formar un payload efectivo
 
 1. **Identifica contexto**: ¿estás dentro de comillas? ¿en WHERE, in SELECT, in FROM? Un mensaje de error tipo "unterminated string" ya lo dice.
 2. **Usa `CAST()`** para convertir la salida de una subconsulta a un tipo incompatible y provocar error que contenga el valor.
@@ -221,7 +221,7 @@ Si `column` contiene 's3cret', el DB puede responder con `invalid input syntax f
 
 ---
 
-## 6) Ejemplos concretos y anotados
+### Ejemplos concretos y anotados
 
 ### Caso A — detectando contexto con "unterminated string"
 
@@ -251,7 +251,7 @@ Resultado: obtuviste el valor "S3curePwd" en el mensaje de error.
 
 ---
 
-## 7) Limitaciones y consideraciones éticas
+### Limitaciones y consideraciones éticas
 
 * **Depende de la configuración**: muchas apps en producción no muestran errores completos; los mensajes pueden estar suprimidos.
 * **No siempre verás el valor completo**: algunos motores truncarán o sanearán el mensaje.
@@ -260,7 +260,7 @@ Resultado: obtuviste el valor "S3curePwd" en el mensaje de error.
 
 ---
 
-## 8) Defensa y mitigaciones específicas
+### Defensa y mitigaciones específicas
 
 * **No mostrar errores verbosos al usuario**. Registrar internamente.
 * **Validación y saneamiento de entrada**; prepared statements.
@@ -269,16 +269,13 @@ Resultado: obtuviste el valor "S3curePwd" en el mensaje de error.
 
 ---
 
-## 9) Checklist rápido para exploiters (labs)
+### Checklist rápido para exploiters (labs)
 
 * [ ] Identificar contexto (¿dentro de comillas?).
 * [ ] Probar `CAST(... AS INT)` / `CONVERT` o triggers de error seguros.
 * [ ] Usar `LIMIT 1`/`TOP 1`/`ROWNUM=1` para una sola fila.
 * [ ] URL-encodear payload y comentar el resto de la consulta.
 * [ ] Analizar el mensaje y adaptar la extracción (iterar si se necesita exfiltrar más datos).
-
----
-
 
 ---
 
