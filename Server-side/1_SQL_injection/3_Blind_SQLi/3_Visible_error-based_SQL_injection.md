@@ -67,4 +67,14 @@ Inyectamos el payload `' AND 1=CAST((SELECT username from users) as int)--`:
 
 Vemos el error `Undeterminated string literal` y además vemos que la salida de nuestra consulta `CAST` está truncada, por lo que la respuesta nos está sugiriendo que hay algún tipo de límite a la cantidad de caracteres.
 
+Lo primero que hacemos es remover el valor de la cookie insertado:
+<img width="1888" height="608" alt="image" src="https://github.com/user-attachments/assets/b0c0c421-9509-4e01-b383-5db595a21b0e" />
+
+Usamos el payload `' AND 1=CAST((SELECT username from users limit 1) as int)--`:
+
+<img width="1909" height="760" alt="image" src="https://github.com/user-attachments/assets/26b7edd6-9ffa-4ea3-bc07-04af8688a88e" />
+
+Removemos todo lo que no es necesario e iniciamos desde la comilla:
+<img width="1877" height="655" alt="image" src="https://github.com/user-attachments/assets/c01f0e18-43ac-4375-b7c2-04db720189e0" />
+
 
