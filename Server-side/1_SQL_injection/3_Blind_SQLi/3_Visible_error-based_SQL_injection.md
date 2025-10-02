@@ -70,11 +70,19 @@ Vemos el error `Undeterminated string literal` y además vemos que la salida de 
 Lo primero que hacemos es remover el valor de la cookie insertado:
 <img width="1888" height="608" alt="image" src="https://github.com/user-attachments/assets/b0c0c421-9509-4e01-b383-5db595a21b0e" />
 
-Usamos el payload `' AND 1=CAST((SELECT username from users limit 1) as int)--`:
+Ahora, como esperabamos, nos devuelve un error debido a que la consulta no puede procesar todas las filas por lo que usamos el payload `' AND 1=CAST((SELECT username from users limit 1) as int)--`:
 
 <img width="1909" height="760" alt="image" src="https://github.com/user-attachments/assets/26b7edd6-9ffa-4ea3-bc07-04af8688a88e" />
 
 Removemos todo lo que no es necesario e iniciamos desde la comilla:
 <img width="1877" height="655" alt="image" src="https://github.com/user-attachments/assets/c01f0e18-43ac-4375-b7c2-04db720189e0" />
 
+Nos devuelve el usuario `administrator`.
 
+Obtenemos la contraseña con el payload `' AND 1=CAST((SELECT password from users limit 1) as int)--`:
+<img width="1888" height="543" alt="image" src="https://github.com/user-attachments/assets/a32db1c6-e82a-418d-9694-a9c08a861a2c" />
+
+- `Password`: 49g9b10jyd1nigkrjamh
+
+Nos autenticamos con las credenciales `administrator`:`49g9b10jyd1nigkrjamh` y resolvemos el laboratorio:
+<img width="1573" height="652" alt="image" src="https://github.com/user-attachments/assets/382e80e3-7c5a-45f7-bb0b-767f71d8ee8c" />
