@@ -20,7 +20,7 @@ Explotar una SQLi para devolver las credenciales del usuario `administrator` de 
 Iniciamos el laboratorio y nos encontramos con un shop online:
 <img width="1498" height="781" alt="image" src="https://github.com/user-attachments/assets/5b7dbcd8-4ad9-4928-aecd-51c3f21e499e" />
 
-Podemos ver la cookie customizada llamada `TrackingId` que el laboratorio nos dice que es vulberable.
+Podemos ver la cookie customizada llamada `TrackingId` que el laboratorio nos dice que es vulnerable.
 
 La consulta que hace el backend por detrás podría ser del estilo:
 ```sql
