@@ -203,11 +203,3 @@ Siempre compara contra respuestas de referencia (condición known-true / known-f
 * No devolver detalles de errores al cliente.
 * Menos privilegios en la cuenta DB.
 * Monitorizar patrones inusuales y bloquear peticiones que intentan forzar errores repetidamente.
-
----
-
-Si querés, puedo:
-
-* Añadir ejemplos concretos con la URL-encoding lista para Burp Repeater.
-* Generar un script Python que automatice extracción vía errores condicionales (búsqueda binaria).
-* Añadir capturas de ejemplo para un lab (requests/responses). ¿Cuál preferís?
