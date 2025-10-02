@@ -257,7 +257,7 @@ Resultado: obtuviste el valor "S3curePwd" en el mensaje de error.
 
 ---
 
-### 4. Basada en tiempos (Time-based)
+### 4. Time-based
 
 Si la app no muestra errores y el comportamiento no cambia, se fuerza un **retraso condicional**:
 
