@@ -251,6 +251,9 @@ Resultado: obtuviste el valor "S3curePwd" en el mensaje de error.
 
 ---
 
+[Lab: Visible_error-based_SQL_injection](3_Visible_error-based_SQL_injection.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
 
 ---
 
