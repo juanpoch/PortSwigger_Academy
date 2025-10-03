@@ -290,6 +290,14 @@ Se pueden extraer caracteres de forma binaria:
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
 
+
+[Lab: Blind_SQL_injection_with_time_delays_and_information_retrieval](5_Blind_SQL_injection_with_time_delays_and_information_retrieval.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
+
+---
+
 ### 4. Out-of-band (OAST)
 
 Si la query se ejecuta de forma asincrónica o no altera la respuesta/tiempo, se puede provocar una **interacción externa (DNS, HTTP, SMB)** hacia un servidor controlado por el atacante.
