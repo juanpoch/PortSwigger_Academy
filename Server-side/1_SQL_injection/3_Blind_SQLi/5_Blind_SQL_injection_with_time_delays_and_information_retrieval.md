@@ -10,4 +10,6 @@ To solve the lab, log in as the `administrator` user.
 
 [SQLi cheat sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 ---
