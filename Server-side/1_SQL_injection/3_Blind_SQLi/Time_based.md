@@ -1,10 +1,10 @@
 # Blind SQLi mediante time delays
 
-Cuando una aplicación **no revela** diferencias en la respuesta ante condiciones booleanas ni muestra errores (p. ej. captura/graba errores internamente), aún es posible inferir true/false observando **el tiempo** que tarda en responder.
+Cuando una aplicación **no revela** diferencias en la respuesta ante condiciones booleanas ni muestra errores , aún es posible inferir true/false observando **el tiempo** que tarda en responder.
 
-Si puedes inyectar una expresión que **haga que la base de datos espere** (sleep/delay) sólo cuando una condición es verdadera, entonces el tiempo de respuesta indica la verdad de esa condición.
+Si puedes inyectar una expresión que **haga que la base de datos espere** sólo cuando una condición es verdadera, entonces el tiempo de respuesta indica la verdad de esa condición.
 
-Esto convierte la diferencia de tiempo en un canal de exfiltración (un bit por petición).
+Esto convierte la diferencia de tiempo en un canal de exfiltración.
 
 ---
 
