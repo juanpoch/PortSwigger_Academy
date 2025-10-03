@@ -284,7 +284,7 @@ Se pueden extraer caracteres de forma binaria:
 
 [Time based](Time_based.md)
 
-[SQLi Cheat Sheat](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+[SQLi Cheat sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
 [Lab: Blind_SQL_injection_with_time_delays.md](4_Blind_SQL_injection_with_time_delays.md)  
 
