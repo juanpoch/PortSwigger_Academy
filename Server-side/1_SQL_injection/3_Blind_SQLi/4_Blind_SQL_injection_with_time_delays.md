@@ -41,7 +41,7 @@ select trackingId from trackingTable where trackingId='<id>'
 Debemos añadir un comentario `--` al final para que la sintaxis no quede rota.
 
 
-Probamos nuevamente con el payload `' || (SELECT pg_sleep(10)) --` correspondiente a `MySql`:
+Probamos nuevamente con el payload `' || (SELECT pg_sleep(10)) --` correspondiente a `PostgreSql`:
 <img width="1909" height="857" alt="image" src="https://github.com/user-attachments/assets/eb1b2045-6338-4017-90f5-88ed56b302a3" />
 
 Tardó 10 segundos, por lo que resolvimos el laboratorio:
