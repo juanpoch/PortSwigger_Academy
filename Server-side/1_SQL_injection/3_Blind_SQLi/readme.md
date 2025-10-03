@@ -282,6 +282,14 @@ Se pueden extraer caracteres de forma binaria:
 '; IF (SELECT SUBSTRING(password,1,1) FROM users WHERE username='Administrator')>'m' WAITFOR DELAY '0:0:5'--
 ```
 
+[Time based](Time_based.md)
+
+[SQLi Cheat Sheat](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
+[Lab: Blind_SQL_injection_with_time_delays.md](4_Blind_SQL_injection_with_time_delays.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 ### 4. Out-of-band (OAST)
 
 Si la query se ejecuta de forma asincrónica o no altera la respuesta/tiempo, se puede provocar una **interacción externa (DNS, HTTP, SMB)** hacia un servidor controlado por el atacante.
