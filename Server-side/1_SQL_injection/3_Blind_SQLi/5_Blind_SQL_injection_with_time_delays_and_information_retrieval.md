@@ -97,3 +97,16 @@ Utilizamos el payload `' || (select case when (username='administrator' and subs
 <img width="1916" height="863" alt="image" src="https://github.com/user-attachments/assets/2a2c2c9e-3691-438c-a2ee-60251c330da3" />
 
 La respuesta es inmediata, por lo que sabemos que el primer caracter de la contraseña no es `a`.
+
+Enviamos la petición al `Intruder` y realizamos el ataque para el primer caracer:
+<img width="1914" height="883" alt="image" src="https://github.com/user-attachments/assets/29ceaf13-281b-4d7a-bc9f-3060abf21f59" />
+
+Vemos que el primer caracter es el `2` porque es la única petición que tardó 10 segundos en responder:
+<img width="1878" height="900" alt="image" src="https://github.com/user-attachments/assets/7abfa409-8eac-4e16-bf83-9f7d35b43ff3" />
+
+En vez de hacer 20 ataques manuales para cada posición de la contraseña, realizamos un ataque de `Cluster bomb` con 2 payloads:
+<img width="1894" height="916" alt="image" src="https://github.com/user-attachments/assets/7a7a544a-f536-453a-a8f8-bff1d1ea31e9" />
+
+Payload 2:
+<img width="1902" height="859" alt="image" src="https://github.com/user-attachments/assets/1776c326-e57b-4273-b5e4-7d42d7a264d1" />
+
