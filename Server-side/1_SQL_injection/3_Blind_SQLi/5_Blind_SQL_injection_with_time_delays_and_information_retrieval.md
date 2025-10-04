@@ -110,3 +110,8 @@ En vez de hacer 20 ataques manuales para cada posición de la contraseña, reali
 Payload 2:
 <img width="1902" height="859" alt="image" src="https://github.com/user-attachments/assets/1776c326-e57b-4273-b5e4-7d42d7a264d1" />
 
+Resaltamos las peticiones que tardaron 10 segundos y filtramos en `View Filter` por las que sólo están resaltadas:
+<img width="1849" height="524" alt="image" src="https://github.com/user-attachments/assets/357eac3f-1a6f-4e06-87e7-744be12b74cf" />
+
+
+
