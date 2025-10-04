@@ -62,3 +62,21 @@ Paralelamente inyectamos la consulta sobre una tabla no existente demostrando qu
 
 Ahora probamos si existe un usuario `administrator` en la tabla `users` utilizando el payload `' || (select case when (username='administrator') then pg_sleep(10) else pg_sleep(-1) end from users)--`. La aplicación tarda 10 segundos, por lo que confirmamos la existencia del usuario `administrator`:
 <img width="1912" height="841" alt="image" src="https://github.com/user-attachments/assets/ca473f70-6750-4100-a4d6-008830172d81" />
+
+
+---
+
+`Paso 4`: Enumerar la longitud de la contraseña
+
+Utilizamos el payload  `' || (select case when (username='administrator' and LENGTH(password)>1) then pg_sleep(10) else pg_sleep(-1) end from users)--`:
+<img width="1915" height="835" alt="image" src="https://github.com/user-attachments/assets/1674f409-a138-457a-9d6e-5f85bc4ac569" />
+
+Como tardó 10 segundos, sabemos que la contraseña tiene una longitud mayor a 1 caracter.
+
+Ahora probamos si la longitud de la contraseña es mayor a 25 caracteres:
+<img width="1918" height="840" alt="image" src="https://github.com/user-attachments/assets/f9b49fe1-be0f-4850-b876-ce448699ce18" />
+
+Como no tardó 10 segundos en contestar, ahora sabemos que la contraseña tiene una longitud menor a 25 caracteres.
+
+Mandamos la solicitud al intruder y configuramos el `Sniper Attack` de la siguiente manera:
+<img width="1902" height="880" alt="image" src="https://github.com/user-attachments/assets/7b2c5506-f7a5-4b97-b041-5c3cf6d7733f" />
