@@ -13,3 +13,16 @@ To solve the lab, log in as the `administrator` user.
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
 
 ---
+
+Parámetro vulnerable: `TrackingId`
+
+Objetivos: 
+- Explotar una SQLi time-based para imprimir la contraseña del usuario `administrator`.
+- Autenticarse como `administrator`
+
+---
+
+Iniciamos el laboratorio y nos encontramos con un shop online. La petición tramita el parámetro `TrackingId` el cual es vulnerable:
+
+<img width="1502" height="810" alt="image" src="https://github.com/user-attachments/assets/70a07891-acb4-4094-8a56-7d43ec4752a8" />
+
