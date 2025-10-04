@@ -38,3 +38,16 @@ Comenzamos con el payload `' || (pg_sleep(10))--` correspondiente a `PostgreSql`
 <img width="1882" height="837" alt="image" src="https://github.com/user-attachments/assets/66108eae-fd24-4bae-ade8-d4418b138ee8" />
 
 Vemos que la aplicación tardó 10 segundos en contestar, por lo que confirmamos que el parámetro es vulnerable y nos encontramos con un motor `PostgreSql`.
+
+
+---
+
+`Paso 2`: Confirmar que la tabla `users` existe en la base de datos.
+
+ Utilizamos el payload `' || (select case when (1=1) then pg_sleep(10) else pg_sleep(-1) end)--`:
+<img width="1917" height="850" alt="image" src="https://github.com/user-attachments/assets/db24a65c-e724-4d28-a20e-651ddb9832a8" />
+
+Vemos que tardó 10 segundos en responder, por lo que confirmamos que existe la tabla `users`.
+
+Para probar, inyectamos el payload `' || (select case when (1=1) then pg_sleep(10) else pg_sleep(-1) end)--` el cual lógicamente no tarda 10 segundos en responder:
+<img width="1913" height="846" alt="image" src="https://github.com/user-attachments/assets/875b22e7-9eee-4373-a76b-ab835a12df8c" />
