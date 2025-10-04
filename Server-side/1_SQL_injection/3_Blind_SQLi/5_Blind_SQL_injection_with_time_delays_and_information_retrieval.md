@@ -115,7 +115,13 @@ Custom resource pool:
 
 
 Resaltamos las peticiones que tardaron 10 segundos y filtramos en `View Filter` por las que sólo están resaltadas:
-<img width="1849" height="524" alt="image" src="https://github.com/user-attachments/assets/357eac3f-1a6f-4e06-87e7-744be12b74cf" />
+<img width="1877" height="844" alt="image" src="https://github.com/user-attachments/assets/c48cfbf0-360b-4e7e-9b0f-2168eff71798" />
 
-Contraseña: `2opthktqyjq4s3s6pdzh`
+
+Contraseña: `2opthktqyju4s3s6pdzh`
+
+Nos autenticamos con las credenciales `administrator`:`2opthktqyju4s3s6pdzh` y resolvemos el laboratorio:
+
+<img width="1657" height="726" alt="image" src="https://github.com/user-attachments/assets/171a3237-8159-47cb-95b4-0e36d35aae74" />
+
 
