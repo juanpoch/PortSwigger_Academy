@@ -104,14 +104,18 @@ Enviamos la petición al `Intruder` y realizamos el ataque para el primer carace
 Vemos que el primer caracter es el `2` porque es la única petición que tardó 10 segundos en responder:
 <img width="1878" height="900" alt="image" src="https://github.com/user-attachments/assets/7abfa409-8eac-4e16-bf83-9f7d35b43ff3" />
 
-En vez de hacer 20 ataques manuales para cada posición de la contraseña, realizamos un ataque de `Cluster bomb` con 2 payloads:
-<img width="1894" height="916" alt="image" src="https://github.com/user-attachments/assets/7a7a544a-f536-453a-a8f8-bff1d1ea31e9" />
+En vez de hacer 20 ataques manuales para cada posición de la contraseña, realizamos un ataque de `Cluster bomb` con 2 payloads, además ponemos 5 segundos en la función `sleep`:
+<img width="1891" height="877" alt="image" src="https://github.com/user-attachments/assets/837731b7-12dc-4ed0-a783-984c956dc927" />
 
 Payload 2:
-<img width="1902" height="859" alt="image" src="https://github.com/user-attachments/assets/1776c326-e57b-4273-b5e4-7d42d7a264d1" />
+<img width="1912" height="744" alt="image" src="https://github.com/user-attachments/assets/629960a9-0f1b-47d4-9763-14c8f998ea35" />
+
+Custom resource pool:
+<img width="1909" height="902" alt="image" src="https://github.com/user-attachments/assets/167b735c-cdc9-42a1-b3c3-929ec28c9a71" />
+
 
 Resaltamos las peticiones que tardaron 10 segundos y filtramos en `View Filter` por las que sólo están resaltadas:
 <img width="1849" height="524" alt="image" src="https://github.com/user-attachments/assets/357eac3f-1a6f-4e06-87e7-744be12b74cf" />
 
-
+Contraseña: `2opthktqyjq4s3s6pdzh`
 
