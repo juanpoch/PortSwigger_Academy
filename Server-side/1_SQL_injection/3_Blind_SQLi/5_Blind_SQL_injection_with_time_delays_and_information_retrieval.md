@@ -80,3 +80,20 @@ Como no tardó 10 segundos en contestar, ahora sabemos que la contraseña tiene 
 
 Mandamos la solicitud al intruder y configuramos el `Sniper Attack` de la siguiente manera:
 <img width="1902" height="880" alt="image" src="https://github.com/user-attachments/assets/7b2c5506-f7a5-4b97-b041-5c3cf6d7733f" />
+
+Creamos un nuevo `Resource pool` para no lanzar 10 requests concurrentes:
+<img width="611" height="894" alt="image" src="https://github.com/user-attachments/assets/1fb2e358-638d-4cba-ad91-ce8b674349d2" />
+
+Vemos que la aplicación tarda 10 segundos en responder cuando el payload es 19, a partir de 20 la respuesta es inmediata:
+<img width="1881" height="892" alt="image" src="https://github.com/user-attachments/assets/a4567aaa-3d10-4ffd-a6f6-fcda8a03092e" />
+
+Por estos datos sabemos que la longitud de la contraseña es de 20 caracteres.
+
+---
+
+`Paso 5`: Enumerar la contraseña del usuario `administrator`
+
+Utilizamos el payload `' || (select case when (username='administrator' and substring(password,1,1)='a') then pg_sleep(10) else pg_sleep(-1) end from users)--`:
+<img width="1916" height="863" alt="image" src="https://github.com/user-attachments/assets/2a2c2c9e-3691-438c-a2ee-60251c330da3" />
+
+La respuesta es inmediata, por lo que sabemos que el primer caracter de la contraseña no es `a`.
