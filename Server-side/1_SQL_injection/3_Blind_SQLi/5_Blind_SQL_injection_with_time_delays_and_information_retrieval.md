@@ -47,7 +47,18 @@ Vemos que la aplicación tardó 10 segundos en contestar, por lo que confirmamos
  Utilizamos el payload `' || (select case when (1=1) then pg_sleep(10) else pg_sleep(-1) end)--`:
 <img width="1917" height="850" alt="image" src="https://github.com/user-attachments/assets/db24a65c-e724-4d28-a20e-651ddb9832a8" />
 
-Vemos que tardó 10 segundos en responder, por lo que confirmamos que existe la tabla `users`.
-
-Para probar, inyectamos el payload `' || (select case when (1=1) then pg_sleep(10) else pg_sleep(-1) end)--` el cual lógicamente no tarda 10 segundos en responder:
+Vemos que tardó 10 segundos en responder. Ahora probamos el caso contrario, inyectamos el payload `' || (select case when (1=1) then pg_sleep(10) else pg_sleep(-1) end)--` el cual lógicamente no tarda 10 segundos en responder:
 <img width="1913" height="846" alt="image" src="https://github.com/user-attachments/assets/875b22e7-9eee-4373-a76b-ab835a12df8c" />
+
+Confirmamos que existe la tabla `users` inyectando el payload `' || (select case when (1=1) then pg_sleep(10) else pg_sleep(-1) end from users)--` y viendo que tarda 10 segundos en responder:
+<img width="1916" height="842" alt="image" src="https://github.com/user-attachments/assets/e30747a4-ecbf-44ad-a325-a8cbaafab142" />
+Paralelamente inyectamos la consulta sobre una tabla no existente demostrando que no tarda 10 segundos:
+<img width="1917" height="850" alt="image" src="https://github.com/user-attachments/assets/b561ff68-0d9c-42a5-b6bd-e8422c938ed8" />
+
+---
+
+`Paso 3`: Confirmar que existe el usuario `administrator`.
+
+
+Ahora probamos si existe un usuario `administrator` en la tabla `users` utilizando el payload `' || (select case when (username='administrator') then pg_sleep(10) else pg_sleep(-1) end from users)--`. La aplicación tarda 10 segundos, por lo que confirmamos la existencia del usuario `administrator`:
+<img width="1912" height="841" alt="image" src="https://github.com/user-attachments/assets/ca473f70-6750-4100-a4d6-008830172d81" />
