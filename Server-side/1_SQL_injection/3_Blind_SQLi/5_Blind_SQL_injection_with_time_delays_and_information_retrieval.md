@@ -29,4 +29,12 @@ Iniciamos el laboratorio y nos encontramos con un shop online. La petición tram
 Nosotros sabemos que la aplicación no devuelve los resultados de la consulta, tampoco hay respuestas diferentes según la consulta arroje filas o no y tampoco causa errores verbosos. Lógicamente, si inyectamos el caracter `'` no notaremos ningún comportamiento diferente:
 <img width="1495" height="785" alt="image" src="https://github.com/user-attachments/assets/0fdb1daf-9d92-4c00-892a-eabd86cbfba3" />
 
+---
 
+`Paso 1`: Confirmar que el parámetro es vulnerable
+
+Comenzamos con el payload `' || (pg_sleep(10))--` correspondiente a `PostgreSql`:
+
+<img width="1882" height="837" alt="image" src="https://github.com/user-attachments/assets/66108eae-fd24-4bae-ade8-d4418b138ee8" />
+
+Vemos que la aplicación tardó 10 segundos en contestar, por lo que confirmamos que el parámetro es vulnerable y nos encontramos con un motor `PostgreSql`.
