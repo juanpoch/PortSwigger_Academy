@@ -26,3 +26,7 @@ Iniciamos el laboratorio y nos encontramos con un shop online. La petición tram
 
 <img width="1502" height="810" alt="image" src="https://github.com/user-attachments/assets/70a07891-acb4-4094-8a56-7d43ec4752a8" />
 
+Nosotros sabemos que la aplicación no devuelve los resultados de la consulta, tampoco hay respuestas diferentes según la consulta arroje filas o no y tampoco causa errores verbosos. Lógicamente, si inyectamos el caracter `'` no notaremos ningún comportamiento diferente:
+<img width="1495" height="785" alt="image" src="https://github.com/user-attachments/assets/0fdb1daf-9d92-4c00-892a-eabd86cbfba3" />
+
+
