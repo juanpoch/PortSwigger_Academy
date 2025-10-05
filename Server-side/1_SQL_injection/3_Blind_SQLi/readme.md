@@ -298,7 +298,7 @@ Se pueden extraer caracteres de forma binaria:
 
 ---
 
-### 4. Out-of-band (OAST)
+### 4. Out-of-band
 
 Si la query se ejecuta de forma asincrónica o no altera la respuesta/tiempo, se puede provocar una **interacción externa (DNS, HTTP, SMB)** hacia un servidor controlado por el atacante.
 
@@ -321,6 +321,14 @@ Incluso se puede exfiltrar datos:
 La contraseña queda embebida en el subdominio.
 
 [OAST](OAST.md)
+
+
+
+[Lab: Blind_SQL_injection_with_out-of-ban_interaction](6_Blind_SQL_injection_with_out-of-ban_interaction.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
+---
 
 ---
 
