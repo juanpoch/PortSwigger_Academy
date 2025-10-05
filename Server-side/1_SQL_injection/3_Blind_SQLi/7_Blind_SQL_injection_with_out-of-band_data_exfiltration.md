@@ -16,3 +16,15 @@ To solve the lab, log in as the `administrator` user.
 
 
 ---
+Objetivos:
+- Explotar una SQLi e imprimir la contraseña del usuario `administrator`.
+- Autenticarse como `administrator`.
+
+---
+
+Iniciamos el laboratorio y nos encontramos con un shop online, el cual tiene el parámetro `TrackingId` vulnerable:
+<img width="1506" height="781" alt="image" src="https://github.com/user-attachments/assets/63f4a52e-704f-40d9-b43c-afb3aee2f0bb" />
+
+
+
+
