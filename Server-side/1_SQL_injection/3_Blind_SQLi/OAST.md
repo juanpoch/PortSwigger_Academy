@@ -41,7 +41,7 @@ Las interacciones más fiables suelen usar **DNS** porque muchas redes permiten 
 
 ## Ejemplos de técnicas por SGBD
 
-### 5.1 Microsoft SQL Server (T‑SQL)
+### Microsoft SQL Server (T‑SQL)
 
 Funciones/procs que pueden ejecutar acciones que causan consultas DNS/SMB:
 
