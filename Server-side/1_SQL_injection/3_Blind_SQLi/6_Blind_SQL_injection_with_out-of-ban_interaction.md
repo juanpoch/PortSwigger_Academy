@@ -10,4 +10,6 @@ To solve the lab, exploit the SQL injection vulnerability to cause a DNS lookup 
 
 [SQLi Cheat sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
 ---
