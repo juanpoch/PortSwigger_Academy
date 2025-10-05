@@ -10,6 +10,8 @@ Cuando la app ejecuta la consulta vulnerable en un hilo separado (consulta origi
 
 Las interacciones más fiables suelen usar **DNS** porque muchas redes permiten peticiones DNS salientes y los resolvers realizarán la consulta por el atacante (o por un servicio como Burp Collaborator) incluso si otros protocolos están bloqueados.
 
+`Nota`: Resolver es el componente que recibe una consulta DNS y se encarga de resolverla paso a paso hasta obtener la respuesta final. Es el intermediario entre tu sistema y los servidores autoritativos que contienen la información real.
+
 ---
 
 ## Herramientas útiles
