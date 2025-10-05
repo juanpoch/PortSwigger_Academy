@@ -17,6 +17,7 @@ Las interacciones más fiables suelen usar **DNS** porque muchas redes permiten 
 ## Herramientas útiles
 
 * **Burp Collaborator**: servicio que genera subdominios únicos y registra cualquier interacción DNS/HTTP/SMTP/SMB/etc. Burp Professional integra un cliente que automatiza la comprobación. Ideal para labs y pentests.
+[Burp Collaborator doc](https://portswigger.net/burp/documentation/desktop/tools/collaborator)
 * **Otras opciones públicas/privadas**: Interactsh, Canarytokens, servicios DNS propios. En pruebas autorizadas puedes correr tu propio servidor DNS y recoger solicitudes.
 
 ---
