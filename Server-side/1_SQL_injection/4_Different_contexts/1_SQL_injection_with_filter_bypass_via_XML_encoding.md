@@ -49,6 +49,13 @@ Procedemos a filtrar la contraseña del usuario `administrator` con el payload `
 
 Contraseña: `bzugszsz1dw4f8vzsqwh`
 
+`Nota`: Podríamos haber utilizado un payload para concatenar usuarios y contraseñas en una misma columa:
+```sql
+UNION SELECT username || '~' || password from users
+```
+<img width="1518" height="816" alt="image" src="https://github.com/user-attachments/assets/95039e6e-d1f7-4dfd-b1b1-643bec1404e4" />
+
+
 Nos autenticamos con las credenciales `administrator`:`bzugszsz1dw4f8vzsqwh` y resolvemos el laboratorio:
 <img width="1640" height="720" alt="image" src="https://github.com/user-attachments/assets/cfb8118a-a8bc-49b6-bdd0-32a6de183b28" />
 
