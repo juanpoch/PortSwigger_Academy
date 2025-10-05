@@ -8,18 +8,18 @@ Las inyecciones SQL no se limitan al query string. Cualquier entrada controlable
 
 ## 1) Idea clave
 
-La vulnerabilidad aparece cuando la aplicación **construye o interpola** una consulta SQL usando datos controlados externamente sin usar **consultas parametrizadas** (prepared statements) o validación estricta. El formato del dato (JSON, XML, header) sólo cambia la forma en que el payload debe llegar y cómo la app lo decodifica antes de pasarlo al motor SQL.
+La vulnerabilidad aparece cuando la aplicación **construye o interpola** una consulta SQL usando datos controlados externamente sin usar **consultas parametrizadas**  o validación estricta. El formato del dato (JSON, XML, header) sólo cambia la forma en que el payload debe llegar y cómo la app lo decodifica antes de pasarlo al motor SQL.
 
 ---
 
 ## 2) Contextos comunes y ejemplos
 
-### A — Query string / form data (clásico)
+### A — Query string / form data
 
 * GET: `/product?id=123` → `SELECT * FROM products WHERE id = '123'`.
 * POST form: `product=123` similar.
 
-### B — JSON (APIs REST)
+### B — JSON
 
 * Petición JSON típica:
 
@@ -29,7 +29,7 @@ La vulnerabilidad aparece cuando la aplicación **construye o interpola** una co
 * Si el backend hace algo peligroso como: `query = "SELECT * FROM products WHERE id = '" + data.productId + "'";`, aceptará payloads JSON que incluyan comillas o estructuras.
 * **Ejemplo de inyección JSON**: si `productId` no se valida: `{ "productId": "1' OR '1'='1" }` → `... WHERE id = '1' OR '1'='1'`.
 
-### C — XML (SOAP, payloads de servicios)
+### C — XML
 
 * XML puede usar **escape sequences** o **entidades**:
 
@@ -53,11 +53,6 @@ La vulnerabilidad aparece cuando la aplicación **construye o interpola** una co
 
 * Formularios multipart incluyen campos de texto que pueden inyectarse. Metadatos de filenames también.
 
-### F — GraphQL / BSON / NoSQL (mención)
-
-* GraphQL pasa objetos; si se interpolan campos en consultas SQL internas, también son vectores.
-* NoSQL injection (MongoDB) no usa SQL pero permite inyección cuando el input es interpretado como operador (`{ "$gt": "" }`).
-
 ---
 
 ## 3) Por qué los formatos ayudan a evadir filtros (WAF, regex simples)
@@ -74,9 +69,9 @@ La vulnerabilidad aparece cuando la aplicación **construye o interpola** una co
 
 ---
 
-## 4) Ejemplos prácticos de bypass (payloads)
+## 4) Ejemplos prácticos de bypass
 
-> Ajustá comillas y encoding según el contexto (JSON string, XML text, header). Usá sólo en labs.
+> Ajustar comillas y encoding según el contexto (JSON string, XML text, header).
 
 * **JSON (body)**
 
