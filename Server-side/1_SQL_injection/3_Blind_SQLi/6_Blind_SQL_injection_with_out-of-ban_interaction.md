@@ -51,7 +51,7 @@ Y resolvimos el laboratorio:
 
 
 
-# XXE / OAST en Oracle — explicación simple de la sintaxis
+# XXE / OAST en Oracle 
 
 **Payload ejemplo**
 
@@ -68,7 +68,7 @@ SELECT EXTRACTVALUE(
 ) FROM dual;
 ```
 
-## Explicación de ataque
+## Payload
 
 Construye un documento XML con una entidad externa (`SYSTEM "http://..."`) y lo parsea con `xmltype`/`EXTRACTVALUE`. Al parsearlo, el parser XML intenta resolver la entidad externa y realiza una petición de red hacia el dominio controlado por el atacante — esto es la señal OOB/XXE.
 
