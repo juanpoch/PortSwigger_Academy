@@ -12,4 +12,7 @@ To solve the lab, log in as the `administrator` user.
 
 [SQLi Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
+
 ---
