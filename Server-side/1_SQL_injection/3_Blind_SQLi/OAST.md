@@ -63,7 +63,7 @@ Funciones/procs que pueden ejecutar acciones que causan consultas DNS/SMB:
 
 - `master` — nombre de la base de datos donde existe el procedimiento extendido (en SQL Server los xp_ suelen estar en master).
 
-.. — sintaxis que indica “usar el esquema por defecto” (es equivalente a `master.dbo.xp_dirtree`).
+`..` — sintaxis que indica “usar el esquema por defecto” (es equivalente a `master.dbo.xp_dirtree`).
 
 `xp_dirtree` — procedimiento extendido que lista directorios de una ruta UNC. Su efecto: intenta acceder a la ruta de red que le pases, p. ej. \\host\share. Ese intento de acceso al host provoca resoluciones DNS/SMB desde el entorno víctima hacia el dominio del host.
 
