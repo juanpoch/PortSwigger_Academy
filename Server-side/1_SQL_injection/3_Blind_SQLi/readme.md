@@ -320,6 +320,8 @@ Incluso se puede exfiltrar datos:
 
 La contraseña queda embebida en el subdominio.
 
+[OAST](OAST.md)
+
 ---
 
 ## Ejemplos de payloads por técnica
