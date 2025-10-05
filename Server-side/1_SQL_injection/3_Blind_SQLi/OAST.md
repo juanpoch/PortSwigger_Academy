@@ -6,7 +6,7 @@
 
 OAST se refiere a técnicas que provocan **interacciones de red salientes** desde el sistema objetivo hacia un servidor controlado por el atacante (DNS, HTTP, SMB, etc.).
 
-Cuando la app ejecuta la consulta vulnerable en un hilo separado o su respuesta no depende de la ejecución de esa query, las técnicas tradicionales (ver/errores/tiempos) no funcionan. OAST permite detectar y exfiltrar datos mediante la observación de interacciones externas provocadas por la base de datos vulnerable.
+Cuando la app ejecuta la consulta vulnerable en un hilo separado (consulta original en un hilo y consulta de cookie en un nuevo hilo) o su respuesta no depende de la ejecución de esa query, las técnicas tradicionales (ver/errores/tiempos) no funcionan. OAST permite detectar y exfiltrar datos mediante la observación de interacciones externas provocadas por la base de datos vulnerable.
 
 Las interacciones más fiables suelen usar **DNS** porque muchas redes permiten peticiones DNS salientes y los resolvers realizarán la consulta por el atacante (o por un servicio como Burp Collaborator) incluso si otros protocolos están bloqueados.
 
