@@ -80,7 +80,9 @@ Construye un documento XML con una entidad externa (`SYSTEM "http://..."`) y lo 
   Ejecuta `EXTRACTVALUE` sobre un `xmltype` y pide el nodo XPath `/l` (aquí el valor no importa: lo relevante es que se parsea el XML).
 
   `Nota`: `EXTRACTVALUE` es una función de Oracle que lee un documento XML y devuelve el valor de texto de un elemento o atributo específico indicado mediante una ruta XPath.
+  
   `Nota`: Una expresión XPath es una ruta o patrón que se usa para navegar dentro de un XML y seleccionar nodos concretos (por ejemplo, `/root/user/name` apunta al elemento `<name>` dentro de `<user>`
+  
 
 * `xmltype('...')`
   Crea un objeto XML a partir de la cadena interna; el parser XML procesa la DTD y las entidades.
