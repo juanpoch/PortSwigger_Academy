@@ -300,6 +300,9 @@ Se pueden extraer caracteres de forma binaria:
 
 ### 4. Out-of-band
 
+[SQLi Cheat sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
+
 Si la query se ejecuta de forma asincrónica o no altera la respuesta/tiempo, se puede provocar una **interacción externa (DNS, HTTP, SMB)** hacia un servidor controlado por el atacante.
 
 Ejemplo en MSSQL con Burp Collaborator:
