@@ -1,6 +1,6 @@
 # SQL injection en diferentes contextos (JSON, XML, headers, APIs)
 
-**Resumen:** las inyecciones SQL no se limitan al query string. Cualquier entrada controlable por el usuario que termine formando una consulta SQL puede ser vector de inyección: JSON, XML, cabeceras, cookies, segmentos de URL, multipart, GraphQL, etc. Diferentes formatos ofrecen formas alternativas de ocultar o evadir filtros, y a menudo requieren técnicas de explotación y evasión específicas.
+Las inyecciones SQL no se limitan al query string. Cualquier entrada controlable por el usuario que termine formando una consulta SQL puede ser vector de inyección: JSON, XML, cabeceras, cookies, segmentos de URL, multipart, GraphQL, etc. Diferentes formatos ofrecen formas alternativas de ocultar o evadir filtros, y a menudo requieren técnicas de explotación y evasión específicas.
 
 [Obfuscating](https://portswigger.net/web-security/essential-skills/obfuscating-attacks-using-encodings#obfuscation-via-xml-encoding)
 ---
