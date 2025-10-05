@@ -331,6 +331,13 @@ La contraseña queda embebida en el subdominio.
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
 
+
+[Lab: Blind_SQL_injection_with_out-of-band_data_exfiltration.md](7_Blind_SQL_injection_with_out-of-band_data_exfiltration.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)
+
+
+
 ---
 
 ---
