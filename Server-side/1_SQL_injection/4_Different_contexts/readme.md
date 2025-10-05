@@ -43,6 +43,11 @@ La vulnerabilidad aparece cuando la aplicación **construye o interpola** una co
   El parser XML decodifica `&#x53;` a `S`, resultando en `SELECT` en el SQL final.
 * También se puede abusar de **CDATA** y XXE para OOB exfiltration (cuando el XML es parseado y convertido a SQL después).
 
+[Lab: SQL Injection vulnerability in WHERE clause allowing retrieval of hidden data](1_SQL_injection_vulnerability_in_WHERE_clause_allowing_retrieval_of_hidden_data.md)  
+
+![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
+
+
 ### D — Headers, Cookies y Path params
 
 * `User-Agent`, `Referer`, `X-Forwarded-For`, o cookies pueden ser usados para inyección si son concatenados en SQL.
