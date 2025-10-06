@@ -219,7 +219,7 @@ Especialmente crítico si el atacante puede registrar su propia cuenta para expl
 
 ---
 
-# Implementar correctamente la autenticación multifactor (MFA)
+# Implementar correctamente la autenticación multifactor
 
 Cuando se aplica adecuadamente, MFA mejora sustancialmente la seguridad.
 
