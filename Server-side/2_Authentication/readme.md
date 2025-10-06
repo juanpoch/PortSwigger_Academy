@@ -1,4 +1,4 @@
-## 📊 Guía Completa: Vulnerabilidades de Autenticación
+## Vulnerabilidades de Autenticación
 
 ---
 
