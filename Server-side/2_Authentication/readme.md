@@ -26,7 +26,6 @@ Por eso es fundamental entender cómo se identifican, explotan y previenen estas
 
 ---
 
-# 📆 ¿Qué es la autenticación?
 
 La **autenticación** es el proceso de **verificar la identidad** de un usuario o cliente.
 
@@ -48,7 +47,7 @@ Los mecanismos de autenticación modernos suelen combinar varios factores para a
 
 ---
 
-# 📅 Diferencia entre autenticación y autorización
+# Diferencia entre autenticación y autorización
 
 | Concepto | Descripción |
 |:---------|:-------------|
@@ -62,7 +61,7 @@ Los mecanismos de autenticación modernos suelen combinar varios factores para a
 
 ---
 
-# 🚫 ¿Cómo surgen las vulnerabilidades de autenticación?
+# Origen
 
 Existen dos causas principales:
 
