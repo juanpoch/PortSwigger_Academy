@@ -13,10 +13,8 @@ En los sitios web que utilizan **inicio de sesión basado en contraseña**, los 
 
 Cada cuenta está asociada a:
 
-- Un **nombre de usuario** (
-**username**) 
-- Una **contraseña secreta** (
-**password**) 
+- Un **nombre de usuario** 
+- Una **contraseña secreta**
 
 La **posesión del secreto** se considera suficiente para confirmar la identidad del usuario.
 
