@@ -23,7 +23,7 @@ Intentamos iniciar sesión con credenciales de prueba:
 
 La respuesta ya nos da un indicio de que podría haber un potencial vector de enumeración de usuarios.
 
-Al haber capturado la request con Burp Suite, envíamos la misma al repeater para realizar fuerza bruta utilizando la wordlist proporcionada por el laboratorio, realizamos un `Sniper Attack`:
+Al haber capturado la request con `Burp Suite`, envíamos la misma al `Intruder` para realizar fuerza bruta utilizando la wordlist proporcionada por el laboratorio, realizamos un `Sniper Attack`:
 ![image](https://github.com/user-attachments/assets/607977dd-dddd-4541-b66e-8d57c08b2bb2)
 
 
