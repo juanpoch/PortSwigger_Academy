@@ -45,3 +45,17 @@ Al tercer intento nos vuelve a bloquear:
 
 Entonces cambiamos nuevamente el valor del header `X-Forwarded-For` y vemos que nuevamente podemos intentar autenticarnos:
 <img width="1501" height="691" alt="image" src="https://github.com/user-attachments/assets/314859cb-f699-4dcf-b565-7b6c2911c80e" />
+
+Continuamos con nuestro análisis. Lo que hacemos es probar si la aplicación valida primero si el usuario es correcto antes de validar la contraseña. Si esto fuese cierto, podríamos enumerar usuarios mediante diferencias en los tiempos de respuesta.
+
+La lógica del ataque es probar usuario válido primero con contraseña extensa y luego comparar con los tiempos de respuesta de un usuario inválido con contraseña extensa.
+
+- Probamos con usuario correcto y contraseña extensa:
+<img width="1910" height="849" alt="image" src="https://github.com/user-attachments/assets/b5650ccb-6828-4f43-a60e-6c9af608168b" />
+
+Tarda 3123 millis, lo que es un indicativo de que la aplicación podría ser vulnerable a este ataque.
+
+- Probamos con usuario incorrecto y contraseña extensa:
+<img width="1915" height="845" alt="image" src="https://github.com/user-attachments/assets/f59294f0-cfa9-42e9-a6b3-c6c554a328e8" />
+
+
