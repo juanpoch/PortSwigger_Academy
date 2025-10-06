@@ -20,13 +20,6 @@ La **posesión del secreto** se considera suficiente para confirmar la identidad
 
 > **Problema:** Si un atacante obtiene o adivina las credenciales, la seguridad del sitio queda comprometida.
 
-Esta guía explora:
-
-- Ataques de fuerza bruta.
-- Fallos comunes en la protección contra fuerza bruta.
-- Vulnerabilidades de enumeración de nombres de usuario.
-- Debilidades en la autenticación HTTP básica.
-
 ---
 
 # Ataques de Fuerza Bruta
