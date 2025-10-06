@@ -4,7 +4,7 @@
 
 ---
 
-# 👉 Introducción
+# Introducción
 
 En los sitios web que utilizan **inicio de sesión basado en contraseña**, los usuarios:
 
@@ -14,11 +14,11 @@ En los sitios web que utilizan **inicio de sesión basado en contraseña**, los 
 Cada cuenta está asociada a:
 
 - Un **nombre de usuario** (
-**username**) ✨
+**username**) 
 - Una **contraseña secreta** (
-**password**) 🔐
+**password**) 
 
-La **posesión del secreto (contraseña)** se considera suficiente para confirmar la identidad del usuario.
+La **posesión del secreto** se considera suficiente para confirmar la identidad del usuario.
 
 > **Problema:** Si un atacante obtiene o adivina las credenciales, la seguridad del sitio queda comprometida.
 
@@ -31,9 +31,9 @@ Esta guía explora:
 
 ---
 
-# 💥 Ataques de Fuerza Bruta
+# Ataques de Fuerza Bruta
 
-## 🧰 Definición
+## Definición
 
 Un **ataque de fuerza bruta** consiste en:
 
@@ -42,7 +42,7 @@ Un **ataque de fuerza bruta** consiste en:
 
 Esto permite a un atacante realizar **miles o millones de intentos rápidamente**.
 
-## 🧬 Lógica y conocimiento humano
+## Lógica y conocimiento humano
 
 No siempre son adivinanzas aleatorias:
 
@@ -56,7 +56,7 @@ Esto **incrementa la eficiencia** del ataque brutalmente.
 
 ---
 
-# 🥇 Fuerza bruta de nombres de usuario
+# Fuerza bruta de nombres de usuario
 
 **Problema:** Los nombres de usuario suelen seguir **patrones predecibles**:
 
@@ -66,13 +66,13 @@ Esto **incrementa la eficiencia** del ataque brutalmente.
 **Durante auditorías debes verificar:**
 
 - ¿Existen perfiles accesibles públicamente que revelen nombres de usuario?
-- ¿Las respuestas HTTP contienen correos de usuarios (especialmente administradores)?
+- ¿Las respuestas HTTP contienen correos de usuarios?
 
 Cualquier pista reduce dramáticamente el esfuerzo del atacante.
 
 ---
 
-# 🔐 Fuerza bruta de contraseñas
+# Fuerza bruta de contraseñas
 
 **Teóricamente**, las políticas de contraseñas buscan generar contraseñas de **alta entropía**:
 
@@ -95,7 +95,7 @@ Esto **facilita enormemente** los ataques basados en patrones de comportamiento 
 
 ---
 
-# 🔢 Enumeración de nombres de usuario
+# Enumeración de nombres de usuario
 
 **Definición:**
 
@@ -107,7 +107,7 @@ La **enumeración de usernames** ocurre cuando el atacante puede deducir si un n
 - **Formularios de registro:** Mensajes como "El usuario ya está en uso".
 
 
-## 💡 Indicadores de enumeración:
+## Indicadores de enumeración:
 
 | Método | Descripción |
 |:-------|:------------|
