@@ -238,18 +238,6 @@ Cuando se aplica adecuadamente, MFA mejora sustancialmente la seguridad.
 
 ---
 
-# 💬 Resumen
-
-| Principio | Acción recomendada |
-|:----------|:-------------------|
-| Proteger credenciales | HTTPS obligatorio, no filtrar usuarios. |
-| Forzar comportamientos seguros | Uso de password checkers en tiempo real. |
-| Evitar enumeración | Mensajes y tiempos de respuesta uniformes. |
-| Dificultar fuerza bruta | Rate limiting + CAPTCHA. |
-| Verificar la lógica | Auditorías profundas de toda validación. |
-| Asegurar todo el ecosistema | Incluir registro, recuperación de contraseña, MFA. |
-
----
 
 > **La autenticación robusta no es solo un login seguro; es proteger toda la superficie que permite controlar identidades.**
 
