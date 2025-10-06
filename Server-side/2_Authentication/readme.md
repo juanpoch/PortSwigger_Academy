@@ -123,7 +123,7 @@ Al diseñar sistemas de autenticación seguros, es fundamental seguir algunos pr
 - **Validar correctamente todas las entradas.**
 
 - **Utilizar almacenamiento seguro de contraseñas:**
-  - Algoritmos de hashing robustos (bcrypt, Argon2).
+  - Algoritmos de hashing robustos.
 
 - **Integrar MFA correctamente.**
 
@@ -133,18 +133,6 @@ Al diseñar sistemas de autenticación seguros, es fundamental seguir algunos pr
 - **Utilizar bibliotecas y estándares comprobados en lugar de desarrollar mecanismos propios inseguros.**
 
 - **Auditar y probar regularmente los sistemas de autenticación.**
-
----
-
-# 💬 Resumen
-
-| Aspecto | Descripción |
-|:--------|:------------|
-| Autenticación | Confirmar la identidad del usuario. |
-| Vulnerabilidades | Errores de lógica o protección inadecuada contra ataques de fuerza bruta. |
-| Impacto | Acceso no autorizado a datos o control total del sistema. |
-| Prevención | Límites de intentos, MFA, hashing seguro de contraseñas, pruebas continuas. |
-
 
 ---
 
