@@ -132,3 +132,58 @@ La **enumeración de usernames** ocurre cuando el atacante puede deducir si un n
 ---
 
 
+# Protección contra fuerza bruta con lógica deficiente
+
+La protección contra fuerza bruta busca dificultar la automatización y ralentizar el número de intentos de acceso que puede realizar un atacante. Las dos medidas más comunes son:
+
+* **Bloqueo de cuenta** tras demasiados intentos fallidos.
+* **Bloqueo de IP** tras demasiados intentos desde una misma dirección en poco tiempo.
+
+Ambas ofrecen cierto grado de defensa, pero implementaciones con **lógica defectuosa** pueden convertirse en triviales de evadir o en vectores de denegación de servicio contra usuarios legítimos.
+
+---
+
+## Fallas comunes
+
+1. **Reset del contador al haber un éxito en la misma IP**
+
+   * Si el contador de fallos por IP se reinicia cuando la misma IP efectúa un inicio de sesión exitoso en cualquier cuenta (p. ej. el propio atacante), el atacante puede intercalar intentos exitosos para evitar el bloqueo.
+
+2. **Bloqueo por cuenta que permite enumeración**
+
+   * Si la aplicación responde distinto cuando una cuenta es bloqueada (o envía mensajes distintos), permite enumerar usuarios válidos y planear ataques dirigidos.
+
+3. **Bloqueo de IP sin considerar NAT/Proxies**
+
+   * Usuarios legítimos detrás de NAT o proxies compartidos pueden sufrir DoS cuando la IP pública se bloquea.
+
+4. **Timers mal implementados (race conditions)**
+
+   * Contadores distribuidos, sincronización pobre entre servidores o condiciones de carrera pueden permitir múltiples intentos paralelos que el mecanismo no contabiliza correctamente.
+
+5. **Counters globales reiniciables o manipulables**
+
+   * Contadores almacenados en cookies, parámetros client-side o con lógica que permite reset por eventos no autorizados.
+
+6. **Dependencia exclusiva en CAPTCHA visible y fácil de omitir**
+
+   * CAPTCHA mal configurado o servidos desde un endpoint que puede ser evadido.
+
+---
+
+## Ejemplo
+
+**Situación:** la protección bloquea la IP si hay X fallos consecutivos. Pero si desde esa IP se consigue un `login` exitoso en cualquier cuenta, el contador IP se reinicia.
+
+**Bypass sencillo:** intercalar las credenciales de una cuenta legítima (controlada por el atacante) cada N intentos.
+
+**Estrategia:**
+
+* Preparar un `wordlist` con passwords objetivo.
+* Insertar la credencial válida del atacante cada (X-1) entradas.
+* Automatizar el envío para que tras cada X-1 fallos la IP haga un `login` válido — el contador se reinicia y nunca se llega al umbral.
+
+**Burp Intruder / wfuzz / hydra**: se puede configurar un `payload` que repita secuencias de fallos + éxito según el patrón.
+
+---
+
