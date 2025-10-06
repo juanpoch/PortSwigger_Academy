@@ -183,7 +183,6 @@ Ambas ofrecen cierto grado de defensa, pero implementaciones con **lógica defec
 * Insertar la credencial válida del atacante cada (X-1) entradas.
 * Automatizar el envío para que tras cada X-1 fallos la IP haga un `login` válido — el contador se reinicia y nunca se llega al umbral.
 
-**Burp Intruder / wfuzz / hydra**: se puede configurar un `payload` que repita secuencias de fallos + éxito según el patrón.
 
 ---
 
