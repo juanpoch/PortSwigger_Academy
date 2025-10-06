@@ -37,3 +37,4 @@ Procedemos a utilizar el header `X-Forwarded-For`:
 
 <img width="833" height="253" alt="image" src="https://github.com/user-attachments/assets/601885e6-c8b2-4c36-8ad0-fc7be14e8516" />
 
+<img width="1882" height="713" alt="image" src="https://github.com/user-attachments/assets/2a1805db-0620-4912-ad6f-4766ec88d100" />
