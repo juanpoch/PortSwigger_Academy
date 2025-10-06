@@ -28,3 +28,17 @@ Realizamos el ataque y buscamos por diferencias en el código de estado o en el 
 <img width="1839" height="639" alt="image" src="https://github.com/user-attachments/assets/9b318673-6273-456e-94a0-b40c0787d152" />
 
 Vemos que las longitudes son muy similares y tampoco hay diferencias en los códigos de estado.
+
+De modo tal que enviamos 2 respuestas al comparer debido a que podría haber algún caracter diferente debido a sus diferentes longitudes. Comparamos por palabras:
+
+<img width="1905" height="991" alt="image" src="https://github.com/user-attachments/assets/1d967658-d44d-4605-a9f4-41ecb41edb27" />
+
+No encontramos nada significativo entre esas 2 peticiones.
+
+Nosotros sabemos que cuando las credenciales son inválidas tenemos el mensaje de error `Invalid username or password.`
+
+Filtramos por ese texto de forma negativa en el campo `View Filter`:
+<img width="1468" height="616" alt="image" src="https://github.com/user-attachments/assets/873e723a-06f3-4abb-bf51-62f1ce584c7c" />
+
+Encontramos que para el usuario `announce` el texto de error es `Invalid username or passoword` (Sin el caracter `.`).
+
