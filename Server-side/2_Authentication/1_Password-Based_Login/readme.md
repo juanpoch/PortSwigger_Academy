@@ -119,7 +119,7 @@ La **enumeración de usernames** ocurre cuando el atacante puede deducir si un n
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-green)  
 
-[Lab: ](2_.md)  
+[Lab: Username_enumeration_via_subtly_different_responses](2_Username_enumeration_via_subtly_different_responses.md)  
 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)  
 
