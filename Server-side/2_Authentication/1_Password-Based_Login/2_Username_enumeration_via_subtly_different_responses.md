@@ -42,3 +42,11 @@ Filtramos por ese texto de forma negativa en el campo `View Filter`:
 
 Encontramos que para el usuario `announce` el texto de error es `Invalid username or passoword` (Sin el caracter `.`).
 
+Procedemos a realizar un ataque de fuerza bruta de contraseñas:
+<img width="1877" height="921" alt="image" src="https://github.com/user-attachments/assets/e47a39cf-2655-455b-ba48-57b2445365ee" />
+
+Filtramos por código de estado y encontramos un `302`:
+<img width="1850" height="665" alt="image" src="https://github.com/user-attachments/assets/21d6186c-c7df-46a7-8c2d-0fa2ca18b28f" />
+
+Nos autenticamos con las credenciales `announce`:`123321` y resolvemos el laboratorio:
+<img width="1621" height="720" alt="image" src="https://github.com/user-attachments/assets/95bb04dd-27d0-4605-a0c4-d32821989358" />
