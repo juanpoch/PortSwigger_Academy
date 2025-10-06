@@ -16,16 +16,6 @@ Por eso es fundamental entender cómo se identifican, explotan y previenen estas
 
 ---
 
-# 🔹 Temas que cubriremos
-
-- ¿Cuáles son los mecanismos de autenticación más comunes?
-- ¿Qué vulnerabilidades pueden presentarse en ellos?
-- Vulnerabilidades inherentes según el tipo de mecanismo.
-- Vulnerabilidades comunes debido a implementaciones incorrectas.
-- Mejores prácticas para implementar mecanismos de autenticación robustos.
-
----
-
 
 La **autenticación** es el proceso de **verificar la identidad** de un usuario o cliente.
 
@@ -79,7 +69,7 @@ Existen dos causas principales:
 
 ---
 
-# 💥 Impacto de las vulnerabilidades de autenticación
+# Impacto
 
 Las consecuencias pueden ser devastadoras:
 
