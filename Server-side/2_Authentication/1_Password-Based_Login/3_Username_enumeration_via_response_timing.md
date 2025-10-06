@@ -59,3 +59,29 @@ Tarda 3123 millis, lo que es un indicativo de que la aplicación podría ser vul
 <img width="1915" height="845" alt="image" src="https://github.com/user-attachments/assets/f59294f0-cfa9-42e9-a6b3-c6c554a328e8" />
 
 
+Acabamos de comprobar que el servidor primero valida si el usuario es correcto, de lo contrario no valida la contraseña, por lo cual el tiempo de respuesta es menor que cuando el usuario es correcto.
+
+
+Procedemos a realizar un ataque de enumeración de usuarios utilizando el `Intruder` con un ataque `Pitchfork` el cual utilizaremos dos posiciones de payload con 2 wordlist que avanzan en paralelo.
+
+- Payload 1 itera del número 6 al 106 para valores del header `X-Forwarded-For`, lo cual cambiaría la dirección IP por cada petición, 100 veces a lo largo del ataque, ya que tenemos una wordlist de 101 usuarios:
+<img width="1883" height="937" alt="image" src="https://github.com/user-attachments/assets/d25bf91f-6199-45b3-b2d3-a4e33a605356" />
+
+- Payload 2 itera a través de la wordlist de usernames:
+<img width="1876" height="894" alt="image" src="https://github.com/user-attachments/assets/fc2b58d9-21cf-4408-96e3-31cffcf337ef" />
+
+Realizamos el ataque y vemos que en la columna `Response receive` obtenemos un tiempo de respuesta alto para el payload `at`, lo que nos indica que es un usuario válido:
+<img width="1865" height="786" alt="image" src="https://github.com/user-attachments/assets/f1f97e65-04d2-4391-9571-94fa4724d114" />
+
+
+El siguiente paso es realizar un ataque de fuerza bruta de contraseñas utilizando el usuario `at`.
+
+Payload 1:
+<img width="1877" height="894" alt="image" src="https://github.com/user-attachments/assets/7e11f3c7-28bf-4916-9e02-d343e8b840a9" />
+
+Payload 2 utilizamos la wordlist de contraseñas:
+<img width="1879" height="859" alt="image" src="https://github.com/user-attachments/assets/8cbdb7bb-f67d-44f4-8615-26c20e47c1af" />
+
+
+Obtenemos un código de estado `302` que nos redirecciona a `my-account?id=at` lo que nos indica una autenticación exitosa:
+<img width="1862" height="630" alt="image" src="https://github.com/user-attachments/assets/7f04371f-b1c9-4f8b-9977-92fd366ab665" />
