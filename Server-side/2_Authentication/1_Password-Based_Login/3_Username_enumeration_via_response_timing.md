@@ -85,3 +85,8 @@ Payload 2 utilizamos la wordlist de contraseñas:
 
 Obtenemos un código de estado `302` que nos redirecciona a `my-account?id=at` lo que nos indica una autenticación exitosa:
 <img width="1862" height="630" alt="image" src="https://github.com/user-attachments/assets/7f04371f-b1c9-4f8b-9977-92fd366ab665" />
+
+
+Nos autenticamos con las credenciales `at`:`123qwe` y resolvemos el laboratorio:
+<img width="1680" height="746" alt="image" src="https://github.com/user-attachments/assets/8acad802-204e-45bf-b451-5948470d1a85" />
+
