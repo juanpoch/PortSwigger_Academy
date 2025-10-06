@@ -117,7 +117,7 @@ Cuando un sitio depende de servicios externos (por ejemplo, **OAuth**):
 
 ---
 
-# 🏡 Prevención de vulnerabilidades en mecanismos de autenticación
+# Prevención de vulnerabilidades en mecanismos de autenticación
 
 Al diseñar sistemas de autenticación seguros, es fundamental seguir algunos principios clave:
 
