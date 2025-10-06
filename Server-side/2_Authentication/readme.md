@@ -100,12 +100,6 @@ Una aplicación suele implementar varios mecanismos donde pueden presentarse vul
 
 Cada uno tiene su propio conjunto de riesgos.
 
-**👉 Ejemplo:** Muchos laboratorios de seguridad incluyen:
-
-- Enumeración de nombres de usuario.
-- Fuerza bruta de contraseñas.
-- Bypass de MFA.
-
 ---
 
 # 🛡️ Vulnerabilidades en autenticación de terceros
@@ -153,13 +147,10 @@ Al diseñar sistemas de autenticación seguros, es fundamental seguir algunos pr
 
 
 ---
----
-
-## 🔒 Guía: Cómo asegurar tus mecanismos de autenticación
 
 ---
 
-# 🔐 Introducción
+
 
 La autenticación es un tema complejo y propenso a errores. Aunque no es posible cubrir absolutamente todas las medidas de protección posibles, existen principios generales que **siempre** deberías seguir para robustecer tus sistemas de autenticación.
 
@@ -167,7 +158,7 @@ En esta guía aprenderás cómo prevenir las vulnerabilidades comunes y fortalec
 
 ---
 
-# 👉 Cuida las credenciales de los usuarios
+# Cuidar las credenciales de los usuarios
 
 Incluso los mejores sistemas de autenticación son inútiles si un atacante obtiene las credenciales:
 
@@ -179,11 +170,11 @@ Incluso los mejores sistemas de autenticación son inútiles si un atacante obti
 
 ---
 
-# 👉 No dependas de los usuarios para la seguridad
+#  No depender de los usuarios para la seguridad
 
 La naturaleza humana tiende a buscar atajos. Por eso debes **forzar comportamientos seguros**.
 
-### Implementa una buena política de contraseñas
+### Implementar una buena política de contraseñas
 
 - **Evita políticas tradicionales** (longitud mínima con complejidad obligatoria) que los usuarios terminan sorteando con contraseñas predecibles.
 - **Usa un verificador de fortaleza de contraseñas en tiempo real**, como:
@@ -192,7 +183,7 @@ La naturaleza humana tiende a buscar atajos. Por eso debes **forzar comportamien
 
 ---
 
-# 👉 Prevé la enumeración de nombres de usuario
+# Prever la enumeración de nombres de usuario
 
 Facilitar la detección de usuarios existentes ayuda a los atacantes.
 
@@ -204,7 +195,7 @@ Recomendaciones:
 
 ---
 
-# 👉 Implementa protección robusta contra fuerza bruta
+# Implementar protección robusta contra fuerza bruta
 
 Dado lo simple que es lanzar ataques de fuerza bruta, debes complicar al máximo los intentos:
 
@@ -216,7 +207,7 @@ Nota: aunque no elimina el riesgo por completo, **aumenta el esfuerzo y desalien
 
 ---
 
-# 👉 Verifica tu lógica de validación una y otra vez
+# Verificar la lógica de validación una y otra vez
 
 - **Audita a fondo** toda la lógica de verificación.
 - **Evita errores de programación o de lógica** que puedan ser explotados.
@@ -224,7 +215,7 @@ Nota: aunque no elimina el riesgo por completo, **aumenta el esfuerzo y desalien
 
 ---
 
-# 👉 No olvides las funcionalidades complementarias
+# No olvidar las funcionalidades complementarias
 
 No te centres solo en el login principal.
 
@@ -240,7 +231,7 @@ Especialmente crítico si el atacante puede registrar su propia cuenta para expl
 
 ---
 
-# 👉 Implementa correctamente la autenticación multifactor (MFA)
+# Implementar correctamente la autenticación multifactor (MFA)
 
 Cuando se aplica adecuadamente, MFA mejora sustancialmente la seguridad.
 
@@ -272,7 +263,7 @@ Cuando se aplica adecuadamente, MFA mejora sustancialmente la seguridad.
 
 ---
 
-> ✨ **La autenticación robusta no es solo un login seguro; es proteger toda la superficie que permite controlar identidades.**
+> **La autenticación robusta no es solo un login seguro; es proteger toda la superficie que permite controlar identidades.**
 
 
 
