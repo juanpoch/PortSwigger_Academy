@@ -76,7 +76,7 @@ Las consecuencias pueden ser devastadoras:
 - **Compromiso de cuentas de usuario:**
   - Acceso a toda la información disponible para la cuenta comprometida.
 
-- **Compromiso de cuentas privilegiadas (administradores):**
+- **Compromiso de cuentas privilegiadas:**
   - Control total sobre la aplicación.
   - Acceso potencial a la infraestructura interna.
 
