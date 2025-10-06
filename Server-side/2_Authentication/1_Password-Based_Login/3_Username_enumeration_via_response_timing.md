@@ -37,4 +37,11 @@ Procedemos a utilizar el header `X-Forwarded-For`:
 
 <img width="833" height="253" alt="image" src="https://github.com/user-attachments/assets/601885e6-c8b2-4c36-8ad0-fc7be14e8516" />
 
+Probamos una vez y vemos que estamos habilitados nuevamente para autenticarnos:
 <img width="1882" height="713" alt="image" src="https://github.com/user-attachments/assets/2a1805db-0620-4912-ad6f-4766ec88d100" />
+
+Al tercer intento nos vuelve a bloquear:
+<img width="1912" height="738" alt="image" src="https://github.com/user-attachments/assets/da9657de-b867-4168-965f-c75de7673b7f" />
+
+Entonces cambiamos nuevamente el valor del header `X-Forwarded-For` y vemos que nuevamente podemos intentar autenticarnos:
+<img width="1501" height="691" alt="image" src="https://github.com/user-attachments/assets/314859cb-f699-4dcf-b565-7b6c2911c80e" />
