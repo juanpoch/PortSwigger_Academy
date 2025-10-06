@@ -19,5 +19,21 @@ Iniciamos el laboratorio y nos encontramos con un blog:
 Nos dirijimos a `My account` para inspeccionar el panel de login:
 <img width="1887" height="810" alt="image" src="https://github.com/user-attachments/assets/cfb9e4fa-a4a4-42e3-bf08-2c15c04e2b0d" />
 
-Realizamos una petición con credenciales de prueba para analizar el comportamiento:
-<img width="1886" height="789" alt="image" src="https://github.com/user-attachments/assets/0fd4a561-e1ac-4363-a7be-c371ab009ef2" />
+Realizamos una petición con credenciales de prueba para analizar el comportamiento cuando el usuario es inválido:
+<img width="1916" height="874" alt="image" src="https://github.com/user-attachments/assets/418af68c-d51d-46b6-bace-b3e1a10e2239" />
+
+Vemos que la respuesta tarda 235 millis en llegar.
+
+Ahora probamos con un usuario válido:
+
+<img width="1915" height="870" alt="image" src="https://github.com/user-attachments/assets/5e540710-2058-499d-8ef3-877399c1ffb6" />
+
+Tenemos un tiempo de 252 millis, lo que no es una diferencia significativa.
+
+Vemos que si probamos 3 veces nos bloquean:
+<img width="1908" height="852" alt="image" src="https://github.com/user-attachments/assets/8724bf35-2886-408f-87e5-bfb5a6537c2d" />
+
+Procedemos a utilizar el header `X-Forwarded-For`:
+
+<img width="833" height="253" alt="image" src="https://github.com/user-attachments/assets/601885e6-c8b2-4c36-8ad0-fc7be14e8516" />
+
