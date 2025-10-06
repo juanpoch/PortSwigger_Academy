@@ -114,19 +114,6 @@ La **enumeración de usernames** ocurre cuando el atacante puede deducir si un n
 
 ---
 
-# 💬 Resumen
-
-| Tema | Riesgo |
-|:----|:------|
-| Fuerza bruta general | Permite acceso no autorizado. |
-| Patrones predecibles | Aumentan éxito de ataques. |
-| Enumeración de usuarios | Facilita ataques posteriores. |
-| Conductas humanas | Reducen efectividad de políticas de seguridad. |
-
-
-> ✨ **Entender cómo piensan los usuarios y cómo responden las aplicaciones es clave para asegurar mecanismos de autenticación basados en contraseñas.**
-
-
 
 [Lab: Username enumeration via different responses](1_Username_enumeration_via_different_responses.md)  
 
