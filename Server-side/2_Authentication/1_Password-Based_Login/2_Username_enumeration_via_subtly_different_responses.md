@@ -9,3 +9,4 @@ To solve the lab, enumerate a valid username, brute-force this user's password, 
 ![Practitioner](https://img.shields.io/badge/level-Apprentice-blue)  
 
 ---
+
